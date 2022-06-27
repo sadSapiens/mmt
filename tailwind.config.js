@@ -8,7 +8,11 @@ module.exports = {
     "./public/index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "jost-start": ['"Jost"', "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
