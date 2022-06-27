@@ -1,15 +1,11 @@
 import React from "react";
-import MyNavbar from "../../components/Navbar";
 
 const Home = () => {
   return (
     <>
-      <div>home</div>
-
-      <MyNavbar />
+      <div className="bg-black">home</div>
     </>
   );
-  
 };
 
 export default Home;
