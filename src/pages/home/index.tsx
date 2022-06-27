@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <>
       <div className="bg-black">home</div>
+      <div className="bg-amber-200">kkk</div>
     </>
   );
 };
