@@ -9,6 +9,7 @@ const Home = () => {
       <MyNavbar />
     </>
   );
+  
 };
 
 export default Home;
