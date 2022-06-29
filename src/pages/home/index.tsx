@@ -1,10 +1,11 @@
 import React from "react";
+import Footer from "../../components/footer/Footer";
 import MyNavbar from "../../components/navbar/MyNavbar";
 import Brands from "./brands/Brands";
 import Catalog from "./catalog/Catalog";
 import Faq from "./FAQ/Faq";
 import Feedback from "./feedback/Feedback";
-import Footer from "./footer/Footer";
+import FooterHome from "./footer-home/FooterHome";
 import Portfolio from "./portfolio/Portfolio";
 import Slider from "./slider/Slider";
 
@@ -22,6 +23,7 @@ const Home = () => {
       <Portfolio />
       <Brands />
       <Faq />
+      <FooterHome />
       <Footer />
     </>
   );
