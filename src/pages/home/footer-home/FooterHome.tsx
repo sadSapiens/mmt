@@ -50,8 +50,8 @@ const FooterHome = () => {
     "
               />
             </label>
-            <button className="bg-white hover:bg-sky-700 rounded-full ... mt-1 block w-full px-3 py-2">
-              Save changes
+            <button className="bg-white hover:bg-sky-700 rounded-full ... mt-1 block w-full px-3 py-2 font-bold">
+              Отправить
             </button>
           </form>
         </div>

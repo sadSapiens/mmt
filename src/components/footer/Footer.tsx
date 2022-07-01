@@ -10,6 +10,8 @@ import logo from "./assets/logo.png";
 const Footer = () => {
   return (
     <div>
+      <hr className=" bg-white w-auto h-0.1 " />
+
       <footer className="footer-1 bg-[#484848] py-8 sm:py-12">
         <div className="container mx-auto px-4">
           <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
@@ -21,52 +23,7 @@ const Footer = () => {
               </div>
               <ul className="list-none footer-links">
                 <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Download
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Random feature
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Team feature
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Stuff for developers
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Another one
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Last time
-                  </a>
+                  <a href="#">0</a>
                 </li>
               </ul>
             </div>
@@ -77,38 +34,8 @@ const Footer = () => {
                 <span className="text-white">FACEBOOK</span>
               </div>
               <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Resource
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Resource name
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Another resource
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Final resource
-                  </a>
-                </li>
+                <li className="mb-2"></li>
+                <li className="mb-2"></li>
               </ul>
             </div>
             <div className="px-4 mt-4 sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
@@ -135,30 +62,7 @@ const Footer = () => {
                     </div>
                   </a>
                 </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Locations
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Privacy
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    Terms
-                  </a>
-                </li>
+                <li className="mb-2"></li>
               </ul>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
