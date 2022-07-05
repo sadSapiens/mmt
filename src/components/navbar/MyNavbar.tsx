@@ -3,6 +3,9 @@ import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/Vector.png";
 import cart from "../../assets/img/cart-navbar.png";
 import phone from "../../assets/img/phone.png";
+import location from "../../assets/img/location.png";
+
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
@@ -11,18 +14,19 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="bg-[#343434]">
+      <nav className="bg-[#343434] font-jost">
         <div className="max-w-6xl mx-auto px-2">
           <div className="flex justify-between">
-            <div className="flex space-x-4">
-              {/* <div>
+            <div className="flex space-x-4 font-jost">
+              <div>
                 <a
                   href="#"
-                  className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900"
+                  className="flex items-center py-5 px-2 text-white hover:text-gray-900 gap-3"
                 >
-                  <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
+                  <img className="" src={location} alt="" />
+                  Бишкек
                 </a>
-              </div> */}
+              </div>
 
               <div className="hidden md:flex items-center space-x-1">
                 <a
@@ -125,17 +129,17 @@ const NavBar = () => {
             <div className="flex space-x-4">
               <div>
                 <a
-                  href="#"
+                  href="/"
                   className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900"
                 >
                   <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
                 </a>
               </div>
 
-              <div className="hidden md:flex items-center space-x-1">
+              <div className="hidden md:flex items-center space-x-1 text-center align-middle">
                 <a
                   href="#"
-                  className="py-5 px-3 text-[#ffffff] hover:text-gray-900"
+                  className="py-5 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
                 >
                   Каталог
                 </a>
@@ -157,17 +161,23 @@ const NavBar = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-1 gap-4">
-              <div className="flex items-center align-middle text-center">
-                <img src={cart} alt="" />
-                <span className="text-white">Корзина</span>
-              </div>
-              <button className="text-white">Регистрация</button>
-              <button className="rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
-                Войти
-              </button>
+              <Link to="/basket">
+                <div className="flex items-center align-middle text-center">
+                  <img src={cart} alt="" />
+                  <span className="text-white">Корзина</span>
+                </div>
+              </Link>
+              <Link to="/signup">
+                <button className="text-white">Регистрация</button>
+              </Link>
+              <Link to="/signin">
+                <button className="rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
+                  Войти
+                </button>
+              </Link>
             </div>
 
-            <div className="md:hidden flex items-center">
+            {/* <div className="md:hidden flex items-center">
               <button className="mobile-menu-button">
                 <svg
                   className="w-6 h-6"
@@ -184,7 +194,7 @@ const NavBar = () => {
                   />
                 </svg>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 

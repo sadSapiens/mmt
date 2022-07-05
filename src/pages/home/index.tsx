@@ -12,19 +12,21 @@ import Slider from "./slider/Slider";
 const Home = () => {
   return (
     <>
-      <MyNavbar />
-      {/* slide */}
-      <div>
-        <Slider />
+      <div className="font-jost">
+        <MyNavbar />
+        {/* slide */}
+        <div>
+          <Slider />
+        </div>
+        {/* //slide */}
+        <Catalog />
+        <Feedback />
+        <Portfolio />
+        <Brands />
+        <Faq />
+        <FooterHome />
+        <Footer />
       </div>
-      {/* //slide */}
-      <Catalog />
-      <Feedback />
-      <Portfolio />
-      <Brands />
-      <Faq />
-      <FooterHome />
-      <Footer />
     </>
   );
 };

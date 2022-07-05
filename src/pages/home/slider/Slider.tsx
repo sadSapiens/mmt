@@ -32,9 +32,39 @@ const Slider = () => {
           className="slider__nav"
         />
         <div className="slider__inner">
-          <div className="slider__contents flex justify-between">
-            <img className="h-56" src={eco} alt="" />
-            <span>ЭКОЛОГИЧНЫЕ ПОДАРКИ</span>
+          <div className="slider__contents ">
+            <div className="flex justify-between">
+              <img className="h-[22rem] w-4/12" src={eco} alt="" />
+              <div
+                className="flex 
+              justify-center flex-col text-white text-center
+              "
+              >
+                {/* 
+              text-center justify-center place-items-start text-white flex-column
+                
+                */}
+                <p
+                  className="
+                  text-8xl w-6/12
+
+              font-extrabold   
+              "
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p
+                  className="
+              text-8xl w-6/12
+              font-extrabold 
+              
+              "
+                >
+                  ПОДАРКИ
+                </p>
+              </div>
+            </div>
+            <div></div>
           </div>
           <div className="slider__contents">
             <p className="slider__txt">

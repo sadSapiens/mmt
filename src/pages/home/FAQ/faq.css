@@ -1,11 +1,11 @@
-label:after {
+.label-faq:after {
   content: "+";
   position: absolute;
   right: 1em;
   color: rgb(0, 0, 0);
 }
 
-input:checked + label:after {
+input:checked + .label-faq:after {
   content: "-";
   line-height: 0.8em;
 }

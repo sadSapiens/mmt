@@ -19,7 +19,7 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-1"
-                className="relative block text-black p-4 shadow border-b border-black"
+                className=" label-faq relative block text-black p-4 shadow border-b border-black"
               >
                 Panel 1
               </label>
@@ -44,7 +44,7 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-2"
-                className="relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq  relative block  text-black p-4 shadow border-b border-black"
               >
                 Panel 2
               </label>
@@ -69,7 +69,7 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-3"
-                className="relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black p-4 shadow border-b border-black"
               >
                 Panel 3
               </label>
@@ -94,7 +94,7 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-4"
-                className="relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black p-4 shadow border-b border-black"
               >
                 Panel 4
               </label>
@@ -119,7 +119,7 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-5"
-                className="relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black p-4 shadow border-b border-black"
               >
                 Panel 5
               </label>
@@ -139,7 +139,7 @@ const Faq = () => {
         </div>
       </div>
       <div className="flex flex-row basis-1/2">
-        <img className="h-[500px]" src={faqImage} alt="" />
+        <img className="h-[500px] w-[300px]" src={faqImage} alt="" />
       </div>
     </div>
   );

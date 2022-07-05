@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "../store";
 import About from "./aboutus";
 import Basket from "./basket";
+import CatalogPage from "./catalog";
 import Home from "./home";
 import Portfolio from "./portfolio";
 import Profile from "./profile";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/basket" element={<Basket />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
