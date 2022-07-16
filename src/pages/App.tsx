@@ -4,7 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "../store";
 import About from "./aboutus";
 import Basket from "./basket";
+import Blog from "./blog";
+import BlogIndex from "./blog/blogDetail";
 import CatalogPage from "./catalog";
+import CatalogDetailsPage from "./catalog/catalogDetails";
 import Home from "./home";
 import Portfolio from "./portfolio";
 import Profile from "./profile";
@@ -24,6 +27,9 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/catalogdetail" element={<CatalogDetailsPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blogdetail" element={<BlogIndex />} />
         </Routes>
       </BrowserRouter>
     </Provider>

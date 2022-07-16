@@ -1,18 +1,16 @@
 import React from "react";
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navbar/MyNavbar";
-import CatalogTools from "./catalog-tools/CatalogTools";
-// import Filters from "./filters/Filters";
+import ListBlog from "./listBlog/ListBlog";
 
-const CatalogPage = () => {
+const Blog = () => {
   return (
     <div>
       <NavBar />
-      <CatalogTools />
-      {/* <Filters /> */}
+      <ListBlog />
       <Footer />
     </div>
   );
 };
 
-export default CatalogPage;
+export default Blog;

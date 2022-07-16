@@ -107,3 +107,179 @@ code {
 [name="trunk"]:indeterminate + .far::before {
   content: "\f146";
 }
+
+/* catalog Tabs */
+
+.Catalogtabs {
+  /* font-family: jostyt; */
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.tabs-component [role="tablist"] {
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  /* border-bottom: 1px solid #dee2e6; */
+  position: relative;
+  border-radius: 5px;
+}
+
+.tabs-component [role="tablist"] button {
+  background: #ededed;
+
+  width: 40vh;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  /* border-top-left-radius: 0.25rem; */
+  /* border-top-right-radius: 0.25rem; */
+  display: block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0 1px;
+  outline: none;
+  background-color: #fff;
+  transition: border 0.2s ease-in-out 0s;
+}
+
+.tabs-component [role="tablist"] button.active,
+.tabs-component [role="tablist"] button:focus,
+.tabs-component [role="tablist"] button:hover {
+  border-width: 1px;
+  /* border-color: #e9ecef #e9ecef #b41c1c; */
+}
+
+.tabs-component [role="tablist"] button.active {
+  border-radius: 5px;
+
+  color: #ffffff;
+  /* background-color: #ffffff; */
+  background: #343434;
+}
+
+.tabs-component [role="tabpanel"] {
+  border-radius: 5px;
+
+  text-align: left;
+  padding: 1rem;
+  /* background-color: #f8f8f8; */
+  /* box-shadow: 1px 1px 2px rgb(204 204 204 / 75%); */
+}
+
+.tabs-component.vertical {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.tabs-component.vertical [role="tablist"] {
+  border-radius: 5px;
+
+  flex-direction: column;
+}
+
+.tabs-component.vertical [role="tabpanel"] {
+  background: #ededed;
+
+  flex: 1;
+}
+
+.tabs-component [role="tablist"] button {
+  background: #ededed;
+
+  /* border-top-left-radius: 0; */
+  /* border-top-right-radius: 0; */
+  margin: 0;
+}
+
+.tabs-component.vertical [role="tablist"] button.active,
+.tabs-component.vertical [role="tablist"] button:focus,
+.tabs-component.vertical [role="tablist"] button:hover {
+  border-color: #e9ecef transparent #e9ecef #b41c1c;
+  border-radius: 5px;
+}
+
+/* catalog change detail */
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+div {
+  margin: 0;
+  padding: 0;
+} */
+#card {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  font-size: 0px;
+}
+#card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  mix-blend-mode: hue;
+}
+#card img {
+  width: 100%;
+}
+/* .select,
+.radio-box {
+  text-align: center;
+  margin: 3rem 0;
+} */
+/* a {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+} */
+/* .color--red {
+  background-color: red;
+}
+.color--green {
+  background-color: green;
+}
+.color--blue {
+  background-color: blue;
+}
+.color--orange {
+  background-color: orange;
+} */
+/* label {
+  display: inline-block;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+input {
+  position: absolute;
+  opacity: 0;
+} */
+/* #card.color--red::before {
+  background-color: red;
+}
+#card.color--green::before {
+  background-color: green;
+}
+#card.color--blue::before {
+  background-color: blue;
+}
+#card.color--orange::before {
+  background-color: orange;
+} */

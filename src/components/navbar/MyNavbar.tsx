@@ -1,9 +1,10 @@
 import React from "react";
 import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/Vector.png";
-import cart from "../../assets/img/cart-navbar.png";
+import cart from "../../assets/img/cart.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
+import catalog from "../../assets/img/catalog.png";
 
 import { Link } from "react-router-dom";
 
@@ -28,16 +29,10 @@ const NavBar = () => {
                 </a>
               </div>
 
-              <div className="hidden md:flex items-center space-x-1">
+              <div className="hidden md:flex items-center space-x-1 font-light">
                 <a
                   href="#"
                   className="py-5 px-3 text-[#ffffff] hover:text-gray-900"
-                >
-                  Каталог
-                </a>
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
                 >
                   Компания
                 </a>
@@ -51,7 +46,13 @@ const NavBar = () => {
                   href="#"
                   className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
                 >
-                  Портфолио
+                  Блог
+                </a>
+                <a
+                  href="#"
+                  className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
+                >
+                  Контакты
                 </a>
                 <a
                   href="#"
@@ -136,7 +137,8 @@ const NavBar = () => {
                 </a>
               </div>
 
-              <div className="hidden md:flex items-center space-x-1 text-center align-middle">
+              <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
+                <img src={catalog} alt="" />
                 <a
                   href="#"
                   className="py-5 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
@@ -162,7 +164,7 @@ const NavBar = () => {
 
             <div className="hidden md:flex items-center space-x-1 gap-4">
               <Link to="/basket">
-                <div className="flex items-center align-middle text-center">
+                <div className="flex items-center align-middle text-center gap-2">
                   <img src={cart} alt="" />
                   <span className="text-white">Корзина</span>
                 </div>
