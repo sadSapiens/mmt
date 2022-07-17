@@ -11,6 +11,7 @@ import CatalogDetailsPage from "./catalog/catalogDetails";
 import Home from "./home";
 import Portfolio from "./portfolio";
 import Profile from "./profile";
+import HistoryOrder from "./profile/orderHistory";
 import SignInPage from "./signin";
 import SignUpPage from "./signup";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/catalogdetail" element={<CatalogDetailsPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blogdetail" element={<BlogIndex />} />
+          <Route path="/historyorder" element={<HistoryOrder />} />
         </Routes>
       </BrowserRouter>
     </Provider>

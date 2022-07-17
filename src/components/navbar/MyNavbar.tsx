@@ -30,30 +30,38 @@ const NavBar = () => {
               </div>
 
               <div className="hidden md:flex items-center space-x-1 font-light">
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff] hover:text-gray-900"
-                >
-                  Компания
-                </a>
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
-                >
-                  Портфолио
-                </a>
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
-                >
-                  Блог
-                </a>
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
-                >
-                  Контакты
-                </a>
+                <Link to="/">
+                  <a
+                    href="#"
+                    className="py-5 px-3 text-[#ffffff] hover:text-gray-900"
+                  >
+                    Компания
+                  </a>
+                </Link>
+                <Link to="/portfolio">
+                  <a
+                    href="#"
+                    className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
+                  >
+                    Портфолио
+                  </a>
+                </Link>
+                <Link to="/blog">
+                  <a
+                    href="#"
+                    className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
+                  >
+                    Блог
+                  </a>
+                </Link>
+                <Link to="/contacts">
+                  <a
+                    href="#"
+                    className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"
+                  >
+                    Контакты
+                  </a>
+                </Link>
                 <a
                   href="#"
                   className="py-5 px-3 text-[#ffffff]  hover:text-gray-900"

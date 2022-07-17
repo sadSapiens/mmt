@@ -3,9 +3,9 @@ import image from "../assets/card-image.png";
 
 const Cards = () => {
   return (
-    <div className="px-2 py-7">
-      <div className=" border border-black">
-        <div className="w-[100%] flex">
+    <div className="px-2 py-7 flex justify-center">
+      <div className=" border border-black w-[89%] flex justify-center flex-col items-center object-center content-center place-items-center">
+        <div className=" flex">
           <img className="w-[100%]" src={image} alt="" />
         </div>
         <div>
