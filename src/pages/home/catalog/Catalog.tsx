@@ -18,14 +18,14 @@ import arrow from "./catalog-images/arrow.svg";
 const Catalog = () => {
   return (
     <div className="container mx-auto px-4">
-      <div className="flex mt-6 justify-start  align-middle gap-x-8 gap-y-4 grid-cols-3 container mx-auto px-4">
-        <div>
-          <span className="font-semibold text-black mr-8 text-[36px]">
-            Каталог
-          </span>
-        </div>
+      <div className="flex mt-6 justify-center text-center h-8 items-center align-middle gap-x-8 gap-y-4 grid-cols-3 container mx-auto px-4">
+        {/* <div> */}
+        <span className="font-semibold text-black mr-8 text-bold text-center flex">
+          Каталог
+        </span>
+        {/* </div> */}
         <div className="flex gap-4">
-          <button className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] p-1 px-5 text-white text-center">
+          <button className=" flex align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-5 text-white text-center">
             <img className=" flex px-2" src={heart} alt="" />
             Тренды
           </button>
