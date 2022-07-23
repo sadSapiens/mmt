@@ -63,6 +63,17 @@ const CatalogDetails = () => {
             Ручка пластиковая шариковая «Наварра»
           </span>
           <h4>Код товара: 1050</h4>
+          <div className="flex  items-center">
+            <span>Цвета:</span>
+            <div className="flex justify-between flex-start gap-4 px-6">
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ..."></div>
+            </div>
+          </div>
           <div>
             <div className="flex flex-col">
               <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

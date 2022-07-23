@@ -30,40 +30,46 @@ const OrderHistory = () => {
         </div>
       </div>
       <div>
-        <div className="flex flex-col">
+        <div className="flex flex-col font-jost">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-4">
               <div className="overflow-hidden">
                 <table className="min-w-full">
-                  <thead className="border-b">
-                    <tr>
+                  <thead className="border-b font-jost font-light">
+                    <tr className="font-light">
                       <th
                         scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-light text-black px-6 py-4 text-left"
                       >
                         Товар
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-light text-black px-6 py-4 text-left"
                       >
                         Дата заказа
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-center"
+                        className="text-sm font-light text-black px-6 py-4 text-center"
                       >
                         Количество
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-light text-black px-6 py-4 text-center"
                       >
                         Цена
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                        className="text-sm font-light text-black px-6 py-4 text-center "
+                      >
+                        Доставка
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-light text-black px-6 py-4 text-center "
                       >
                         Статус
                       </th>
@@ -71,12 +77,12 @@ const OrderHistory = () => {
                   </thead>
                   <tbody>
                     <tr className="border-b">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         <div className="flex">
                           <img src={orderhistoryphoto} alt="" />
                           <div className="flex flex-col px-8 flex-wrap">
                             <h2 className="font-semibold flex flex-wrap">
-                              Ручка пластиковая шариковая «Наварра»
+                              Ручка пластиковая <br /> шариковая «Наварра»
                             </h2>
                             <span className="font-normal">Цвет: Черный</span>
                             <span className="font-normal">
@@ -99,7 +105,7 @@ const OrderHistory = () => {
                           ></label>
                           <input
                             type="text"
-                            className="rounded-full ... border border-black px-4 w-[39%] text-base "
+                            className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
                             value="500 шт."
                           />
                         </div>
@@ -118,14 +124,19 @@ const OrderHistory = () => {
                           Доставлено
                         </button>
                       </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">
+                          В процессе
+                        </button>
+                      </td>
                     </tr>
                     <tr className="bg-white border-b">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 ">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900 ">
                         <div className="flex">
                           <img src={orderhistoryphoto} alt="" />
                           <div className="flex flex-col  px-8 flex-wrap">
                             <h2 className="font-semibold">
-                              Ручка пластиковая шариковая «Наварра»
+                              Ручка пластиковая <br /> шариковая «Наварра»
                             </h2>
                             <span className="font-normal">Цвет: Черный</span>
                             <span className="font-normal">
@@ -148,7 +159,7 @@ const OrderHistory = () => {
                           ></label>
                           <input
                             type="text"
-                            className="rounded-full ... border border-black px-4 w-[39%] text-base "
+                            className="rounded-full ... border border-black px-2 w-[39%] text-base text-center "
                             value="500 шт."
                           />
                         </div>
@@ -167,14 +178,19 @@ const OrderHistory = () => {
                           В процессе
                         </button>
                       </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">
+                          В процессе
+                        </button>
+                      </td>
                     </tr>
                     <tr className="bg-white border-b">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         <div className="flex">
                           <img src={orderhistoryphoto} alt="" />
                           <div className="flex flex-col  px-8 flex-wrap">
                             <h2 className="font-semibold">
-                              Ручка пластиковая шариковая «Наварра»
+                              Ручка пластиковая <br /> шариковая «Наварра»
                             </h2>
                             <span className="font-normal">Цвет: Черный</span>
                             <span className="font-normal">
@@ -197,7 +213,7 @@ const OrderHistory = () => {
                           ></label>
                           <input
                             type="text"
-                            className="rounded-full ... border border-black px-4 w-[39%] text-base "
+                            className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
                             value="500 шт."
                           />
                         </div>
@@ -210,6 +226,11 @@ const OrderHistory = () => {
                             <div className="mt-[-4vh] flex items-center">_</div>
                           </div>
                         </div>
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">
+                          В процессе
+                        </button>
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">

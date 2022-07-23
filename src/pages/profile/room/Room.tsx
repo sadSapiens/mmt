@@ -7,7 +7,7 @@ import avatar from "./assets/avatar.png";
 
 const Room = () => {
   return (
-    <div className="mx-auto px-9   w-auto py-5 ">
+    <div className="mx-auto px-9  md:w-auto w-32 py-5 ">
       <div className="flex justify-between">
         <div>
           <h1 className="font-bold  text-2xl">Личный кабинет</h1>

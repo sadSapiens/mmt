@@ -6,6 +6,7 @@ module.exports = {
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./public/index.html",
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     extend: {
@@ -24,5 +25,5 @@ module.exports = {
     //   // => @media (min-width: 1280px) { ... }
     // },
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin")],
 };

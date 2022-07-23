@@ -114,7 +114,10 @@ const NavBar = () => {
             </div>
 
             <div className="md:hidden flex items-center">
-              <button className="mobile-menu-button">
+              <button
+                className="mobile-menu-button"
+                onClick={() => setOpen(!open)}
+              >
                 <svg
                   className="w-6 h-6"
                   xmlns="http://www.w3.org/2000/svg"
