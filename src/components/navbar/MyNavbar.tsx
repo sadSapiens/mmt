@@ -7,11 +7,16 @@ import location from "../../assets/img/location.png";
 import catalog from "../../assets/img/catalog.png";
 
 import { Link } from "react-router-dom";
+import MegaMenu from "./MegaMenu";
+
+import "./megamenu.css";
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
-  const [flyer, setFlyer] = React.useState(false);
-  const [flyerTwo, setFlyerTwo] = React.useState(false);
+  const [openCatalog, setOpenCatalog] = React.useState(false);
+
+  // const [flyer, setFlyer] = React.useState(false);
+  // const [flyerTwo, setFlyerTwo] = React.useState(false);
 
   return (
     <>
@@ -150,13 +155,20 @@ const NavBar = () => {
 
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
                 <img src={catalog} alt="" />
-                <a
-                  href="#"
-                  className="py-5 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
-                >
-                  Каталог
-                </a>
+                <div>
+                  <a
+                    href="#"
+                    className="py-5 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
+                  >
+                    <div className="">
+                      <MegaMenu />
+                    </div>
+                  </a>
+                </div>
 
+                {/*  */}
+
+                {/*  */}
                 <label className="relative block">
                   <span className="sr-only">Search</span>
                   <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -210,16 +222,8 @@ const NavBar = () => {
             </div> */}
           </div>
         </div>
-
-        <div className="mobile-menu hidden md:hidden">
-          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
-            Features
-          </a>
-          <a href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">
-            Pricing
-          </a>
-        </div>
       </nav>
+      <MegaMenu />
     </>
   );
 };
