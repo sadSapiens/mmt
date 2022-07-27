@@ -737,7 +737,7 @@ const CatalogTools = () => {
           <div className="w-[100%] px-10">
             <Filters />
           </div>
-          {/* <div className="flex flex-wrap gap-1 justify-center ">
+          <div className="flex flex-wrap gap-1 justify-center ">
             <Cards />
             <Cards />
             <Cards />
@@ -747,10 +747,10 @@ const CatalogTools = () => {
             <Cards />
             <Cards />
             <Cards />
-          </div> */}
-          <div className=" w-[100%] flex justify-center">
-            <CardsRow />
           </div>
+          {/* <div className=" w-[100%] flex justify-center">
+            <CardsRow />
+          </div> */}
         </div>
       </div>
     </div>

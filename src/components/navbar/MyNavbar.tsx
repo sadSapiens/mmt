@@ -223,7 +223,7 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      <MegaMenu />
+      {/* <MegaMenu /> */}
     </>
   );
 };

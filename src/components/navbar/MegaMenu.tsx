@@ -8,28 +8,72 @@ const MegaMenu = () => {
       <ul className="exo-menu" onClick={() => setOpen(true)}>
         <li className="drop-down">
           <a href="#">
-            <i className="fa fa-cogs"></i> Flyout
+            <i className="fa fa-cogs"></i> Каталог
           </a>
-          <ul className="drop-down-ul animated fadeIn">
+          <ul className="drop-down-ul animated fadeIn zet">
             <li className="flyout-right">
-              <a href="#">Flyout Right</a>
+              <a href="#">Коллекции</a>
               {/* <!--Flyout Right--> */}
-              <ul className="animated fadeIn">
+
+              <ul className="animated fadeIn bg-[#343434]">
                 <li>
-                  <a href="#">Mobile</a>
+                  <a href="#">Зеленая серия</a>
                 </li>
                 <li>
-                  <a href="#">Computer</a>
-                </li>
-                <li>
-                  <a href="#">Watch</a>
+                  <a href="#">Товары из бамбука</a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a href="#">No Flyout</a>
+              <a href="#">Авто</a>
             </li>
+            <li>
+              <a href="#">Деловые подарки</a>
+            </li>
+            <li>
+              <a href="#">Для дома</a>
+            </li>
+            <li>
+              <a href="#">Для отдыха</a>
+            </li>
+            <li>
+              <a href="#">Для путешествий</a>
+            </li>
+            <li>
+              <a href="#">Для спорта</a>
+            </li>
+            <li>
+              <a href="#">Женские аксессуары</a>
+            </li>
+            <li>
+              <a href="#">Зонты</a>
+            </li>
+            <li>
+              <a href="#">Кухня и посуда</a>
+            </li>
+            <li>
+              <a href="#">Личные аксессуары</a>
+            </li>
+            <li>
+              <a href="#">Мужские аксессуары</a>
+            </li>
+            <li>
+              <a href="#">Одежда</a>
+            </li>
+            <li>
+              <a href="#">Офисные аксессуары</a>
+            </li>
+            <li>
+              <a href="#">Пишущие инструменты</a>
+            </li>
+            <li>
+              <a href="#">Праздничые подарки</a>
+            </li>
+
+            {/*  */}
+
+            {/*  */}
           </ul>
           {/* <!--//End drop down--> */}
         </li>
