@@ -16,8 +16,6 @@ import zk from "./assets/zk.png";
 import toyota from "./assets/Toyota.png";
 import huawei from "./assets/huawei.png";
 
-import line from "./assets/footer-line.png";
-
 const FooterHome = () => {
   return (
     <>

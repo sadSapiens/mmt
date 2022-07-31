@@ -3,6 +3,8 @@ import clock from "../room/assets/clock-circle.svg";
 import settings from "../room/assets/settings.png";
 import orderhistoryphoto from "../room/assets/orderhistoryphoto.png";
 
+import settingWhite from "../room/assets/settingWhite.png";
+
 const OrderHistory = () => {
   return (
     <div
@@ -13,18 +15,21 @@ const OrderHistory = () => {
     font-jost
     "
     >
-      <div className="flex justify-between">
+      <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
         <div>
           <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           <span>У вас пока нет заказов</span>
         </div>
         <div className="flex gap-5">
-          <button className="gap-3 bg-[#1F1F1F] rounded-full ...  flex items-center align-middle w-auto h-10 px-6 text-white">
+          <button className="gap-1 bg-[#1F1F1F] rounded-full ...  flex text-sm items-center align-middle w-auto h-8 px-6 text-white">
             <img src={clock} alt="" />
             История заказов
           </button>
-          <button className="gap-3 border border-[black] rounded-full ...  flex items-center align-middle w-auto h-10 px-6 ">
-            <img src={settings} alt="" />
+          <button className="gap-1 bg-[#1F1F1F] rounded-full ...  flex text-sm items-center  w-auto h-8 px-1 text-white">
+            <img src={settings} className="hidden md:flex" alt="" />
+            <div className=" md:hidden">
+              <img src={settingWhite} alt="" />
+            </div>
             Мой профиль
           </button>
         </div>
@@ -77,7 +82,7 @@ const OrderHistory = () => {
                   </thead>
                   <tbody>
                     <tr className="border-b">
-                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900 flex flex-col md:flex">
                         <div className="flex">
                           <img src={orderhistoryphoto} alt="" />
                           <div className="flex flex-col px-8 flex-wrap">

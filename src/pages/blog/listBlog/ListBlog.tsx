@@ -16,7 +16,7 @@ const ListBlog = () => {
       </div>
 
       <div className="mx-auto px-9   w-auto py-5 font-jost">
-        <div className="mt-[-6vh] flex justify-center items-center">
+        <div className="mt-[-10vh] flex justify-center items-center">
           <label className="relative block">
             <span className="sr-only">Search</span>
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">

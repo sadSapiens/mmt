@@ -1,6 +1,4 @@
 import React from "react";
-import Footer from "../../components/footer/Footer";
-import MyNavbar from "../../components/navbar/MyNavbar";
 import Brands from "./brands/Brands";
 import Catalog from "./catalog/Catalog";
 import Faq from "./FAQ/Faq";
@@ -13,7 +11,6 @@ const Home = () => {
   return (
     <>
       <div className="font-jost">
-        <MyNavbar />
         {/* slide */}
         <div>
           <Slider />
@@ -25,7 +22,6 @@ const Home = () => {
         <Brands />
         <Faq />
         <FooterHome />
-        <Footer />
       </div>
     </>
   );

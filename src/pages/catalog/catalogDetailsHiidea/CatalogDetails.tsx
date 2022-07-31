@@ -1,19 +1,16 @@
 import React from "react";
-import Footer from "../../../components/footer/Footer";
-import NavBar from "../../../components/navbar/MyNavbar";
-import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
+// import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
 import CatalogTabs from "../catalog-tools/CatalogTabs";
 import penOne from "../assets/penOne.png";
 import penTwo from "../assets/penTwo.png";
 import penThree from "../assets/penThree.png";
 import penBig from "../assets/penBig.png";
-import shoppingbag from "../assets/shoppingbag.png";
 import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
 
 import { Link } from "react-router-dom";
 
-const CatalogDetails = () => {
+const CatalogDetailsHiidea = () => {
   return (
     <div
       className="mx-auto
@@ -190,4 +187,4 @@ const CatalogDetails = () => {
   );
 };
 
-export default CatalogDetails;
+export default CatalogDetailsHiidea;

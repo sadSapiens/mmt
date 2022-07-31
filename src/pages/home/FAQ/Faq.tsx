@@ -1,6 +1,7 @@
 import React from "react";
 import "./faq.css";
 import faqImage from "./assets/faq-image.png";
+import calling from "./assets/Calling.png";
 
 const Faq = () => {
   return (
@@ -140,6 +141,18 @@ const Faq = () => {
       </div>
       <div className="flex flex-row basis-1/2">
         <img className="h-[500px] w-[300px]" src={faqImage} alt="" />
+        <label
+          htmlFor=""
+          className="absolute   flex top-[168rem] right-32 text-white font-jost font-semibold"
+        >
+          СВЯЗАТЬСЯ
+        </label>
+
+        <img
+          src={calling}
+          className="absolute flex  justify-end items-end "
+          alt=""
+        />
       </div>
     </div>
   );

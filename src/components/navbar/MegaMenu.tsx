@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./megamenu.css";
+import catalog from "../../assets/img/catalog.png";
 
 const MegaMenu = () => {
   const [open, setOpen] = useState(false);
@@ -10,10 +11,10 @@ const MegaMenu = () => {
           <a href="#">
             <i className="fa fa-cogs"></i> Каталог
           </a>
+          {/* <div className="w-[730px]"> */}
           <ul className="drop-down-ul animated fadeIn zet">
             <li className="flyout-right">
               <a href="#">Коллекции</a>
-              {/* <!--Flyout Right--> */}
 
               <ul className="animated fadeIn bg-[#343434]">
                 <li>
@@ -70,13 +71,13 @@ const MegaMenu = () => {
             <li>
               <a href="#">Праздничые подарки</a>
             </li>
-
-            {/*  */}
-
-            {/*  */}
           </ul>
-          {/* <!--//End drop down--> */}
+          {/* </div> */}
         </li>
+
+        {/*  */}
+
+        {/*  */}
 
         {/* <a href="#" className="toggle-menu visible-xs-block">
           |||
