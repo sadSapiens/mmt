@@ -36,7 +36,7 @@ const Room = () => {
         </div>
         <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
           <form className="">
-            <div className="flex justify-between py-5 flex-col md:flex">
+            <div className="flex justify-between py-5 flex-col md:flex-row md:items-center">
               <div className=" flex justify-center items-center">
                 <img
                   src={avatar}
