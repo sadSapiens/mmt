@@ -13,10 +13,7 @@ const Room = () => {
   return (
     <>
       <div className=" px-2  md:w-auto    py-5  md:bg-red-500 lg:bg-green-500 ">
-        <div
-          className="flex justify-between  items-center px-1 md:flex-row flex-col
-   "
-        >
+        <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
           <div>
             <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           </div>
@@ -36,7 +33,7 @@ const Room = () => {
         </div>
         <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
           <form className="">
-            <div className="flex justify-between py-5 flex-col md:flex">
+            <div className="flex justify-between py-5 flex-col md:flex-row">
               <div className=" flex justify-center items-center">
                 <img
                   src={avatar}
