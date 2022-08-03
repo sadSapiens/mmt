@@ -8,7 +8,9 @@ const Faq = () => {
     <div className="flex justify-between container mx-auto px-4">
       <div className="flex">
         <div>
-          <span className="text-[36px] text-[#383838] font-bold">FAQ</span>
+          <span className="flex justify-center items-center md:justify-start py-2 text-3xl text-[#383838] font-bold">
+            FAQ
+          </span>
 
           <div className="accordion flex flex-col  justify-center ">
             <div className="w-1/8">
@@ -139,8 +141,14 @@ const Faq = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row basis-1/2">
-        <img className="h-[500px] w-[300px]" src={faqImage} alt="" />
+      <div className="hidden md:flex flex-row basis-1/2">
+        <div className="flex  ">
+          <img
+            className="h-[30rem] w-[20rem] block object-contain"
+            src={faqImage}
+            alt=""
+          />
+        </div>
         <label
           htmlFor=""
           className="absolute   flex top-[168rem] right-32 text-white font-jost font-semibold"

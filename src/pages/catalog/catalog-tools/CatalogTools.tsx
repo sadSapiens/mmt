@@ -13,15 +13,15 @@ import CardsRow from "../cards/CardsRow";
 
 const CatalogTools = () => {
   return (
-    <div className="mx-auto px-9   w-auto  font-jost py-9">
-      <div className="flex gap-5  py-3  justify-between">
+    <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
+      <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
           <div className="flex items-center text-center justify-center align-middle">
             <h2 className="font-extrabold text-2xl flex items-center text-center object-center align-middle">
               Каталог
             </h2>
           </div>
-          <div>
+          <div className="hidden md:flex">
             <label className="relative block">
               <span className="sr-only">Search</span>
               <span className="absolute inset-y-0  flex items-center pl-2">
@@ -38,14 +38,29 @@ const CatalogTools = () => {
         </div>
 
         {/*  */}
-        <div className="flex justify-center items-center gap-3">
-          <button className="bg-black text-white flex rounded-full ... w-auto px-5 py-2 gap-2">
-            <img src={schema} alt="" />
-            Схема
+        <div className="md:hidden flex flex-row justify-between">
+          <div className="md:hidden w-8/12 flex  ">
+            <Filters />
+          </div>
+          <div className="flex justify-center items-center gap-3 w-4/12">
+            <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
+              <img src={schema} className="h-auto w-auto  flex" alt="" />
+              <span className="hidden md:flex">Схема</span>
+            </button>
+            <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
+              <img src={list} alt="" />
+              <span className="hidden md:flex">Список</span>
+            </button>
+          </div>
+        </div>
+        <div className=" hidden md:flex justify-center items-center gap-3 w-6/12">
+          <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
+            <img src={schema} className="h-auto w-auto  flex" alt="" />
+            <span className="hidden md:flex">Схема</span>
           </button>
-          <button className="flex rounded-full ... w-auto px-5 py-2 border border-black">
+          <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
             <img src={list} alt="" />
-            Список
+            <span className="hidden md:flex">Список</span>
           </button>
         </div>
       </div>
@@ -56,7 +71,7 @@ const CatalogTools = () => {
           <ol className="flex  ">
             <li>
               <Link to="/catalog" className="tex-black">
-                <a href="#" className="text-black hover:text-blue-700">
+                <a href="#" className="!text-black hover:text-blue-700">
                   Каталог
                 </a>
               </Link>
@@ -66,7 +81,7 @@ const CatalogTools = () => {
               <img src={rightarrow} alt="" />
             </li>
             <li>
-              <a href="#" className="text-black hover:text-blue-700">
+              <a href="#" className="!text-black hover:text-blue-700">
                 Мужские аксессуары
               </a>
             </li>
@@ -79,30 +94,30 @@ const CatalogTools = () => {
         <div>
           <span className="text-black text-2xl">Мужские аксессуары</span>
         </div>
-        <div className="gap-4 flex py-4 ">
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+        <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto overflow-scroll">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Барсетки
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Визитницы
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Одежда
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Органайзеры
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Портмоне
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Часы{" "}
           </button>
         </div>
       </div>
       {/*  */}
       <div className="flex pt-10 font-jost">
-        <div className="accordion  flex-col w-3/12  justify-center block ">
+        <div className="accordion  hidden  flex-col w-3/12  justify-center md:block ">
           <div className="w-1/8">
             <input
               type="checkbox"
@@ -734,10 +749,10 @@ const CatalogTools = () => {
           </div>
         </div>
         <div className="flex  justify-between w-9/12 items-center align-middle text-center self-start flex-col">
-          <div className="w-[100%] px-10">
+          <div className="md:w-[100%] md:px-10 hidden">
             <Filters />
           </div>
-          <div className="flex flex-wrap gap-1 justify-center ">
+          <div className="md:flex md:flex-wrap flex-wrap gap-1 md:w-[100%] justify-center ">
             <Cards />
             <Cards />
             <Cards />

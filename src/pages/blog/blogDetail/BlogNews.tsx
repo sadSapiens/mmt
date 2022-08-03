@@ -4,26 +4,27 @@ import newspoto from "../assets/blognew.png";
 const BlogNews = () => {
   return (
     <div className="mx-auto px-9   w-auto py-5 font-jost">
-      <div className="flex justify-between">
-        <div className="w-4/12">
+      <div className="flex flex-col md:flex-row justify-between">
+        <div className="md:w-4/12  ">
           <img src={newspoto} alt="" />
         </div>
-        <div className="w-9/12 px-9  ">
-          <button className="text-[#3A4FE9]">Последние новости</button>
-          <div className="py-10">
+        <div className="md:w-9/12  md:px-9    ">
+          <div className="">
             <h2 className="font-semibold text-black">
               DTF: быстро, выгодно, неожиданно
             </h2>
-            <p className="py-4">
+            <p className="py-4 flex">
               Мы уже подробно рассказывали (и показывали!) о полноцветном
               термотрансфере в нашем блоге, а в этой заметке хотим напомнить, в
               каких случаях и почему стоит обратить...
             </p>
-            <button className="rounded-full bg-[#1F1F1F]  my-5 text-white w-52 py-1">
-              Читать статью
-            </button>
+            <div className="flex justify-center items-center md:flex md:justify-start">
+              <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
+                Читать статью
+              </button>
+            </div>
 
-            <p>
+            <p className="hidden md:flex">
               <time>11.07.2022</time> -- ММТ
             </p>
           </div>

@@ -15,7 +15,7 @@ const Footer = () => {
 
       <footer className="footer-1 bg-[#484848] py-8 sm:py-12">
         <div className="container mx-auto px-2">
-          <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4 hidden">
+          <div className="sm:flex sm:flex-wrap sm:-mx-2 md:py-4 hidden">
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
               {/* <h5 className="text-xl font-bold mb-6 text-white">PRODUCT</h5> */}
               <div className="flex gap-2">

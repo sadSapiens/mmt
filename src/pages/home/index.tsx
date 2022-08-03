@@ -6,6 +6,7 @@ import Feedback from "./feedback/Feedback";
 import FooterHome from "./footer-home/FooterHome";
 import Portfolio from "./portfolio/Portfolio";
 import Slider from "./slider/Slider";
+import Whyus from "./whyus/Whyus";
 
 const Home = () => {
   return (
@@ -17,8 +18,9 @@ const Home = () => {
         </div>
         {/* //slide */}
         <Catalog />
-        <Feedback />
         <Portfolio />
+        <Whyus />
+        <Feedback />
         <Brands />
         <Faq />
         <FooterHome />

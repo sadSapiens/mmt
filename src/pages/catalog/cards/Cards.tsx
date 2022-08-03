@@ -4,10 +4,10 @@ import shopbag from "../assets/shopbag.png";
 
 const Cards = () => {
   return (
-    <div className="py-7 flex justify-center">
-      <div className=" border border-black w-[80%] flex justify-center flex-col items-center object-center content-center place-items-center">
+    <div className="py-7 w-[100%] flex justify-center">
+      <div className=" border border-black md:w-[80%] w-[40%] md:flex justify-center flex-col items-center object-center content-center place-items-center">
         <div className=" flex">
-          <img className="w-[100%]" src={image} alt="" />
+          <img className="md:w-[100%] " src={image} alt="" />
         </div>
         <div>
           <h5 className="flex px-3">Код товара: 1050</h5>
@@ -23,7 +23,7 @@ const Cards = () => {
 
             {/* <div className="flex flex-wrap break-all"></div> */}
           </div>
-          <div className="flex justify-between px-5 text-black font-jost ">
+          <div className="flex justify-between md:px-5 px-2 text-black font-jost ">
             <div className="flex flex-col">
               <span className="font-light">Цена:</span>
               <b>650 C</b>
