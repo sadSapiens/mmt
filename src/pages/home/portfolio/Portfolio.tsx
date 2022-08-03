@@ -40,18 +40,18 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-8 justify-evenly my-3">
-        <div>
-          <img className="h-56 w-64" src={one} alt="" />
+      <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-y-auto ...  align-middle items-center">
+        <div className="flex">
+          <img className="md:h-56 md:w-64 w-96 h-40" src={one} alt="" />
         </div>
-        <div>
-          <img className="h-56 w-64" src={two} alt="" />
+        <div className="flex">
+          <img className="md:h-56 md:w-64 w-96 h-40" src={two} alt="" />
         </div>
-        <div>
-          <img className="h-56 w-64" src={three} alt="" />
+        <div className="flex">
+          <img className="md:h-56 md:w-64 w-96 h-40" src={three} alt="" />
         </div>
-        <div>
-          <img className="h-56 w-64" src={four} alt="" />
+        <div className="flex">
+          <img className="md:h-56 md:w-64 w-96 h-40" src={four} alt="" />
         </div>
       </div>
       <div className="flex justify-center">

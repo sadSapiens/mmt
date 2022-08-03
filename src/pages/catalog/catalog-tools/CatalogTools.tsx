@@ -275,7 +275,7 @@ const CatalogTools = () => {
               Цвет
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3 ">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
@@ -452,7 +452,7 @@ const CatalogTools = () => {
               Материал
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
@@ -612,7 +612,7 @@ const CatalogTools = () => {
               Метод нанесения
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
@@ -730,10 +730,10 @@ const CatalogTools = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col  justify-center items-center gap-4 font-jost">
+          <div className="flex flex-col  justify-center items-center gap-4 font-jost py-2">
             <button
               className="bg-white text-black font-normal rounded-full ... border border-black w-48 hover:text-white  px-4 py-1 
-            hover:bg-[#79B15E]
+            hover:!bg-[#79B15E]
             "
             >
               Показать товары (67)
@@ -748,11 +748,11 @@ const CatalogTools = () => {
             </button>
           </div>
         </div>
-        <div className="flex  justify-between w-9/12 items-center align-middle text-center self-start flex-col">
-          <div className="md:w-[100%] md:px-10 hidden">
+        <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
+          <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
           </div>
-          <div className="md:flex md:flex-wrap flex-wrap gap-1 md:w-[100%] justify-center ">
+          <div className="md:flex md:flex-wrap flex-wrap items-center flex-row gap-1  justify-center ">
             <Cards />
             <Cards />
             <Cards />

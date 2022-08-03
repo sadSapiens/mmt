@@ -1,6 +1,7 @@
 import React from "react";
 import "./slider.css";
 import eco from "../../../assets/img/eco-bottle.png";
+import ecomobile from "../../../assets/img/ecomobile.png";
 
 const Slider = () => {
   return (
@@ -34,39 +35,26 @@ const Slider = () => {
         <div className="slider__inner">
           <div className="slider__contents ">
             <div className="flex justify-between">
-              <img
-                className="h-[12rem] w-auto flex md:w-4/12 md:h-[22rem]"
-                src={eco}
-                alt=""
-              />
-              <div
-                className="flex 
-              justify-center flex-col text-white text-center
-              "
-              >
-                {/* 
-              text-center justify-center place-items-start text-white flex-column
-                
-                */}
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden h-44  left-4 md:flex md:w-auto  md:h-[22rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden h-44 flex justify-center items-center w-36  "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className="flex font-extrabold text-xl  md:flex justify-start md:justify-center flex-col text-white text-center ">
                 <p
                   className="
-                  text-base w-6/12
-
-              font-extrabold   md:text-8xl
-              "
+                   w-6/12   md:text-8xl "
                 >
                   ЭКОЛОГИЧНЫЕ
                 </p>
-                <p
-                  className="
-              text-base w-6/12
-              font-extrabold 
-              md:text-8xl
-              
-              "
-                >
-                  ПОДАРКИ
-                </p>
+                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ</p>
               </div>
             </div>
             <div></div>
