@@ -1,0 +1,18 @@
+.catalog-items__characteristics p {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+.catalog-items__characteristics p:after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-image: radial-gradient(#030303 10%, transparent 50%);
+  background-size: 3px 3px;
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  display: block;
+  margin-left: 3px;
+  padding: 3px 0 3px 0;
+}

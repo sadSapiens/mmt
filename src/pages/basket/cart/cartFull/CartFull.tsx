@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import arrow from "../../assets/direction-right.png";
 import orderhistoryphoto from "../../assets/orderhistoryphoto.png";
 import minus from "../../assets/minus.png";
 import plus from "../../assets/plus.png";
+import cLine from "../../../../assets/img/c-line.png";
 
 const CartFull = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -430,68 +430,95 @@ const CartFull = () => {
             </div>
           </div>
         </div>
-        <div className="w-4/12 flex flex-col justify-center items-center bg-[#F5F5F5] p-5 gap-6">
-          <span className="font-jost font-extrabold text-xl text-black">
-            Информация о заказе
-          </span>
-          <div>
-            <div className="flex justify-between">
-              <h3>Итого</h3>
-              <hr className="border-dotted" />
-              <div>
-                <span>96 000, 00</span>
-              </div>
+
+        {/*  */}
+
+        <div className="font-jost w-4/12 px-4 bg-[#F5F5F5]">
+          <h2 className="font-semibold py-4">Характеристики</h2>
+
+          {/* <div className="container"> */}
+          <div className="row font-jost text-sm">
+            <div className="col-6 catalog-items__characteristics  flex flex-col gap-4 p-0">
+              <p className="">
+                Итого
+                <span className="font-light">Товары, 3 шт.</span>
+              </p>
+              {/* <p>Товары, 3 шт.</p> */}
+              <p>Адрес доставки</p>
+              <p>Цвет товара</p>
+              <p>Материал товара</p>
+              <p>Размер товара</p>
             </div>
-          </div>
-          <div className="flex justify-around">
-            <span>Адрес доставки</span>
-            <div className="w-auto border-dotted"></div>
-            <button>Добавить</button>
+            <div className="col-6 flex flex-col gap-4 p-0">
+              <p className="flex">
+                96 000, 00
+                <img className="flex object-contain" src={cLine} alt="" />
+              </p>
+              {/* <p>16 г.</p> */}
+              <p>
+                <button className="underline underline-offset-2">
+                  Добавить
+                </button>
+              </p>
+              <p>Черный</p>
+              <p>АБС пластик</p>
+              <p>d 2,4 x 2,2 x 5,7 см</p>
+            </div>
           </div>
 
           <div>
+            <h2 className="font-semibold py-4">Характеристики</h2>
             <div className="flex justify-center">
-              <div className="flex">
-                <div className="form-check">
-                  <input
-                    className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label
-                    className="form-check-label inline-block text-gray-800"
-                    htmlFor="flexRadioDefault1"
-                  >
-                    Картой VISA
-                  </label>
-                </div>
-                <div className="form-check ">
-                  <input
-                    className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    checked
-                  />
-                  <label
-                    className="form-check-label inline-block text-gray-800"
-                    htmlFor="flexRadioDefault2"
-                  >
-                    Наличными
-                  </label>
-                </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="  rounded-sm h-4 w-4 border border-red-600 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition  mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="option1"
+                />
+                <label
+                  className="form-check-label inline-block text-gray-800"
+                  htmlFor="inlineRadio10"
+                >
+                  Картой VISA
+                </label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className=" form-check-input  rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio2"
+                  value="option2"
+                />
+                <label
+                  className="form-check-label inline-block text-gray-800"
+                  htmlFor="inlineRadio20"
+                >
+                  Наличными
+                </label>
               </div>
             </div>
           </div>
-          <div>
-            <button className="bg-[#1F1F1F] rounded-full ...  flex justify-center text-white font-jost px-9 py-2">
-              <span>К оплате</span>
+          <div className="flex justify-center py-5">
+            <button className="bg-[#1F1F1F] rounded-full ... px-4 py-2 flex text-white">
+              К оплате
               <img src={arrow} alt="" />
             </button>
           </div>
+          {/* </div> */}
         </div>
+        {/*  */}
       </div>
+
+      {/* <div className="p-10 text-2xl font-mono">
+        <div className="flex flex-nowrap gap-2 w-full items-baseline p-2">
+          <div className="flex-grow-0 flex-shrink-0 text-lg">Ein Wort</div>
+          <div className="flex-grow border-b-2 border-black border-dotted"></div>
+          <div className="flex-grow-0 flex-shrink-0">Ein anderes Wort</div>
+        </div>
+      </div> */}
     </div>
   );
 };

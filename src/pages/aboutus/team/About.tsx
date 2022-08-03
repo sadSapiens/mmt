@@ -12,68 +12,91 @@ const Team = () => {
   return (
     <div className=" text-white ">
       <div className="bg-white w-auto h-2"></div>
-      <div className="  mx-auto px-9  bg-[#343434] w-auto py-5 ">
-        <div>
-          <img src={logo} alt="" />
+      <div className="  mx-auto px-9  bg-[#343434] w-auto py-10  md:flex md:justify-between flex flex-col ">
+        <div className="md:w-8/12 ">
+          <div className=" md:flex md:justify-start flex justify-center items-center ">
+            <img src={logo} className="w-40" alt="" />
+          </div>
+          <div className="py-4 font-light md:px-4">
+            <p>
+              Ведущая компания на рынке сувенирной продукции, Ваш партнер,
+              консультант и помощник в сфере брендированных подарков и рекламной
+              продукции. Мы – фанаты сувенирной индустрии! Наши светлые головы
+              работают на Ваш бизнес. Мы – созидатели. Творим от создания
+              концепта до полного воплощения проекта в жизнь. Мы –
+              производители. Произведем то, чего еще нет в природе. А еще, мы –
+              немножечко волшебники.
+            </p>
+            <p className="py-2 ">
+              Наша работа – создавать красоту, хорошее настроение и классные
+              подарки! Чем мы занимаемся? Мы производим корпоративную,
+              рекламную, полиграфическую и текстильную продукцию «под ключ»: от
+              концепции подарка или подарочного набора до его реализации. Мы
+              работаем напрямую с фабриками-производителями рекламной продукции
+              в Китае, с ассортиментом ведущих европейских каталогов, а также
+              имеем собственную производственную базу, поэтому мы найдем или
+              придумаем подарки для любой целевой аудитории. Мы отлично владеем
+              современными технологиями персонализации и всегда порекомендуем
+              вам оптимальный вариант.
+            </p>
+          </div>
+          <div className="flex items-center align-middle gap-4 pb-56 md:pb-2">
+            <button className="border border-white rounded-full ... w-auto px-12 ">
+              Связаться
+            </button>
+            <button>
+              <img src={call} alt="" />
+            </button>
+          </div>
         </div>
-        <div className="w-8/12 py-10">
-          <p>
-            Ведущая компания на рынке сувенирной продукции, Ваш партнер,
-            консультант и помощник в сфере брендированных подарков и рекламной
-            продукции. Мы – фанаты сувенирной индустрии! Наши светлые головы
-            работают на Ваш бизнес. Мы – созидатели. Творим от создания концепта
-            до полного воплощения проекта в жизнь. Мы – производители.
-            Произведем то, чего еще нет в природе. А еще, мы – немножечко
-            волшебники.
-          </p>
-          <p>
-            Наша работа – создавать красоту, хорошее настроение и классные
-            подарки! Чем мы занимаемся? Мы производим корпоративную, рекламную,
-            полиграфическую и текстильную продукцию «под ключ»: от концепции
-            подарка или подарочного набора до его реализации. Мы работаем
-            напрямую с фабриками-производителями рекламной продукции в Китае, с
-            ассортиментом ведущих европейских каталогов, а также имеем
-            собственную производственную базу, поэтому мы найдем или придумаем
-            подарки для любой целевой аудитории. Мы отлично владеем современными
-            технологиями персонализации и всегда порекомендуем вам оптимальный
-            вариант.
-          </p>
-        </div>
-        <div className="flex items-center align-middle gap-4">
-          <button className="border border-white rounded-full ... w-auto px-12 ">
-            Связаться
-          </button>
-          <button>
-            <img src={call} alt="" />
-          </button>
-        </div>
-        <div className="absolute w-3/12 top-80 right-16">
-          <img src={about} alt="" />
+        <div className=" md:w-4/12 md:top-72 md:right-8 w-auto top-[60rem] absolute">
+          <img
+            src={about}
+            className="md:h-[33rem] md:w-[25rem] h-auto w-72"
+            alt=""
+          />
         </div>
       </div>
 
       {/*  */}
-      <div className="flex text-black  mx-auto px-9  w-auto py-24">
-        <div className=" w-3/12">
-          <div className="text-center">
-            <img className="bg-[#343434]  " src={perizatT} alt="" />
-            <h2 className="font-bold">Перизат Токтомаматова</h2>
-            <span>Основатель и Генеральный директор</span>
+      <div className="flex text-black  mx-auto md:px-9 px-4  w-auto pt-28 flex-col md:flex-row">
+        <div className="md:hidden flex flex-col">
+          <span className="font-semibold ">
+            «Мы - команда креативных людей, влюбленных в свое дело, более 9 лет
+            занимаемся брендингом и заслужили доверие лидеров рынка.
+            <p className="py-3">
+              {" "}
+              Свежий взгляд и неординарный подход к созданию бизнес мерча – наше
+              кредо»
+            </p>
+          </span>
+        </div>
+        <div className=" md:w-3/12 w-auto flex md:justify-start items-center flex-col">
+          <div className="md:text-center md:w-56 md:flex md:justify-start flex justify-center flex-col items-center pb-4">
+            <img
+              className="bg-[#343434] w-44 md:w-56 md:flex md:justify-start "
+              src={perizatT}
+              alt=""
+            />
+            <h2 className="font-bold py-2">Перизат Токтомаматова</h2>
+            <span className="font-light">
+              Основатель и Генеральный директор
+            </span>
 
             <div className="flex text-center justify-center">
               <img src={mail} alt="" />
-              <h5>p.toktomatova@mmt.kg</h5>
+              <h5 className="font-light">p.toktomatova@mmt.kg</h5>
             </div>
           </div>
         </div>
-        <div className="w-9/12 px-5">
-          <span className="font-bold ">
+        <div className="md:w-9/12 md:px-5 w-auto">
+          <span className="font-bold hidden md:flex">
             «Мы - команда креативных людей, влюбленных в свое дело, более 9 лет
             занимаемся брендингом и заслужили доверие лидеров рынка. Свежий
             взгляд и неординарный подход к созданию бизнес мерча – наше кредо»
           </span>
-          <div className="font-thin">
-            <p className="font-thin text-[15px]">
+          <div className="font-light flex flex-col w-auto">
+            <p className="font-light text-sm ">
               Я выпускница технического ВУЗа, инженер. Свое дело открыла в 23
               года. Мой путь к предпринимательству казался мне естественной
               эволюцией. Он не был основан только на желании иметь свой бизнес,
@@ -117,9 +140,13 @@ const Team = () => {
           </div>
         </div>
       </div>
-      <div className="flex text-black justify-around mx-auto px-9   w-auto py-5">
-        <div>
-          <img className="bg-[#202020] w-80 h-[450px]" src={bermet} alt="" />
+      <div className="flex flex-col md:flex-row text-black justify-around mx-auto md:px-9 px-0   w-auto md:py-5">
+        <div className="flex justify-center items-center flex-col px-9">
+          <img
+            className="bg-[#202020] md:w-80  w-56 h-auto md:h-[28rem]"
+            src={bermet}
+            alt=""
+          />
           <div className="text-center">
             <h2 className="font-bold">Перизат Токтомаматова</h2>
             <span>Основатель и Генеральный директор</span>
@@ -131,8 +158,22 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <div>
-          <img className="bg-[#202020] w-80 h-[450px] " src={aidai} alt="" />
+
+        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+          <span className="font-normal text-sm flex justify-center items-center text-center px-4">
+            «От идеи до воплощения корпоративных подарков – волшебный творческий
+            процесс, требующий четкой организации. Время – самое бесценное в
+            нашей жизни. Мы стремимся к эффективному управлению, чтобы
+            потребители вашего бренда стали еще ближе к вам»
+          </span>
+        </div>
+        {/*  */}
+        <div className="flex justify-center items-center flex-col px-9">
+          <img
+            className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem] "
+            src={aidai}
+            alt=""
+          />
           <div className="text-center">
             <h2 className="font-bold">Перизат Токтомаматова</h2>
             <span>Основатель и Генеральный директор</span>
@@ -144,8 +185,22 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <div>
-          <img className="bg-[#202020] w-80 h-[450px]" src={zhyldyz} alt="" />
+        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+          <span className="font-normal text-sm flex justify-center items-center text-center px-4">
+            «От идеи до воплощения корпоративных подарков – волшебный творческий
+            процесс, требующий четкой организации. Время – самое бесценное в
+            нашей жизни. Мы стремимся к эффективному управлению, чтобы
+            потребители вашего бренда стали еще ближе к вам»
+          </span>
+        </div>
+
+        {/*  */}
+        <div className="flex justify-center items-center flex-col px-9">
+          <img
+            className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
+            src={zhyldyz}
+            alt=""
+          />
           <div className="text-center">
             <h2 className="font-bold">Перизат Токтомаматова</h2>
             <span>Основатель и Генеральный директор</span>
@@ -157,9 +212,18 @@ const Team = () => {
             </div>
           </div>
         </div>
+        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+          <span className="font-normal text-sm flex justify-center items-center text-center px-4">
+            «От идеи до воплощения корпоративных подарков – волшебный творческий
+            процесс, требующий четкой организации. Время – самое бесценное в
+            нашей жизни. Мы стремимся к эффективному управлению, чтобы
+            потребители вашего бренда стали еще ближе к вам»
+          </span>
+        </div>
+        {/*  */}
       </div>
 
-      <div className="flex bg-[#343434]  mx-auto px-9   w-auto py-5">
+      <div className=" hidden md:flex flex-col md:flex-row bg-[#343434]  mx-auto px-9   w-auto py-5">
         <div>
           <span className="font-normal	 text-sm">
             «От идеи до воплощения корпоративных подарков – волшебный творческий

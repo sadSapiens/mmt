@@ -15,8 +15,8 @@ const ListBlog = () => {
         </span>
       </div>
 
-      <div className="mx-auto px-9   w-auto py-5 font-jost">
-        <div className="mt-[-6vh] flex justify-center items-center">
+      <div className="mx-auto md:px-9 px-0   w-auto py-5 font-jost">
+        <div className="mt-[-10vh] flex justify-center items-center">
           <label className="relative block">
             <span className="sr-only">Search</span>
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -32,25 +32,25 @@ const ListBlog = () => {
         </div>
         <BlogNews />
 
-        <div className="flex flex-row  justify-center items-center">
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
+        <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
+          <div className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5">
             <img
               src={newsone}
               alt=""
               className="w-96 flex justify-center items-center place-self-center "
             />
-            <div className="px-4 ">
-              <div className="flex justify-between px-5">
-                <span>Последние новости</span>
-                <p>
+            <div className="md:px-4 ">
+              <div className="flex justify-between ">
+                <span className="hidden md:flex">Последние новости</span>
+                <p className="text-sm flex items-center">
                   <time>11.07.2022</time> -- ММТ
                 </p>
               </div>
               <div className="py-10">
-                <h2 className="font-semibold text-black">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
                   DTF: быстро, выгодно, неожиданно
                 </h2>
-                <p className="py-4">
+                <p className="py-4 hidden md:flex">
                   Мы уже подробно рассказывали (и показывали!) о полноцветном
                   термотрансфере в нашем блоге, а в этой заметке хотим
                   напомнить, в каких случаях и почему стоит обратить...
@@ -58,24 +58,24 @@ const ListBlog = () => {
               </div>
             </div>
           </div>
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
+          <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
             <img
               src={newstwo}
               alt=""
               className="w-96 flex justify-center items-center place-self-center "
             />
-            <div className="px-4">
-              <div className="flex justify-between px-5">
-                <span>Мероприятия</span>
-                <p>
+            <div className="md:px-4">
+              <div className="flex justify-between  ">
+                <span className="hidden md:flex">Мероприятия</span>
+                <p className="flex justify-center text-sm">
                   <time>11.07.2022</time> -- ММТ
                 </p>
               </div>
               <div className="py-10">
-                <h2 className="font-semibold text-black">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
                   DTF: быстро, выгодно, неожиданно
                 </h2>
-                <p className="py-4">
+                <p className="py-4 hidden md:flex">
                   Мы уже подробно рассказывали (и показывали!) о полноцветном
                   термотрансфере в нашем блоге, а в этой заметке хотим
                   напомнить, в каких случаях и почему стоит обратить...
@@ -83,24 +83,24 @@ const ListBlog = () => {
               </div>
             </div>
           </div>
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
+          <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
             <img
               src={newsthree}
               alt=""
               className="w-96 flex justify-center items-center place-self-center "
             />
             <div className="px-4">
-              <div className="flex justify-between px-5">
-                <span>Акции</span>
-                <p>
+              <div className="flex justify-between">
+                <span className="hidden md:flex">Акции</span>
+                <p className="flex justify-center text-sm">
                   <time>11.07.2022</time> -- ММТ
                 </p>
               </div>
               <div className="py-10">
-                <h2 className="font-semibold text-black">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
                   DTF: быстро, выгодно, неожиданно
                 </h2>
-                <p className="py-4">
+                <p className="py-4 hidden md:flex">
                   Мы уже подробно рассказывали (и показывали!) о полноцветном
                   термотрансфере в нашем блоге, а в этой заметке хотим
                   напомнить, в каких случаях и почему стоит обратить...
@@ -108,76 +108,74 @@ const ListBlog = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-row  justify-center items-center ">
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
-            <img
-              src={newsone}
-              alt=""
-              className="w-96 flex justify-center items-center place-self-center "
-            />
-            <div className="px-4 ">
-              <div className="flex justify-between px-5">
-                <span>Последние новости</span>
-                <p>
-                  <time>11.07.2022</time> -- ММТ
-                </p>
-              </div>
-              <div className="py-10">
-                <h2 className="font-semibold text-black">
-                  DTF: быстро, выгодно, неожиданно
-                </h2>
-                <p className="py-4">
-                  Мы уже подробно рассказывали (и показывали!) о полноцветном
-                  термотрансфере в нашем блоге, а в этой заметке хотим
-                  напомнить, в каких случаях и почему стоит обратить...
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
-            <img
-              src={newstwo}
-              alt=""
-              className="w-96 flex justify-center items-center place-self-center "
-            />
-            <div className="px-4">
-              <div className="flex justify-between px-5">
-                <span>Мероприятия</span>
-                <p>
-                  <time>11.07.2022</time> -- ММТ
-                </p>
-              </div>
-              <div className="py-10">
-                <h2 className="font-semibold text-black">
-                  DTF: быстро, выгодно, неожиданно
-                </h2>
-                <p className="py-4">
-                  Мы уже подробно рассказывали (и показывали!) о полноцветном
-                  термотрансфере в нашем блоге, а в этой заметке хотим
-                  напомнить, в каких случаях и почему стоит обратить...
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-4/12 flex flex-col shadow-xl my-5 mx-5">
+          <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
             <img
               src={newsthree}
               alt=""
               className="w-96 flex justify-center items-center place-self-center "
             />
-            <div className="px-4">
-              <div className="flex justify-between px-5">
-                <span>Акции</span>
-                <p>
+            <div className="md:px-4">
+              <div className="flex justify-between">
+                <span className="hidden md:flex">Акции</span>
+                <p className="flex justify-center text-sm">
                   <time>11.07.2022</time> -- ММТ
                 </p>
               </div>
               <div className="py-10">
-                <h2 className="font-semibold text-black">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
                   DTF: быстро, выгодно, неожиданно
                 </h2>
-                <p className="py-4">
+                <p className="py-4 hidden md:flex">
+                  Мы уже подробно рассказывали (и показывали!) о полноцветном
+                  термотрансфере в нашем блоге, а в этой заметке хотим
+                  напомнить, в каких случаях и почему стоит обратить...
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
+            <img
+              src={newsthree}
+              alt=""
+              className="w-96 flex justify-center items-center place-self-center "
+            />
+            <div className="md:px-4">
+              <div className="flex justify-between">
+                <span className="hidden md:flex">Акции</span>
+                <p className="flex justify-center text-sm">
+                  <time>11.07.2022</time> -- ММТ
+                </p>
+              </div>
+              <div className="py-10">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
+                  DTF: быстро, выгодно, неожиданно
+                </h2>
+                <p className="py-4 hidden md:flex">
+                  Мы уже подробно рассказывали (и показывали!) о полноцветном
+                  термотрансфере в нашем блоге, а в этой заметке хотим
+                  напомнить, в каких случаях и почему стоит обратить...
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
+            <img
+              src={newsthree}
+              alt=""
+              className="w-96 flex justify-center items-center place-self-center "
+            />
+            <div className="md:px-4">
+              <div className="flex justify-between">
+                <span className="hidden md:flex">Акции</span>
+                <p className="flex justify-center text-sm">
+                  <time>11.07.2022</time> -- ММТ
+                </p>
+              </div>
+              <div className="py-10">
+                <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
+                  DTF: быстро, выгодно, неожиданно
+                </h2>
+                <p className="py-4 hidden md:flex">
                   Мы уже подробно рассказывали (и показывали!) о полноцветном
                   термотрансфере в нашем блоге, а в этой заметке хотим
                   напомнить, в каких случаях и почему стоит обратить...

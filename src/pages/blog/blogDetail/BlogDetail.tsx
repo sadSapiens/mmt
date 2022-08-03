@@ -7,15 +7,15 @@ import interesting from "../assets/interesting.png";
 
 const BlogDetail = () => {
   return (
-    <div className="mx-auto px-9   w-auto py-5 font-jost">
+    <div className="mx-auto md:px-5  px-3  w-auto py-5 font-jost">
       <div className="font-jost flex justify-center flex-col items-center py-4">
-        <h2 className="font-jost font-medium py-4 text-black text-3xl">
+        <h2 className=" font-jost font-medium py-4 text-black md:text-3xl text-base">
           DTF: быстро, выгодно, неожиданно
         </h2>
-        <img src={blognew} alt="" className="w-5/12" />
+        <img src={blognew} alt="" className="md:w-5/12 flex" />
       </div>
 
-      <div className="font-jost">
+      <div className="font-jost font-light md:py-5 py-2">
         <p>
           Мы уже подробно рассказывали (и показывали!) о полноцветном
           термотрансфере в нашем блоге, а в этой заметке хотим напомнить, в
@@ -23,8 +23,10 @@ const BlogDetail = () => {
           пальцах объясняем принцип работы, честно говорим о плюсах и минусах,
           показываем цифры, при которых нанесение выгодно.{" "}
         </p>
-        <b>Начнем издалека: что такое термотрансфер</b>
-        <p>
+        <p className="py-3">
+          <b>Начнем издалека: что такое термотрансфер</b>
+        </p>
+        <p className="py-2">
           Термотрансфер — метод непрямой печати, для которого создается
           промежуточный носитель, с которого изображение переносится при помощи
           термопресса. Традиционно промежуточный носитель создается при помощи
@@ -55,10 +57,10 @@ const BlogDetail = () => {
           цветами (в среднем).
         </p>
       </div>
-      <div className="font-jost  flex py-10">
-        <div className="w-7/12 flex flex-col justify-end ">
+      <div className="font-jost md:flex-row md:flex flex-col flex md:py-10 py-6">
+        <div className="md:w-7/12  flex flex-col justify-end md:py-3 ">
           <h2 className="font-medium text-black">Что такое DTF?</h2>
-          <p>
+          <p className="w-auto font-light">
             DTF — это нанесение методом термотрансфера, при котором изображение
             печатается на специальном принтере на пленке (поэтому и DTF,
             direct-to-film, печать на пленке), а затем термопрессом
@@ -69,11 +71,11 @@ const BlogDetail = () => {
             позиционировать термотрансфер на изделии.
           </p>
         </div>
-        <div className="w-5/12">
-          <img src={cap} alt="" />
+        <div className="md:w-5/12 ">
+          <img src={cap} className="flex object-cover py-3" alt="" />
         </div>
       </div>
-      <div className="font-jost">
+      <div className="font-jost font-light py-10">
         <p>
           DTF — это нанесение методом термотрансфера, при котором изображение
           печатается на специальном принтере на пленке (поэтому и DTF,
@@ -99,68 +101,75 @@ const BlogDetail = () => {
           быстро позиционировать термотрансфер на изделии.
         </p>
       </div>
-      <div className="flex justify-center gap-5 font-jost">
-        <button className="rounded-full ... bg-[#BEBEBE] flex px-8 py-2 gap-3">
-          <img src={left} alt="" />
-          Предыдущая статья
-        </button>
-        <button className="bg-[#1F1F1F] rounded-full ...  flex px-8 py-2 gap-3">
-          Следующая статья
-          <img src={right} alt="" />
-        </button>
+      <div className="flex md:justify-center justify-between gap-5 font-jost">
+        <div>
+          <button className="rounded-full ... bg-[#BEBEBE] flex md:px-2  justify-center px-2 py-2 gap-3">
+            <img src={left} alt="" />
+            <span className="hidden md:flex text-black">Предыдущая статья</span>
+          </button>
+          <h5 className="md:hidden font-light text-sm">Пред. статья</h5>
+        </div>
+
+        <div className="flex justify-end flex-col items-end">
+          <button className="bg-[#1F1F1F] rounded-full ...  flex md:px-8 px-2 py-2 gap-3 justify-end">
+            <span className="hidden md:flex text-white">Следующая статья</span>
+            <img src={right} alt="" />
+          </button>
+          <h5 className="md:hidden font-light text-sm">След. статья</h5>
+        </div>
       </div>
       <div className="font-jost py-7">
-        <span className="text-black py-5 ">Может быть интересно</span>
-        <div className="py-5">
+        <span className="text-black md:py-2 ">Может быть интересно</span>
+        <div className="py-2">
           <hr className=" bg-[#898989] w-auto h-0.4 " />
         </div>
-        <div className="flex flex-row font-jost">
-          <div className="flex ">
+        <div className="flex md:flex-row flex-col font-jost">
+          <div className="flex py-3">
             <div>
-              <img src={interesting} alt="" className="h-32 w-96" />
+              <img src={interesting} alt="" className="md:h-32 h-24 w-96" />
             </div>
-            <div className="px-4 flex flex-col flex-wrap">
-              <p>
+            <div className="md:px-4 px-1 flex flex-col flex-wrap">
+              <p className="hidden md:block">
                 <time>11.07.2022</time>
               </p>
-              <span className="font-medium">
+              <span className="font-bold text-xs flex">
                 DTF: быстро, выгодно, неожиданно
               </span>
-              <p className="text-sm">
+              <p className="text-xs">
                 Мы уже подробно рассказывали (и показывали!) о полноцветном
                 термотрансфере в нашем блоге, а в этой заметке хотим{" "}
               </p>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex py-3">
             <div>
-              <img src={interesting} alt="" className="h-32 w-96" />
+              <img src={interesting} alt="" className="md:h-32 h-24 w-96" />
             </div>
-            <div className="px-4 flex flex-col flex-wrap">
-              <p>
+            <div className="md:px-4 px-1 flex flex-col flex-wrap">
+              <p className="hidden md:block">
                 <time>11.07.2022</time>
               </p>
-              <span className="font-medium">
+              <span className="font-bold text-xs flex">
                 DTF: быстро, выгодно, неожиданно
               </span>
-              <p className="text-sm">
+              <p className="text-xs">
                 Мы уже подробно рассказывали (и показывали!) о полноцветном
                 термотрансфере в нашем блоге, а в этой заметке хотим{" "}
               </p>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex py-3">
             <div>
-              <img src={interesting} alt="" className="h-32 w-96" />
+              <img src={interesting} alt="" className="md:h-32 h-24 w-96" />
             </div>
-            <div className="px-4 flex flex-col flex-wrap">
-              <p>
+            <div className="md:px-4 px-1 flex flex-col flex-wrap">
+              <p className="hidden md:block">
                 <time>11.07.2022</time>
               </p>
-              <span className="font-medium">
+              <span className="font-bold text-xs flex">
                 DTF: быстро, выгодно, неожиданно
               </span>
-              <p className="text-sm">
+              <p className="text-xs">
                 Мы уже подробно рассказывали (и показывали!) о полноцветном
                 термотрансфере в нашем блоге, а в этой заметке хотим{" "}
               </p>

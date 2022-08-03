@@ -8,26 +8,26 @@ const Brands = () => {
   return (
     <div className="container mx-auto px-4 my-5">
       <div>
-        <span className="font-semibold text-black mr-8 text-[36px]">
+        <span className="font-semibold text-black mr-8 text-text-3xl">
           Бренды
         </span>
       </div>
-      <div className="flex justify-evenly my-4">
-        <div className="flex flex-col items-center">
+      <div className="flex md:justify-evenly my-4 px-3 flex-col md:flex-row justify-center items-center">
+        <div className="flex flex-col items-center py-2">
           <img src={hiidea} alt="" />
           <h6>Португалия</h6>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center py-2">
           <img src={ekston} alt="" />
           <h6>Португалия</h6>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center py-2">
           <img src={oasis} alt="" />
           <h6>Португалия</h6>
         </div>
       </div>
       <div className="flex justify-center">
-        <button className=" flex align-middle justify-center rounded-full ... bg-[#1F1F1F] p-2 px-7 text-white">
+        <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">
           Больше товаров
           <img className=" flex px-2" src={arrow} alt="" />
         </button>

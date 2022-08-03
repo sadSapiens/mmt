@@ -1,6 +1,4 @@
 import React from "react";
-import schema from "../assets/schema.png";
-import list from "../assets/list.png";
 import filterArrow from "../assets/filter-arrow.png";
 
 const Filters = () => {

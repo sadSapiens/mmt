@@ -1,6 +1,4 @@
 import React from "react";
-import Footer from "../../components/footer/Footer";
-import MyNavbar from "../../components/navbar/MyNavbar";
 import Brands from "./brands/Brands";
 import Catalog from "./catalog/Catalog";
 import Faq from "./FAQ/Faq";
@@ -8,24 +6,24 @@ import Feedback from "./feedback/Feedback";
 import FooterHome from "./footer-home/FooterHome";
 import Portfolio from "./portfolio/Portfolio";
 import Slider from "./slider/Slider";
+import Whyus from "./whyus/Whyus";
 
 const Home = () => {
   return (
     <>
       <div className="font-jost">
-        <MyNavbar />
         {/* slide */}
         <div>
           <Slider />
         </div>
         {/* //slide */}
         <Catalog />
-        <Feedback />
         <Portfolio />
+        <Whyus />
+        <Feedback />
         <Brands />
         <Faq />
         <FooterHome />
-        <Footer />
       </div>
     </>
   );

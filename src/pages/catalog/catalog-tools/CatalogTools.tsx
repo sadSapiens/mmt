@@ -13,15 +13,15 @@ import CardsRow from "../cards/CardsRow";
 
 const CatalogTools = () => {
   return (
-    <div className="mx-auto px-9   w-auto  font-jost py-9">
-      <div className="flex gap-5  py-3  justify-between">
+    <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
+      <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
           <div className="flex items-center text-center justify-center align-middle">
             <h2 className="font-extrabold text-2xl flex items-center text-center object-center align-middle">
               Каталог
             </h2>
           </div>
-          <div>
+          <div className="hidden md:flex">
             <label className="relative block">
               <span className="sr-only">Search</span>
               <span className="absolute inset-y-0  flex items-center pl-2">
@@ -38,14 +38,29 @@ const CatalogTools = () => {
         </div>
 
         {/*  */}
-        <div className="flex justify-center items-center gap-3">
-          <button className="bg-black text-white flex rounded-full ... w-auto px-5 py-2 gap-2">
-            <img src={schema} alt="" />
-            Схема
+        <div className="md:hidden flex flex-row justify-between">
+          <div className="md:hidden w-8/12 flex  ">
+            <Filters />
+          </div>
+          <div className="flex justify-center items-center gap-3 w-4/12">
+            <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
+              <img src={schema} className="h-auto w-auto  flex" alt="" />
+              <span className="hidden md:flex">Схема</span>
+            </button>
+            <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
+              <img src={list} alt="" />
+              <span className="hidden md:flex">Список</span>
+            </button>
+          </div>
+        </div>
+        <div className=" hidden md:flex justify-center items-center gap-3 w-6/12">
+          <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
+            <img src={schema} className="h-auto w-auto  flex" alt="" />
+            <span className="hidden md:flex">Схема</span>
           </button>
-          <button className="flex rounded-full ... w-auto px-5 py-2 border border-black">
+          <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
             <img src={list} alt="" />
-            Список
+            <span className="hidden md:flex">Список</span>
           </button>
         </div>
       </div>
@@ -56,7 +71,7 @@ const CatalogTools = () => {
           <ol className="flex  ">
             <li>
               <Link to="/catalog" className="tex-black">
-                <a href="#" className="text-black hover:text-blue-700">
+                <a href="#" className="!text-black hover:text-blue-700">
                   Каталог
                 </a>
               </Link>
@@ -66,7 +81,7 @@ const CatalogTools = () => {
               <img src={rightarrow} alt="" />
             </li>
             <li>
-              <a href="#" className="text-black hover:text-blue-700">
+              <a href="#" className="!text-black hover:text-blue-700">
                 Мужские аксессуары
               </a>
             </li>
@@ -79,30 +94,30 @@ const CatalogTools = () => {
         <div>
           <span className="text-black text-2xl">Мужские аксессуары</span>
         </div>
-        <div className="gap-4 flex py-4 ">
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+        <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto overflow-scroll">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Барсетки
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Визитницы
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Одежда
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Органайзеры
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Портмоне
           </button>
-          <button className="rounded-full ... border border-black w-[10%] h-8">
+          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Часы{" "}
           </button>
         </div>
       </div>
       {/*  */}
       <div className="flex pt-10 font-jost">
-        <div className="accordion  flex-col w-3/12  justify-center block ">
+        <div className="accordion  hidden  flex-col w-3/12  justify-center md:block ">
           <div className="w-1/8">
             <input
               type="checkbox"
@@ -125,36 +140,36 @@ const CatalogTools = () => {
                     <div className="gap-3 flex flex-col justify-start">
                       <div className="form-check">
                         <input
-                          className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="checkbox"
                           value=""
-                          id="flexCheckDefault"
+                          id="typeNew"
                         />
 
-                        <button className="bg-[#65A8E0] px-5 rounded-full ... w-28">
+                        <button className="flex justify-center  bg-[#65A8E0] px-5 rounded-full ... w-28">
                           Новинки
                         </button>
                       </div>
                       <div className="form-check">
                         <input
-                          className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="checkbox"
                           value=""
-                          id="flexCheckDefault"
+                          id="typeEko"
                         />
 
-                        <button className="bg-[#79B15E] px-5 rounded-full ... w-28">
+                        <button className="flex justify-center bg-[#79B15E] px-5 rounded-full ... w-28">
                           Эко
                         </button>
                       </div>
                       <div className="form-check">
                         <input
-                          className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="checkbox"
                           value=""
-                          id="flexCheckDefault"
+                          id="typeShare"
                         />
-                        <button className="bg-[#F1A400] px-5 rounded-full ... w-28">
+                        <button className="flex justify-center bg-[#F1A400] px-5 rounded-full ... w-28">
                           Акция
                         </button>
                       </div>
@@ -260,130 +275,130 @@ const CatalogTools = () => {
               Цвет
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3 ">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorBlack"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorBlack"
                     >
                       Черный
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorRed"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorRed"
                     >
                       Красный
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorYellow"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorYellow"
                     >
                       Жёлтый
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorAqua"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorAqua"
                     >
                       Голубой
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorRed"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorRed"
                     >
                       Красный
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorBlue"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorBlue"
                     >
                       Синий
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorOrange"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorOrange"
                     >
                       Оранжевый
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorFiolet"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorFiolet"
                     >
                       Фиолетовое
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="colorMajent"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="colorMajent"
                     >
                       Мажента
                     </label>
@@ -437,144 +452,144 @@ const CatalogTools = () => {
               Материал
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialPaper"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialPaper"
                     >
                       Бумага
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialTree"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialTree"
                     >
                       Дерево
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialEko"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialEko"
                     >
                       Эко-кожа
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialMetall"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialMetall"
                     >
                       Металл
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialNaturalSkin"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialNaturalSkin"
                     >
                       Натуральная кожа
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialPVH"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialPVH"
                     >
                       ПВХ
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialPlastik"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialPlastik"
                     >
                       Пластик
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialPoliester"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialPoliester"
                     >
                       Полиэстер
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialSilikon"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialSilikon"
                     >
                       Силикон
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="materialFetr"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="materialFetr"
                     >
                       Фетр
                     </label>
@@ -597,116 +612,116 @@ const CatalogTools = () => {
               Метод нанесения
             </label>
             <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 ">
+              <div className="flex justify-start px-5 py-3">
                 <div className="flex flex-col justify-start">
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="MethodChase"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="MethodChase"
                     >
                       Гравировка (СО2 лазер)
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="MethodChase2"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="MethodChase2"
                     >
                       Гравировка (оптоволоконный лазер)
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodPrinting"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodPrinting"
                     >
                       Тампопечать
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodTermo"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodTermo"
                     >
                       Термотрансфер
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodLettering"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodLettering"
                     >
                       Тиснение
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodStencil"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodStencil"
                     >
                       Трафаретная печать
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodUF"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodUF"
                     >
                       УФ-печать
                     </label>
                   </div>
                   <div className="form-check">
                     <input
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                       type="checkbox"
                       value=""
-                      id="flexCheckDefault"
+                      id="methodSpectrum"
                     />
                     <label
                       className="form-check-label inline-block text-gray-800"
-                      htmlFor="flexCheckDefault"
+                      htmlFor="methodSpectrum"
                     >
                       Шильд-спектрум
                     </label>
@@ -715,10 +730,10 @@ const CatalogTools = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col  justify-center items-center gap-4 font-jost">
+          <div className="flex flex-col  justify-center items-center gap-4 font-jost py-2">
             <button
               className="bg-white text-black font-normal rounded-full ... border border-black w-48 hover:text-white  px-4 py-1 
-            hover:bg-[#79B15E]
+            hover:!bg-[#79B15E]
             "
             >
               Показать товары (67)
@@ -733,11 +748,11 @@ const CatalogTools = () => {
             </button>
           </div>
         </div>
-        <div className="flex  justify-between w-9/12 items-center align-middle text-center self-start flex-col">
-          <div className="w-[100%] px-10">
+        <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
+          <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
           </div>
-          <div className="flex flex-wrap gap-1 justify-center ">
+          <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
             <Cards />
             <Cards />
             <Cards />
