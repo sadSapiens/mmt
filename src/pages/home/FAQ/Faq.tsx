@@ -22,19 +22,28 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-1"
-                className=" label-faq relative block text-black p-4 shadow border-b border-black"
+                className=" label-faq relative block text-black font-medium p-4 shadow border-b border-black"
               >
-                Panel 1
+                Каков минимальный тираж для заказа продукции?
               </label>
               <div className="accordion__content overflow-hidden bg-grey-lighter">
-                <h2 className="accordion__header pt-4 pl-4">Header</h2>
+                {/* <h2 className="accordion__header pt-4 pl-4">Header</h2> */}
                 <p className="accordion__body p-4" id="panel1">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Iusto possimus at a cum saepe molestias modi illo facere
-                  ducimus voluptatibus praesentium deleniti fugiat ab error quia
-                  sit perspiciatis velit necessitatibus.Lorem ipsum dolor sit
-                  amet, consectetur adipisicing elit. Lorem ipsum dolor sit
-                  amet.
+                  Вы можете оформить на сайте заказ суммой не менее 5000 рублей.
+                  В сезон, с октября по декабрь, минимальная сумма заказа
+                  увеличивается.
+                  <p className="py-2">
+                    Если вы приобретаете продукцию без нанесения логотипов,
+                    тираж для каждого выбранного товара в рамках этой
+                    минимальной суммы может быть любым.
+                  </p>
+                  <p>
+                    Для некоторых товаров, поставляемых только упаковками,
+                    существует ограничение по минимальной партии. Для товаров с
+                    печатью приняты технологические ограничения по минимальному
+                    тиражу. Информация о таких ограничениях появляется в
+                    подсказках сайта при оформлении заказа.
+                  </p>
                 </p>
               </div>
             </div>
@@ -47,9 +56,9 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-2"
-                className="label-faq  relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq  relative block  text-black p-4 font-medium shadow border-b border-black"
               >
-                Panel 2
+                Включает ли цена товара стоимость нанесения лого?
               </label>
               <div className="accordion__content overflow-hidden bg-grey-lighter">
                 <h2 className="accordion__header pt-4 pl-4">Header</h2>
@@ -72,9 +81,9 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-3"
-                className="label-faq relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black font-medium p-4 shadow border-b border-black"
               >
-                Panel 3
+                Как приобрести сувениры оптом?
               </label>
               <div className="accordion__content overflow-hidden bg-grey-lighter">
                 <h2 className="accordion__header pt-4 pl-4">Header</h2>
@@ -97,9 +106,9 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-4"
-                className="label-faq relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black p-4 font-medium shadow border-b border-black"
               >
-                Panel 4
+                Как приобрести подарки в розницу?
               </label>
               <div className="accordion__content overflow-hidden bg-grey-lighter">
                 <h2 className="accordion__header pt-4 pl-4">Header</h2>
@@ -122,9 +131,9 @@ const Faq = () => {
               />
               <label
                 htmlFor="panel-5"
-                className="label-faq relative block  text-black p-4 shadow border-b border-black"
+                className="label-faq relative block  text-black p-4 font-medium shadow border-b border-black"
               >
-                Panel 5
+                Как посмотреть образец продукции до заказа?
               </label>
               <div className="accordion__content overflow-hidden bg-grey-lighter">
                 <h2 className="accordion__header pt-4 pl-4">Header</h2>
