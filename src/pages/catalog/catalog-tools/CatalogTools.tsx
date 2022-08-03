@@ -752,7 +752,7 @@ const CatalogTools = () => {
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
           </div>
-          <div className="md:flex md:flex-wrap flex-wrap items-center flex-row gap-1  justify-center ">
+          <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-1  justify-center ">
             <Cards />
             <Cards />
             <Cards />
