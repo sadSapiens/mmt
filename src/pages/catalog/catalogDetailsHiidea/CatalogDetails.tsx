@@ -22,10 +22,8 @@ const CatalogDetailsHiidea = () => {
       <div className="rounded-md w-full font-jost">
         <ol className="flex  ">
           <li className="text-black font-jost">
-            <Link to="/catalog">
-              <a href="#" className="text-gray-900 hover:text-black">
-                Каталог
-              </a>
+            <Link to="/catalog" className="text-gray-900 hover:text-black">
+              Каталог
             </Link>
           </li>
           <li>
@@ -33,7 +31,7 @@ const CatalogDetailsHiidea = () => {
             <img src={arrow} alt="" />
           </li>
           <li>
-            <a href="#" className="text-black">
+            <a href="/" className="text-black">
               Категории
             </a>
           </li>

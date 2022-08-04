@@ -5,9 +5,6 @@ import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
-{
-  /* <FontAwesomeIcon icon="fa-solid fa-eye" />; */
-}
 
 const SignUp = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -17,7 +14,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="">
         <div className="bg-white h-1"></div>
         <div className="bg-[#343434] mx-auto px-9 w-auto py-5">
@@ -28,7 +25,6 @@ const SignUp = () => {
             <div className="pass-wrapper">
               <input
                 type="text"
-                // value="tbone"
                 placeholder="Введите почту"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72
     
@@ -39,7 +35,6 @@ const SignUp = () => {
             <div className="pass-wrapper">
               <input
                 type="text"
-                // value="tbone"
                 placeholder="Придумайте пароль"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72
     
@@ -65,10 +60,7 @@ const SignUp = () => {
             <div>
               <button
                 className="mt-1 block  px-8 py-2 bg-[#EEEEEE] border border-slate-300 rounded-full ... text-sm shadow-sm placeholder-white w-72
-              focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-              disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-              invalid:border-pink-500 invalid:text-pink-600
-              focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+              focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               >
                 Отправить
               </button>
@@ -79,7 +71,7 @@ const SignUp = () => {
         </div>
         <div className="bg-white h-1"></div>
       </div>
-    </div>
+    </>
   );
 };
 

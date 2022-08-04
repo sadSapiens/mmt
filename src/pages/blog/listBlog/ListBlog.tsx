@@ -1,5 +1,4 @@
 import React from "react";
-import bottle from "../assets/bottle.png";
 import newsone from "../assets/newsone.png";
 import newstwo from "../assets/newsyellow.png";
 import newsthree from "../assets/newsthree.png";
