@@ -51,7 +51,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blogdetail" element={<BlogIndex />} />
             <Route path="/historyorder" element={<HistoryOrder />} />
-            <Route path="*" element={<Redirect />} />
+            {/* <Route path="*" element={<Redirect />} /> */}
           </Routes>
           <Footer />
         </BrowserRouter>

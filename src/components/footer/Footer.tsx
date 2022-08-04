@@ -6,7 +6,6 @@ import discovery from "./assets/Discovery.png";
 import message from "./assets/Message.png";
 import call from "./assets/Call.png";
 import logo from "./assets/logo.png";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,7 +23,7 @@ const Footer = () => {
               </div>
               <ul className="list-none footer-links">
                 <li className="mb-2">
-                  <a href="#"></a>
+                  <a href="/"></a>
                 </li>
               </ul>
             </div>
@@ -48,7 +47,7 @@ const Footer = () => {
               <ul className="list-none footer-links">
                 <li className="mb-2">
                   <a
-                    href="#"
+                    href="/"
                     className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
                   >
                     <div className="flex gap-2">
