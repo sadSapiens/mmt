@@ -74,14 +74,6 @@ const MegaMenu = () => {
           </ul>
           {/* </div> */}
         </li>
-
-        {/*  */}
-
-        {/*  */}
-
-        {/* <a href="#" className="toggle-menu visible-xs-block">
-          |||
-        </a> */}
       </ul>
     </div>
   );

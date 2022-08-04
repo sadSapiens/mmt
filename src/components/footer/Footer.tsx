@@ -156,27 +156,6 @@ const Footer = () => {
               </div>
             </div>
             <div className="px-2 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto items-center">
-              {/* <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    <div className="flex justify-center items-center gap-2">
-                      <img
-                        className="w-[30px] h-[30px]"
-                        src={discovery}
-                        alt=""
-                      />{" "}
-                      <span className="text-white flex items-center ">
-                        г.Бишкек, пер.Сонкульский, 8
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li className="mb-2"></li>
-              </ul> */}
-
               <div className="flex items-center  gap-1">
                 <img className="w-[30px] h-[30px]" src={discovery} alt="" />{" "}
                 <span className="text-white flex text-xs">
