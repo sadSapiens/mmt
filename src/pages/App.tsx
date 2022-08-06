@@ -21,6 +21,7 @@ import SignInPage from "./signin";
 import SignUpPage from "./signup";
 import Portfolio from "./portfolio";
 import Recovery from "./recovery";
+import Confirmation from "./signup/confirmation/Confirmation";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             {/* <Route path="/cartmodal" element={<CartModal />} /> */}
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
+            <Route path="/confirmation" element={<Confirmation />} />
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route
