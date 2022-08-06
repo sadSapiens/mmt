@@ -3,10 +3,10 @@ import "./megamenu.css";
 
 const MegaMenu = () => {
   const [open, setOpen] = useState(false);
-  console.log(open, "state> open");
+  console.log(open);
 
   return (
-    <div className="w-full">
+    <div className="">
       <ul className="exo-menu" onClick={() => setOpen(true)}>
         <li className="drop-down">
           <a href="/">

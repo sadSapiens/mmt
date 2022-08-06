@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-[#343434] font-jost">
-        <div className="max-w-6xl mx-auto px-2 bg-green-500 md:bg-red-500 lg:bg-green-500">
+        <div className="md:max-w-6xl md:mx-auto md:px-2 py-3  ">
           <div className="flex justify-between">
             <div className=" md:flex items-center flex space-x-4 font-jost">
               <div>

@@ -6,7 +6,7 @@ import ecomobile from "../../../assets/img/ecomobile.png";
 const Slider = () => {
   return (
     <div className="bg-[#8ABFBB] h-52 md:h-96 min-w-full	">
-      <div className="slider">
+      <div className="slider carousel slide relative">
         <input
           type="radio"
           name="slider"
