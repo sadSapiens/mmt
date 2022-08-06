@@ -3,10 +3,14 @@ import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import API from "../../constants/api";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignUpPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] = useState([]);
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -18,17 +22,37 @@ const SignUpPage = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setError([]);
+    if (inputs.password !== inputs.confirmPassword) {
+      //@ts-ignore
+      setError(["Пароли не совпадают!"]);
+      return;
+    }
     try {
       const res = await API.post("/user/register", {
         confirm_password: inputs.confirmPassword,
         email: inputs.email,
         password: inputs.password,
       });
+      if (res.data.status === "CREATED") {
+        navigate("/confirmation");
+      }
       console.log(res);
     } catch (e) {
-      console.log(e);
+      if (axios.isAxiosError(e)) {
+        console.log(e.response?.data);
+        if (e.response?.data) {
+          //@ts-ignore
+          const { password = [""], email = [""] } = e.response.data;
+          setError(password.concat(email));
+        }
+      }
     }
   };
+  console.log(error);
+  const arr = [1, 2, 3, 4];
+  const arr2 = [1, 2, 3, 4, 4, 5, 6, 6];
+  console.log(arr.concat(arr2));
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -78,6 +102,10 @@ const SignUpPage = () => {
               />
               <i onClick={togglePasswordVisiblity}>{eye}</i>{" "}
             </div>
+            {error &&
+              error.map((err) => (
+                <div className="text-red-600 w-full text-start">{err}</div>
+              ))}
 
             <div>
               <button
