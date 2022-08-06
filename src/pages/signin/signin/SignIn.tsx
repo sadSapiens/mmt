@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import eye from "../assets/eye.svg";
-import "../../signup/signup/signup.css";
+import "../../signup/signup.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";

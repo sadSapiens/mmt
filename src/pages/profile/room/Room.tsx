@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clock from "./assets/clock-circle.svg";
 import settings from "./assets/settings.png";
 import pencil from "./assets/pencil.svg";
@@ -8,8 +8,17 @@ import trashBlack from "./assets/trashBlack.png";
 import avatar from "./assets/avatar.png";
 
 import settingWhite from "./assets/settingWhite.png";
+import API from "../../../constants/api";
 
 const Room = () => {
+  useEffect(() => {
+    const getFunt = async () => {
+      const res = await API.get("/user/profile");
+      console.log(res);
+    };
+    getFunt();
+  }, []);
+
   return (
     <>
       <div className=" px-2  md:w-auto    py-5  md:bg-red-500 lg:bg-green-500 ">
@@ -53,7 +62,7 @@ const Room = () => {
             </div>
             <label className="block">
               <input
-                placeholder="Иван"
+                placeholder="Имя"
                 type="text"
                 // value="tbone"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
@@ -65,7 +74,7 @@ const Room = () => {
     "
               />
               <input
-                placeholder="Иван"
+                placeholder="Фамилия"
                 type="text"
                 // value="tbone"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
@@ -86,22 +95,12 @@ const Room = () => {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500
     "
               />
-              <input
-                placeholder="Иван"
-                type="text"
-                // value="tbone"
-                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500
-    "
-              />
+
               <span className="text-black font-bold flex justify-center">
                 Адрес
               </span>
               <input
-                placeholder="Иван"
+                placeholder="Город"
                 type="text"
                 // value="tbone"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
@@ -113,7 +112,7 @@ const Room = () => {
     "
               />
               <input
-                placeholder="Иван"
+                placeholder="Адрес"
                 type="text"
                 // value="tbone"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
@@ -124,7 +123,7 @@ const Room = () => {
     "
               />
               <input
-                placeholder="Иван"
+                placeholder="Компания"
                 type="text"
                 // value="tbone"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]

@@ -21,6 +21,9 @@ const Footer = () => {
                 <img src={instagram} alt="" />{" "}
                 <span className="text-white">INSTAGRAM</span>
               </div>
+              <ul className="list-none footer-links">
+                <li className="mb-2">{/* <a href="/"></a> */}</li>
+              </ul>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
               <div className="flex gap-2">
