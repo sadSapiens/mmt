@@ -15,13 +15,13 @@ import CatalogDetailsHiidea from "./catalog/catalogDetailsHiidea/CatalogDetails"
 import CatalogDetailsOasis from "./catalog/catalogDetailsOasis/CatalogDetails";
 import Home from "./home";
 import Profile from "./profile";
-import HistoryOrder from "./profile/orderHistory";
 import Redirect from "./redirectPage";
 import SignInPage from "./signin";
 import SignUpPage from "./signup";
 import Portfolio from "./portfolio";
 import Recovery from "./recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
+import OrderHistory from "./profile/OrderHistory";
 
 function App() {
   return (
@@ -52,7 +52,7 @@ function App() {
             />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blogdetail" element={<BlogIndex />} />
-            <Route path="/historyorder" element={<HistoryOrder />} />
+            <Route path="/historyorder" element={<OrderHistory />} />
             {/* <Route path="*" element={<Redirect />} /> */}
           </Routes>
           <Footer />

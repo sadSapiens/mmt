@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../../../constants/api";
+import { PUBLIC_API } from "../../../constants/api";
 
 const Confirmation = () => {
   const [error, setError] = useState("");
@@ -12,9 +12,9 @@ const Confirmation = () => {
     setError("");
 
     try {
-      const res = await API.post("/user/activation", { code });
+      const res = await PUBLIC_API.post("/user/activation", { code });
       console.log(res);
-      navigate("/profile");
+      navigate("/signin");
     } catch (e) {
       console.log(e);
       setError("Неверные значения или пользователь был активирован");

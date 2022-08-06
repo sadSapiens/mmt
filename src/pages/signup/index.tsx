@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import API from "../../constants/api";
+import { PUBLIC_API } from "../../constants/api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const eye = <FontAwesomeIcon icon={faEye} />;
@@ -29,7 +29,7 @@ const SignUpPage = () => {
       return;
     }
     try {
-      const res = await API.post("/user/register", {
+      const res = await PUBLIC_API.post("/user/register", {
         confirm_password: inputs.confirmPassword,
         email: inputs.email,
         password: inputs.password,

@@ -4,11 +4,12 @@ import "../signup/signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import API from "../../constants/api";
+import { useNavigate } from "react-router-dom";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignInPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
-
+  const navigate = useNavigate();
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
@@ -30,6 +31,9 @@ const SignInPage = () => {
         email: inputs.email,
         password: inputs.password,
       });
+      const token = res.data.data.token;
+      localStorage.setItem("token", token);
+      navigate("/profile");
       console.log(res, "signin");
     } catch (e) {
       console.log(e, "e>> siginin");
