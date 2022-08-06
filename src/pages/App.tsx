@@ -22,6 +22,7 @@ import SignUpPage from "./signup";
 import Portfolio from "./portfolio";
 import Recovery from "./recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
+import EditProfile from "./profile/editProfile/EditProfile";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/editProfile" element={<EditProfile />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/cart" element={<Basket />} />
             <Route path="/cartfull" element={<CartFull />} />
