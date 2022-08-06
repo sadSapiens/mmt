@@ -1,6 +1,5 @@
 import React from "react";
 import search from "../assets/search.png";
-import newyear from "../assets/image.png";
 import rightarrow from "../assets/rightarrow.png";
 import schema from "../assets/schema.png";
 import list from "../assets/list.png";
@@ -9,7 +8,7 @@ import "./style.css";
 import Filters from "../filters/Filters";
 import Cards from "../cards/Cards";
 import { Link } from "react-router-dom";
-import CardsRow from "../cards/CardsRow";
+// import CardsRow from "../cards/CardsRow";
 
 const CatalogTools = () => {
   return (
@@ -70,10 +69,11 @@ const CatalogTools = () => {
         <nav className="bg-grey-light rounded-md w-full">
           <ol className="flex  ">
             <li>
-              <Link to="/catalog" className="tex-black">
-                <a href="#" className="!text-black hover:text-blue-700">
-                  Каталог
-                </a>
+              <Link
+                to="/catalog"
+                className="tex-black !text-black hover:text-blue-700"
+              >
+                Каталог
               </Link>
             </li>
             <li>
@@ -81,7 +81,7 @@ const CatalogTools = () => {
               <img src={rightarrow} alt="" />
             </li>
             <li>
-              <a href="#" className="!text-black hover:text-blue-700">
+              <a href="/" className="!text-black hover:text-blue-700">
                 Мужские аксессуары
               </a>
             </li>

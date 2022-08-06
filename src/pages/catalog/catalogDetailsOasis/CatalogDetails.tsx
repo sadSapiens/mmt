@@ -1,6 +1,5 @@
 import React from "react";
 // import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
-import CatalogTabs from "../catalog-tools/CatalogTabs";
 import penOne from "../assets/penOne.png";
 import penTwo from "../assets/penTwo.png";
 import penThree from "../assets/penThree.png";
@@ -29,10 +28,8 @@ const CatalogDetailsOasis = () => {
       <div className="rounded-md w-full font-jost">
         <ol className="flex  ">
           <li className="text-black font-jost">
-            <Link to="/catalog">
-              <a href="#" className="text-gray-900 hover:text-black">
-                Каталог
-              </a>
+            <Link to="/catalog" className="text-gray-900 hover:text-black">
+              Каталог
             </Link>
           </li>
           <li>
@@ -40,7 +37,7 @@ const CatalogDetailsOasis = () => {
             <img src={arrow} alt="" />
           </li>
           <li>
-            <a href="#" className="text-black">
+            <a href="/" className="text-black">
               Категории
             </a>
           </li>

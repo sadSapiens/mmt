@@ -6,6 +6,7 @@ import discovery from "./assets/Discovery.png";
 import message from "./assets/Message.png";
 import call from "./assets/Call.png";
 import logo from "./assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -16,19 +17,15 @@ const Footer = () => {
         <div className="container mx-auto px-2">
           <div className="sm:flex sm:flex-wrap sm:-mx-2 md:py-4 hidden">
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">PRODUCT</h5> */}
               <div className="flex gap-2">
                 <img src={instagram} alt="" />{" "}
                 <span className="text-white">INSTAGRAM</span>
               </div>
               <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a href="/"></a>
-                </li>
+                <li className="mb-2">{/* <a href="/"></a> */}</li>
               </ul>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">Resources</h5> */}
               <div className="flex gap-2">
                 <img src={facebook} alt="" />{" "}
                 <span className="text-white">FACEBOOK</span>
@@ -39,15 +36,14 @@ const Footer = () => {
               </ul>
             </div>
             <div className="px-4 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">About</h5> */}
               <div className="flex gap-2">
                 <img src={message} alt="" />{" "}
                 <span className="text-white">info@mmt.kg</span>
               </div>
               <ul className="list-none footer-links">
                 <li className="mb-2">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
                   >
                     <div className="flex gap-2">
@@ -60,7 +56,7 @@ const Footer = () => {
                         г.Бишкек, пер.Сонкульский, 8
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 </li>
                 <li className="mb-2"></li>
               </ul>
@@ -68,20 +64,20 @@ const Footer = () => {
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
               <div className="flex gap-2 ">
                 <img src={call} alt="" />{" "}
-                <a href="tel:+1234567890 " className="text-white">
+                <a href="/" className="text-white">
                   {" "}
                   0 555 88 35 00{" "}
                 </a>
               </div>
-              <ul className="list-none footer-links">
-                <li className="mb-2 px-4">
-                  <a href="tel:+1234567890 " className="text-white">
+              <ul className="list-none footer-links pl-4">
+                <li className="mb-2 pl-2">
+                  <a href="/" className="text-white">
                     {" "}
                     0 555 88 35 00{" "}
                   </a>
                 </li>
-                <li className="mb-2 px-4">
-                  <a href="tel:+1234567890 " className="text-white">
+                <li className="mb-2 pl-2">
+                  <a href="/" className="text-white">
                     {" "}
                     0 555 88 35 00{" "}
                   </a>
@@ -173,11 +169,6 @@ const Footer = () => {
                 <img src={instagram} alt="" />{" "}
                 <span className="text-white text-lg">INSTAGRAM</span>
               </div>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a href="#"></a>
-                </li>
-              </ul>
             </div>
             <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6 sm:mt-0">
               <div className="flex gap-3">

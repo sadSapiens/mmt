@@ -154,7 +154,7 @@ const Faq = () => {
       <div className="hidden md:flex flex-row basis-1/2">
         <div className="flex  ">
           <img
-            className="h-[30rem] w-[20rem] block object-contain"
+            className="h-[30rem] w-auto block object-contain"
             src={faqImage}
             alt=""
           />

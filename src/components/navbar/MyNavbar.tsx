@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/Vector.png";
-import cart from "../../assets/img/cart.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
 import catalog from "../../assets/img/catalog.png";
@@ -16,7 +15,7 @@ import "./megamenu.css";
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
-  const [openCatalog, setOpenCatalog] = React.useState(false);
+  // const [openCatalog, setOpenCatalog] = React.useState(false);
 
   // const [flyer, setFlyer] = React.useState(false);
   // const [flyerTwo, setFlyerTwo] = React.useState(false);
@@ -28,54 +27,46 @@ const NavBar = () => {
           <div className="flex justify-between">
             <div className=" md:flex items-center flex space-x-4 font-jost">
               <div>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className=" hidden md:flex items-center py-3 px-2 text-white hover:text-gray-900 gap-3"
                 >
                   <img className="" src={location} alt="" />
                   Бишкек
-                </a>
+                </Link>
               </div>
 
               <div className="hidden md:flex items-center space-x-1 font-light">
-                <Link to="/">
-                  <a
-                    href="#"
-                    className="py-3 px-3 text-[#ffffff] hover:text-gray-900"
-                  >
-                    Компания
-                  </a>
+                <Link
+                  to="/"
+                  className="py-3 px-3 text-[#ffffff] hover:text-gray-900"
+                >
+                  Компания
                 </Link>
-                <Link to="/portfolio">
-                  <a
-                    href="#"
-                    className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
-                  >
-                    Портфолио
-                  </a>
+                <Link
+                  to="/portfolio"
+                  className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+                >
+                  Портфолио
                 </Link>
-                <Link to="/blog">
-                  <a
-                    href="#"
-                    className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
-                  >
-                    Блог
-                  </a>
+                <Link
+                  to="/blog"
+                  className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+                >
+                  Блог
                 </Link>
-                <Link to="/contacts">
-                  <a
-                    href="#"
-                    className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
-                  >
-                    Контакты
-                  </a>
+                <Link
+                  to="/contacts"
+                  className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+                >
+                  Контакты
                 </Link>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
                 >
                   FAQ
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -128,18 +119,18 @@ const NavBar = () => {
           <div className="flex justify-between">
             <div className="flex space-x-4">
               <div className="hidden md:flex">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900"
                 >
                   <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
-                </a>
+                </Link>
               </div>
 
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="py-5 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
                   >
                     <div className="flex">

@@ -12,7 +12,7 @@ const Feedback = () => {
           Отзывы
         </span>
       </div>
-      <div className="flex flex-row overflow-x-auto ...  align-middle items-center">
+      <div className="flex flex-row overflow-auto  align-middle items-center">
         <div className="basis-1/2 md:basis-1/3 px-2 flex justify-center align-middle items-center flex-col">
           <img className="rounded-full" src={valentina} alt="" />
           <span className=" flex  text-center">
