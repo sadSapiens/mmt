@@ -44,6 +44,16 @@ const Profile = () => {
     }
   };
 
+  const handleLogout = async (e: any) => {
+    e.preventDefault();
+    try {
+      localStorage.removeItem("token");
+      navigate("/signup");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <div className=" px-2  md:w-auto    py-5  md:bg-red-500 lg:bg-green-500 ">
@@ -62,6 +72,12 @@ const Profile = () => {
                 <img src={settingWhite} alt="" />
               </div>
               Мой профиль
+            </button>
+            <button
+              onClick={handleLogout}
+              className="gap-1 bg-[#1F1F1F] rounded-full ...  flex text-sm items-center  w-auto h-8 px-1 text-white"
+            >
+              Выйти
             </button>
           </div>
         </div>

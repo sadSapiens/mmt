@@ -3,8 +3,9 @@ import "../signup/signup.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import API from "../../constants/api";
+import API, { PUBLIC_API } from "../../constants/api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignInPage = () => {
@@ -27,7 +28,7 @@ const SignInPage = () => {
     e.preventDefault();
 
     try {
-      const res = await API.post("/user/login", {
+      const res = await PUBLIC_API.post("/user/login", {
         email: inputs.email,
         password: inputs.password,
       });
@@ -96,7 +97,9 @@ const SignInPage = () => {
                 </span>
                 <button>Зарегистрироваться</button>
               </div>
-              <button>Забыли пароль?</button>
+              <Link to="/recovery">
+                <button>Забыли пароль?</button>
+              </Link>
             </div>
           </form>
         </div>

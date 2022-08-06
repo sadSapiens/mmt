@@ -88,9 +88,11 @@ const NavBar = () => {
             justify-between
            py-2"
           >
-            <div className="md:hidden flex justify-start">
-              <img className="bg-red flex justify-start" src={logo} alt="" />
-            </div>
+            <Link to="/">
+              <div className="md:hidden flex justify-start">
+                <img className="bg-red flex justify-start" src={logo} alt="" />
+              </div>
+            </Link>
             <div className="flex ">
               <img className="" src={userCircle} alt="" />
               <button
