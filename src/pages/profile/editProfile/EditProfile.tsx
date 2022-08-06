@@ -1,23 +1,64 @@
-import React, { useEffect } from "react";
-import clock from "../room/assets/clock-circle.svg";
-import settings from "../room/assets/settings.png";
-import pencil from "../room/assets/pencil.svg";
-import trash from "../room/assets/trash.svg";
-import trashBlack from "../room/assets/trashBlack.png";
-
-import avatar from "../room/assets/avatar.png";
-
-import settingWhite from "../room/assets/settingWhite.png";
+import React, { useEffect, useState } from "react";
+import clock from "../assets/clock-circle.svg";
+import settings from "../assets/settings.png";
+import pencil from "../assets/pencil.svg";
+import trash from "../assets/trash.svg";
+import trashBlack from "../assets/trashBlack.png";
+import avatar from "../assets/avatar.png";
+import settingWhite from "../assets/settingWhite.png";
+import { useNavigate } from "react-router-dom";
 import API from "../../../constants/api";
 
-const EditProfile = () => {
+const Profile = () => {
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    first_name: "",
+    last_name: "",
+    phone: "",
+    city: "",
+    address: "",
+    company: "",
+    email: "",
+  });
+
   useEffect(() => {
-    const getFunt = async () => {
-      const res = await API.get("/user/profile");
-      console.log(res);
+    const getUserProfile = async () => {
+      try {
+        const res = await API.get("user/profile");
+        console.log(res);
+        setInputs({
+          ...res.data.data,
+        });
+      } catch (e) {
+        console.log(e);
+      }
     };
-    getFunt();
+    getUserProfile();
   }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const res = await API.put("/user/profile", {
+        first_name: inputs.first_name,
+        last_name: inputs.last_name,
+        phone: inputs.phone,
+        city: inputs.city,
+        address: inputs.address,
+        company: inputs.company,
+        email: inputs.email,
+      });
+      navigate("/");
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(inputs);
 
   return (
     <>
@@ -41,7 +82,7 @@ const EditProfile = () => {
           </div>
         </div>
         <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
-          <form className="">
+          <form onSubmit={handleSubmit} className="">
             <div className="flex justify-between py-5 flex-col md:flex-row md:items-center ">
               <div className=" flex justify-center items-center">
                 <img
@@ -64,24 +105,36 @@ const EditProfile = () => {
               <input
                 placeholder="Имя"
                 type="text"
-                // value="tbone"
+                name="first_name"
+                onChange={handleChange}
+                value={inputs.first_name}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
-                rounded-full ...
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              rounded-full ... focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Фамилия"
+                name="last_name"
+                onChange={handleChange}
                 type="text"
-                // value="tbone"
-                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                value={inputs.last_name}
+                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Иван"
                 type="number"
-                // value="tbone"
-                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                name="phone"
+                onChange={handleChange}
+                value={inputs.phone}
+                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+              />
+              <input
+                placeholder="email"
+                type="email"
+                name="email"
+                onChange={handleChange}
+                required
+                value={inputs.email}
+                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
 
               <span className="text-black font-bold flex justify-center">
@@ -90,27 +143,33 @@ const EditProfile = () => {
               <input
                 placeholder="Город"
                 type="text"
-                // value="tbone"
+                name="city"
+                onChange={handleChange}
+                value={inputs.city}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
-                rounded-full ...
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              rounded-full ... focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Адрес"
                 type="text"
-                // value="tbone"
-                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                name="address"
+                onChange={handleChange}
+                value={inputs.address}
+                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Компания"
                 type="text"
-                // value="tbone"
-                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010]
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                name="company"
+                onChange={handleChange}
+                value={inputs.company}
+                className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
             </label>
-            <button className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2">
+            <button
+              type="submit"
+              className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
+            >
               <img src={pencil} alt="" />
               Редактировать
             </button>
@@ -118,36 +177,8 @@ const EditProfile = () => {
         </div>
         {/*  */}
       </div>
-
-      {/* responsive */}
-      {/* <div
-        className="mx-auto px-2 bg-green-500 md:bg-red-500 lg:bg-yellow-500 md:w-auto py-5 md:hidden flex  items-center
-   justify-between   "
-      >
-        <div
-          className="md:hidden flex  items-center
-   justify-between px-2  "
-        >
-          <div>
-            <h1 className="font-bold  text-2xl">Личный кабинет</h1>
-          </div>
-          <div className="flex gap-5">
-            <button className="gap-3 bg-[#1F1F1F] rounded-full ...  flex items-center align-middle w-auto h-10 px-6 text-white">
-              <img src={clock} alt="" />
-              История заказов
-            </button>
-            <button className="gap-3 border border-[black] rounded-full ...  flex items-center align-middle w-auto h-10 px-6 ">
-              <img src={settings} alt="" />
-              Мой профиль
-            </button>
-          </div>
-        </div>
-      </div> */}
-
-      {/* md:hidden flex  items-center
-   justify-between px-2 */}
     </>
   );
 };
 
-export default EditProfile;
+export default Profile;

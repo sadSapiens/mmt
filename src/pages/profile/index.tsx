@@ -7,8 +7,10 @@ import trashBlack from "./assets/trashBlack.png";
 import avatar from "./assets/avatar.png";
 import settingWhite from "./assets/settingWhite.png";
 import API from "../../constants/api";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     surname: "",
@@ -35,6 +37,7 @@ const Profile = () => {
         company: inputs.company,
         email: inputs.email,
       });
+      navigate("/");
       console.log(res);
     } catch (e) {
       console.log(e);
