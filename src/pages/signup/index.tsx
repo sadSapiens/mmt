@@ -73,6 +73,7 @@ const SignUpPage = () => {
               <input
                 type="email"
                 name="email"
+                value={inputs.email}
                 onChange={handleChange}
                 placeholder="Введите почту"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
@@ -83,6 +84,7 @@ const SignUpPage = () => {
               <input
                 type={passwordShown ? "text" : "password"}
                 name="password"
+                value={inputs.password}
                 onChange={handleChange}
                 placeholder="Придумайте пароль"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
@@ -96,6 +98,7 @@ const SignUpPage = () => {
                 className=" bg-[#343434] border border-white rounded-full ... px-3 py-2 w-72 text-white shadow-sm text-sm"
                 placeholder="Повторите пароль"
                 name="confirmPassword"
+                value={inputs.confirmPassword}
                 onChange={handleChange}
                 type={passwordShown ? "text" : "password"}
                 required

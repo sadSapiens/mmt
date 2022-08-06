@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import clock from "../room/assets/clock-circle.svg";
-import settings from "../room/assets/settings.png";
-import pencil from "../room/assets/pencil.svg";
-import trash from "../room/assets/trash.svg";
-import trashBlack from "../room/assets/trashBlack.png";
+import clock from "../assets/clock-circle.svg";
+import settings from "../assets/settings.png";
+import pencil from "../assets/pencil.svg";
+import trash from "../assets/trash.svg";
+import trashBlack from "../assets/trashBlack.png";
+import avatar from "../assets/avatar.png";
 
-import avatar from "../room/assets/avatar.png";
-
-import settingWhite from "../room/assets/settingWhite.png";
+import settingWhite from "../assets/settingWhite.png";
 import API from "../../../constants/api";
 
 const EditProfile = () => {

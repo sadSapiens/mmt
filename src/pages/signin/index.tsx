@@ -54,6 +54,7 @@ const SignInPage = () => {
 
             <div className="pass-wrapper">
               <input
+                value={inputs.email}
                 onChange={handleChange}
                 name="email"
                 type="text"
@@ -67,6 +68,7 @@ const SignInPage = () => {
             <div className="pass-wrapper">
               {" "}
               <input
+                value={inputs.password}
                 onChange={handleChange}
                 className=" bg-[#343434] border border-white rounded-full ... px-3 py-2 w-72 text-white shadow-sm text-sm"
                 placeholder="Введите пароль"
