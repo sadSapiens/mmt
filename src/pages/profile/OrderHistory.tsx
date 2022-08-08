@@ -3,7 +3,6 @@ import clock from "./assets/clock-circle.svg";
 import settings from "./assets/settings.png";
 import orderhistoryphoto from "./assets/orderhistoryphoto.png";
 import settingWhite from "./assets/settingWhite.png";
-import settingWhitew from "./assets/settingWhite.png";
 
 const OrderHistory = () => {
   return (

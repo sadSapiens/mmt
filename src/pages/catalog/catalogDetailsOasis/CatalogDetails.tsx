@@ -13,7 +13,6 @@ import colich from "../assets/colich.png";
 import "./catalogStyle.css";
 
 import { Link } from "react-router-dom";
-import Cards from "../cards/Cards";
 
 const CatalogDetailsOasis = () => {
   return (
@@ -384,12 +383,7 @@ const CatalogDetailsOasis = () => {
         <div className="columns-5"></div>
         <div className="columns-2"></div>
       </div>
-      <div className="flex">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-      </div>
+      <div className="flex"></div>
       {/* <div>
         <CatalogTabs />
       </div> */}

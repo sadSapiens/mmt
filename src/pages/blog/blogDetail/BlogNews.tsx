@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import newspoto from "../assets/blognew.png";
 
 const BlogNews = () => {
-  const [info, setInfo] = useState("");
-
   return (
     <div className="mx-auto px-9   w-auto py-5 font-jost">
       <div className="flex flex-col md:flex-row justify-between">

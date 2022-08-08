@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import blognew from "../assets/blognew.png";
 import cap from "../assets/cap.png";
 import left from "../assets/arrow-left.svg";
 import right from "../assets/arrow-right.svg";
 import interesting from "../assets/interesting.png";
-import { PUBLIC_API } from "../../../constants/api";
 
 const BlogDetail = () => {
   return (

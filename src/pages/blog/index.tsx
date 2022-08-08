@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import newsone from "./assets/newsone.png";
 import newstwo from "./assets/newsyellow.png";
 import newsthree from "./assets/newsthree.png";
 import BlogNews from "./blogDetail/BlogNews";
 import search from "./assets/search.png";
+import { useAppDispatch } from "../../store";
+import { useBlogNews } from "../../store/varia/hooks";
+import { fetchBlogInfo } from "../../store/varia";
 
 const Blog = () => {
+  const dispatch = useAppDispatch();
+  const blogNews = useBlogNews();
+  useEffect(() => {
+    dispatch(fetchBlogInfo() as any);
+  }, []);
+  console.log(blogNews);
   return (
     <>
       <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center">

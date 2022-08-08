@@ -1,32 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import perizatT from "./assets/perizat.png";
 import bermet from "./assets/bermet.png";
 import aidai from "./assets/aidai.png";
 import zhyldyz from "./assets/zhyldyz.png";
 import logo from "./assets/logo.png";
 import call from "./assets/call.png";
-import about from "./assets/about.png";
+import aboutImage from "./assets/about.png";
 import mail from "./assets/Message.png";
-import { PUBLIC_API } from "../../constants/api";
+import { useAppDispatch } from "../../store";
+import { useAbout } from "../../store/varia/hooks";
+import { fetchBlogInfo } from "../../store/varia";
 
 const About = () => {
-  // const [info, setInfo] = useState({
-  //   description: "",
-  //   picture: "",
-  // });
-
-  // setInfo({ ...info });
-
-  // const mainInfo = async () => {
-  //   try {
-  //     const res = await PUBLIC_API.get("/about_us");
-
-  //     console.log(res);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
+  const dispatch = useAppDispatch();
+  const about = useAbout();
+  useEffect(() => {
+    dispatch(fetchBlogInfo() as any);
+  }, []);
+  console.log(about, "about");
   return (
     <div className=" text-white ">
       <div className="bg-white w-auto h-2"></div>
@@ -67,9 +58,9 @@ const About = () => {
             </button>
           </div>
         </div>
-        <div className=" md:w-4/12 md:top-72 md:right-8 w-auto top-[60rem] absolute">
+        <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
           <img
-            src={about}
+            src={aboutImage}
             className="md:h-[33rem] md:w-[25rem] h-auto w-72"
             alt=""
           />

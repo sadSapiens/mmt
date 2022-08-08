@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/img/logo.svg";
 import search from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
@@ -8,7 +8,7 @@ import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MegaMenu from "./MegaMenu";
 
 import "./megamenu.css";
@@ -16,11 +16,19 @@ import "./megamenu.css";
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const [isExpanded, toggleExpansion] = React.useState(false);
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
-  // const [openCatalog, setOpenCatalog] = React.useState(false);
-
-  // const [flyer, setFlyer] = React.useState(false);
-  // const [flyerTwo, setFlyerTwo] = React.useState(false);
+  const [isLogged, setIsLogged] = useState(!false);
+  const handleLogout = async (e: any) => {
+    e.preventDefault();
+    try {
+      localStorage.removeItem("token");
+      navigate("/signup");
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -106,22 +114,6 @@ const NavBar = () => {
                 // onClick={() => setOpen(!open)}
                 onClick={() => toggleExpansion(!isExpanded)}
               >
-                {/* <i className="fa fa-bars"></i> */}
-                {/* <svg
-                  className="w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg> */}
-
                 <div className="space-y-2">
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
@@ -182,11 +174,22 @@ const NavBar = () => {
               <Link to="/signup">
                 <button className="text-white">Регистрация</button>
               </Link>
-              <Link to="/signin">
-                <button className="rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
-                  Войти
-                </button>
-              </Link>
+              <div>
+                {!token ? (
+                  <Link to="/signin">
+                    <button className=" rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
+                      Войти
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleLogout}
+                    className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                  >
+                    Выйти
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 

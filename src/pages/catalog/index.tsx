@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
 import { useCatalogProducts } from "../../store/catalog/hooks";
+import CardsRow from "./cards/CardsRow";
 
 const CatalogPage = () => {
   const dispatch = useAppDispatch();
@@ -762,19 +763,15 @@ const CatalogPage = () => {
             <Filters />
           </div>
           <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
+            {catalogProducts.map((item) => (
+              <Cards product={item} />
+            ))}
           </div>
-          {/* <div className=" w-[100%] flex justify-center">
-          <CardsRow />
-        </div> */}
+          {/* <div className=" w-[100%] flex justify-center flex-col items-center">
+            {catalogProducts.map((item) => (
+              <CardsRow product={item} />
+            ))}
+          </div> */}
         </div>
       </div>
     </div>
