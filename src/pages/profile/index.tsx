@@ -154,8 +154,7 @@ const Profile = () => {
               type="submit"
               className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
             >
-              <img src={pencil} alt="" />
-              Редактировать
+              Сохранить
             </button>
           </form>
         </div>
