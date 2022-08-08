@@ -9,13 +9,16 @@ import Cards from "./cards/Cards";
 import { Link } from "react-router-dom";
 import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
+import { useCatalogProducts } from "../../store/catalog/hooks";
 
 const CatalogPage = () => {
   const dispatch = useAppDispatch();
+  const catalogProducts = useCatalogProducts();
   useEffect(() => {
     dispatch(fetchCatalogProducts() as any);
     console.log(1);
   }, []);
+  console.log(catalogProducts);
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">

@@ -7,7 +7,7 @@ export const fetchCatalogProducts = () => async (dispatch: Dispatch) => {
     const res: any = await API.get("/products/all");
     console.log(res);
 
-    dispatch(fetchCatalogSuccess(res.data));
+    dispatch(fetchCatalogSuccess(res.data.data));
   } catch (e) {
     console.log(e);
   }
