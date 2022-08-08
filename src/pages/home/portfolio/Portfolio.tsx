@@ -31,7 +31,7 @@ const Portfolio = () => {
             <div className=" flex items-center">1000+ довольных клиентов</div>
           </div>
         </div>
-        <div className="flex gap-5 flex-col md:flex-row justify-center items-center">
+        <div className="w-[100%] flex gap-5 flex-col md:flex-row justify-center items-center">
           <div className="bg-black h-10 w-10 rounded-full ... flex justify-center items-center">
             <img className="object-center h-7 w-7" src={category} alt="" />
           </div>

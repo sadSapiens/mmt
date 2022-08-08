@@ -1,8 +1,8 @@
 import React from "react";
-import heart from "./heart.png";
-import calendar from "./calendar.svg";
-import client from "./client.png";
-import bag from "./bag.png";
+import heart from "./catalog-images/heart.png";
+import calendar from "./catalog-images/calendar.svg";
+import client from "./catalog-images/client.png";
+import bag from "./catalog-images/bag.png";
 
 import one from "./catalog-images/one.png";
 import two from "./catalog-images/two.png";
@@ -18,26 +18,24 @@ import arrow from "./catalog-images/arrow.svg";
 const Catalog = () => {
   return (
     <div className="container mx-auto px-4 ">
-      <div className="flex flex-col md:flex-row mt-6 justify-center text-center  items-center align-middle  py-5 h-28">
-        <div className="flex">
-          <span className="font-semibold text-black  text-bold text-center flex">
-            Каталог
-          </span>
-        </div>
-        <div className="flex flex-row gap-4 md:overflow-auto overflow-scroll h-8  ">
-          <button className=" flex w-16 align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-5 text-white text-center">
+      <div className="flex flex-col md:flex-row mt-3 justify-center text-center  items-center align-middle  py-2 ">
+        <span className="  py-2 font-semibold text-black text-bold text-center ">
+          Каталог
+        </span>
+        <div className="flex flex-row gap-4 md:overflow-auto overflow-scroll h-8  justify-start md:justify-center px-4 w-full md:w-auto">
+          <button className=" flex   align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-3 text-white text-center text-xs md:text-base ">
             <img className=" flex px-2" src={heart} alt="" />
             Тренды
           </button>
-          <button className=" flex align-middle items-center rounded-full ... border-black border p-1 px-7 text-black">
+          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={calendar} alt="" />
             По праздникам
           </button>
-          <button className=" flex align-middle items-center rounded-full ... border-black border p-1 px-7 text-black">
+          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={client} alt="" />
             По клиентам
           </button>
-          <button className=" flex align-middle items-center rounded-full ... border-black border p-1 px-7 text-black">
+          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={bag} alt="" />
             По секторам
           </button>
