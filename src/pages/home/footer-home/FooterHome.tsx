@@ -132,10 +132,10 @@ const FooterHome = () => {
                 <img src={beeline} className="w-auto h-8" alt="" />
               </div>
 
-              <div className="flex justify-between py-2 gap-2">
-                <img src={bakaibank} className=" w-auto h-8" alt="" />
+              <div className=" flex justify-between items-center py-2 gap-2">
+                <img src={bakaibank} className=" w-28 h-5" alt="" />
                 <img src={gazprom} className="w-auto h-8" alt="" />
-                <img src={cocaCola} className="w-auto h-8" alt="" />
+                <img src={cocaCola} className="w-20 h-8" alt="" />
               </div>
 
               <div className="flex justify-between py-2 gap-2">
@@ -147,7 +147,7 @@ const FooterHome = () => {
               <div className="flex justify-between py-2 gap-2">
                 <img src={aiyl} className="w-auto h-5" alt="" />
                 <img src={halyk} alt="" className="w-auto h-5" />
-                <img src={unodc} className="w-auto h-5" alt="" />
+                <img src={unodc} className="w-20 h-5" alt="" />
               </div>
 
               <div className="flex justify-between py-2 gap-2">
