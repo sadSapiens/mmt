@@ -79,7 +79,7 @@ const FooterHome = () => {
             <img src={gazprom} className="object-cover h-14 block" alt="" />
             <img src={bakai} className=" object-cover h-10 block" alt="" />
           </div>
-          <div className="flex pl-5 h-14 gap-5 items-center py-2">
+          <div className="flex pl-5 h-14 gap-3 items-center py-2">
             <img src={huawei} alt="" />
             <img src={kompanion} alt="" />
           </div>

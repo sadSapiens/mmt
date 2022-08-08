@@ -151,7 +151,7 @@ const Faq = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex flex-row basis-1/2">
+      <div className="hidden md:flex flex-row basis-1/2 relative">
         <div className="flex  ">
           <img
             className="h-[30rem] w-auto block object-contain"
@@ -168,7 +168,7 @@ const Faq = () => {
 
         <img
           src={calling}
-          className="absolute flex  justify-end items-end "
+          className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
           alt=""
         />
       </div>

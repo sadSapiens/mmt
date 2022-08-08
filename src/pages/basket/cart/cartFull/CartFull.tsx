@@ -511,14 +511,6 @@ const CartFull = () => {
         </div>
         {/*  */}
       </div>
-
-      {/* <div className="p-10 text-2xl font-mono">
-        <div className="flex flex-nowrap gap-2 w-full items-baseline p-2">
-          <div className="flex-grow-0 flex-shrink-0 text-lg">Ein Wort</div>
-          <div className="flex-grow border-b-2 border-black border-dotted"></div>
-          <div className="flex-grow-0 flex-shrink-0">Ein anderes Wort</div>
-        </div>
-      </div> */}
     </div>
   );
 };

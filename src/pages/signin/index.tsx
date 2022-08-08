@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { PUBLIC_API } from "../../constants/api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignInPage = () => {
@@ -96,7 +97,9 @@ const SignInPage = () => {
                 </span>
                 <button>Зарегистрироваться</button>
               </div>
-              <button>Забыли пароль?</button>
+              <Link to="/recovery">
+                <button>Забыли пароль?</button>
+              </Link>
             </div>
           </form>
         </div>

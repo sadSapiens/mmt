@@ -7,9 +7,8 @@ import store from "../store";
 import About from "./aboutus";
 import Basket from "./basket";
 import CartFull from "./basket/cart/cartFull/CartFull";
-// import CartModal from "./basket/cart/cartModal/CartModal";
 import Blog from "./blog";
-import BlogIndex from "./blog/blogDetail";
+import BlogDetail from "./blog/blogDetail";
 import CatalogPage from "./catalog/index";
 import CatalogDetailsHiidea from "./catalog/catalogDetailsHiidea/CatalogDetails";
 import CatalogDetailsOasis from "./catalog/catalogDetailsOasis/CatalogDetails";
@@ -19,7 +18,7 @@ import Redirect from "./redirectPage";
 import SignInPage from "./signin";
 import SignUpPage from "./signup";
 import Portfolio from "./portfolio";
-import Recovery from "./recovery";
+import Recovery from "./signin/Recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
 import OrderHistory from "./profile/OrderHistory";
 import EditProfile from "./profile/editProfile/EditProfile";
@@ -53,7 +52,7 @@ function App() {
               element={<CatalogDetailsHiidea />}
             />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blogdetail" element={<BlogIndex />} />
+            <Route path="/blogdetail" element={<BlogDetail />} />
             <Route path="/historyorder" element={<OrderHistory />} />
             {/* <Route path="*" element={<Redirect />} /> */}
           </Routes>
