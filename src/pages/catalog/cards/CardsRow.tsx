@@ -1,17 +1,45 @@
 import React from "react";
-import image from "../assets/card-image.png";
 import shopbag from "../assets/shopbag.png";
 
-const CardsRow = () => {
+interface IProduct {
+  id: string;
+  color: {
+    hex_code: any;
+    id: number;
+    name: string;
+  };
+  images: [
+    {
+      big: string;
+      small: string;
+      superbig: string;
+    }
+  ];
+}
+interface Props {
+  product: {
+    article: string;
+    colors: IProduct[];
+    id: string;
+    name: string;
+    price: number;
+    total_stock: number;
+  };
+}
+const CardsRow = ({ product }: Props) => {
   return (
     <div className="py-7 flex justify-center  w-11/12">
       <div className=" border border-black w-[100%] flex justify-between">
         <div className=" flex w-3/12">
-          <img className="w-[100%]" src={image} alt="" />
+          <img
+            className="w-[100%]"
+            src={product.colors[0].images[0].small}
+            alt=""
+          />
         </div>
         <div className="w-6/12 flex flex-col justify-center">
           <h4 className="w-6/12 font-jost font-medium text-black">
-            Гелиевая ручка «Montreal»
+            {product.name}
           </h4>
           {/*  */}
           {/* <div className="flex flex-wrap break-all flex-col md:flex-row justify-center items-center px-1 ">
@@ -27,13 +55,13 @@ const CardsRow = () => {
           <div className="flex justify-between">
             <div className="flex flex-col justify-start px-5 flex-start items-start">
               <span>WASS. Гелиевая ручка</span>
-              <span>Остаток: 230</span>
-              <h5 className="">Код товара: 1050</h5>
+              <span> Остаток: {product.total_stock}</span>
+              <h5 className=""> Код товара: {product.article}</h5>
             </div>
             <div className="flex justify-end items-end gap-3">
               <div className="flex ">
                 <span className="font-light">Цена:</span>
-                <b>650 C</b>
+                <b>{product.price} C</b>
               </div>
               <div>
                 <div className="w-10 h-10 bg-[#343434] rounded-full ... flex justify-center items-center">

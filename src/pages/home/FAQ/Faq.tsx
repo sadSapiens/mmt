@@ -32,18 +32,19 @@ const Faq = () => {
                   Вы можете оформить на сайте заказ суммой не менее 5000 рублей.
                   В сезон, с октября по декабрь, минимальная сумма заказа
                   увеличивается.
-                  <p className="py-2">
-                    Если вы приобретаете продукцию без нанесения логотипов,
-                    тираж для каждого выбранного товара в рамках этой
-                    минимальной суммы может быть любым.
-                  </p>
-                  <p>
-                    Для некоторых товаров, поставляемых только упаковками,
-                    существует ограничение по минимальной партии. Для товаров с
-                    печатью приняты технологические ограничения по минимальному
-                    тиражу. Информация о таких ограничениях появляется в
-                    подсказках сайта при оформлении заказа.
-                  </p>
+                </p>
+
+                <p className="py-2">
+                  Если вы приобретаете продукцию без нанесения логотипов, тираж
+                  для каждого выбранного товара в рамках этой минимальной суммы
+                  может быть любым.
+                </p>
+                <p>
+                  Для некоторых товаров, поставляемых только упаковками,
+                  существует ограничение по минимальной партии. Для товаров с
+                  печатью приняты технологические ограничения по минимальному
+                  тиражу. Информация о таких ограничениях появляется в
+                  подсказках сайта при оформлении заказа.
                 </p>
               </div>
             </div>
@@ -150,24 +151,24 @@ const Faq = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex flex-row basis-1/2">
+      <div className="hidden md:flex flex-row basis-1/2 relative">
         <div className="flex  ">
           <img
-            className="h-[30rem] w-[20rem] block object-contain"
+            className="h-[30rem] w-auto block object-contain"
             src={faqImage}
             alt=""
           />
         </div>
         <label
           htmlFor=""
-          className="absolute   flex top-[168rem] right-32 text-white font-jost font-semibold"
+          className="absolute   flex top-[22rem] right-[6rem] text-white font-jost font-semibold"
         >
           СВЯЗАТЬСЯ
         </label>
 
         <img
           src={calling}
-          className="absolute flex  justify-end items-end "
+          className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
           alt=""
         />
       </div>

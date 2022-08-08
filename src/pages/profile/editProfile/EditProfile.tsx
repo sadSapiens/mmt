@@ -1,25 +1,40 @@
-import React, { useState } from "react";
-import clock from "./assets/clock-circle.svg";
-import settings from "./assets/settings.png";
-import pencil from "./assets/pencil.svg";
-import trash from "./assets/trash.svg";
-import trashBlack from "./assets/trashBlack.png";
-import avatar from "./assets/avatar.png";
-import settingWhite from "./assets/settingWhite.png";
-import API from "../../constants/api";
+import React, { useEffect, useState } from "react";
+import clock from "../assets/clock-circle.svg";
+import settings from "../assets/settings.png";
+import pencil from "../assets/pencil.svg";
+// import trash from "../assets/trash.svg";
+import trashBlack from "../assets/trashBlack.png";
+import avatar from "../assets/avatar.png";
+import settingWhite from "../assets/settingWhite.png";
 import { useNavigate } from "react-router-dom";
+import API from "../../../constants/api";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    name: "",
-    surname: "",
-    phoneNumber: "",
+    first_name: "",
+    last_name: "",
+    phone: "",
     city: "",
     address: "",
     company: "",
     email: "",
   });
+
+  useEffect(() => {
+    const getUserProfile = async () => {
+      try {
+        const res = await API.get("user/profile");
+        console.log(res);
+        setInputs({
+          ...res.data.data,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getUserProfile();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -28,10 +43,10 @@ const Profile = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const res = await API.post("/user/profile", {
-        first_name: inputs.name,
-        last_name: inputs.surname,
-        phone: inputs.phoneNumber,
+      const res = await API.put("/user/profile", {
+        first_name: inputs.first_name,
+        last_name: inputs.last_name,
+        phone: inputs.phone,
         city: inputs.city,
         address: inputs.address,
         company: inputs.company,
@@ -43,16 +58,7 @@ const Profile = () => {
       console.log(e);
     }
   };
-
-  const handleLogout = async (e: any) => {
-    e.preventDefault();
-    try {
-      localStorage.removeItem("token");
-      navigate("/signup");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  console.log(inputs);
 
   return (
     <>
@@ -72,12 +78,6 @@ const Profile = () => {
                 <img src={settingWhite} alt="" />
               </div>
               Мой профиль
-            </button>
-            <button
-              onClick={handleLogout}
-              className="gap-1 bg-[#1F1F1F] rounded-full ...  flex text-sm items-center  w-auto h-8 px-1 text-white"
-            >
-              Выйти
             </button>
           </div>
         </div>
@@ -105,26 +105,26 @@ const Profile = () => {
               <input
                 placeholder="Имя"
                 type="text"
-                name="name"
+                name="first_name"
                 onChange={handleChange}
-                // value="tbone"
+                value={inputs.first_name}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
               rounded-full ... focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Фамилия"
-                name="surname"
+                name="last_name"
                 onChange={handleChange}
                 type="text"
-                // value="tbone"
+                value={inputs.last_name}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
                 placeholder="Иван"
                 type="number"
-                name="phoneNumber"
+                name="phone"
                 onChange={handleChange}
-                // value="tbone"
+                value={inputs.phone}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
@@ -133,7 +133,7 @@ const Profile = () => {
                 name="email"
                 onChange={handleChange}
                 required
-                // value="tbone"
+                value={inputs.email}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
 
@@ -145,7 +145,7 @@ const Profile = () => {
                 type="text"
                 name="city"
                 onChange={handleChange}
-                // value="tbone"
+                value={inputs.city}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black text-sm shadow-sm placeholder-[#101010]
               rounded-full ... focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
@@ -154,7 +154,7 @@ const Profile = () => {
                 type="text"
                 name="address"
                 onChange={handleChange}
-                // value="tbone"
+                value={inputs.address}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
               <input
@@ -162,7 +162,7 @@ const Profile = () => {
                 type="text"
                 name="company"
                 onChange={handleChange}
-                // value="tbone"
+                value={inputs.company}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-black rounded-full ... text-sm shadow-sm placeholder-[#101010] focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               />
             </label>
@@ -170,7 +170,8 @@ const Profile = () => {
               type="submit"
               className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
             >
-              Сохранить
+              <img src={pencil} alt="" />
+              Редактировать
             </button>
           </form>
         </div>

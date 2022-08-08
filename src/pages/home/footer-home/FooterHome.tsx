@@ -79,7 +79,7 @@ const FooterHome = () => {
             <img src={gazprom} className="object-cover h-14 block" alt="" />
             <img src={bakai} className=" object-cover h-10 block" alt="" />
           </div>
-          <div className="flex pl-5 h-14 gap-5 items-center py-2">
+          <div className="flex pl-5 h-14 gap-3 items-center py-2">
             <img src={huawei} alt="" />
             <img src={kompanion} alt="" />
           </div>
@@ -92,19 +92,19 @@ const FooterHome = () => {
 
       {/*  */}
 
-      <div className="flex justify-between flex-col bg-[#484848] mx-auto    w-auto py-5">
+      <div className="md:hidden flex justify-between flex-col bg-[#484848] mx-auto    w-auto py-5">
         <div className="flex justify-center align-middle items-center flex-col md:w-4/12  ">
           <div className=" flex justify-center items-center ">
             <img
               src={logo}
-              className=" absolute  md:top-1  w-28 h-auto "
+              className="md:hidden absolute  md:top-1  w-28 h-auto "
               alt=""
             />
           </div>
 
           <img
             src={ellipse}
-            className="relative md:hidden flex justify-center items-center h-[35rem] w-[30rem] pt-10 "
+            className="relative md:hidden flex justify-center items-center md:h-[35rem] w-md:[30rem] pt-10 "
             alt=""
           />
           <form className=" md:hidden top-[-30rem] flex justify-start items-center relative md:justify-center md:items-center flex-col">
@@ -170,17 +170,15 @@ const FooterHome = () => {
         </div>
       </div>
       {/*  */}
-      <div className="">
-        <div className="hidden md:flex font-jost justify-between bg-[#484848] text-white  mx-auto px-9   w-auto py-5">
-          <h1 className="font-bold	 text-4xl">
-            <span>
-              1000+ довольных <br /> клиентов
-            </span>
-          </h1>
-          <span className="font-bold text-4xl">
-            9+ лет <br /> опыта
+      <div className="hidden md:flex font-jost justify-between bg-[#484848] text-white  mx-auto px-9   w-auto py-5">
+        <h1 className="font-bold	 text-4xl">
+          <span>
+            1000+ довольных <br /> клиентов
           </span>
-        </div>
+        </h1>
+        <span className="font-bold text-4xl">
+          9+ лет <br /> опыта
+        </span>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 import React from "react";
-import Cart from "./cart/Cart";
+import CartFull from "./cart/cartFull/CartFull";
 
 const Basket = () => {
   return (
     <div>
-      <Cart />
+      <CartFull />
     </div>
   );
 };

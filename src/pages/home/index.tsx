@@ -12,11 +12,7 @@ const Home = () => {
   return (
     <>
       <div className="font-jost">
-        {/* slide */}
-        <div>
-          <Slider />
-        </div>
-        {/* //slide */}
+        <Slider />
         <Catalog />
         <Portfolio />
         <Whyus />

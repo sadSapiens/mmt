@@ -1,9 +1,8 @@
 import React from "react";
-import clock from "../room/assets/clock-circle.svg";
-import settings from "../room/assets/settings.png";
-import orderhistoryphoto from "../room/assets/orderhistoryphoto.png";
-
-import settingWhite from "../room/assets/settingWhite.png";
+import clock from "./assets/clock-circle.svg";
+import settings from "./assets/settings.png";
+import orderhistoryphoto from "./assets/orderhistoryphoto.png";
+import settingWhite from "./assets/settingWhite.png";
 
 const OrderHistory = () => {
   return (

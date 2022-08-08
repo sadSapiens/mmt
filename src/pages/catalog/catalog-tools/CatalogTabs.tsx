@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "../style.css";
 import Tabs from "../catalog-tabs/Tabs";
 // Tabs Components
 import TabOne from "../catalog-tabs/TabOne";
