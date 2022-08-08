@@ -7,4 +7,5 @@ export interface Store {
   catalog: ICatalogState;
   blog: IVariaState;
   about: IVariaState;
+  portfolio: IVariaState;
 }

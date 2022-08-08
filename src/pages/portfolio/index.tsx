@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import heart from "./assets/love.svg";
 import calendar from "./assets/calendar.svg";
 import client from "./assets/client.png";
@@ -12,8 +12,18 @@ import five from "./assets/five.png";
 import six from "./assets/six.png";
 import seven from "./assets/seven.png";
 import eight from "./assets/eight.png";
+import { useAppDispatch } from "../../store";
+import { usePortfolio } from "../../store/varia/hooks";
+import { fetchPortfolio } from "../../store/varia";
 
 const Portfolio = () => {
+  const dispatch = useAppDispatch();
+  const portfolio = usePortfolio();
+  useEffect(() => {
+    dispatch(fetchPortfolio() as any);
+  }, []);
+  console.log(portfolio, "portfolio");
+
   return (
     <div className="mx-auto md:px-9 px-6   w-auto py-5">
       <div>

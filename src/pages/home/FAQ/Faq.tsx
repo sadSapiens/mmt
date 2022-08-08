@@ -161,7 +161,7 @@ const Faq = () => {
         </div>
         <label
           htmlFor=""
-          className="absolute   flex top-[168rem] right-32 text-white font-jost font-semibold"
+          className="absolute   flex top-[22rem] right-[6rem] text-white font-jost font-semibold"
         >
           СВЯЗАТЬСЯ
         </label>

@@ -104,7 +104,7 @@ const FooterHome = () => {
 
           <img
             src={ellipse}
-            className="relative md:hidden flex justify-center items-center h-[35rem] w-[30rem] pt-10 "
+            className="relative md:hidden flex justify-center items-center md:h-[35rem] w-md:[30rem] pt-10 "
             alt=""
           />
           <form className=" md:hidden top-[-30rem] flex justify-start items-center relative md:justify-center md:items-center flex-col">

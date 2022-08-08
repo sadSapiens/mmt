@@ -18,7 +18,7 @@ import arrow from "./catalog-images/arrow.svg";
 const Catalog = () => {
   return (
     <div className="container mx-auto px-4 ">
-      <div className="flex flex-col md:flex-row mt-3 justify-center text-center  items-center align-middle  py-2 ">
+      <div className="flex flex-col md:flex-row mt-3 justify-start text-center  items-center align-middle  py-2 ">
         <span className="  py-2 font-semibold text-black text-bold text-center ">
           Каталог
         </span>

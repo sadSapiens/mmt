@@ -7,3 +7,6 @@ export const useBlogNews = (): [] => {
 export const useAbout = (): [] => {
   return useSelector((state: Store) => state.about.about);
 };
+export const usePortfolio = (): [] => {
+  return useSelector((state: Store) => state.portfolio.portfolio);
+};
