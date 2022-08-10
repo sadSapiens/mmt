@@ -44,19 +44,19 @@ const Profile = () => {
     }
   };
 
-  const handleLogout = async (e: any) => {
-    e.preventDefault();
-    try {
-      localStorage.removeItem("token");
-      navigate("/signup");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const handleLogout = async (e: any) => {
+  //   e.preventDefault();
+  //   try {
+  //     localStorage.removeItem("token");
+  //     navigate("/signup");
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   return (
     <>
-      <div className=" px-2  md:w-auto    py-5  md:bg-red-500 lg:bg-green-500 ">
+      <div className=" px-2  md:w-auto    py-5   ">
         <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
           <div>
             <h1 className="font-bold  text-2xl">Личный кабинет</h1>
@@ -73,12 +73,12 @@ const Profile = () => {
               </div>
               Мой профиль
             </button>
-            <button
+            {/* <button
               onClick={handleLogout}
               className="gap-1 bg-[#1F1F1F] rounded-full ...  flex text-sm items-center  w-auto h-8 px-1 text-white"
             >
               Выйти
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
@@ -91,7 +91,7 @@ const Profile = () => {
                   className="w-32 h-32 flex justify-center "
                 />
               </div>
-              <div className="flex flex-row justify-center gap-2 w-auto text-sm  md:flex-col">
+              <div className="flex flex-row justify-center gap-2 w-auto text-sm  md:!flex-col">
                 <button className="border border-[#79B15E] text-[#79B15E] rounded-full ... py-1 px-1 ">
                   Изменить фото
                 </button>

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import search from "./assets/search.png";
 import rightarrow from "./assets/rightarrow.png";
-import schema from "./assets/schema.png";
-import list from "./assets/list.png";
+import schema from "./assets/schema.svg";
+import list from "./assets/list.svg";
 import "./style.css";
 import Filters from "./filters/Filters";
 import Cards from "./cards/Cards";
@@ -13,13 +13,15 @@ import { useCatalogProducts } from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
 
 const CatalogPage = () => {
+  const [row, setRow] = useState("row");
+
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
   useEffect(() => {
     dispatch(fetchCatalogProducts() as any);
     console.log(1);
   }, []);
-  console.log(catalogProducts);
+  console.log(row);
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
@@ -52,7 +54,9 @@ const CatalogPage = () => {
             <Filters />
           </div>
           <div className="flex justify-center items-center gap-3 w-4/12">
-            <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
+            <button
+              className={`bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2 `}
+            >
               <img src={schema} className="h-auto w-auto  flex" alt="" />
               <span className="hidden md:flex">Схема</span>
             </button>
@@ -63,12 +67,48 @@ const CatalogPage = () => {
           </div>
         </div>
         <div className=" hidden md:flex justify-center items-center gap-3 w-6/12">
-          <button className="bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2">
-            <img src={schema} className="h-auto w-auto  flex" alt="" />
+          <button
+            onClick={() => setRow("row")}
+            className={`${
+              row === "row" ? "bg-black text-white " : "bg-white text-black"
+            } border-gray-900 border-2  h-auto flex md:flex rounded-full ... w-auto px-3 items-center py-2 gap-2`}
+          >
+            {/* <img src={schema} className="h-auto w-auto  flex" alt="" /> */}
+
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 2.75H8V1.25H4V2.75ZM9.25 4V8H10.75V4H9.25ZM8 9.25H4V10.75H8V9.25ZM2.75 8V4H1.25V8H2.75ZM4 9.25C3.30964 9.25 2.75 8.69036 2.75 8H1.25C1.25 9.51878 2.48122 10.75 4 10.75V9.25ZM9.25 8C9.25 8.69036 8.69036 9.25 8 9.25V10.75C9.51878 10.75 10.75 9.51878 10.75 8H9.25ZM8 2.75C8.69036 2.75 9.25 3.30964 9.25 4H10.75C10.75 2.48122 9.51878 1.25 8 1.25V2.75ZM4 1.25C2.48122 1.25 1.25 2.48122 1.25 4H2.75C2.75 3.30964 3.30964 2.75 4 2.75V1.25ZM16 2.75H20V1.25H16V2.75ZM21.25 4V8H22.75V4H21.25ZM20 9.25H16V10.75H20V9.25ZM14.75 8V4H13.25V8H14.75ZM16 9.25C15.3096 9.25 14.75 8.69036 14.75 8H13.25C13.25 9.51878 14.4812 10.75 16 10.75V9.25ZM21.25 8C21.25 8.69036 20.6904 9.25 20 9.25V10.75C21.5188 10.75 22.75 9.51878 22.75 8H21.25ZM20 2.75C20.6904 2.75 21.25 3.30964 21.25 4H22.75C22.75 2.48122 21.5188 1.25 20 1.25V2.75ZM16 1.25C14.4812 1.25 13.25 2.48122 13.25 4H14.75C14.75 3.30964 15.3096 2.75 16 2.75V1.25ZM4 14.75H8V13.25H4V14.75ZM9.25 16V20H10.75V16H9.25ZM8 21.25H4V22.75H8V21.25ZM2.75 20V16H1.25V20H2.75ZM4 21.25C3.30964 21.25 2.75 20.6904 2.75 20H1.25C1.25 21.5188 2.48122 22.75 4 22.75V21.25ZM9.25 20C9.25 20.6904 8.69036 21.25 8 21.25V22.75C9.51878 22.75 10.75 21.5188 10.75 20H9.25ZM8 14.75C8.69036 14.75 9.25 15.3096 9.25 16H10.75C10.75 14.4812 9.51878 13.25 8 13.25V14.75ZM4 13.25C2.48122 13.25 1.25 14.4812 1.25 16H2.75C2.75 15.3096 3.30964 14.75 4 14.75V13.25ZM16 14.75H20V13.25H16V14.75ZM21.25 16V20H22.75V16H21.25ZM20 21.25H16V22.75H20V21.25ZM14.75 20V16H13.25V20H14.75ZM16 21.25C15.3096 21.25 14.75 20.6904 14.75 20H13.25C13.25 21.5188 14.4812 22.75 16 22.75V21.25ZM21.25 20C21.25 20.6904 20.6904 21.25 20 21.25V22.75C21.5188 22.75 22.75 21.5188 22.75 20H21.25ZM20 14.75C20.6904 14.75 21.25 15.3096 21.25 16H22.75C22.75 14.4812 21.5188 13.25 20 13.25V14.75ZM16 13.25C14.4812 13.25 13.25 14.4812 13.25 16H14.75C14.75 15.3096 15.3096 14.75 16 14.75V13.25Z"
+                fill={row === "row" ? "white" : "black"}
+              />
+            </svg>
+
             <span className="hidden md:flex">Схема</span>
           </button>
-          <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
-            <img src={list} alt="" />
+          <button
+            onClick={() => setRow("column")}
+            className={`${
+              row !== "row" ? "bg-black text-white " : "bg-white text-black"
+            } border-gray-900 border-2 h-auto flex md:flex rounded-full ... w-auto px-3 items-center py-2 gap-2`}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 18H22.75H22ZM18 22V21.25V22ZM18 2V1.25V2ZM22 6H21.25H22ZM2 6H1.25H2ZM6 2V2.75V2ZM2 18H1.25H2ZM6 22V22.75V22ZM2 15.25C1.58579 15.25 1.25 15.5858 1.25 16C1.25 16.4142 1.58579 16.75 2 16.75L2 15.25ZM22 16.75C22.4142 16.75 22.75 16.4142 22.75 16C22.75 15.5858 22.4142 15.25 22 15.25V16.75ZM6 2.75L18 2.75V1.25L6 1.25V2.75ZM18 21.25H6V22.75H18V21.25ZM21.25 18C21.25 19.7949 19.7949 21.25 18 21.25V22.75C20.6234 22.75 22.75 20.6234 22.75 18H21.25ZM18 2.75C19.7949 2.75 21.25 4.20508 21.25 6H22.75C22.75 3.37665 20.6234 1.25 18 1.25V2.75ZM2.75 6C2.75 4.20507 4.20508 2.75 6 2.75V1.25C3.37665 1.25 1.25 3.37665 1.25 6H2.75ZM1.25 18C1.25 20.6234 3.37665 22.75 6 22.75V21.25C4.20507 21.25 2.75 19.7949 2.75 18H1.25ZM2 16.75L22 16.75V15.25L2 15.25L2 16.75ZM2.75 18L2.75 8H1.25L1.25 18H2.75ZM2.75 8L2.75 6H1.25L1.25 8H2.75ZM21.25 6V8H22.75V6H21.25ZM21.25 8V18H22.75V8H21.25ZM2 8.75H22V7.25H2V8.75Z"
+                fill={row === "row" ? "black" : "white"}
+              />
+            </svg>
+
             <span className="hidden md:flex">Список</span>
           </button>
         </div>
@@ -762,16 +802,19 @@ const CatalogPage = () => {
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
           </div>
-          <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
-            {catalogProducts.map((item) => (
-              <Cards product={item} />
-            ))}
-          </div>
-          {/* <div className=" w-[100%] flex justify-center flex-col items-center">
-            {catalogProducts.map((item) => (
-              <CardsRow product={item} />
-            ))}
-          </div> */}
+          {row === "row" ? (
+            <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
+              {catalogProducts.map((item) => (
+                <Cards product={item} />
+              ))}
+            </div>
+          ) : (
+            <div className=" w-[100%] flex justify-center flex-col items-center">
+              {catalogProducts.map((item) => (
+                <CardsRow product={item} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

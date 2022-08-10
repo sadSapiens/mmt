@@ -19,7 +19,7 @@ const NavBar = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const [isLogged, setIsLogged] = useState(!false);
+  // const [isLogged, setIsLogged] = useState(!false);
   const handleLogout = async (e: any) => {
     e.preventDefault();
     try {
@@ -136,17 +136,15 @@ const NavBar = () => {
               </div>
 
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
-                <div>
-                  <a
-                    href="/"
-                    className="py-2 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
-                  >
-                    <div className="flex">
-                      <img src={catalog} className="object-contain" alt="" />
-                      <MegaMenu />
-                    </div>
-                  </a>
-                </div>
+                <a
+                  href="/"
+                  className="py-2 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
+                >
+                  <div className="flex">
+                    {/* <img src={catalog} className="object-contain" alt="" /> */}
+                    <MegaMenu />
+                  </div>
+                </a>
 
                 <label className="relative block">
                   <span className="sr-only">Search</span>
