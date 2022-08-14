@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useAppDispatch } from "../../../store";
+import { fetchSlectedCatalogProduct } from "../../../store/catalog";
+import { useSelectedCatalogProduct } from "../../../store/catalog/hooks";
 
 import shopbag from "../assets/shopbag.png";
 
@@ -25,6 +29,7 @@ interface Props {
     name: string;
     price: number;
     total_stock: number;
+    shop: string;
   };
 }
 
@@ -51,7 +56,17 @@ const Cards = ({ product }: Props) => {
             </div>
             <div className="flex justify-start flex-wrap break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
               <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-[20%] text-start">
-                {product.name}
+                <Link
+                  className="!text-black"
+                  to={
+                    product.shop === "1"
+                      ? `/catalog-detailoasis/${product.id}`
+                      : `/catalog-detailhiidea/${product.id}`
+                  }
+                >
+                  {" "}
+                  {product.name}
+                </Link>
                 {/* <span className="hidden md:flex"> «Montreal»</span> */}
               </h4>
               <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">

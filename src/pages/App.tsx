@@ -10,8 +10,8 @@ import CartFull from "./basket/cart/cartFull/CartFull";
 import Blog from "./blog";
 import BlogDetail from "./blog/blogDetail";
 import CatalogPage from "./catalog/index";
-import CatalogDetailsHiidea from "./catalog/catalogDetailsHiidea/CatalogDetails";
-import CatalogDetailsOasis from "./catalog/catalogDetailsOasis/CatalogDetails";
+import CatalogDetailsHiidea from "./catalog/catalogDetailsHiidea";
+import CatalogDetailsOasis from "./catalog/catalogDetailsOasis";
 import Home from "./home";
 import Profile from "./profile";
 import Redirect from "./redirectPage";
@@ -32,8 +32,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/editProfile" element={<EditProfile />} />
+            <Route path="/profile/*" element={<Profile />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/cart" element={<Basket />} />
             <Route path="/cartfull" element={<CartFull />} />
@@ -44,16 +44,15 @@ function App() {
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route
-              path="/catalogdetailoasis"
+              path="/catalog-detailoasis/:id"
               element={<CatalogDetailsOasis />}
             />
             <Route
-              path="/catalogdetailhiidea"
+              path="/catalog-detailhiidea/:id"
               element={<CatalogDetailsHiidea />}
             />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blogdetail" element={<BlogDetail />} />
-            <Route path="/historyorder" element={<OrderHistory />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
             {/* <Route path="*" element={<Redirect />} /> */}
           </Routes>
           <Footer />

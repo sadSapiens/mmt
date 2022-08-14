@@ -9,13 +9,13 @@ import aboutImage from "./assets/about.png";
 import mail from "./assets/Message.png";
 import { useAppDispatch } from "../../store";
 import { useAbout } from "../../store/varia/hooks";
-import { fetchBlogInfo } from "../../store/varia";
+import { fetchAbout } from "../../store/varia";
 
 const About = () => {
   const dispatch = useAppDispatch();
   const about = useAbout();
   useEffect(() => {
-    dispatch(fetchBlogInfo() as any);
+    dispatch(fetchAbout() as any);
   }, []);
   console.log(about, "about");
   return (
@@ -27,7 +27,7 @@ const About = () => {
             <img src={logo} className="w-40" alt="" />
           </div>
           <div className="py-4 font-light md:px-4">
-            <p>
+            {/* <p>
               Ведущая компания на рынке сувенирной продукции, Ваш партнер,
               консультант и помощник в сфере брендированных подарков и рекламной
               продукции. Мы – фанаты сувенирной индустрии! Наши светлые головы
@@ -47,7 +47,8 @@ const About = () => {
               придумаем подарки для любой целевой аудитории. Мы отлично владеем
               современными технологиями персонализации и всегда порекомендуем
               вам оптимальный вариант.
-            </p>
+            </p> */}
+            <p>{about && about.main_info.description}</p>
           </div>
           <div className="flex items-center align-middle gap-4 pb-56 md:pb-2">
             <button className="border border-white rounded-full ... w-auto px-12 ">
@@ -60,7 +61,7 @@ const About = () => {
         </div>
         <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
           <img
-            src={aboutImage}
+            src={about && about.main_info.picture}
             className="md:h-[33rem] md:w-[25rem] h-auto w-72"
             alt=""
           />
@@ -87,64 +88,22 @@ const About = () => {
               src={perizatT}
               alt=""
             />
-            <h2 className="font-bold py-2">Перизат Токтомаматова</h2>
-            <span className="font-light">
-              Основатель и Генеральный директор
-            </span>
+            <h2 className="font-bold py-2">{about?.director.name}</h2>
+            <span className="font-light">{about?.director.position}</span>
 
             <div className="flex text-center justify-center">
               <img src={mail} alt="" />
-              <h5 className="font-light">p.toktomatova@mmt.kg</h5>
+              <h5 className="font-light">{about?.director.email}</h5>
             </div>
           </div>
         </div>
         <div className="md:w-9/12 md:px-5 w-auto">
           <span className="font-bold hidden md:flex">
-            «Мы - команда креативных людей, влюбленных в свое дело, более 9 лет
-            занимаемся брендингом и заслужили доверие лидеров рынка. Свежий
-            взгляд и неординарный подход к созданию бизнес мерча – наше кредо»
+            {about?.director.slogan}
           </span>
           <div className="font-light flex flex-col w-auto">
             <p className="font-light text-sm ">
-              Я выпускница технического ВУЗа, инженер. Свое дело открыла в 23
-              года. Мой путь к предпринимательству казался мне естественной
-              эволюцией. Он не был основан только на желании иметь свой бизнес,
-              напротив, это было жизненно-важной необходимостью. После окончания
-              ВУЗа я успела поработать на госслужбе, в международных проектах,
-              подрабатывала продажами тяжелой спецтехники. Мой обычный рабочий
-              день длился по 15 часов без перерыва. Я понимала, что хочу это
-              время и энергию тратить на свое дело.
-              <p className="py-5">
-                Инженера по образованию и творческого человека по натуре, меня
-                привлек яркий мир рекламной продукции. Ежедневно мимо нас
-                проходят люди в майках Jack Daniel’s, с рюкзаками от Beelinе, с
-                огромными кружками Nescafe в руках, а по дорогам столицы
-                разъезжают автомобили с логотипами строительных компаний. Вы
-                задумывались, насколько глубоко осели названия этих брендов в
-                вашей голове? Для компаний, которые стремятся к успеху важно
-                дифференцироваться и развивать свой бренд. Так и возникла идея
-                создать рекламно-производственную компанию по брендированию
-                бизнес-сувениров.  После панических страхов и борьбы с первыми
-                препятствиями, потратив много времени на обучение и изучение
-                рынка, я была на грани провала. Вместо того чтобы сдаться, я
-                стала развивать в себе сильное чувство страсти и мотивации к
-                самообразованию, чтобы достичь новых высот в развитии бизнеса и
-                уровне дохода.
-              </p>
-              <p>
-                  Для меня это превратилось в настоящий вызов, но я не
-                представляю другой дороги для себя. После девяти лет неустанного
-                труда над собственным бизнесом я ежегодно ставлю задачу
-                наращивания масштабов своего дела.
-              </p>
-              <p className="py-5">
-                  На сегодняшний день мы помогли более 1000 компаниям выгодно
-                отличиться от конкурентов и повысить узнаваемость и лояльность
-                не только в Кыргызстане, но и за пределами страны. Эта работа
-                подарила мне свободу и гибкость, я ничуть не жалею о пройденном
-                пути, потому что теперь у меня есть жизнь и дело, которые я
-                обожаю!
-              </p>
+              {about?.director.personal_information}
             </p>
           </div>
         </div>
@@ -157,13 +116,13 @@ const About = () => {
             alt=""
           />
           <div className="text-center">
-            <h2 className="font-bold">Перизат Токтомаматова</h2>
-            <span>Основатель и Генеральный директор</span>
+            <h2 className="font-bold">{about?.employers[0].name}</h2>
+            <span>{about?.employers[0].position}</span>
 
             <div className="flex text-center justify-center">
               <img src={mail} alt="" />
 
-              <h5>p.toktomatova@mmt.kg</h5>
+              <h5>{about?.employers[0].email}</h5>
             </div>
           </div>
         </div>
@@ -184,13 +143,13 @@ const About = () => {
             alt=""
           />
           <div className="text-center">
-            <h2 className="font-bold">Перизат Токтомаматова</h2>
-            <span>Основатель и Генеральный директор</span>
+            <h2 className="font-bold">{about?.employers[1].name}</h2>
+            <span>{about?.employers[1].position}</span>
 
             <div className="flex text-center justify-center">
               <img src={mail} alt="" />
 
-              <h5>p.toktomatova@mmt.kg</h5>
+              <h5>{about?.employers[1].email}</h5>
             </div>
           </div>
         </div>
@@ -211,13 +170,13 @@ const About = () => {
             alt=""
           />
           <div className="text-center">
-            <h2 className="font-bold">Перизат Токтомаматова</h2>
-            <span>Основатель и Генеральный директор</span>
+            <h2 className="font-bold">{about?.employers[1].name}</h2>
+            <span>{about?.employers[1].position}</span>
 
             <div className="flex text-center justify-center">
               <img src={mail} alt="" />
 
-              <h5>p.toktomatova@mmt.kg</h5>
+              <h5>{about?.employers[1].email}</h5>
             </div>
           </div>
         </div>

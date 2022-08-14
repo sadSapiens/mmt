@@ -15,7 +15,7 @@ const OrderHistory = () => {
     font-jost
     "
     >
-      <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
+      {/* <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
         <div>
           <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           <span>У вас пока нет заказов</span>
@@ -33,7 +33,7 @@ const OrderHistory = () => {
             Мой профиль
           </button>
         </div>
-      </div>
+      </div> */}
       <div>
         <div className="flex flex-col font-jost">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

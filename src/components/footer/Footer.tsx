@@ -40,26 +40,13 @@ const Footer = () => {
                 <img src={message} alt="" />{" "}
                 <span className="text-white">info@mmt.kg</span>
               </div>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <Link
-                    to="/"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    <div className="flex gap-2">
-                      <img
-                        className="w-[30px] h-[30px]"
-                        src={discovery}
-                        alt=""
-                      />{" "}
-                      <span className="text-white ">
-                        г.Бишкек, пер.Сонкульский, 8
-                      </span>
-                    </div>
-                  </Link>
-                </li>
-                <li className="mb-2"></li>
-              </ul>
+              <div className="flex gap-2">
+                <img className="w-8 h-8" src={discovery} alt="" />{" "}
+                <span className="text-white">
+                  {" "}
+                  г.Бишкек, пер.Сонкульский, 8
+                </span>
+              </div>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
               <div className="flex gap-2 ">
@@ -153,7 +140,7 @@ const Footer = () => {
             <div className="px-2 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto items-center">
               <div className="flex items-center  gap-1">
                 <img className="w-[30px] h-[30px]" src={discovery} alt="" />{" "}
-                <span className="text-white flex text-xs">
+                <span className="text-white  text-xs">
                   {" "}
                   г.Бишкек, пер.Сонкульский, 8
                 </span>

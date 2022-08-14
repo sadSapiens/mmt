@@ -21,7 +21,7 @@ export const fetchAbout = () => async (dispatch: Dispatch) => {
     const res: any = await API.get("/about_us");
     console.log(res);
 
-    dispatch(fetchAboutSuccess(res.data));
+    dispatch(fetchAboutSuccess(res.data.data));
   } catch (e) {
     console.log(e);
   }

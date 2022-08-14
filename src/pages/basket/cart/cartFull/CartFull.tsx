@@ -86,10 +86,10 @@ const CartFull = () => {
                           <div className="flex gap-2">
                             <span>32 000, 00</span>
                             <div className="flex flex-col justify-center items-center text-center">
-                              <div className="flex">C</div>
-                              <div className="mt-[-4vh] flex items-center">
+                              <div className="flex">С̲</div>
+                              {/* <div className="mt-[-4vh] flex items-center">
                                 _
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </td>
