@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import search from "./assets/search.png";
+import searchL from "./assets/search.png";
 import rightarrow from "./assets/rightarrow.png";
 import schema from "./assets/schema.svg";
 import list from "./assets/list.svg";
@@ -14,33 +14,46 @@ import CardsRow from "./cards/CardsRow";
 
 const CatalogPage = () => {
   const [row, setRow] = useState("row");
+  const [input, setInput] = useState("");
+
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
   const { search } = useLocation();
+
   const [categoryId, setCategoryId] = useState(
     new URLSearchParams(search).get("categoryId")
   );
   useEffect(() => {
     dispatch(fetchCatalogProducts(categoryId) as any);
   }, [categoryId]);
+
+  useEffect(() => {
+    if (!input) return;
+    dispatch(fetchCatalogProducts(input) as any);
+  }, [input]);
   console.log(categoryId);
+  console.log(input);
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
       <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
-          <div className="flex items-center text-center justify-center align-middle">
-            <h2 className="font-extrabold text-2xl flex items-center text-center object-center align-middle">
-              Каталог
-            </h2>
-          </div>
+          <Link to="/catalog">
+            <div className="flex items-center text-center justify-center align-middle">
+              <h2 className=" text-black font-extrabold text-2xl flex items-center text-center object-center align-middle">
+                Каталог
+              </h2>
+            </div>
+          </Link>
           <div className="hidden md:flex">
             <label className="relative block">
               <span className="sr-only">Search</span>
               <span className="absolute inset-y-0  flex items-center pl-2">
-                <img className="h-2 w-auto sm:h-5" src={search} alt="" />
+                <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
               </span>
               <input
+                value={input}
+                onChange={(e: any) => setInput(e.target.value)}
                 className=" placeholder:text-slate-400 block   w-full border border-black rounded-full py-1 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
@@ -806,14 +819,14 @@ const CatalogPage = () => {
           </div>
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
-              {catalogProducts.map((item) => (
-                <Cards product={item} />
+              {catalogProducts.map((item, i: number) => (
+                <Cards product={item} key={i} />
               ))}
             </div>
           ) : (
             <div className=" w-[100%] flex justify-center flex-col items-center">
-              {catalogProducts.map((item) => (
-                <CardsRow product={item} />
+              {catalogProducts.map((item, i: number) => (
+                <CardsRow product={item} key={i} />
               ))}
             </div>
           )}

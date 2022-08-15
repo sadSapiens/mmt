@@ -36,7 +36,7 @@ interface Props {
 const Cards = ({ product }: Props) => {
   return (
     <>
-      <div className="py-7  flex justify-center w-72   ">
+      <div className="py-7  flex justify-center md:w-72 w-64   ">
         <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
           <div className=" flex">
             <img
@@ -50,12 +50,12 @@ const Cards = ({ product }: Props) => {
               <h5 className="md:flex md:px-3 flex justify-start md:justify-center text-sm font-light">
                 Код товара: {product.article}
               </h5>
-              <h5 className="md:flex md:px-3 flex justify-start md:justify-center text-sm font-light">
+              <h5 className="md:flex hidden md:px-3 justify-start md:justify-center text-sm font-light">
                 Остаток: {product.total_stock}
               </h5>
             </div>
             <div className="flex justify-start flex-wrap break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
-              <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-[20%] text-start">
+              <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-auto text-start">
                 <Link
                   className="!text-black"
                   to={

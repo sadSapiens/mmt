@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
           {/* mobile responsive */}
           <div
-            className="md:hidden flex  items-center
+            className="md:hidden flex sm:hidden items-center
             justify-between px-2
            "
           >
@@ -119,7 +119,7 @@ const Footer = () => {
             </div>
           </div>
           <div
-            className="md:hidden flex  items-center justify-center w-auto
+            className="md:hidden flex sm:hidden  items-center justify-center w-auto
            py-2 px-10"
           >
             <button className=" px-5 rounded-full ... w-screen h-12 object-contain bg-slate-50">

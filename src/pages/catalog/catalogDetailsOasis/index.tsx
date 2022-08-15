@@ -72,7 +72,11 @@ const CatalogDetailsOasis = () => {
               <span className="md:hidden flex text-2xl font-medium font-jost text-black py-2">
                 {selectedProduct.full_name}
               </span>{" "}
-              <img className="w-96 md:h-96  h-72" src={penBig} alt="" />
+              <img
+                className="w-auto md:h-96  h-72"
+                src={selectedProduct.color_groups[0].images[0].superbig}
+                alt=""
+              />
               <div className="flex justify-center items-center md:w-9/12 w-full py-5 gap-4">
                 <img src={penBig} className="h-12 w-12" alt="" />
                 <img src={penBig} className="h-12 w-12 opacity-25" alt="" />

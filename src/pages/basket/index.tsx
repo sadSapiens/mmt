@@ -74,33 +74,19 @@ const Basket = () => {
                         </td>
 
                         <td className="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
-                          <div className="flex justify-center items-center align-middle gap-2">
-                            {/* <label
-                              htmlFor="exampleFormControlInput5"
-                              className="form-label inline-block mb-2 text-gray-700 "
-                            ></label> */}
-
-                            {/* <img
-                              className="rounded-full  p-1 bg-cover ... bg-[#343434] h-5 w-5"
-                              src={minus}
-                              alt=""
-                            /> */}
-                            <label
-                              htmlFor="minus"
-                              className="flex justify-center items-center px-2 py-2"
-                            >
-                              -
-                            </label>
+                          <div className="flex justify-center items-center align-middle gap-2 py-2">
+                            <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5">
+                              <img src={minus} alt="" />
+                            </button>
                             <input
                               type="text"
-                              className="rounded-full ... border border-black px-2 w-[39%] text-base "
+                              className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
                               value="500 шт."
                             />
-                            <img
-                              className="rounded-full p-1  ... bg-[#343434] h-5 w-5"
-                              src={plus}
-                              alt=""
-                            />
+
+                            <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 ">
+                              <img src={plus} alt="" />
+                            </button>
                           </div>
                         </td>
                         <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

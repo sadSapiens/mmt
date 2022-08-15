@@ -111,7 +111,6 @@ const NavBar = () => {
               <img className="" src={userCircle} alt="" />
               <button
                 className="mobile-menu-button"
-                // onClick={() => setOpen(!open)}
                 onClick={() => toggleExpansion(!isExpanded)}
               >
                 <div className="space-y-2">
@@ -219,6 +218,45 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
+
+      <div
+        className={`${
+          isExpanded ? `block` : `hidden`
+        } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
+      >
+        <li className="md:hidden">
+          <MegaMenu />
+        </li>
+        <div className="md:hidden items-center gap-5 font-light">
+          <Link to="/" className="py-3 px-3 text-[#ffffff] hover:text-gray-900">
+            Компания
+          </Link>
+          <Link
+            to="/portfolio"
+            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            Портфолио
+          </Link>
+          <Link
+            to="/blog"
+            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            Блог
+          </Link>
+          <Link
+            to="/contacts"
+            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            Контакты
+          </Link>
+          <Link
+            to="/"
+            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            FAQ
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
