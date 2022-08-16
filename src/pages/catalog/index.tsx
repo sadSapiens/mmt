@@ -66,7 +66,7 @@ const CatalogPage = () => {
     };
   }, []);
 
-  const scrollHandler = (e) => {
+  const scrollHandler = (e: any) => {
     if (
       e.target.documentElement.scrollHeight -
         (e.target.documentElement.scrollTop + window.innerHeight) <
@@ -857,7 +857,6 @@ const CatalogPage = () => {
         <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
-            ``
           </div>
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">

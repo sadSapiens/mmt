@@ -18,7 +18,7 @@ const MegaMenu = () => {
     dispatch(fetchCategories() as any);
   }, []);
 
-  console.log(isOpenCatalog, "ddddd");
+  // console.log(isOpenCatalog, "ddddd");
   const [subcategories, setSubcategories] = useState([]);
 
   return (
@@ -70,10 +70,10 @@ const MegaMenu = () => {
                     {subcategories.length > 0 &&
                       subcategories.map((item: any, i: number) => (
                         <Link
+                          key={i}
                           onClick={() => setIsOpenCatalog(false)}
                           to={`catalog?categoryId=${item.id}`}
                           className="h-8 py-2  md:w-5/12 w-full hidden md:flex"
-                          key={i}
                         >
                           {item.name}
                         </Link>

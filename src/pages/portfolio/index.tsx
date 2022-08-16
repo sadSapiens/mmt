@@ -34,7 +34,7 @@ const Portfolio = () => {
         {portfolio &&
           portfolio.categories.map((item: any, i: number) => (
             <div className="flex gap-3">
-              <button className=" border !border-[black]  rounded-full ...  w-auto px-8  py-1 flex justify-center items-center gap-2">
+              <button className=" border h-10 w-28 !border-[black]  rounded-full ... px-2  py-1 flex justify-start items-center gap-2">
                 {/* <img src={one} alt="" /> */}
                 <span>{item.name}</span>
               </button>

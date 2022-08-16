@@ -123,7 +123,9 @@ const NavBar = () => {
               </div>
             </Link>
             <div className="flex gap-5">
-              <img className="" src={userCircle} alt="" />
+              <Link to="/profile">
+                <img className="" src={userCircle} alt="" />
+              </Link>
               <button
                 className="mobile-menu-button"
                 onClick={() => toggleExpansion(!isExpanded)}

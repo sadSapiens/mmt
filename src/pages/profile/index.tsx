@@ -40,7 +40,7 @@ const Profile = () => {
           <div>
             <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           </div>
-          <div className="flex gap-5 justify-between w-full">
+          <div className="flex gap-5 md:justify-end justify-between w-full">
             <button
               onClick={() => setIsProfile(false)}
               className={`${
