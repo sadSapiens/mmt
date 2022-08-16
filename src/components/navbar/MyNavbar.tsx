@@ -168,23 +168,35 @@ const NavBar = () => {
                   <span className="text-white">Корзина</span>
                 </div>
               </Link>
-              <Link to="/signup">
-                <button className="text-white">Регистрация</button>
-              </Link>
               <div>
                 {!token ? (
-                  <Link to="/signin">
-                    <button className=" rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
-                      Войти
-                    </button>
-                  </Link>
+                  <>
+                    <Link to="/signup">
+                      <button className="text-white">Регистрация</button>
+                    </Link>
+
+                    <Link to="/signin">
+                      <button className=" rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
+                        Войти
+                      </button>
+                    </Link>
+                  </>
                 ) : (
-                  <button
-                    onClick={handleLogout}
-                    className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
-                  >
-                    Выйти
-                  </button>
+                  <>
+                    <Link to="/profile">
+                      <div className="flex items-center align-middle text-center gap-2">
+                        <img className="h-6 w-6" src={userCircle} alt="" />
+
+                        <span className="text-white">Личный кабинет</span>
+                      </div>
+                    </Link>
+                    {/* <button
+                      onClick={handleLogout}
+                      className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                    >
+                      Выйти
+                    </button> */}
+                  </>
                 )}
               </div>
             </div>
