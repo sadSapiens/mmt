@@ -124,7 +124,7 @@ const NavBar = () => {
         </div>
 
         {/*  */}
-        <div className="md:max-w-full md:mx-auto md:px-6 py-2">
+        <div className="md:max-w-full md:mx-auto md:px-6 px-3  py-2">
           <div className="flex justify-between">
             <div className="flex space-x-4">
               <div className="hidden md:flex">
@@ -138,9 +138,7 @@ const NavBar = () => {
 
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
                 <div className="py-2 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle ">
-                  <div className="flex ">
-                    <MegaMenu />
-                  </div>
+                  <MegaMenu />
                 </div>
 
                 <div className="flex justify-center items-center py-1 ">
@@ -171,31 +169,37 @@ const NavBar = () => {
               <div>
                 {!token ? (
                   <>
-                    <Link to="/signup">
-                      <button className="text-white">Регистрация</button>
-                    </Link>
+                    <div className="flex gap-4 justify-center items-center">
+                      <Link to="/signup">
+                        <button className="text-white flex items-center text-center justify-center">
+                          Регистрация
+                        </button>
+                      </Link>
 
-                    <Link to="/signin">
-                      <button className=" rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
-                        Войти
-                      </button>
-                    </Link>
+                      <Link to="/signin">
+                        <button className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1  bg-[#1F1F1F] ">
+                          Войти
+                        </button>
+                      </Link>
+                    </div>
                   </>
                 ) : (
                   <>
-                    <Link to="/profile">
-                      <div className="flex items-center align-middle text-center gap-2">
-                        <img className="h-6 w-6" src={userCircle} alt="" />
+                    <div className="flex  gap-4">
+                      <Link to="/profile">
+                        <div className="flex items-center align-middle text-center gap-2">
+                          <img className="h-6 w-6" src={userCircle} alt="" />
 
-                        <span className="text-white">Личный кабинет</span>
-                      </div>
-                    </Link>
-                    {/* <button
-                      onClick={handleLogout}
-                      className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
-                    >
-                      Выйти
-                    </button> */}
+                          <span className="text-white">Личный кабинет</span>
+                        </div>
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                      >
+                        Выйти
+                      </button>
+                    </div>
                   </>
                 )}
               </div>
@@ -236,34 +240,34 @@ const NavBar = () => {
           isExpanded ? `block` : `hidden`
         } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
       >
-        <li className="md:hidden">
-          <MegaMenu />
-        </li>
-        <div className="md:hidden items-center gap-5 font-light">
-          <Link to="/" className="py-3 px-3 text-[#ffffff] hover:text-gray-900">
+        <div className="md:hidden flex flex-col  items-end gap-5 font-light overflow-x-scroll ...">
+          <Link to="/" className="py-1 px-3 text-[#ffffff] hover:text-gray-900">
+            <MegaMenu />
+          </Link>
+          <Link to="/" className="py-1 px-3 text-[#ffffff] hover:text-gray-900">
             Компания
           </Link>
           <Link
             to="/portfolio"
-            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
             Портфолио
           </Link>
           <Link
             to="/blog"
-            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
             Блог
           </Link>
           <Link
             to="/contacts"
-            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
             Контакты
           </Link>
           <Link
             to="/"
-            className="py-3 px-3 text-[#ffffff]  hover:text-gray-900"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
             FAQ
           </Link>

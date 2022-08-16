@@ -39,7 +39,7 @@ const Confirmation = () => {
               <input
                 onChange={(e) => setCode(e.target.value)}
                 type="text"
-                placeholder="Введите почту"
+                placeholder="Введите код"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
                 required
               />
