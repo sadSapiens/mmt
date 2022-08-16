@@ -1,44 +1,115 @@
 import React, { useEffect, useState } from "react";
-import search from "./assets/search.png";
+import searchL from "./assets/search.png";
 import rightarrow from "./assets/rightarrow.png";
 import schema from "./assets/schema.svg";
 import list from "./assets/list.svg";
 import "./style.css";
 import Filters from "./filters/Filters";
 import Cards from "./cards/Cards";
-import { Link } from "react-router-dom";
-import { fetchCatalogProducts } from "../../store/catalog";
+import { Link, useLocation, useParams } from "react-router-dom";
+// import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
-import { useCatalogProducts } from "../../store/catalog/hooks";
+import { Dispatch } from "@reduxjs/toolkit";
+import { useCatalogProducts, useSearchValue } from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
+import {
+  fetchCatalogSuccess,
+  setSearchValue,
+} from "../../store/catalog/actions";
+import axios from "axios";
+import API from "../../constants/api";
 
 const CatalogPage = () => {
   const [row, setRow] = useState("row");
-
+  const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
+  const { search } = useLocation();
+  const [categoryId, setCategoryId] = useState(
+    new URLSearchParams(search).get("categoryId")
+  );
+  const [fetching, setFetching] = useState(true);
+  const [isAllProducts, setIsAllProducts] = useState(false);
+  const [productsCount, setProductsCount] = useState(12);
+
+  const fetchCatalogProducts =
+    (categoryId: string | null, searchValue: string | null) =>
+    async (dispatch: Dispatch) => {
+      try {
+        console.log("fetching");
+        if (categoryId) {
+          const res: any = await API.get(
+            `/products/category/${categoryId}?count=${
+              productsCount + 12
+            }&more=${isAllProducts}&search=${searchValue}`
+          );
+          dispatch(fetchCatalogSuccess(res.data.data));
+          setIsAllProducts(res.data.is_all);
+          setProductsCount(res.data.count);
+          setFetching(false);
+          return;
+        }
+
+        const res: any = await API.get(
+          `/products/all?count=${
+            productsCount + 12
+          }&more=${isAllProducts}&search=${searchValue}`
+        );
+        console.log(productsCount + 12);
+
+        dispatch(fetchCatalogSuccess(res.data.data));
+        setIsAllProducts(res.data.is_all);
+        setProductsCount(res.data.count);
+        setFetching(false);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
   useEffect(() => {
-    dispatch(fetchCatalogProducts() as any);
-    console.log(1);
+    if (!fetching) return;
+    dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
+  }, [categoryId, searchValue, fetching]);
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler);
+
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
   }, []);
-  console.log(row);
+
+  const scrollHandler = (e: any) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+        100 &&
+      !isAllProducts
+    ) {
+      setFetching(true);
+    }
+  };
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
       <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
-          <div className="flex items-center text-center justify-center align-middle">
-            <h2 className="font-extrabold text-2xl flex items-center text-center object-center align-middle">
-              Каталог
-            </h2>
-          </div>
+          <Link to="/catalog">
+            <div className="flex items-center text-center justify-center align-middle">
+              <h2 className=" text-black font-extrabold text-2xl flex items-center text-center object-center align-middle">
+                Каталог
+              </h2>
+            </div>
+          </Link>
           <div className="hidden md:flex">
             <label className="relative block">
               <span className="sr-only">Search</span>
               <span className="absolute inset-y-0  flex items-center pl-2">
-                <img className="h-2 w-auto sm:h-5" src={search} alt="" />
+                <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
               </span>
               <input
+                value={searchValue}
+                onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
                 className=" placeholder:text-slate-400 block   w-full border border-black rounded-full py-1 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
@@ -127,7 +198,6 @@ const CatalogPage = () => {
               </Link>
             </li>
             <li>
-              {/* <span className="text-gray-500 mx-2"> |</span> */}
               <img src={rightarrow} alt="" />
             </li>
             <li>
@@ -801,17 +871,18 @@ const CatalogPage = () => {
         <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <Filters />
+            ``
           </div>
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
-              {catalogProducts.map((item) => (
-                <Cards product={item} />
+              {catalogProducts.map((item, i: number) => (
+                <Cards product={item} key={i} />
               ))}
             </div>
           ) : (
             <div className=" w-[100%] flex justify-center flex-col items-center">
-              {catalogProducts.map((item) => (
-                <CardsRow product={item} />
+              {catalogProducts.map((item, i: number) => (
+                <CardsRow product={item} key={i} />
               ))}
             </div>
           )}

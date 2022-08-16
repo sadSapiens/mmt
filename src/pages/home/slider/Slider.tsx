@@ -41,12 +41,12 @@ const Slider = () => {
                   alt=""
                 />
                 <img
-                  className="md:hidden  flex justify-center items-center w-36  "
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
                   src={ecomobile}
                   alt=""
                 />
               </div>
-              <div className="flex font-extrabold text-xl  md:flex justify-start md:justify-center flex-col text-white text-center ">
+              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
                 <p
                   className="
                    w-6/12   md:text-8xl "
@@ -61,7 +61,7 @@ const Slider = () => {
           <div className="carousel-item relative float-left w-full">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
-              className="block w-full md:h-[25rem]"
+              className="block w-full md:h-[25rem] h-36"
               alt="Mountaintop"
             />
           </div>
@@ -69,7 +69,7 @@ const Slider = () => {
           <div className="carousel-item relative float-left w-full">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
-              className="block w-full md:h-[25rem]"
+              className="block w-full md:h-[25rem] h-36"
               alt="Woman Reading a Book"
             />
           </div>

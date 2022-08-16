@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
-import search from "../../assets/img/Vector.png";
+import searchl from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
 import catalog from "../../assets/img/catalog.png";
@@ -8,16 +8,29 @@ import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MegaMenu from "./MegaMenu";
 
 import "./megamenu.css";
+import { useAppDispatch } from "../../store";
+import { useSearchValue } from "../../store/catalog/hooks";
+import { setSearchValue } from "../../store/catalog/actions";
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const [isExpanded, toggleExpansion] = React.useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const searchValue = useSearchValue();
+  const { search } = useLocation();
+
+  const [categoryId, setCategoryId] = useState(
+    new URLSearchParams(search).get("categoryId")
+  );
+  useEffect(() => {
+    if (searchValue) navigate("/catalog");
+  }, [categoryId, searchValue]);
 
   // const [isLogged, setIsLogged] = useState(!false);
   const handleLogout = async (e: any) => {
@@ -33,20 +46,20 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-[#343434] font-jost">
-        <div className="md:max-w-6xl md:mx-auto md:px-2 py-1  ">
+        <div className="md:max-w-full md:mx-auto md:px-6 py-1  ">
           <div className="flex justify-between">
-            <div className=" md:flex items-center flex space-x-4 font-jost">
+            <div className=" md:flex items-center flex space-x-5 font-jost">
               <div>
                 <Link
                   to="/"
-                  className=" hidden md:flex items-center py-3 px-2 text-white hover:text-gray-900 gap-3"
+                  className=" hidden md:flex items-center py-3 px-2 text-white hover:text-gray-900 gap-3 font-light"
                 >
                   <img className="" src={location} alt="" />
                   Бишкек
                 </Link>
               </div>
 
-              <div className="hidden md:flex items-center space-x-1 font-light">
+              <div className="hidden md:flex items-center gap-5 font-light">
                 <Link
                   to="/"
                   className="py-3 px-3 text-[#ffffff] hover:text-gray-900"
@@ -83,7 +96,7 @@ const NavBar = () => {
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
               <div className="flex md:mx-3">
                 <img className="h-1 w-auto sm:h-5" src={phone} alt="" />
-                <a href="tel:+1234567890 " className="text-white">
+                <a href="tel:+1234567890" className="text-white">
                   {" "}
                   0 555 88 35 00{" "}
                 </a>
@@ -111,7 +124,6 @@ const NavBar = () => {
               <img className="" src={userCircle} alt="" />
               <button
                 className="mobile-menu-button"
-                // onClick={() => setOpen(!open)}
                 onClick={() => toggleExpansion(!isExpanded)}
               >
                 <div className="space-y-2">
@@ -123,7 +135,9 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto px-4">
+
+        {/*  */}
+        <div className="md:max-w-full md:mx-auto md:px-6 px-3  py-2">
           <div className="flex justify-between">
             <div className="flex space-x-4">
               <div className="hidden md:flex">
@@ -136,28 +150,28 @@ const NavBar = () => {
               </div>
 
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
-                <a
-                  href="/"
-                  className="py-2 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle "
-                >
-                  <div className="flex">
-                    {/* <img src={catalog} className="object-contain" alt="" /> */}
-                    <MegaMenu />
-                  </div>
-                </a>
+                <div className="py-2 px-3 text-[#ffffff] hover:text-gray-900 text-center items-center flex align-middle ">
+                  <MegaMenu />
+                </div>
 
-                <label className="relative block">
-                  <span className="sr-only">Search</span>
-                  <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <img className="h-2 w-auto sm:h-5" src={search} alt="" />
-                  </span>
-                  <input
-                    className=" placeholder:text-slate-400 block bg-black w-full border-none rounded-full py-2 pl-9 pr-3 shadow-sm focus:outline-none  sm:text-sm"
-                    placeholder="Поиск..."
-                    type="text"
-                    name="search"
-                  />
-                </label>
+                <div className="flex justify-center items-center py-1 ">
+                  <label className="relative flex justify-center items-center !mb-0">
+                    <span className="sr-only">Search</span>
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                      <img className="h-2 w-auto sm:h-5" src={searchl} alt="" />
+                    </span>
+                    <input
+                      value={searchValue}
+                      onChange={(e: any) =>
+                        dispatch(setSearchValue(e.target.value))
+                      }
+                      className="  placeholder:text-white block bg-[#1F1F1F] w-80 border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
+                      placeholder="Поиск..."
+                      type="text"
+                      name="search"
+                    />
+                  </label>
+                </div>
                 <div className="flex flex-col mx-8"></div>
               </div>
             </div>
@@ -169,23 +183,41 @@ const NavBar = () => {
                   <span className="text-white">Корзина</span>
                 </div>
               </Link>
-              <Link to="/signup">
-                <button className="text-white">Регистрация</button>
-              </Link>
               <div>
                 {!token ? (
-                  <Link to="/signin">
-                    <button className=" rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] ">
-                      Войти
-                    </button>
-                  </Link>
+                  <>
+                    <div className="flex gap-4 justify-center items-center">
+                      <Link to="/signup">
+                        <button className="text-white flex items-center text-center justify-center">
+                          Регистрация
+                        </button>
+                      </Link>
+
+                      <Link to="/signin">
+                        <button className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1  bg-[#1F1F1F] ">
+                          Войти
+                        </button>
+                      </Link>
+                    </div>
+                  </>
                 ) : (
-                  <button
-                    onClick={handleLogout}
-                    className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
-                  >
-                    Выйти
-                  </button>
+                  <>
+                    <div className="flex  gap-4">
+                      <Link to="/profile">
+                        <div className="flex items-center align-middle text-center gap-2">
+                          <img className="h-6 w-6" src={userCircle} alt="" />
+
+                          <span className="text-white">Личный кабинет</span>
+                        </div>
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                      >
+                        Выйти
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
@@ -219,42 +251,51 @@ const NavBar = () => {
           </div>
         </div>
       </nav>
-      {/* <MegaMenu /> */}
 
-      {/* <div
+      <div
         className={`${
           isExpanded ? `block` : `hidden`
-        } md:hidden  w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
+        } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
       >
-        <div className=" md:hidden text-sm lg:flex-grow">
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+        <div className="md:hidden flex flex-col  items-end gap-5 font-light overflow-x-scroll ...">
+          <Link to="/" className="py-1 px-3 text-[#ffffff] hover:text-gray-900">
+            <MegaMenu />
+          </Link>
+          <Link to="/" className="py-1 px-3 text-[#ffffff] hover:text-gray-900">
+            Компания
+          </Link>
+          <Link
+            to="/portfolio"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
-            Docs
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            Портфолио
+          </Link>
+          <Link
+            to="/blog"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
-            Examples
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+            Блог
+          </Link>
+          <Link
+            to="/contacts"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
           >
-            Blog
-          </a>
+            Контакты
+          </Link>
+          <Link
+            to="/"
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            FAQ
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            Выйти
+          </button>
         </div>
-        <div>
-          <a
-            href="#"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-          >
-            Download
-          </a>
-        </div>
-      </div> */}
+      </div>
     </>
   );
 };

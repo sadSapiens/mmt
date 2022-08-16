@@ -7,9 +7,9 @@ import {
 import { IVariaState } from "./interfaces/data.interface";
 
 export const initialState: IVariaState = {
-  blog: [],
-  about: [],
-  portfolio: [],
+  blog: null,
+  about: null,
+  portfolio: null,
 };
 
 export default createReducer<IVariaState>(initialState, (builder) =>

@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch } from "../../../store";
+import { fetchBlogInfo } from "../../../store/varia";
+import { useBlogNews } from "../../../store/varia/hooks";
 import newspoto from "../assets/blognew.png";
 
 const BlogNews = () => {
+  const dispatch = useAppDispatch();
+  const blogNews = useBlogNews();
+  useEffect(() => {
+    console.log(99999999);
+
+    dispatch(fetchBlogInfo() as any);
+  }, []);
+  console.log(blogNews, "blog");
   return (
     <div className="mx-auto px-9   w-auto py-5 font-jost">
       <div className="flex flex-col md:flex-row justify-between">
@@ -11,7 +22,11 @@ const BlogNews = () => {
         <div className="md:w-9/12  md:px-9    ">
           <div className="">
             <h2 className="font-semibold text-black">
-              DTF: быстро, выгодно, неожиданно
+              {/* {blogNews.data.map(item) => (
+              <span>{ item.id}</span>
+              )} */}
+              {/* {} */}
+              загловок
             </h2>
             <p className="py-4 flex">
               Мы уже подробно рассказывали (и показывали!) о полноцветном
