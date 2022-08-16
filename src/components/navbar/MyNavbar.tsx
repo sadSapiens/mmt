@@ -271,6 +271,12 @@ const NavBar = () => {
           >
             FAQ
           </Link>
+          <button
+            onClick={handleLogout}
+            className="py-1 px-3 text-[#ffffff]  hover:text-gray-900"
+          >
+            Выйти
+          </button>
         </div>
       </div>
     </>
