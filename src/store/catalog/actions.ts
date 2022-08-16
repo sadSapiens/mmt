@@ -8,3 +8,5 @@ export const fetchCatalogSuccess = createAction<[]>(
 export const fetchSelectedCatalogProductSuccess = createAction<IProductState>(
   "catalog/fetchSelectedCatalogProductSuccess"
 );
+
+export const setSearchValue = createAction<string>("catalog/setSearchValue");

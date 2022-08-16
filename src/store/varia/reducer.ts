@@ -7,7 +7,7 @@ import {
 import { IVariaState } from "./interfaces/data.interface";
 
 export const initialState: IVariaState = {
-  blog: [],
+  blog: null,
   about: null,
   portfolio: null,
 };

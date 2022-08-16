@@ -9,12 +9,18 @@ import Cards from "./cards/Cards";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
-import { useCatalogProducts } from "../../store/catalog/hooks";
+import { useCatalogProducts, useSearchValue } from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
+import { setSearchValue } from "../../store/catalog/actions";
+import axios from "axios";
 
 const CatalogPage = () => {
   const [row, setRow] = useState("row");
-  const [input, setInput] = useState("");
+  const searchValue = useSearchValue();
+
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [fetching, setFetching] = useState(true);
 
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
@@ -24,15 +30,51 @@ const CatalogPage = () => {
     new URLSearchParams(search).get("categoryId")
   );
   useEffect(() => {
-    dispatch(fetchCatalogProducts(categoryId) as any);
-  }, [categoryId]);
+    dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
+  }, [categoryId, searchValue]);
+
+  console.log(categoryId);
+  console.log(searchValue);
+
+  // const filter = {
+  //   colors: [
+  //     { name: "red", id: 1 },
+  //     { name: "black", id: 2 },
+  //     { name: "white", id: 3 },
+  //   ],
+  //   brands: [
+  //     { name: "nike", id: 1 },
+  //     { name: "adidas", id: 2 },
+  //     { name: "gucci", id: 3 },
+  //   ],
+  // };
+
+  // filter
+  useEffect(() => {
+    if (fetching) {
+      dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
+
+      // setProducts(categoryId);
+      setCurrentPage((prevState) => prevState + 1);
+    }
+  }, [fetching]);
 
   useEffect(() => {
-    if (!input) return;
-    dispatch(fetchCatalogProducts(input) as any);
-  }, [input]);
-  console.log(categoryId);
-  console.log(input);
+    document.addEventListener("scroll", scrollHandler);
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      100
+    ) {
+      setFetching(true);
+    }
+  };
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
@@ -52,8 +94,8 @@ const CatalogPage = () => {
                 <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
               </span>
               <input
-                value={input}
-                onChange={(e: any) => setInput(e.target.value)}
+                value={searchValue}
+                onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
                 className=" placeholder:text-slate-400 block   w-full border border-black rounded-full py-1 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Искать товар"
                 type="text"

@@ -9,3 +9,7 @@ export const useCatalogProducts = (): [] => {
 export const useSelectedCatalogProduct = (): IProductState | null => {
   return useSelector((state: Store) => state.catalog.selectedProduct);
 };
+
+export const useSearchValue = (): string => {
+  return useSelector((state: Store) => state.catalog.searchValue);
+};

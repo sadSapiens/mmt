@@ -1,6 +1,7 @@
 export interface ICatalogState {
   catalogProducts: [];
   selectedProduct: IProductState | null;
+  searchValue: string;
 }
 
 export interface IProductColor {

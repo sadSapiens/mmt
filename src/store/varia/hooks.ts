@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { Store } from "../types";
-import { IAbout, IPortfolio } from "./interfaces/data.interface";
+import { IAbout, IBlogs, IPortfolio } from "./interfaces/data.interface";
 
-export const useBlogNews = (): [] => {
+export const useBlogNews = (): IBlogs | null => {
   return useSelector((state: Store) => state.blog.blog);
 };
 export const useAbout = (): IAbout | null => {

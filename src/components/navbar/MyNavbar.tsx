@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/logo.svg";
-import search from "../../assets/img/Vector.png";
+import searchl from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
 import catalog from "../../assets/img/catalog.png";
@@ -8,16 +8,31 @@ import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MegaMenu from "./MegaMenu";
 
 import "./megamenu.css";
+import { fetchCatalogProducts } from "../../store/catalog";
+import { useAppDispatch } from "../../store";
+import { useSearchValue } from "../../store/catalog/hooks";
+import { setSearchValue } from "../../store/catalog/actions";
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
   const [isExpanded, toggleExpansion] = React.useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const searchValue = useSearchValue();
+  const { search } = useLocation();
+
+  const [categoryId, setCategoryId] = useState(
+    new URLSearchParams(search).get("categoryId")
+  );
+  useEffect(() => {
+    if (searchValue) navigate("/catalog");
+    dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
+  }, [categoryId, searchValue]);
 
   // const [isLogged, setIsLogged] = useState(!false);
   const handleLogout = async (e: any) => {
@@ -145,10 +160,14 @@ const NavBar = () => {
                   <label className="relative flex justify-center items-center !mb-0">
                     <span className="sr-only">Search</span>
                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                      <img className="h-2 w-auto sm:h-5" src={search} alt="" />
+                      <img className="h-2 w-auto sm:h-5" src={searchl} alt="" />
                     </span>
                     <input
-                      className="  placeholder:text-slate-400 block bg-[#1F1F1F] w-80 border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm"
+                      value={searchValue}
+                      onChange={(e: any) =>
+                        dispatch(setSearchValue(e.target.value))
+                      }
+                      className="  placeholder:text-white block bg-[#1F1F1F] w-80 border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
                       placeholder="Поиск..."
                       type="text"
                       name="search"

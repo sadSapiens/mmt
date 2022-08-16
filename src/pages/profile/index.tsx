@@ -40,12 +40,12 @@ const Profile = () => {
           <div>
             <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           </div>
-          <div className="flex gap-5">
+          <div className="flex gap-5 justify-between w-full">
             <button
               onClick={() => setIsProfile(false)}
               className={`${
                 !isProfile ? "bg-black text-white " : "bg-white text-black"
-              } border-gray-900 border-2  h-auto flex md:flex rounded-full ... w-auto px-3 items-center py-2 gap-2`}
+              } border-gray-900 border-2  h-auto flex md:flex rounded-full ... md:w-auto w-6/12 px-3 items-center py-2 gap-2 text-xs md:text-lg flex-row`}
             >
               <svg
                 width="24"
@@ -67,7 +67,7 @@ const Profile = () => {
               onClick={() => setIsProfile(true)}
               className={`${
                 isProfile ? "bg-black text-white " : "bg-white text-black"
-              } border-gray-900 border-2 h-auto flex md:flex rounded-full ... w-auto px-3 items-center py-2 gap-2`}
+              } border-gray-900 border-2 h-auto  flex md:flex rounded-full ... md:w-auto w-6/12 px-3 items-center py-2 gap-2 md:text-lg text-xs`}
             >
               <div className=" ">
                 <svg

@@ -6,18 +6,23 @@ import {
 } from "./actions";
 
 export const fetchCatalogProducts =
-  (categoryId: string | null) => async (dispatch: Dispatch) => {
+  (categoryId: string | null, searchValue: string | null) =>
+  async (dispatch: Dispatch) => {
     try {
       if (categoryId) {
-        const res: any = await API.get(`/products/category/${categoryId}`);
+        const res: any = await API.get(
+          `/products/category/${categoryId}?search=${searchValue}`
+        );
         console.log(res.data);
 
         dispatch(fetchCatalogSuccess(res.data.data));
         return;
       }
-      console.log(1);
+      console.log(searchValue);
 
-      const res: any = await API.get("/products/all");
+      const res: any = await API.get(`/products/all?search=${searchValue}`);
+      console.log(res);
+
       dispatch(fetchCatalogSuccess(res.data.data));
     } catch (e) {
       console.log(e);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAppDispatch } from "../../store";
 import { fetchCategories } from "../../store/category";
 import { useCategoryProducts } from "../../store/category/hooks";
@@ -13,17 +13,19 @@ const MegaMenu = () => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
   const dispatch = useAppDispatch();
   const categories = useCategoryProducts();
+
   useEffect(() => {
     dispatch(fetchCategories() as any);
   }, []);
-  console.log(isOpenCatalog);
+
+  console.log(isOpenCatalog, "ddddd");
   const [subcategories, setSubcategories] = useState([]);
 
   return (
     <>
       <div className="w-full">
         <div className="  w-full" onClick={() => setOpen(true)}>
-          <li
+          <div
             onMouseMove={() => setIsOpenCatalog(true)}
             onMouseLeave={() => setIsOpenCatalog(false)}
             className="drop-downn flex md:flex-row flex-col w-full"
@@ -32,7 +34,7 @@ const MegaMenu = () => {
               <img src={catalog} className="object-contain" alt="" />
               Каталог
             </div>
-            <div className="md:hidden ">
+            <div className="md:hidden w-full ">
               <TypeProduct />
             </div>
 
@@ -70,7 +72,7 @@ const MegaMenu = () => {
                         <Link
                           onClick={() => setIsOpenCatalog(false)}
                           to={`catalog?categoryId=${item.id}`}
-                          className="h-8 py-2  w-5/12"
+                          className="h-8 py-2  md:w-5/12 w-full hidden md:flex"
                           key={i}
                         >
                           {item.name}
@@ -81,7 +83,7 @@ const MegaMenu = () => {
                 </ul>
               </ul>
             </div>
-          </li>
+          </div>
         </div>
       </div>
     </>
