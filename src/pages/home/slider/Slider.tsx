@@ -1,5 +1,4 @@
 import React from "react";
-import "./slider.css";
 import eco from "../../../assets/img/eco-bottle.png";
 import ecomobile from "../../../assets/img/ecomobile.png";
 

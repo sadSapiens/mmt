@@ -2,6 +2,7 @@ export interface ICatalogState {
   catalogProducts: [];
   selectedProduct: IProductState | null;
   searchValue: string;
+  filter: {} | null;
 }
 
 export interface IProductColor {

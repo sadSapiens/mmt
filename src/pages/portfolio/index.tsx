@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import heart from "./assets/love.svg";
-import calendar from "./assets/calendar.svg";
-import client from "./assets/client.png";
-import bag from "./assets/bag.png";
+// import heart from "./assets/love.svg";
+// import calendar from "./assets/calendar.svg";
+// import client from "./assets/client.png";
+// import bag from "./assets/bag.png";
 
 import one from "./assets/one.png";
-import two from "./assets/two.png";
-import three from "./assets/three.png";
-import four from "./assets/four.png";
-import five from "./assets/five.png";
-import six from "./assets/six.png";
-import seven from "./assets/seven.png";
-import eight from "./assets/eight.png";
+// import two from "./assets/two.png";
+// import three from "./assets/three.png";
+// import four from "./assets/four.png";
+// import five from "./assets/five.png";
+// import six from "./assets/six.png";
+// import seven from "./assets/seven.png";
+// import eight from "./assets/eight.png";
 import { useAppDispatch } from "../../store";
 import { usePortfolio } from "../../store/varia/hooks";
 import { fetchPortfolio } from "../../store/varia";

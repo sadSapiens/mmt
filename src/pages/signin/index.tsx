@@ -77,10 +77,7 @@ const SignInPage = () => {
                 type={passwordShown ? "text" : "password"}
                 // ref={register({ required: "This is required." })}
               />
-              <i
-                className="text-black hover:text-yellow"
-                onClick={togglePasswordVisiblity}
-              >
+              <i className="text-black " onClick={togglePasswordVisiblity}>
                 {eye}
               </i>{" "}
             </div>

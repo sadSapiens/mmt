@@ -7,60 +7,73 @@ import "./style.css";
 import Filters from "./filters/Filters";
 import Cards from "./cards/Cards";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { fetchCatalogProducts } from "../../store/catalog";
+// import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
+import { Dispatch } from "@reduxjs/toolkit";
 import { useCatalogProducts, useSearchValue } from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
-import { setSearchValue } from "../../store/catalog/actions";
-import axios from "axios";
+import {
+  fetchCatalogSuccess,
+  setSearchValue,
+} from "../../store/catalog/actions";
+import API from "../../constants/api";
 
 const CatalogPage = () => {
+  const [filter, setFilter] = useState();
   const [row, setRow] = useState("row");
   const searchValue = useSearchValue();
-
-  const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
-
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
   const { search } = useLocation();
-
   const [categoryId, setCategoryId] = useState(
     new URLSearchParams(search).get("categoryId")
   );
+  const [fetching, setFetching] = useState(true);
+  const [isAllProducts, setIsAllProducts] = useState(false);
+  const [productsCount, setProductsCount] = useState(12);
+
+  const fetchCatalogProducts =
+    (categoryId: string | null, searchValue: string | null) =>
+    async (dispatch: Dispatch) => {
+      try {
+        console.log("fetching");
+        if (categoryId) {
+          const res: any = await API.get(
+            `/products/category/${categoryId}?count=${
+              productsCount + 12
+            }&more=${isAllProducts}&search=${searchValue}`
+          );
+          dispatch(fetchCatalogSuccess(res.data.data));
+          setIsAllProducts(res.data.is_all);
+          setProductsCount(res.data.count);
+          setFetching(false);
+          return;
+        }
+
+        const res: any = await API.get(
+          `/products/all?count=${
+            productsCount + 12
+          }&more=${isAllProducts}&search=${searchValue}`
+        );
+        console.log(res.data);
+
+        dispatch(fetchCatalogSuccess(res.data.data));
+        setIsAllProducts(res.data.is_all);
+        setProductsCount(res.data.count);
+        setFetching(false);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+  //
   useEffect(() => {
+    if (!fetching) return;
     dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
-  }, [categoryId, searchValue]);
-
-  console.log(categoryId);
-  console.log(searchValue);
-
-  // const filter = {
-  //   colors: [
-  //     { name: "red", id: 1 },
-  //     { name: "black", id: 2 },
-  //     { name: "white", id: 3 },
-  //   ],
-  //   brands: [
-  //     { name: "nike", id: 1 },
-  //     { name: "adidas", id: 2 },
-  //     { name: "gucci", id: 3 },
-  //   ],
-  // };
-
-  // filter
-  useEffect(() => {
-    if (fetching) {
-      dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
-
-      // setProducts(categoryId);
-      setCurrentPage((prevState) => prevState + 1);
-    }
-  }, [fetching]);
+  }, [categoryId, searchValue, fetching]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
+
     return function () {
       document.removeEventListener("scroll", scrollHandler);
     };
@@ -70,7 +83,8 @@ const CatalogPage = () => {
     if (
       e.target.documentElement.scrollHeight -
         (e.target.documentElement.scrollTop + window.innerHeight) <
-      100
+        100 &&
+      !isAllProducts
     ) {
       setFetching(true);
     }
@@ -78,6 +92,8 @@ const CatalogPage = () => {
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
+      <p>&nbsp;</p>
+
       <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
           <Link to="/catalog">
@@ -88,19 +104,18 @@ const CatalogPage = () => {
             </div>
           </Link>
           <div className="hidden md:flex">
-            <label className="relative block">
-              <span className="sr-only">Search</span>
-              <span className="absolute inset-y-0  flex items-center pl-2">
-                <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
-              </span>
+            <label className="relative flex justify-end flex-row items-center !mb-0">
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-slate-400 block   w-full border border-black rounded-full py-1 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                className=" placeholder:text-black block pl-2  w-full border-[1px] font-normal border-black rounded-full py-1 pr-3 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
                 name="search"
               />
+              <button className="absolute pr-2 focus:outline-none">
+                <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
+              </button>
             </label>
           </div>
         </div>
@@ -176,10 +191,7 @@ const CatalogPage = () => {
         <nav className="bg-grey-light rounded-md w-full">
           <ol className="flex  ">
             <li>
-              <Link
-                to="/catalog"
-                className="tex-black !text-black hover:text-blue-700"
-              >
+              <Link to="/catalog" className="tex-black !text-black ">
                 Каталог
               </Link>
             </li>
@@ -187,7 +199,7 @@ const CatalogPage = () => {
               <img src={rightarrow} alt="" />
             </li>
             <li>
-              <a href="/" className="!text-black hover:text-blue-700">
+              <a href="/" className="!text-black ">
                 Мужские аксессуары
               </a>
             </li>
@@ -203,21 +215,6 @@ const CatalogPage = () => {
         <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto overflow-scroll">
           <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Барсетки
-          </button>
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Визитницы
-          </button>
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Одежда
-          </button>
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Органайзеры
-          </button>
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Портмоне
-          </button>
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Часы{" "}
           </button>
         </div>
       </div>
@@ -254,29 +251,6 @@ const CatalogPage = () => {
 
                         <button className="flex justify-center  bg-[#65A8E0] px-5 rounded-full ... w-28">
                           Новинки
-                        </button>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                          type="checkbox"
-                          value=""
-                          id="typeEko"
-                        />
-
-                        <button className="flex justify-center bg-[#79B15E] px-5 rounded-full ... w-28">
-                          Эко
-                        </button>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                          type="checkbox"
-                          value=""
-                          id="typeShare"
-                        />
-                        <button className="flex justify-center bg-[#F1A400] px-5 rounded-full ... w-28">
-                          Акция
                         </button>
                       </div>
                     </div>
@@ -397,118 +371,6 @@ const CatalogPage = () => {
                       Черный
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorRed"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorRed"
-                    >
-                      Красный
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorYellow"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorYellow"
-                    >
-                      Жёлтый
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorAqua"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorAqua"
-                    >
-                      Голубой
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorRed"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorRed"
-                    >
-                      Красный
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorBlue"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorBlue"
-                    >
-                      Синий
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorOrange"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorOrange"
-                    >
-                      Оранжевый
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorFiolet"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorFiolet"
-                    >
-                      Фиолетовое
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorMajent"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorMajent"
-                    >
-                      Мажента
-                    </label>
-                  </div>
                 </div>
               </div>
             </div>
@@ -574,132 +436,6 @@ const CatalogPage = () => {
                       Бумага
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialTree"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialTree"
-                    >
-                      Дерево
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialEko"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialEko"
-                    >
-                      Эко-кожа
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialMetall"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialMetall"
-                    >
-                      Металл
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialNaturalSkin"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialNaturalSkin"
-                    >
-                      Натуральная кожа
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialPVH"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialPVH"
-                    >
-                      ПВХ
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialPlastik"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialPlastik"
-                    >
-                      Пластик
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialPoliester"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialPoliester"
-                    >
-                      Полиэстер
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialSilikon"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialSilikon"
-                    >
-                      Силикон
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialFetr"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialFetr"
-                    >
-                      Фетр
-                    </label>
-                  </div>
                 </div>
               </div>
             </div>
@@ -734,104 +470,6 @@ const CatalogPage = () => {
                       Гравировка (СО2 лазер)
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="MethodChase2"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="MethodChase2"
-                    >
-                      Гравировка (оптоволоконный лазер)
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodPrinting"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodPrinting"
-                    >
-                      Тампопечать
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodTermo"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodTermo"
-                    >
-                      Термотрансфер
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodLettering"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodLettering"
-                    >
-                      Тиснение
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodStencil"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodStencil"
-                    >
-                      Трафаретная печать
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodUF"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodUF"
-                    >
-                      УФ-печать
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="methodSpectrum"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="methodSpectrum"
-                    >
-                      Шильд-спектрум
-                    </label>
-                  </div>
                 </div>
               </div>
             </div>
@@ -860,15 +498,33 @@ const CatalogPage = () => {
           </div>
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
-              {catalogProducts.map((item, i: number) => (
-                <Cards product={item} key={i} />
-              ))}
+              {catalogProducts ? (
+                <>
+                  {catalogProducts.map((item, i: number) => (
+                    <Cards product={item} key={i} />
+                  ))}
+                </>
+              ) : null}
+              {fetching && (
+                <span className="flex justify-center items-center py-4">
+                  loading...
+                </span>
+              )}
             </div>
           ) : (
             <div className=" w-[100%] flex justify-center flex-col items-center">
-              {catalogProducts.map((item, i: number) => (
-                <CardsRow product={item} key={i} />
-              ))}
+              {catalogProducts ? (
+                <>
+                  {catalogProducts.map((item, i: number) => (
+                    <CardsRow product={item} key={i} />
+                  ))}
+                </>
+              ) : null}
+              {fetching && (
+                <span className="flex justify-center items-center py-4">
+                  loading...
+                </span>
+              )}
             </div>
           )}
         </div>

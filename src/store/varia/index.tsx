@@ -3,6 +3,7 @@ import API from "../../constants/api";
 import {
   fetchAboutSuccess,
   fetchBlogNewsSuccess,
+  fetchHomeSuccess,
   fetchPortfolioSuccess,
 } from "./actions";
 
@@ -32,6 +33,16 @@ export const fetchPortfolio = () => async (dispatch: Dispatch) => {
     console.log(res);
 
     dispatch(fetchPortfolioSuccess(res.data));
+  } catch (e) {
+    console.log(e);
+  }
+};
+export const fetchHome = () => async (dispatch: Dispatch) => {
+  try {
+    const res: any = await API.get("/home");
+    console.log(res);
+
+    dispatch(fetchHomeSuccess(res.data.data));
   } catch (e) {
     console.log(e);
   }

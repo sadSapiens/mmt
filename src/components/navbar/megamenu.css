@@ -1,43 +1,24 @@
-a,
-a:hover,
-a.active,
-a:active,
-a:visited,
-a:focus {
-  color: #ffffff;
-  text-decoration: none;
+a:hover {
+  text-decoration-line: none;
+  color: rgb(217, 217, 217);
 }
 
-.drop-downn {
-  /* display: none; */
-  /* position: relative; */
-}
 .drop-downn:hover {
   display: block;
 }
 
 .drop-downn:hover .megablock {
-  /* display: block; */
-  /* height: 50rem; */
   width: 100%;
   background: #343434;
   position: absolute;
   left: 0;
   text-align: center;
   flex-direction: row;
+
   z-index: 39;
-  /* opacity: 0.5; */
   color: white;
 }
 
-.megablock {
-  /* display: none; */
-}
-
-.category {
-  /* text-align: center; */
-  /* padding-left: 5rem; */
-}
 .category:hover .subcategory {
   display: block;
   height: 50rem;
@@ -48,25 +29,9 @@ a:focus {
   text-align: center;
   flex-direction: row;
   z-index: 39;
-  /* opacity: 0.5; */
 }
 .subcategory {
   display: none;
-}
-
-li.drop-downn {
-  /* position: relative; */
-}
-
-.drop-down-ul-new {
-}
-.flyout-right > ul,
-.flyout-left > ul {
-  top: 0;
-  width: 100%;
-  min-width: 230px;
-  display: none;
-  /* border-left: 1px solid #343434; */
 }
 
 /*responsive*/
@@ -82,17 +47,10 @@ li.drop-downn {
   li.drop-downn > ul {
     position: absolute;
   }
-  .flyout-right > ul {
-    /* left: 100%; */
-  }
-  .flyout-left > ul {
-    right: 100%;
-  }
 }
 @media (max-width: 767px) {
   .exo-menu {
     min-height: 58px;
-    background-color: #23364b;
     width: 100%;
   }
 
@@ -121,6 +79,5 @@ a.toggle-menu {
   padding: 20px;
   font-size: 27px;
   background-color: #ccc;
-  color: #23364b;
   top: 0px;
 }

@@ -1,15 +1,17 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   fetchCatalogSuccess,
+  fetchFiltersSuccess,
   fetchSelectedCatalogProductSuccess,
   setSearchValue,
 } from "./actions";
-import { ICatalogState, IProductState } from "./interfaces/data.interface";
+import { ICatalogState } from "./interfaces/data.interface";
 
 export const initialState: ICatalogState = {
   catalogProducts: [],
   selectedProduct: null,
   searchValue: "",
+  filter: {},
 };
 
 export default createReducer<ICatalogState>(initialState, (builder) =>
@@ -33,6 +35,13 @@ export default createReducer<ICatalogState>(initialState, (builder) =>
       (state, { payload }): ICatalogState => ({
         ...state,
         searchValue: payload,
+      })
+    )
+    .addCase(
+      fetchFiltersSuccess,
+      (state, { payload }): ICatalogState => ({
+        ...state,
+        filter: payload,
       })
     )
 );

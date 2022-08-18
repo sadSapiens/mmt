@@ -17,7 +17,6 @@ const Basket = () => {
   useEffect(() => {
     dispatch(fetchOrder() as any);
   }, []);
-  console.log(order);
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
