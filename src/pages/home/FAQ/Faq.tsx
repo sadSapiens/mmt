@@ -22,7 +22,7 @@ const Faq = () => {
             FAQ
           </span>
 
-          <div className="accordion flex flex-col  justify-center ">
+          <div className="accordion flex flex-col  justify-center w-[59rem] ">
             {home && home.faq.length && (
               <div className="w-1/8">
                 {home.faq.map((item, i) => (
@@ -47,7 +47,7 @@ const Faq = () => {
                         рублей. В сезон, с октября по декабрь, минимальная сумма
                         заказа увеличивается.
                       </p> */}
-                      <p className="flex accordion__body  justify-center items-center">
+                      <p className="flex accordion__body  justify-center items-center px-10 py-3">
                         {item.answer}
                       </p>
 

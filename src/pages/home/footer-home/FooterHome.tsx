@@ -75,13 +75,13 @@ const FooterHome = () => {
             <img src={zk} alt="" />
             <img src={sfb} alt="" />
           </div>
-          <div className="flex pl-5 h-14 justify-between items-center py-2 ">
-            <img src={gazprom} className="object-cover h-14 block" alt="" />
-            <img src={bakai} className=" object-cover h-10 block" alt="" />
+          <div className="flex pl-5 h-14 gap-5 items-center py-2 ">
+            <img src={gazprom} className="object-contain h-14 " alt="" />
+            <img src={bakai} className=" object-cover h-10 " alt="" />
           </div>
-          <div className=" inline-block pl-5 h-14 justify-between items-center py-2">
-            <img src={huawei} alt="" className="object-cover h-14 block" />
-            <img src={kompanion} alt="" className="object-cover h-14 block" />
+          <div className="flex pl-5 h-14 gap-3 items-center py-2">
+            <img src={huawei} alt="" />
+            <img src={kompanion} alt="" />
           </div>
           <div className="flex justify-around py-2">
             <img src={fly} alt="" />
@@ -125,7 +125,7 @@ const FooterHome = () => {
               Отправить
             </button>
 
-            <div className=" block justify-between flex-col flex-wrap w-[100%] pt-2 px-2">
+            <div className=" flex justify-between flex-col flex-wrap w-[100%] pt-2 px-2">
               <div className="flex justify-between py-2 gap-2 ">
                 <img src={sfb} className="w-auto h-8" alt="" />
                 <img src={zk} alt="" className="w-auto h-8" />
