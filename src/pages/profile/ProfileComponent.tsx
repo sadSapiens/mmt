@@ -13,10 +13,6 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
-// import PhoneInput from "react-phone-number-input";
-// import PhoneInputWithCountrySelect from "react-phone-number-input";
-// import "react-phone-number-input/style.css";
-
 interface ImageObj {
   blobUrl: string;
   file: File;
@@ -121,9 +117,6 @@ const ProfileComponent = () => {
               )}
             </div>
             <div className="py-3 flex flex-row justify-center gap-2 w-auto text-sm  md:!flex-col">
-              {/* <button className="border border-[#79B15E] text-[#79B15E] rounded-full ... py-1 px-1 ">
-                Изменить фото
-              </button> */}
               <div className="  text-[#79B15E] rounded-full ...  border-[#79B15E] flex items-center justify-center py-1 px-8 md:border ">
                 <input
                   onChange={(e) => onSelectImage(e)}
@@ -171,29 +164,7 @@ const ProfileComponent = () => {
             />
 
             <div className="w-full">
-              {/* <PhoneInput
-                placeholder="Enter phone number"
-                value={valuee}
-                onChange={setValue}
-                rules={{ required: true }}
-                type="text"
-                placeholder="Номер телефона ГУД"
-                value=""
-                style={{}}
-                name="phone"
-                showCountrySelect={true}
-                defaultCountry="KG"
-                countries={[]}
-                onChange={(e) => console.log(e)}
-              />
-              {valuee} */}
-
               <PhoneInput
-                // onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-                //   handleChange(e.target.value)
-                // }
-                // onChange={(phoneNumber) => handleChange()}
-
                 value={valuee}
                 onChange={(e: string) => {
                   setValue(e);
