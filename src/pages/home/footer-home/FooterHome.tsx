@@ -75,9 +75,9 @@ const FooterHome = () => {
             <img src={zk} alt="" />
             <img src={sfb} alt="" />
           </div>
-          <div className="flex pl-5 h-14 justify-between items-center py-2 ">
-            <img src={gazprom} className="object-cover h-14 block" alt="" />
-            <img src={bakai} className=" object-cover h-10 block" alt="" />
+          <div className="flex pl-5 h-14 gap-5 items-center py-2 ">
+            <img src={gazprom} className="object-contain h-14 " alt="" />
+            <img src={bakai} className=" object-cover h-10 " alt="" />
           </div>
           <div className="flex pl-5 h-14 gap-3 items-center py-2">
             <img src={huawei} alt="" />

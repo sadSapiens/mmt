@@ -49,10 +49,6 @@ const SignUpPage = () => {
       }
     }
   };
-  console.log(error);
-  const arr = [1, 2, 3, 4];
-  const arr2 = [1, 2, 3, 4, 4, 5, 6, 6];
-  console.log(arr.concat(arr2));
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);

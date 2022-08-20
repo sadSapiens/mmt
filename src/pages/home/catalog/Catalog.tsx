@@ -22,20 +22,20 @@ const Catalog = () => {
         <span className="  py-2 font-semibold text-black text-bold text-center ">
           Каталог
         </span>
-        <div className="flex flex-row gap-4 md:overflow-auto overflow-scroll h-8  justify-start md:justify-center px-4 w-full md:w-auto">
+        <div className="flex flex-row gap-4  overflow-x-auto overflow-y-clip h-8 justify-start md:justify-center px-4 w-full md:w-auto">
           <button className=" flex   align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-3 text-white text-center text-xs md:text-base ">
             <img className=" flex px-2" src={heart} alt="" />
             Тренды
           </button>
-          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
+          <button className=" flex items-center justify-center py-2 min-w-max rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={calendar} alt="" />
             По праздникам
           </button>
-          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
+          <button className=" flex items-center rounded-full min-w-max  ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={client} alt="" />
             По клиентам
           </button>
-          <button className=" flex items-center rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
+          <button className=" flex items-center rounded-full min-w-max ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
             <img className=" flex px-2" src={bag} alt="" />
             По секторам
           </button>

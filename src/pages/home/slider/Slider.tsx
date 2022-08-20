@@ -1,5 +1,4 @@
 import React from "react";
-import "./slider.css";
 import eco from "../../../assets/img/eco-bottle.png";
 import ecomobile from "../../../assets/img/ecomobile.png";
 
@@ -53,25 +52,61 @@ const Slider = () => {
                 >
                   ЭКОЛОГИЧНЫЕ
                 </p>
-                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ</p>
+                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 1</p>
               </div>
             </div>
           </div>
 
-          <div className="carousel-item relative float-left w-full">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
-              className="block w-full md:h-[25rem] h-36"
-              alt="Mountaintop"
-            />
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-between bg-[#8ABFBB]">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
+                <p
+                  className="
+                   w-6/12   md:text-8xl "
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 2</p>
+              </div>
+            </div>
           </div>
 
-          <div className="carousel-item relative float-left w-full">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
-              className="block w-full md:h-[25rem] h-36"
-              alt="Woman Reading a Book"
-            />
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-between bg-[#8ABFBB]">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
+                <p
+                  className="
+                   w-6/12   md:text-8xl "
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 3</p>
+              </div>
+            </div>
           </div>
         </div>
 

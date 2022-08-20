@@ -8,8 +8,6 @@ import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
 
-import colich from "../assets/colich.png";
-
 import "./catalogStyle.css";
 
 import { Link, useParams } from "react-router-dom";

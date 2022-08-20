@@ -17,6 +17,8 @@ const About = () => {
   useEffect(() => {
     dispatch(fetchAbout() as any);
   }, []);
+  console.log(about, "about");
+
   return (
     <div className=" text-white ">
       <div className="bg-white w-auto h-2"></div>
@@ -60,7 +62,7 @@ const About = () => {
         </div>
         <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
           <img
-            src={about && about.main_info.picture}
+            // src={about && about.main_info.picture}
             className="md:h-[33rem] md:w-[25rem] h-auto w-72"
             alt=""
           />
@@ -84,7 +86,7 @@ const About = () => {
           <div className="md:text-center md:w-56 md:flex md:justify-start flex justify-center flex-col items-center pb-4">
             <img
               className="bg-[#343434] w-44 md:w-56 md:flex md:justify-start "
-              src={perizatT}
+              src={about?.director.picture}
               alt=""
             />
             <h2 className="font-bold py-2">{about?.director.name}</h2>
@@ -107,62 +109,44 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row text-black justify-around mx-auto md:px-9 px-0   w-auto md:py-5">
-        <div className="flex justify-center items-center flex-col px-9">
-          <img
-            className="bg-[#202020] md:w-80  w-56 h-auto md:h-[28rem]"
-            src={bermet}
-            alt=""
-          />
-          <div className="text-center">
-            <h2 className="font-bold">{about?.employers[0].name}</h2>
-            <span>{about?.employers[0].position}</span>
-
-            <div className="flex text-center justify-center">
-              <img src={mail} alt="" />
-
-              <h5>{about?.employers[0].email}</h5>
-            </div>
-          </div>
-        </div>
-
-        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
-          <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-            «От идеи до воплощения корпоративных подарков – волшебный творческий
-            процесс, требующий четкой организации. Время – самое бесценное в
-            нашей жизни. Мы стремимся к эффективному управлению, чтобы
-            потребители вашего бренда стали еще ближе к вам»
-          </span>
-        </div>
+      <div className="flex  md:flex-row text-black justify-around mx-auto md:px-9 px-0   w-auto md:py-5">
         {/*  */}
-        <div className="flex justify-center items-center flex-col px-9">
-          <img
-            className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem] "
-            src={aidai}
-            alt=""
-          />
-          <div className="text-center">
-            <h2 className="font-bold">{about?.employers[1].name}</h2>
-            <span>{about?.employers[1].position}</span>
 
-            <div className="flex text-center justify-center">
-              <img src={mail} alt="" />
+        <div>
+          {about?.employers.map((item: any) => (
+            <>
+              <div className="flex justify-center items-center flex-col px-9">
+                <img
+                  className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem] "
+                  src={item.picture}
+                  alt=""
+                />
+                <div className="text-center">
+                  <h2 className="font-bold">{item.name}</h2>
+                  <span>{item.position}</span>
 
-              <h5>{about?.employers[1].email}</h5>
-            </div>
-          </div>
-        </div>
-        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
-          <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-            «От идеи до воплощения корпоративных подарков – волшебный творческий
-            процесс, требующий четкой организации. Время – самое бесценное в
-            нашей жизни. Мы стремимся к эффективному управлению, чтобы
-            потребители вашего бренда стали еще ближе к вам»
-          </span>
+                  <div className="flex text-center justify-center">
+                    <img src={mail} alt="" />
+
+                    <h5>{item.email}</h5>
+                  </div>
+                </div>
+              </div>
+              <div className=" flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+                <span className="font-normal text-sm flex justify-center items-center text-center px-4">
+                  «От идеи до воплощения корпоративных подарков – волшебный
+                  творческий процесс, требующий четкой организации. Время –
+                  самое бесценное в нашей жизни. Мы стремимся к эффективному
+                  управлению, чтобы потребители вашего бренда стали еще ближе к
+                  вам»
+                </span>
+              </div>
+            </>
+          ))}
         </div>
 
         {/*  */}
-        <div className="flex justify-center items-center flex-col px-9">
+        {/* <div className="flex justify-center items-center flex-col px-9">
           <img
             className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
             src={zhyldyz}
@@ -187,7 +171,6 @@ const About = () => {
             потребители вашего бренда стали еще ближе к вам»
           </span>
         </div>
-        {/*  */}
       </div>
 
       <div className=" hidden md:flex flex-col md:flex-row bg-[#343434]  mx-auto px-9   w-auto py-5">
@@ -214,7 +197,7 @@ const About = () => {
             чтобы аудитория отвечала взаимностью, впуская ваш бренд в свою
             повседневную жизнь»
           </span>
-        </div>
+        </div> */}
       </div>
       <div className="bg-white w-auto h-7"></div>
 

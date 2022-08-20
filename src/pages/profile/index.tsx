@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import clock from "./assets/clock-circle.svg";
-import settings from "./assets/settings.png";
-import pencil from "./assets/pencil.svg";
-import trash from "./assets/trash.svg";
-import trashBlack from "./assets/trashBlack.png";
-import avatar from "./assets/avatar.png";
-import settingWhite from "./assets/settingWhite.png";
-import API from "../../constants/api";
+// import clock from "./assets/clock-circle.svg";
+// import settings from "./assets/settings.png";
+// import pencil from "./assets/pencil.svg";
+// import trash from "./assets/trash.svg";
+// import trashBlack from "./assets/trashBlack.png";
+// import avatar from "./assets/avatar.png";
+// import settingWhite from "./assets/settingWhite.png";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import OrderHistory from "./OrderHistory";
 import ProfileComponent from "./ProfileComponent";
@@ -40,7 +39,7 @@ const Profile = () => {
           <div>
             <h1 className="font-bold  text-2xl">Личный кабинет</h1>
           </div>
-          <div className="flex gap-5 justify-between w-full">
+          <div className="flex gap-5 md:justify-end justify-between w-full">
             <button
               onClick={() => setIsProfile(false)}
               className={`${

@@ -2,6 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   fetchAboutSuccess,
   fetchBlogNewsSuccess,
+  fetchHomeSuccess,
   fetchPortfolioSuccess,
 } from "./actions";
 import { IVariaState } from "./interfaces/data.interface";
@@ -10,6 +11,7 @@ export const initialState: IVariaState = {
   blog: null,
   about: null,
   portfolio: null,
+  home: null,
 };
 
 export default createReducer<IVariaState>(initialState, (builder) =>
@@ -33,6 +35,13 @@ export default createReducer<IVariaState>(initialState, (builder) =>
       (state, { payload }): IVariaState => ({
         ...state,
         portfolio: payload,
+      })
+    )
+    .addCase(
+      fetchHomeSuccess,
+      (state, { payload }): IVariaState => ({
+        ...state,
+        home: payload,
       })
     )
 );

@@ -15,7 +15,7 @@ input:checked + .label-faq:after {
   transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
 }
 input[name="panel"]:checked ~ .accordion__content {
-  max-height: 50em;
+  /* max-height: 50em; */
 }
 /*  */
 
@@ -154,14 +154,12 @@ h3 {
 .tabs-component [role="tablist"] button:focus,
 .tabs-component [role="tablist"] button:hover {
   border-width: 1px;
-  /* border-color: #e9ecef #e9ecef #b41c1c; */
 }
 
 .tabs-component [role="tablist"] button.active {
   border-radius: 5px;
 
   color: #ffffff;
-  /* background-color: #ffffff; */
   background: #343434;
 }
 

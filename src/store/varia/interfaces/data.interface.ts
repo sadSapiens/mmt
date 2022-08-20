@@ -23,9 +23,22 @@ export interface IBlog {
   created_at: string;
   title: string;
 }
+// export interface IFaq {
+//   answer: {};
+//   question: {};
+// }
 
+export interface IHomeData {
+  brands: [];
+  catalogs: [];
+  faq: any[];
+  portfolio: [];
+  reviews: any[];
+  types: any[];
+}
 export interface IVariaState {
   blog: IBlogs | null;
   about: IAbout | null;
   portfolio: IPortfolio | null;
+  home: IHomeData | null;
 }

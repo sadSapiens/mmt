@@ -25,7 +25,7 @@ const CatalogDetailsHiidea = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
-  console.log(selectedProduct);
+  console.log(selectedProduct, "selected");
   return (
     <div
       className="mx-auto
@@ -38,7 +38,10 @@ const CatalogDetailsHiidea = () => {
       <div className="rounded-md w-full font-jost">
         <ol className="flex  ">
           <li className="text-black font-jost">
-            <Link to="/catalog" className="text-gray-900 hover:text-black">
+            <Link
+              to="/catalog"
+              className="text-gray-900 no-underline hover:text-red-600"
+            >
               Каталог
             </Link>
           </li>

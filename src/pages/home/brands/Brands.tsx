@@ -14,7 +14,9 @@ const Brands = () => {
       </div>
       <div className="flex md:justify-evenly my-4 px-3 flex-col md:flex-row justify-center items-center">
         <div className="flex flex-col items-center py-2">
-          <img src={hiidea} alt="" />
+          <div>
+            <img src={hiidea} alt="" />
+          </div>
           <h6>Португалия</h6>
         </div>
         <div className="flex flex-col items-center py-2">

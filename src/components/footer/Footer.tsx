@@ -1,5 +1,4 @@
 import React from "react";
-import "./footer.css";
 import instagram from "./assets/instagram.png";
 import facebook from "./assets/facebook.png";
 import discovery from "./assets/Discovery.png";
@@ -77,7 +76,13 @@ const Footer = () => {
             "
             >
               <button className="rounded-full ... w-full h-12 object-contain bg-slate-50">
-                Заказать звонок
+                <a
+                  href="tel:+1234567890"
+                  className="text-black hover:text-black"
+                >
+                  {" "}
+                  Заказать звонок
+                </a>
               </button>
 
               <div className="flex sm:justify-center xl:justify-start"></div>
@@ -123,7 +128,10 @@ const Footer = () => {
            py-2 px-10"
           >
             <button className=" px-5 rounded-full ... w-screen h-12 object-contain bg-slate-50">
-              Заказать звонок
+              <a href="tel:+1234567890" className="text-black hover:text-black">
+                {" "}
+                Заказать звонок
+              </a>
             </button>
           </div>
           <div

@@ -12,4 +12,5 @@ export interface Store {
   portfolio: IVariaState;
   category: ICategoryState;
   order: IOrderState;
+  home: IVariaState;
 }

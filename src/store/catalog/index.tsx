@@ -1,7 +1,8 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import API from "../../constants/api";
 import {
-  fetchCatalogSuccess,
+  // fetchCatalogSuccess,
+  // fetchFiltersSuccess,
   fetchSelectedCatalogProductSuccess,
 } from "./actions";
 

@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch } from "../../store";
+import { fetchHome } from "../../store/varia";
+import { useHome } from "../../store/varia/hooks";
 import Brands from "./brands/Brands";
 import Catalog from "./catalog/Catalog";
 import Faq from "./FAQ/Faq";
@@ -9,6 +12,13 @@ import Slider from "./slider/Slider";
 import Whyus from "./whyus/Whyus";
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+  const home = useHome();
+  useEffect(() => {
+    console.log(66666);
+    dispatch(fetchHome() as any);
+  }, []);
+
   return (
     <>
       <div className="font-jost">

@@ -1,4 +1,3 @@
-import React from "react";
 import { Dispatch } from "@reduxjs/toolkit";
 
 import API from "../../constants/api";
