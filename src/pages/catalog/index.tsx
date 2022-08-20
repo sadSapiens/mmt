@@ -7,7 +7,6 @@ import "./style.css";
 import Filters from "./filters/Filters";
 import Cards from "./cards/Cards";
 import { Link, useLocation, useParams } from "react-router-dom";
-// import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
 import { Dispatch } from "@reduxjs/toolkit";
 import { useCatalogProducts, useSearchValue } from "../../store/catalog/hooks";
@@ -16,7 +15,6 @@ import {
   fetchCatalogSuccess,
   setSearchValue,
 } from "../../store/catalog/actions";
-import axios from "axios";
 import API from "../../constants/api";
 
 const CatalogPage = () => {
