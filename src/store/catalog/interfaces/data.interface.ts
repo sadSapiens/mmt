@@ -2,7 +2,14 @@ export interface ICatalogState {
   catalogProducts: [];
   selectedProduct: IProductState | null;
   searchValue: string;
-  filter: {} | null;
+  filters: IFilters | null;
+}
+
+export interface IFilters {
+  colors: [];
+  costom_types: [];
+  materials: [];
+  types: [];
 }
 
 export interface IProductColor {
@@ -29,4 +36,5 @@ export interface IProductState {
   locations: [];
   package: [];
   total_stock: number;
+  // price_descending: boolean;
 }

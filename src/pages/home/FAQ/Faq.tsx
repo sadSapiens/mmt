@@ -12,7 +12,6 @@ const Faq = () => {
   useEffect(() => {
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home?.faq, "faq");
 
   return (
     <div className="flex justify-between container mx-auto px-4">

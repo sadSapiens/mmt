@@ -11,7 +11,7 @@ export const initialState: ICatalogState = {
   catalogProducts: [],
   selectedProduct: null,
   searchValue: "",
-  filter: {},
+  filters: null,
 };
 
 export default createReducer<ICatalogState>(initialState, (builder) =>
@@ -41,7 +41,7 @@ export default createReducer<ICatalogState>(initialState, (builder) =>
       fetchFiltersSuccess,
       (state, { payload }): ICatalogState => ({
         ...state,
-        filter: payload,
+        filters: payload,
       })
     )
 );

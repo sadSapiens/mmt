@@ -13,7 +13,6 @@ const Feedback = () => {
   useEffect(() => {
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home?.reviews, "home-feedback");
   return (
     <div className="container mx-auto px-4">
       <div className="flex md:flex-auto md:justify-start justify-center">

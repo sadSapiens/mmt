@@ -22,8 +22,6 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(fetchPortfolio() as any);
   }, []);
-  console.log(portfolio, "portfolio");
-  console.log(portfolio);
 
   return (
     <div className="mx-auto md:px-9 px-6   w-auto py-5">

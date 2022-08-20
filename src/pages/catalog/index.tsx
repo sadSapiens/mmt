@@ -10,66 +10,111 @@ import { Link, useLocation, useParams } from "react-router-dom";
 // import { fetchCatalogProducts } from "../../store/catalog";
 import { useAppDispatch } from "../../store";
 import { Dispatch } from "@reduxjs/toolkit";
-import { useCatalogProducts, useSearchValue } from "../../store/catalog/hooks";
+import {
+  useCatalogProducts,
+  useFilters,
+  useSearchValue,
+} from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
 import {
   fetchCatalogSuccess,
+  fetchFiltersSuccess,
   setSearchValue,
 } from "../../store/catalog/actions";
 import API from "../../constants/api";
+import { useHome } from "../../store/varia/hooks";
+import { fetchHome } from "../../store/varia";
+import { useCategoryProducts } from "../../store/category/hooks";
 
 const CatalogPage = () => {
+  const [priceDescending, setPriceDescending] = useState();
+  const filters = useFilters();
   const [filter, setFilter] = useState();
   const [row, setRow] = useState("row");
   const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
+  console.log(catalogProducts, "ppp");
+
   const { search } = useLocation();
+  const categories = useCategoryProducts();
+
   const [categoryId, setCategoryId] = useState(
     new URLSearchParams(search).get("categoryId")
   );
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
+  const [totalCount, setTotalCount] = useState();
+  const [selectedFilters, setSelectedFilters] = useState<{
+    colors: any[];
+    materials: any[];
+    custom_types: any[];
+    types: any[];
+  }>({
+    colors: [],
+    materials: [],
+    custom_types: [],
+    types: [],
+  });
+  const [price, setPrice] = useState({
+    minPrice: 0,
+    maxPrice: 999999999999999,
+  });
 
+  const [priceSort, setPriceSort] = useState({
+    ascending: 0,
+    descending: 0,
+  });
   const fetchCatalogProducts =
     (categoryId: string | null, searchValue: string | null) =>
     async (dispatch: Dispatch) => {
       try {
-        console.log("fetching");
-        if (categoryId) {
-          const res: any = await API.get(
-            `/products/category/${categoryId}?count=${
-              productsCount + 12
-            }&more=${isAllProducts}&search=${searchValue}`
-          );
-          dispatch(fetchCatalogSuccess(res.data.data));
-          setIsAllProducts(res.data.is_all);
-          setProductsCount(res.data.count);
-          setFetching(false);
-          return;
-        }
-
-        const res: any = await API.get(
-          `/products/all?count=${
-            productsCount + 12
-          }&more=${isAllProducts}&search=${searchValue}`
-        );
-        console.log(res.data);
-
+        const url = `/products${
+          categoryId ? `/category/${categoryId}` : `/all`
+        }?count=${
+          productsCount + 12
+        }&more=${isAllProducts}&search=${searchValue}&colors=${selectedFilters.colors.map(
+          (color) => `${color}`
+        )}&costom=${selectedFilters.custom_types.map(
+          (color) => `${color}`
+        )}&types=${selectedFilters.types.map(
+          (type) => `${type}`
+        )}&materials=${selectedFilters.materials.map(
+          (material) => `${material}`
+        )}&price_start=${price.minPrice}&price_end=${
+          price.maxPrice
+        }&price_ascending=${priceSort.ascending}&price_descending=${
+          priceSort.descending
+        }`;
+        const res: any = await API.get(url);
         dispatch(fetchCatalogSuccess(res.data.data));
+        dispatch(
+          fetchFiltersSuccess({
+            colors: res.data.colors,
+            costom_types: res.data.costom_types,
+            materials: res.data.materials,
+            types: res.data.types,
+          })
+        );
+
         setIsAllProducts(res.data.is_all);
         setProductsCount(res.data.count);
+        setTotalCount(res.data.total_count);
         setFetching(false);
       } catch (e) {
         console.log(e);
       }
     };
-  //
+
   useEffect(() => {
     if (!fetching) return;
     dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
   }, [categoryId, searchValue, fetching]);
+
+  useEffect(() => {
+    dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
+  }, [selectedFilters, price, priceSort]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -89,11 +134,80 @@ const CatalogPage = () => {
       setFetching(true);
     }
   };
+  const handleResetFilters = () => {
+    setSelectedFilters({
+      colors: [],
+      materials: [],
+      custom_types: [],
+      types: [],
+    });
+    setPrice({
+      minPrice: 0,
+      maxPrice: 999999999999999,
+    });
+  };
+
+  const handleSelectFilters = (id: number, filterType: string) => {
+    if (filterType === "color") {
+      if (selectedFilters.colors.includes(id)) {
+        const updatedArray = selectedFilters.colors.filter(
+          (color) => color !== id
+        );
+        setSelectedFilters({ ...selectedFilters, colors: updatedArray });
+        return;
+      }
+      setSelectedFilters({
+        ...selectedFilters,
+        colors: [...selectedFilters.colors, id],
+      });
+      return;
+    }
+    if (filterType === "customTypes") {
+      if (selectedFilters.custom_types.includes(id)) {
+        const updatedArray = selectedFilters.custom_types.filter(
+          (costom) => costom !== id
+        );
+        setSelectedFilters({ ...selectedFilters, custom_types: updatedArray });
+        return;
+      }
+      setSelectedFilters({
+        ...selectedFilters,
+        custom_types: [...selectedFilters.custom_types, id],
+      });
+      return;
+    }
+    if (filterType === "types") {
+      if (selectedFilters.types.includes(id)) {
+        const updatedArray = selectedFilters.types.filter(
+          (type) => type !== id
+        );
+        setSelectedFilters({ ...selectedFilters, types: updatedArray });
+        return;
+      }
+      setSelectedFilters({
+        ...selectedFilters,
+        types: [...selectedFilters.types, id],
+      });
+      return;
+    }
+    if (filterType === "materials") {
+      if (selectedFilters.materials.includes(id)) {
+        const updatedArray = selectedFilters.materials.filter(
+          (material) => material !== id
+        );
+        setSelectedFilters({ ...selectedFilters, materials: updatedArray });
+        return;
+      }
+      setSelectedFilters({
+        ...selectedFilters,
+        materials: [...selectedFilters.materials, id],
+      });
+      return;
+    }
+  };
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
-      <p>&nbsp;</p>
-
       <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
         <div className="flex items-baseline gap-5">
           <Link to="/catalog">
@@ -123,7 +237,151 @@ const CatalogPage = () => {
         {/*  */}
         <div className="md:hidden flex flex-row justify-between">
           <div className="md:hidden w-8/12 flex  ">
-            <Filters />
+            <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
+              <div>
+                <span>
+                  <> товаров</>
+                </span>
+              </div>
+              <div>
+                <div className="flex justify-center">
+                  <div>
+                    <div className="dropdown relative">
+                      <button
+                        className="
+          dropdown-toggle
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg active:text-white
+          transition
+          duration-150
+          ease-in-out
+          flex
+          items-center
+          whitespace-nowrap
+        "
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Сортировать по: все товары
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          data-icon="caret-down"
+                          className="w-2 ml-2"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                          ></path>
+                        </svg>
+                      </button>
+                      <ul
+                        className="
+          dropdown-menu
+          min-w-max
+          absolute
+          hidden
+          bg-white
+          text-base
+          z-50
+          float-left
+          py-2
+          list-none
+          text-left
+          rounded-lg
+          shadow-lg
+          mt-1
+          hidden
+          m-0
+          bg-clip-padding
+          border-none
+        "
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li>
+                          <a
+                            className="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+                            href="#"
+                          >
+                            Action
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+                            href="#"
+                          >
+                            Another action
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            className="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            "
+                            href="#"
+                          >
+                            Something else here
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex bg-black  h-0.5"></div>
           </div>
           <div className="flex justify-center items-center gap-3 w-4/12">
             <button
@@ -145,8 +403,6 @@ const CatalogPage = () => {
               row === "row" ? "bg-black text-white " : "bg-white text-black"
             } border-gray-900 border-2  h-auto flex md:flex rounded-full ... w-auto px-3 items-center py-2 gap-2`}
           >
-            {/* <img src={schema} className="h-auto w-auto  flex" alt="" /> */}
-
             <svg
               width="24"
               height="24"
@@ -199,9 +455,24 @@ const CatalogPage = () => {
               <img src={rightarrow} alt="" />
             </li>
             <li>
-              <a href="/" className="!text-black ">
-                Мужские аксессуары
-              </a>
+              {/* <Link to={cateries.id}>
+              </Link> */}
+              <span className="!text-black ">
+                {/* {categories.name} */}
+                mmmmm
+              </span>
+
+              {/* {categories.length > 0 &&
+                categories.map((category: any, i: number) => (
+                  <>
+                    <li
+                      className="  category h-10 flex justify-start pl-14 text-left leading-normal items-center w-full"
+                      key={i}
+                    >
+                      {category.name}
+                    </li>
+                  </>
+                ))} */}
             </li>
           </ol>
         </nav>
@@ -234,30 +505,36 @@ const CatalogPage = () => {
             >
               Тип товара
             </label>
-            <div className="accordion__content overflow-hidden  flex">
-              {/* <h2 className="accordion__header pt-4 pl-4">Header</h2> */}
+            <div className="accordion__content overflow-y-auto overflow-x-clip  flex justify-center items-center">
+              <div className="flex justify-center">
+                <div className="gap-3 flex flex-col justify-center">
+                  {filters && (
+                    <div className="form-check flex justify-center items-center flex-col">
+                      {filters.types.map((item: any) => (
+                        <div className="py-2">
+                          <input
+                            className="form-check-input  h-4 w-4 border border-black rounded-sm bg-white  focus:outline-none transition duration-200 items-center place-items-center align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            type="checkbox"
+                            value={item.id}
+                            id={item.name}
+                            checked={selectedFilters.types.includes(item.id)}
+                            onClick={() =>
+                              handleSelectFilters(item.id, "types")
+                            }
+                          />
 
-              <div className="flex gap-3  px-5 justify-start">
-                <form id="root" name="tree">
-                  <div className="flex justify-center">
-                    <div className="gap-3 flex flex-col justify-start">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                          type="checkbox"
-                          value=""
-                          id="typeNew"
-                        />
-
-                        <button className="flex justify-center  bg-[#65A8E0] px-5 rounded-full ... w-28">
-                          Новинки
-                        </button>
-                      </div>
+                          <label
+                            htmlFor={item.name}
+                            className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 rounded-full ... w-28 "
+                          >
+                            {item.name}
+                          </label>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-
-                  {/*  */}
-                </form>
+                  )}
+                </div>
+                {/*  */}
               </div>
             </div>
           </div>
@@ -313,8 +590,15 @@ const CatalogPage = () => {
                   placeholder:text-stone-900
                   "
                                   placeholder="15"
-                                  type="text"
+                                  type="number"
                                   name="search"
+                                  value={price.minPrice}
+                                  onChange={(e) =>
+                                    setPrice({
+                                      ...price,
+                                      minPrice: Number(e.target.value),
+                                    })
+                                  }
                                 />
                               </td>
                               <td className="text-sm text-gray-900 font-light px-6  whitespace-nowrap">
@@ -326,8 +610,15 @@ const CatalogPage = () => {
                   placeholder:text-stone-900
                   "
                                   placeholder="400"
-                                  type="text"
+                                  type="number"
                                   name="search"
+                                  value={price.maxPrice}
+                                  onChange={(e) =>
+                                    setPrice({
+                                      ...price,
+                                      maxPrice: Number(e.target.value),
+                                    })
+                                  }
                                 />
                               </td>
                             </tr>
@@ -354,23 +645,33 @@ const CatalogPage = () => {
             >
               Цвет
             </label>
-            <div className="accordion__content overflow-hidden bg-grey-lighter">
+            <div className="accordion__content overflow-y-scroll bg-grey-lighter">
               <div className="flex justify-start px-5 py-3 ">
                 <div className="flex flex-col justify-start">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="colorBlack"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="colorBlack"
-                    >
-                      Черный
-                    </label>
-                  </div>
+                  {filters && (
+                    <div className="form-check py-2">
+                      {filters.colors.map((item: any) => (
+                        <div className="py-2">
+                          <input
+                            className="form-check-input  h-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            type="checkbox"
+                            value={item.id}
+                            id={item.name}
+                            checked={selectedFilters.colors.includes(item.id)}
+                            onClick={() =>
+                              handleSelectFilters(item.id, "color")
+                            }
+                          />
+                          <label
+                            className="form-check-label text-gray-800 flex flex-col w-full justify-start"
+                            htmlFor={item.name}
+                          >
+                            {item.name}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -419,23 +720,35 @@ const CatalogPage = () => {
             >
               Материал
             </label>
-            <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 py-3">
+            <div className="accordion__content overflow-y-scroll overflow-x-clip bg-grey-lighter">
+              <div className="flex justify-start  py-3">
                 <div className="flex flex-col justify-start">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="materialPaper"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="materialPaper"
-                    >
-                      Бумага
-                    </label>
-                  </div>
+                  {filters && (
+                    <div className="form-check px-4">
+                      {filters.materials.map((item: any, i) => (
+                        <div key={i}>
+                          <input
+                            className="form-check-input  h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            type="checkbox"
+                            value={item.id}
+                            id={item.name}
+                            checked={selectedFilters.materials.includes(
+                              item.id
+                            )}
+                            onClick={() =>
+                              handleSelectFilters(item.id, "materials")
+                            }
+                          />
+                          <label
+                            className="form-check-label  text-gray-800 flex flex-col justify-center"
+                            htmlFor={item.name}
+                          >
+                            {item.name}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -453,23 +766,38 @@ const CatalogPage = () => {
             >
               Метод нанесения
             </label>
-            <div className="accordion__content overflow-hidden bg-grey-lighter">
-              <div className="flex justify-start px-5 py-3">
+            <div className="accordion__content overflow-y-scroll bg-grey-lighter">
+              <div className="flex justify-center px-1 py-3">
                 <div className="flex flex-col justify-start">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input  h-4 w-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                      type="checkbox"
-                      value=""
-                      id="MethodChase"
-                    />
-                    <label
-                      className="form-check-label inline-block text-gray-800"
-                      htmlFor="MethodChase"
-                    >
-                      Гравировка (СО2 лазер)
-                    </label>
-                  </div>
+                  {/*  */}
+                  {filters && (
+                    <div className="form-check ">
+                      {filters.costom_types.map((item: any) => (
+                        <div className="py-2">
+                          <input
+                            className="form-check-input  h-4  border-2 border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left  cursor-pointer"
+                            type="checkbox"
+                            value=""
+                            id="MethodChase"
+                            checked={selectedFilters.custom_types.includes(
+                              item.id
+                            )}
+                            onClick={() =>
+                              handleSelectFilters(item.id, "customTypes")
+                            }
+                          />
+                          <label
+                            className="form-check-label text-gray-800 w-1/8 flex flex-col"
+                            htmlFor={item.name}
+                          >
+                            {item.name}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/*  */}
                 </div>
               </div>
             </div>
@@ -483,6 +811,7 @@ const CatalogPage = () => {
               Показать товары (67)
             </button>
             <button
+              onClick={() => handleResetFilters()}
               className="border border-black rounded-full ... w-48  px-4 py-1 
           
           hover:text-white hover:bg-purple-600  focus:outline-none text-black
@@ -494,7 +823,139 @@ const CatalogPage = () => {
         </div>
         <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
           <div className="md:w-[100%] md:px-10 hidden md:block">
-            <Filters />
+            <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
+              <div>
+                <span>
+                  <> товаров</>
+                </span>
+              </div>
+              <div>
+                <div className="flex justify-center">
+                  <div>
+                    <div className="dropdown relative">
+                      <button
+                        className="
+          dropdown-toggle
+          px-6
+          py-2.5
+          text-black
+          font-medium
+          text-xs
+          leading-tight
+          rounded
+          hover:bg-gray-100          focus:outline-none focus:ring-0
+          transition
+          ease-in-out
+          flex
+          items-center
+          whitespace-nowrap
+        "
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Сортировать по:{" "}
+                        {priceSort.ascending
+                          ? "по возрастанию"
+                          : priceSort.descending
+                          ? "по убыванию"
+                          : "все товары"}
+                      </button>
+                      <ul
+                        className="
+          dropdown-menu
+          min-w-max
+          absolute
+          bg-white
+          text-base
+          z-50
+          float-left
+          py-2
+          list-none
+          text-left
+          mt-1
+          hidden
+          m-0
+          bg-clip-padding
+          border-2 border-black
+          hober:text-black-200
+        "
+                        aria-labelledby="dropdownMenuButton1"
+                      >
+                        <li
+                          onClick={() =>
+                            setPriceSort({
+                              descending: 0,
+                              ascending: 0,
+                            })
+                          }
+                          className="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-700
+              border-[1px] border-black
+            "
+                        >
+                          Все товары
+                        </li>
+                        <li
+                          onClick={() =>
+                            setPriceSort({ descending: 0, ascending: 1 })
+                          }
+                          className="
+              dropdown-item
+
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-700
+              border-2 border-black
+            "
+                        >
+                          По возрастанию цены
+                        </li>
+                        <li
+                          onClick={() =>
+                            setPriceSort({ descending: 1, ascending: 0 })
+                          }
+                          className="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+              border-2 border-black
+            "
+                        >
+                          По убыванию цены
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex bg-black  h-0.5"></div>
           </div>
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">

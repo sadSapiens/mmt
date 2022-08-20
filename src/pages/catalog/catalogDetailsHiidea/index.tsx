@@ -25,7 +25,7 @@ const CatalogDetailsHiidea = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
-  console.log(selectedProduct);
+  console.log(selectedProduct, "selected");
   return (
     <div
       className="mx-auto

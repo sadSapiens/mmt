@@ -1,9 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-// import clock from "./assets/clock-circle.svg";
-// import settings from "./assets/settings.png";
-// import pencil from "./assets/pencil.svg";
-// import trash from "./assets/trash.svg";
-// import settingWhite from "./assets/settingWhite.png";
+
 import trashBlack from "./assets/trashBlack.png";
 import avatar from "./assets/2222.png";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +7,7 @@ import API from "../../constants/api";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+// import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 interface ImageObj {
   blobUrl: string;
@@ -20,11 +16,9 @@ interface ImageObj {
 
 const ProfileComponent = () => {
   const [valuee, setValue] = useState("");
-  // const { control, handleSubmit } = useForm()
   console.log(valuee);
   const [errorText, setErrorText] = useState([]);
 
-  // console.log(valuee, "vvvv");
   const [images, setImages] = React.useState<ImageObj[]>([]);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -97,13 +91,11 @@ const ProfileComponent = () => {
       })
       .catch((e) => console.log("user not found"));
   }, []);
-  console.log(inputs);
-  console.log(errorText);
 
   return (
     <div>
       <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
-        <form onSubmit={handleSubmit} className="">
+        <form onSubmit={handleSubmit} className="w-96">
           <div className="flex justify-between py-5 flex-col md:flex-row md:items-center ">
             <div className=" flex justify-center items-center">
               {images.length ? (
@@ -220,7 +212,7 @@ const ProfileComponent = () => {
               rounded-full ... focus:outline-none border-solid"
             />
           </label>
-          <div className="text-red-800">
+          <div className="text-red-800 ">
             {
               //@ts-ignore
               errorText.length && errorText[0].map((err) => err[1])

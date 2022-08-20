@@ -158,7 +158,6 @@ const NavBar = () => {
                       type="text"
                       name="search"
                     />
-                    {/* <span className="sr-only">Search</span> */}
                     <button className="absolute pr-2 focus:outline-none">
                       <img className="h-2 w-auto sm:h-5" src={searchl} alt="" />
                     </button>

@@ -1,10 +1,10 @@
 import { createAction } from "@reduxjs/toolkit";
-import { IProductState } from "./interfaces/data.interface";
+import { IFilters, IProductState } from "./interfaces/data.interface";
 
 export const fetchCatalogSuccess = createAction<[]>(
   "catalog/fetchCatalogSuccess"
 );
-export const fetchFiltersSuccess = createAction<{}>(
+export const fetchFiltersSuccess = createAction<IFilters>(
   "catalog/fetchFiltesrSuccess"
 );
 

@@ -18,7 +18,6 @@ const Home = () => {
     console.log(66666);
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home, "home");
 
   return (
     <>

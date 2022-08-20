@@ -28,7 +28,6 @@ const MegaMenu = () => {
     console.log(66666);
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home, "homennn");
 
   return (
     <>

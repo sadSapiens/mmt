@@ -13,12 +13,12 @@ const store = configureStore({
   reducer: {
     ui,
     blog,
+    home,
     about,
     order,
     catalog,
     category,
     portfolio,
-    home,
   },
 });
 
