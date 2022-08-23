@@ -7,6 +7,7 @@ import portfolio from "./varia/reducer";
 import home from "./varia/reducer";
 import catalog from "./catalog/reducer";
 import category from "./category/reducer";
+import similar from "./category/reducer";
 import order from "./order/reducer";
 
 const store = configureStore({
@@ -17,6 +18,7 @@ const store = configureStore({
     about,
     order,
     catalog,
+    similar,
     category,
     portfolio,
   },

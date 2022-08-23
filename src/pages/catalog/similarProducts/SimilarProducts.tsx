@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch } from "../../../store";
+import { fetchSimilarProductsSuccess } from "../../../store/catalog/actions";
+import { useSimilartProducts } from "../../../store/catalog/hooks";
 
 const Similar = () => {
   return (

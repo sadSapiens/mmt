@@ -5,6 +5,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { PUBLIC_API } from "../../constants/api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignUpPage = () => {
@@ -115,9 +116,10 @@ const SignUpPage = () => {
                 Отправить
               </button>
             </div>
-
-            <button className="text-white py-3">Уже есть аккаунт?</button>
           </form>
+          <Link to="/signin">
+            <button className="text-white py-3">Уже есть аккаунт?</button>
+          </Link>
         </div>
         <div className="bg-white h-1"></div>
       </div>

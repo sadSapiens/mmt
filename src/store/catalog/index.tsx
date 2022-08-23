@@ -4,6 +4,7 @@ import {
   // fetchCatalogSuccess,
   // fetchFiltersSuccess,
   fetchSelectedCatalogProductSuccess,
+  fetchSimilarProductsSuccess,
 } from "./actions";
 
 // export const fetchCatalogProducts =
@@ -35,6 +36,9 @@ export const fetchSlectedCatalogProduct =
     try {
       const res: any = await API.get(`/products/${id}`);
       dispatch(fetchSelectedCatalogProductSuccess(res.data.data));
+      dispatch(fetchSimilarProductsSuccess(res.data.similar_products));
+      console.log(res);
+
       console.log(res);
     } catch (e) {
       console.log(e);

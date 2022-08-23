@@ -3,6 +3,7 @@ import {
   fetchCatalogSuccess,
   fetchFiltersSuccess,
   fetchSelectedCatalogProductSuccess,
+  fetchSimilarProductsSuccess,
   setSearchValue,
 } from "./actions";
 import { ICatalogState } from "./interfaces/data.interface";
@@ -12,6 +13,7 @@ export const initialState: ICatalogState = {
   selectedProduct: null,
   searchValue: "",
   filters: null,
+  similarProducts: [],
 };
 
 export default createReducer<ICatalogState>(initialState, (builder) =>
@@ -28,6 +30,13 @@ export default createReducer<ICatalogState>(initialState, (builder) =>
       (state, { payload }): ICatalogState => ({
         ...state,
         selectedProduct: payload,
+      })
+    )
+    .addCase(
+      fetchSimilarProductsSuccess,
+      (state, { payload }): ICatalogState => ({
+        ...state,
+        similarProducts: payload,
       })
     )
     .addCase(

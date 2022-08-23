@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import searchL from "./assets/search.png";
+import union from "./assets/Union.png";
 import rightarrow from "./assets/rightarrow.png";
 import schema from "./assets/schema.svg";
 import list from "./assets/list.svg";
@@ -14,6 +15,7 @@ import {
   useCatalogProducts,
   useFilters,
   useSearchValue,
+  useSelectedCatalogProduct,
 } from "../../store/catalog/hooks";
 import CardsRow from "./cards/CardsRow";
 import {
@@ -25,6 +27,7 @@ import API from "../../constants/api";
 import { useHome } from "../../store/varia/hooks";
 import { fetchHome } from "../../store/varia";
 import { useCategoryProducts } from "../../store/category/hooks";
+import { fetchSlectedCatalogProduct } from "../../store/catalog";
 
 const CatalogPage = () => {
   const [priceDescending, setPriceDescending] = useState();
@@ -206,6 +209,15 @@ const CatalogPage = () => {
     }
   };
 
+  //
+  const selectedProduct = useSelectedCatalogProduct();
+  const params = useParams();
+  useEffect(() => {
+    if (!params.id) return;
+    dispatch(fetchSlectedCatalogProduct(params.id) as any);
+  }, []);
+  console.log(selectedProduct, "ssss2");
+
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
       <div className="flex gap-5  py-3  justify-between flex-col  md:flex-row">
@@ -222,7 +234,7 @@ const CatalogPage = () => {
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-black block pl-2  w-full border-[1px] font-normal border-black rounded-full py-1 pr-3 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                className=" placeholder:text-black block pl-2  w-full border-[1px] font-normal border-black rounded-full py-1 pr-3 focus:outline-none sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
                 name="search"
@@ -238,160 +250,103 @@ const CatalogPage = () => {
         <div className="md:hidden flex flex-row justify-between">
           <div className="md:hidden w-8/12 flex  ">
             <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
-              <div>
-                <span>
-                  <> товаров</>
-                </span>
-              </div>
-              <div>
-                <div className="flex justify-center">
-                  <div>
-                    <div className="dropdown relative">
-                      <button
-                        className="
-          dropdown-toggle
-          px-6
-          py-2.5
-          bg-blue-600
-          text-white
-          font-medium
-          text-xs
-          leading-tight
-          uppercase
-          rounded
-          shadow-md
-          hover:bg-blue-700 hover:shadow-lg
-          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-blue-800 active:shadow-lg active:text-white
-          transition
-          duration-150
-          ease-in-out
-          flex
-          items-center
-          whitespace-nowrap
+              <div className="flex justify-center flex-col">
+                <div className="dropdown relative">
+                  <button
+                    className=" cursor-pointer dropdown-toggle text-black hover:bg-gray-100 focus:outline-none flex items-center  whitespace-nowrap "
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Сортировать по:{" "}
+                    {priceSort.ascending
+                      ? "по возрастанию"
+                      : priceSort.descending
+                      ? "по убыванию"
+                      : "все товары"}
+                  </button>
+                  <ul
+                    className=" cursor-pointer dropdown-menu min-w-max absolute bg-white z-50 py-2 hidden border-2 border-black
+          hover:text-black-200
         "
-                        type="button"
-                        id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Сортировать по: все товары
-                        <svg
-                          aria-hidden="true"
-                          focusable="false"
-                          data-prefix="fas"
-                          data-icon="caret-down"
-                          className="w-2 ml-2"
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 320 512"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
-                          ></path>
-                        </svg>
-                      </button>
-                      <ul
-                        className="
-          dropdown-menu
-          min-w-max
-          absolute
-          hidden
-          bg-white
-          text-base
-          z-50
-          float-left
-          py-2
-          list-none
-          text-left
-          rounded-lg
-          shadow-lg
-          mt-1
-          hidden
-          m-0
-          bg-clip-padding
-          border-none
-        "
-                        aria-labelledby="dropdownMenuButton1"
-                      >
-                        <li>
-                          <a
-                            className="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >
-                            Action
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >
-                            Another action
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-            "
-                            href="#"
-                          >
-                            Something else here
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li
+                      onClick={() =>
+                        setPriceSort({
+                          descending: 0,
+                          ascending: 0,
+                        })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      Все товары
+                    </li>
+                    <li
+                      onClick={() =>
+                        setPriceSort({ descending: 0, ascending: 1 })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      По возрастанию цены
+                    </li>
+                    <li
+                      onClick={() =>
+                        setPriceSort({ descending: 1, ascending: 0 })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      По убыванию цены
+                    </li>
+                  </ul>
                 </div>
+                <span>
+                  <> {selectedProduct?.total_stock}товаров</>
+                </span>
               </div>
             </div>
             <div className="flex bg-black  h-0.5"></div>
           </div>
-          <div className="flex justify-center items-center gap-3 w-4/12">
+          <div className="flex justify-around items-center w-4/12">
             <button
-              className={`bg-black text-white h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2 `}
+              onClick={() => setRow("row")}
+              className={`${
+                row === "row" ? "bg-black text-white " : "bg-white text-black"
+              } h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2  border-[1px] border-black`}
             >
-              <img src={schema} className="h-auto w-auto  flex" alt="" />
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 2.75H8V1.25H4V2.75ZM9.25 4V8H10.75V4H9.25ZM8 9.25H4V10.75H8V9.25ZM2.75 8V4H1.25V8H2.75ZM4 9.25C3.30964 9.25 2.75 8.69036 2.75 8H1.25C1.25 9.51878 2.48122 10.75 4 10.75V9.25ZM9.25 8C9.25 8.69036 8.69036 9.25 8 9.25V10.75C9.51878 10.75 10.75 9.51878 10.75 8H9.25ZM8 2.75C8.69036 2.75 9.25 3.30964 9.25 4H10.75C10.75 2.48122 9.51878 1.25 8 1.25V2.75ZM4 1.25C2.48122 1.25 1.25 2.48122 1.25 4H2.75C2.75 3.30964 3.30964 2.75 4 2.75V1.25ZM16 2.75H20V1.25H16V2.75ZM21.25 4V8H22.75V4H21.25ZM20 9.25H16V10.75H20V9.25ZM14.75 8V4H13.25V8H14.75ZM16 9.25C15.3096 9.25 14.75 8.69036 14.75 8H13.25C13.25 9.51878 14.4812 10.75 16 10.75V9.25ZM21.25 8C21.25 8.69036 20.6904 9.25 20 9.25V10.75C21.5188 10.75 22.75 9.51878 22.75 8H21.25ZM20 2.75C20.6904 2.75 21.25 3.30964 21.25 4H22.75C22.75 2.48122 21.5188 1.25 20 1.25V2.75ZM16 1.25C14.4812 1.25 13.25 2.48122 13.25 4H14.75C14.75 3.30964 15.3096 2.75 16 2.75V1.25ZM4 14.75H8V13.25H4V14.75ZM9.25 16V20H10.75V16H9.25ZM8 21.25H4V22.75H8V21.25ZM2.75 20V16H1.25V20H2.75ZM4 21.25C3.30964 21.25 2.75 20.6904 2.75 20H1.25C1.25 21.5188 2.48122 22.75 4 22.75V21.25ZM9.25 20C9.25 20.6904 8.69036 21.25 8 21.25V22.75C9.51878 22.75 10.75 21.5188 10.75 20H9.25ZM8 14.75C8.69036 14.75 9.25 15.3096 9.25 16H10.75C10.75 14.4812 9.51878 13.25 8 13.25V14.75ZM4 13.25C2.48122 13.25 1.25 14.4812 1.25 16H2.75C2.75 15.3096 3.30964 14.75 4 14.75V13.25ZM16 14.75H20V13.25H16V14.75ZM21.25 16V20H22.75V16H21.25ZM20 21.25H16V22.75H20V21.25ZM14.75 20V16H13.25V20H14.75ZM16 21.25C15.3096 21.25 14.75 20.6904 14.75 20H13.25C13.25 21.5188 14.4812 22.75 16 22.75V21.25ZM21.25 20C21.25 20.6904 20.6904 21.25 20 21.25V22.75C21.5188 22.75 22.75 21.5188 22.75 20H21.25ZM20 14.75C20.6904 14.75 21.25 15.3096 21.25 16H22.75C22.75 14.4812 21.5188 13.25 20 13.25V14.75ZM16 13.25C14.4812 13.25 13.25 14.4812 13.25 16H14.75C14.75 15.3096 15.3096 14.75 16 14.75V13.25Z"
+                  fill={row === "row" ? "white" : "black"}
+                />
+              </svg>
               <span className="hidden md:flex">Схема</span>
             </button>
-            <button className="flex rounded-full ... w-auto px-2 py-2 border !border-black">
-              <img src={list} alt="" />
+            <button
+              onClick={() => setRow("column")}
+              className={`${
+                row !== "row" ? "bg-black text-white " : "bg-white text-black"
+              }  h-auto flex md:flex rounded-full ... w-auto px-2 py-2 gap-2  border-[1px] border-black`}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22 18H22.75H22ZM18 22V21.25V22ZM18 2V1.25V2ZM22 6H21.25H22ZM2 6H1.25H2ZM6 2V2.75V2ZM2 18H1.25H2ZM6 22V22.75V22ZM2 15.25C1.58579 15.25 1.25 15.5858 1.25 16C1.25 16.4142 1.58579 16.75 2 16.75L2 15.25ZM22 16.75C22.4142 16.75 22.75 16.4142 22.75 16C22.75 15.5858 22.4142 15.25 22 15.25V16.75ZM6 2.75L18 2.75V1.25L6 1.25V2.75ZM18 21.25H6V22.75H18V21.25ZM21.25 18C21.25 19.7949 19.7949 21.25 18 21.25V22.75C20.6234 22.75 22.75 20.6234 22.75 18H21.25ZM18 2.75C19.7949 2.75 21.25 4.20508 21.25 6H22.75C22.75 3.37665 20.6234 1.25 18 1.25V2.75ZM2.75 6C2.75 4.20507 4.20508 2.75 6 2.75V1.25C3.37665 1.25 1.25 3.37665 1.25 6H2.75ZM1.25 18C1.25 20.6234 3.37665 22.75 6 22.75V21.25C4.20507 21.25 2.75 19.7949 2.75 18H1.25ZM2 16.75L22 16.75V15.25L2 15.25L2 16.75ZM2.75 18L2.75 8H1.25L1.25 18H2.75ZM2.75 8L2.75 6H1.25L1.25 8H2.75ZM21.25 6V8H22.75V6H21.25ZM21.25 8V18H22.75V8H21.25ZM2 8.75H22V7.25H2V8.75Z"
+                  fill={row === "row" ? "black" : "white"}
+                />
+              </svg>
               <span className="hidden md:flex">Список</span>
             </button>
           </div>
@@ -461,18 +416,6 @@ const CatalogPage = () => {
                 {/* {categories.name} */}
                 mmmmm
               </span>
-
-              {/* {categories.length > 0 &&
-                categories.map((category: any, i: number) => (
-                  <>
-                    <li
-                      className="  category h-10 flex justify-start pl-14 text-left leading-normal items-center w-full"
-                      key={i}
-                    >
-                      {category.name}
-                    </li>
-                  </>
-                ))} */}
             </li>
           </ol>
         </nav>
@@ -480,10 +423,21 @@ const CatalogPage = () => {
       {/*  */}
 
       <div className="py-3 ">
-        <div>
-          <span className="text-black text-2xl">Мужские аксессуары</span>
+        <div className="flex justify-between items-center">
+          <div>
+            <span className="text-black text-2xl">Мужские аксессуары</span>
+          </div>
+          <button>
+            <img src={union} alt="" />
+          </button>
         </div>
         <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto overflow-scroll">
+          <div className="block text-center self-center">
+            <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
+            <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
+            <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
+          </div>
+
           <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Барсетки
           </button>
@@ -559,71 +513,47 @@ const CatalogPage = () => {
 
                 <div className="flex flex-col">
                   <div className=" sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                      <div className="overflow-hidden">
-                        <table className="min-w-full">
-                          <thead className="">
-                            <tr>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium text-gray-900 px-6  text-center"
-                              >
-                                <label htmlFor="от">От</label>
-                              </th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium text-gray-900 px-6  text-left"
-                              ></th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium text-gray-900 px-6  text-center"
-                              >
-                                <label htmlFor="от">До</label>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr className="">
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                <input
-                                  className=" flex text-center font-normal font-jost justify-center border-black border rounded-full ... w-20 text-black
-                  placeholder:text-stone-900
-                  "
-                                  placeholder="15"
-                                  type="number"
-                                  name="search"
-                                  value={price.minPrice}
-                                  onChange={(e) =>
-                                    setPrice({
-                                      ...price,
-                                      minPrice: Number(e.target.value),
-                                    })
-                                  }
-                                />
-                              </td>
-                              <td className="text-sm text-gray-900 font-light px-6  whitespace-nowrap">
-                                ---
-                              </td>
-                              <td className="text-sm text-gray-900 font-light px-6  whitespace-nowrap">
-                                <input
-                                  className=" flex text-center font-normal font-jost justify-center border-black border rounded-full ... w-20 text-black
-                  placeholder:text-stone-900
-                  "
-                                  placeholder="400"
-                                  type="number"
-                                  name="search"
-                                  value={price.maxPrice}
-                                  onChange={(e) =>
-                                    setPrice({
-                                      ...price,
-                                      maxPrice: Number(e.target.value),
-                                    })
-                                  }
-                                />
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    <div className="py-2  min-w-full sm:px-6 lg:px-8 flex flex-col">
+                      <div className="flex flex-row justify-between">
+                        <div>
+                          <span>От</span>
+                        </div>
+                        <div>
+                          <span>До</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-row justify-around">
+                        <div>
+                          <input
+                            className=" flex text-center font-jost justify-center border-black border-[1px] rounded-full ... w-3 px-6 py-1 text-black placeholder:text-stone-900"
+                            placeholder="15"
+                            type="number"
+                            name="search"
+                            value={price.minPrice}
+                            onChange={(e) =>
+                              setPrice({
+                                ...price,
+                                minPrice: Number(e.target.value),
+                              })
+                            }
+                          />
+                        </div>
+                        <div>---</div>
+                        <div>
+                          <input
+                            className=" flex text-center font-jost justify-center border-black border-[1px] rounded-full ... w-3 px-6 py-1 text-black placeholder:text-stone-900"
+                            placeholder="400"
+                            type="number"
+                            name="search"
+                            value={price.maxPrice}
+                            onChange={(e) =>
+                              setPrice({
+                                ...price,
+                                maxPrice: Number(e.target.value),
+                              })
+                            }
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -824,134 +754,61 @@ const CatalogPage = () => {
         <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
-              <div>
+              <div className="bg-red-600">
                 <span>
-                  <> товаров</>
+                  <> {selectedProduct?.total_stock}товаров</>
                 </span>
               </div>
-              <div>
-                <div className="flex justify-center">
-                  <div>
-                    <div className="dropdown relative">
-                      <button
-                        className="
-          dropdown-toggle
-          px-6
-          py-2.5
-          text-black
-          font-medium
-          text-xs
-          leading-tight
-          rounded
-          hover:bg-gray-100          focus:outline-none focus:ring-0
-          transition
-          ease-in-out
-          flex
-          items-center
-          whitespace-nowrap
+              <div className="flex justify-center">
+                <div className="dropdown relative">
+                  <button
+                    className=" cursor-pointer dropdown-toggle px-6 text-black hover:bg-gray-100 focus:outline-none flex items-center  whitespace-nowrap "
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Сортировать по:{" "}
+                    {priceSort.ascending
+                      ? "по возрастанию"
+                      : priceSort.descending
+                      ? "по убыванию"
+                      : "все товары"}
+                  </button>
+                  <ul
+                    className=" cursor-pointer dropdown-menu min-w-max absolute bg-white z-50 py-2 hidden border-2 border-black
+          hover:text-black-200
         "
-                        type="button"
-                        id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Сортировать по:{" "}
-                        {priceSort.ascending
-                          ? "по возрастанию"
-                          : priceSort.descending
-                          ? "по убыванию"
-                          : "все товары"}
-                      </button>
-                      <ul
-                        className="
-          dropdown-menu
-          min-w-max
-          absolute
-          bg-white
-          text-base
-          z-50
-          float-left
-          py-2
-          list-none
-          text-left
-          mt-1
-          hidden
-          m-0
-          bg-clip-padding
-          border-2 border-black
-          hober:text-black-200
-        "
-                        aria-labelledby="dropdownMenuButton1"
-                      >
-                        <li
-                          onClick={() =>
-                            setPriceSort({
-                              descending: 0,
-                              ascending: 0,
-                            })
-                          }
-                          className="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-700
-              border-[1px] border-black
-            "
-                        >
-                          Все товары
-                        </li>
-                        <li
-                          onClick={() =>
-                            setPriceSort({ descending: 0, ascending: 1 })
-                          }
-                          className="
-              dropdown-item
-
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-700
-              border-2 border-black
-            "
-                        >
-                          По возрастанию цены
-                        </li>
-                        <li
-                          onClick={() =>
-                            setPriceSort({ descending: 1, ascending: 0 })
-                          }
-                          className="
-              dropdown-item
-              text-sm
-              py-2
-              px-4
-              font-normal
-              block
-              w-full
-              whitespace-nowrap
-              bg-transparent
-              text-gray-700
-              hover:bg-gray-100
-              border-2 border-black
-            "
-                        >
-                          По убыванию цены
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                    aria-labelledby="dropdownMenuButton1"
+                  >
+                    <li
+                      onClick={() =>
+                        setPriceSort({
+                          descending: 0,
+                          ascending: 0,
+                        })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      Все товары
+                    </li>
+                    <li
+                      onClick={() =>
+                        setPriceSort({ descending: 0, ascending: 1 })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      По возрастанию цены
+                    </li>
+                    <li
+                      onClick={() =>
+                        setPriceSort({ descending: 1, ascending: 0 })
+                      }
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                    >
+                      По убыванию цены
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
