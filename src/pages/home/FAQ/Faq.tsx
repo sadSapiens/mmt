@@ -20,7 +20,7 @@ const Faq = () => {
           FAQ
         </span>
 
-        <div className="accordion flex flex-col  justify-center w-[59rem] ">
+        <div className="accordion flex flex-col  justify-center md:w-[59rem] w-full ">
           {home && home.faq.length && (
             <div className="w-1/8">
               {home.faq.map((item, i) => (
