@@ -5,6 +5,7 @@ import discovery from "./assets/Discovery.png";
 import message from "./assets/Message.png";
 import call from "./assets/Call.png";
 import logo from "./assets/logo.png";
+import fbBig from "./assets/fbBig.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -134,12 +135,17 @@ const Footer = () => {
               </a>
             </button>
           </div>
+          <div className="flex justify-between px-4 text-white">
+            <div>Публичная оферта</div>
+            <div>Политика конфеденциальности</div>
+          </div>
           <div
             className="md:hidden flex  items-center
-            justify-around text-center font-normal text-sm
+            justify-between
+             text-center font-normal text-base
            py-2"
           >
-            <div className="px-1 flex flex-col  sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
+            <div className=" flex flex-col  px-4 sm:w-2/2 md:w-2/4 xl:w-2/6">
               <div className="flex items-center  gap-2">
                 <img src={message} alt="" />{" "}
                 <span className="text-white">info@mmt.kg</span>
@@ -148,7 +154,7 @@ const Footer = () => {
             <div className="px-2 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto items-center">
               <div className="flex items-center  gap-1">
                 <img className="w-[30px] h-[30px]" src={discovery} alt="" />{" "}
-                <span className="text-white  text-xs">
+                <span className="text-white  text-base">
                   {" "}
                   г.Бишкек, пер.Сонкульский, 8
                 </span>
@@ -156,24 +162,24 @@ const Footer = () => {
             </div>
           </div>
           <div
-            className="md:hidden flex  items-center justify-between w-auto
-           py-2 px-3"
+            className="md:hidden flex  items-center justify-between w-auto text-
+           py-2 px-4"
           >
             <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6">
               <div className="flex gap-3">
-                <img src={instagram} alt="" />{" "}
-                <span className="text-white text-lg">INSTAGRAM</span>
+                <img src={instagram} className="object-contain" alt="" />{" "}
+                <span className="text-white text-3xl">INSTAGRAM</span>
               </div>
             </div>
             <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6 sm:mt-0">
               <div className="flex gap-3">
-                <img src={facebook} alt="" />{" "}
-                <span className="text-white text-lg">FACEBOOK</span>
+                <img src={fbBig} className="object-fill h-8 w-8" alt="" />{" "}
+                <span className="text-white text-3xl">FACEBOOK</span>
               </div>
-              <ul className="list-none footer-links">
+              {/* <ul className="list-none footer-links">
                 <li className="mb-2"></li>
                 <li className="mb-2"></li>
-              </ul>
+              </ul> */}
             </div>
           </div>
           {/*  */}
