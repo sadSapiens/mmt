@@ -23,7 +23,6 @@ const CatalogDetailsOasis = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
-  console.log(selectedProduct, "ssss");
 
   return (
     <>

@@ -5,8 +5,6 @@ import { fetchCategorySuccess } from "./actions";
 export const fetchCategories = () => async (dispatch: Dispatch) => {
   try {
     const res: any = await API.get("/products/catalog");
-    console.log(res);
-
     dispatch(fetchCategorySuccess(res.data.data));
   } catch (e) {
     console.log(e);

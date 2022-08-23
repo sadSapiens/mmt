@@ -35,7 +35,6 @@ const SignInPage = () => {
       const token = res.data.data.token;
       localStorage.setItem("token", token);
       navigate("/profile");
-      console.log(res, "signin");
     } catch (e) {
       console.log(e, "e>> siginin");
     }

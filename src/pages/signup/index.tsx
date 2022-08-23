@@ -37,10 +37,8 @@ const SignUpPage = () => {
       if (res.data.status === "CREATED") {
         navigate("/confirmation");
       }
-      console.log(res);
     } catch (e) {
       if (axios.isAxiosError(e)) {
-        console.log(e.response?.data);
         if (e.response?.data) {
           //@ts-ignore
           const { password = [""], email = [""] } = e.response.data;

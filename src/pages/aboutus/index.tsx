@@ -17,7 +17,6 @@ const About = () => {
   useEffect(() => {
     dispatch(fetchAbout() as any);
   }, []);
-  console.log(about, "about");
 
   return (
     <div className=" text-white ">

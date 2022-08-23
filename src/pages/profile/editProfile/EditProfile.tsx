@@ -25,7 +25,6 @@ const Profile = () => {
     const getUserProfile = async () => {
       try {
         const res = await API.get("user/profile");
-        console.log(res);
         setInputs({
           ...res.data.data,
         });
@@ -53,12 +52,10 @@ const Profile = () => {
         email: inputs.email,
       });
       navigate("/");
-      console.log(res);
     } catch (e) {
       console.log(e);
     }
   };
-  console.log(inputs);
 
   return (
     <>

@@ -8,11 +8,8 @@ const BlogNews = () => {
   const dispatch = useAppDispatch();
   const blogNews = useBlogNews();
   useEffect(() => {
-    console.log(99999999);
-
     dispatch(fetchBlogInfo() as any);
   }, []);
-  console.log(blogNews, "blog");
   return (
     <div className="mx-auto px-9   w-auto py-5 font-jost">
       <div className="flex flex-col md:flex-row justify-between">

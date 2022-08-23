@@ -35,7 +35,6 @@ export const fetchSlectedCatalogProduct =
     try {
       const res: any = await API.get(`/products/${id}`);
       dispatch(fetchSelectedCatalogProductSuccess(res.data.data));
-      console.log(res);
     } catch (e) {
       console.log(e);
     }

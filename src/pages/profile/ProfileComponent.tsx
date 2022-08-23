@@ -16,7 +16,6 @@ interface ImageObj {
 
 const ProfileComponent = () => {
   const [valuee, setValue] = useState("");
-  console.log(valuee);
   const [errorText, setErrorText] = useState([]);
 
   const [images, setImages] = React.useState<ImageObj[]>([]);
@@ -65,10 +64,7 @@ const ProfileComponent = () => {
         email: inputs.email,
       });
       navigate("/");
-      console.log(res);
     } catch (e) {
-      // @ts-ignore
-      console.log(Object.entries(e.response.data));
       // @ts-ignore
       setErrorText([Object.entries(e.response.data)]);
     }
@@ -77,7 +73,6 @@ const ProfileComponent = () => {
   useEffect(() => {
     API.get("/user/profile")
       .then((res) => {
-        console.log(res);
         setInputs({
           name: res.data.data.first_name,
           surname: res.data.data.last_name,

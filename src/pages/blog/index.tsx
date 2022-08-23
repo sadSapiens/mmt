@@ -13,10 +13,8 @@ const Blog = () => {
   const dispatch = useAppDispatch();
   const blogNews = useBlogNews();
   useEffect(() => {
-    console.log(66666);
     dispatch(fetchBlogInfo() as any);
   }, []);
-  console.log(blogNews, "blog");
 
   return (
     <>

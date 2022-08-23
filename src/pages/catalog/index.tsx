@@ -33,14 +33,10 @@ const CatalogPage = () => {
   const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
-  console.log(catalogProducts, "ppp");
-
   const { search } = useLocation();
   const categories = useCategoryProducts();
-
-  const [categoryId, setCategoryId] = useState(
-    new URLSearchParams(search).get("categoryId")
-  );
+  const categoryId = new URLSearchParams(search).get("categoryId");
+  const location = useLocation();
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
@@ -109,11 +105,11 @@ const CatalogPage = () => {
   useEffect(() => {
     if (!fetching) return;
     dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
-  }, [categoryId, searchValue, fetching]);
+  }, [fetching]);
 
   useEffect(() => {
     dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
-  }, [selectedFilters, price, priceSort]);
+  }, [selectedFilters, price, priceSort, dispatch, categoryId, searchValue]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);

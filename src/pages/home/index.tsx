@@ -15,7 +15,6 @@ const Home = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
   useEffect(() => {
-    console.log(66666);
     dispatch(fetchHome() as any);
   }, []);
 

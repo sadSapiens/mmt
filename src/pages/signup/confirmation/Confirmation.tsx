@@ -13,7 +13,6 @@ const Confirmation = () => {
 
     try {
       const res = await PUBLIC_API.post("/user/activation", { code });
-      console.log(res);
       navigate("/signin");
     } catch (e) {
       console.log(e);

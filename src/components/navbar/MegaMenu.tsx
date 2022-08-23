@@ -25,7 +25,6 @@ const MegaMenu = () => {
   //
   const home = useHome();
   useEffect(() => {
-    console.log(66666);
     dispatch(fetchHome() as any);
   }, []);
 
