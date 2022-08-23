@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
 import penOne from "../assets/penOne.png";
 import penTwo from "../assets/penTwo.png";
@@ -18,6 +18,8 @@ import {
   useSimilartProducts,
 } from "../../../store/catalog/hooks";
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
+import { IProductState } from "../../../store/catalog/interfaces/data.interface";
+import API from "../../../constants/api";
 
 const CatalogDetailsOasis = () => {
   const location = useLocation();
@@ -25,11 +27,38 @@ const CatalogDetailsOasis = () => {
   const selectedProduct = useSelectedCatalogProduct();
   const params = useParams();
   const similar = useSimilartProducts();
+  const [currentProduct, setCurrentProduct] = useState<any>();
 
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, [location, dispatch, params]);
+
+  useEffect(() => {
+    if (!selectedProduct || !selectedProduct.color_groups[0]) return;
+    setCurrentProduct(selectedProduct.color_groups[0]);
+  }, [selectedProduct]);
+  console.log(currentProduct);
+  console.log(selectedProduct);
+
+  const handleSendProductToCart = async () => {
+    if (!currentProduct) return;
+    const sizes = currentProduct.sizes.map((size: any) => {
+      return {
+        product_size_id: size.id,
+        quantity: size.quantity,
+      };
+    });
+    try {
+      const res = await API.post("/orders/cart", {
+        product_color_group_id: currentProduct.id,
+        sizes,
+      });
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div>
@@ -70,24 +99,37 @@ const CatalogDetailsOasis = () => {
             <div className="flex justify-between py-5 md:flex-row flex-col">
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">
-                <img
-                  src={selectedProduct.color_groups[0].images[0].small}
-                  alt=""
-                  className="w-16 h-16"
-                />
+                {selectedProduct &&
+                  selectedProduct.color_groups.length &&
+                  selectedProduct.color_groups.map(
+                    (product) =>
+                      product.images.length && (
+                        <img
+                          onClick={() => setCurrentProduct(product)}
+                          src={product.images[0].small}
+                          alt=""
+                          className="w-16 h-16"
+                        />
+                      )
+                  )}
+
                 {/* <img src={penTwo} alt="" className="w-16 h-16" />
                   <img src={penThree} alt="" className="w-16 h-16" /> */}
               </div>
-              ;
+
               <div className="md:w-5/12 w-full gap-4">
                 <span className="md:hidden flex text-2xl font-medium font-jost text-black py-2">
                   {selectedProduct.full_name}
                 </span>{" "}
-                <img
-                  className="w-auto md:h-96  h-72"
-                  src={selectedProduct.color_groups[0].images[0].superbig}
-                  alt=""
-                />
+                {currentProduct && currentProduct.images.length ? (
+                  <img
+                    className="w-auto md:h-96  h-72"
+                    src={currentProduct.images[0].superbig}
+                    alt=""
+                  />
+                ) : (
+                  "Loading..."
+                )}
                 <div className="flex justify-center items-center md:w-9/12 w-full py-5 gap-4">
                   <img src={penBig} className="h-12 w-12" alt="" />
                   <img src={penBig} className="h-12 w-12 opacity-25" alt="" />
@@ -336,96 +378,25 @@ const CatalogDetailsOasis = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr className=" flex">
-                              <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                XS
-                              </td>
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                Mark
-                              </td>
-                              <td className="flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
-                            <tr className="bg-white  flex ">
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                S
-                              </td>
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                Jacob
-                              </td>
-                              <td className=" flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
-                            <tr className="bg-white  flex ">
-                              <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                M
-                              </td>
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                Larry
-                              </td>
-                              <td className=" flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5 !block  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
-                            <tr className="bg-white  flex  ">
-                              <td className="   mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ... ">
-                                L
-                              </td>
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                Larry
-                              </td>
-                              <td className=" flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
-                            <tr className="bg-white  max-w-full flex ">
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ... ">
-                                XL
-                              </td>
-                              <td className=" mx-2  w-44 text-sm border-b-2 border-b-black ...">
-                                Larry
-                              </td>
-                              <td className=" flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
-                            <tr className="bg-white  flex ">
-                              <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                XXL
-                              </td>
-                              <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                Larry
-                              </td>
-                              <td className="flex mx-2 w-44   px-2 py-2 border border-5">
-                                <input
-                                  type="number"
-                                  placeholder="1"
-                                  className="border-b-2 w-40 border-5  border-b-black  ..."
-                                />
-                              </td>
-                            </tr>
+                            {currentProduct && currentProduct.sizes.length
+                              ? currentProduct.sizes.map((size: any) => (
+                                  <tr className=" flex">
+                                    <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                      {size.size}
+                                    </td>
+                                    <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                      {size.quantity}
+                                    </td>
+                                    <td className="flex mx-2 w-44   px-2 py-2 border border-5">
+                                      <input
+                                        type="number"
+                                        placeholder="1"
+                                        className="border-b-2 w-40 border-5  border-b-black  ..."
+                                      />
+                                    </td>
+                                  </tr>
+                                ))
+                              : null}
                           </tbody>
                         </table>
                         <div className="flex py-4 items-center justify-around px-3">
@@ -442,7 +413,10 @@ const CatalogDetailsOasis = () => {
                             </p>
                           </div>
                           <div className="flex gap-3">
-                            <button className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white">
+                            <button
+                              onClick={() => handleSendProductToCart()}
+                              className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                            >
                               <img src={shopbag} alt="" />В корзину
                             </button>
                           </div>

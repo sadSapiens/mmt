@@ -23,15 +23,11 @@ import {
   setSearchValue,
 } from "../../store/catalog/actions";
 import API from "../../constants/api";
-import { useHome } from "../../store/varia/hooks";
-import { fetchHome } from "../../store/varia";
 import { useCategoryProducts } from "../../store/category/hooks";
 import { fetchSlectedCatalogProduct } from "../../store/catalog";
 
 const CatalogPage = () => {
-  const [priceDescending, setPriceDescending] = useState();
   const filters = useFilters();
-  const [filter, setFilter] = useState();
   const [row, setRow] = useState("row");
   const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
@@ -204,7 +200,6 @@ const CatalogPage = () => {
     }
   };
 
-  //
   const selectedProduct = useSelectedCatalogProduct();
   const params = useParams();
   useEffect(() => {
