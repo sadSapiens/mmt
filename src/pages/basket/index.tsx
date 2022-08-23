@@ -17,6 +17,7 @@ const Basket = () => {
   useEffect(() => {
     dispatch(fetchOrder() as any);
   }, []);
+  console.log(order, "ooo");
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
@@ -57,18 +58,16 @@ const Basket = () => {
                       {/*  */}
 
                       <tr className="md:bg-white bg-[#F1F1F1] border-b">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          <div className="flex">
-                            <img src={orderhistoryphoto} alt="" />
-                            <div className="flex flex-col  px-8 flex-wrap">
-                              <h2 className="font-semibold">
-                                Ручка пластиковая <br /> шариковая «Наварра»
-                              </h2>
-                              <span className="font-light">Цвет: Черный</span>
-                              <span className="font-light">
-                                Тип нанесения: термопечать
-                              </span>
-                            </div>
+                        <td className="flex px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          <img src={orderhistoryphoto} alt="" />
+                          <div className="flex flex-col  px-8 flex-wrap">
+                            <h2 className="font-semibold">
+                              Ручка пластиковая <br /> шариковая «Наварра»
+                            </h2>
+                            <span className="font-light">Цвет: Черный</span>
+                            <span className="font-light">
+                              Тип нанесения: термопечать
+                            </span>
                           </div>
                         </td>
 

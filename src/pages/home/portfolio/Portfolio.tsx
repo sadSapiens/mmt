@@ -10,6 +10,8 @@ import star from "./assets/Star.png";
 import threeUser from "./assets/threeUser.png";
 import category from "./assets/Category.png";
 
+import "./port.css";
+
 const Portfolio = () => {
   return (
     <div className="container mx-auto px-4">
@@ -40,7 +42,8 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-      <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-y-auto ...  align-middle items-center">
+
+      <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
         <div className="flex">
           <img className="md:h-56 md:w-64 w-96 h-40" src={one} alt="" />
         </div>
@@ -54,6 +57,7 @@ const Portfolio = () => {
           <img className="md:h-56 md:w-64 w-96 h-40" src={four} alt="" />
         </div>
       </div>
+
       <div className="flex justify-center py-4">
         <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">
           Больше товаров

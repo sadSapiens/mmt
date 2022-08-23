@@ -61,7 +61,7 @@ const About = () => {
         </div>
         <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
           <img
-            // src={about && about.main_info.picture}
+            src={about && about.main_info.picture}
             className="md:h-[33rem] md:w-[25rem] h-auto w-72"
             alt=""
           />
@@ -108,13 +108,12 @@ const About = () => {
           </div>
         </div>
       </div>
+      {/*  */}
       <div className="flex  md:flex-row text-black justify-around mx-auto md:px-9 px-0   w-auto md:py-5">
-        {/*  */}
-
-        <div>
+        <div className="flex justify-around md:flex-row flex-col ">
           {about?.employers.map((item: any) => (
             <>
-              <div className="flex justify-center items-center flex-col px-9">
+              <div className="flex justify-around items-center flex-col px-9">
                 <img
                   className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem] "
                   src={item.picture}
@@ -130,15 +129,6 @@ const About = () => {
                     <h5>{item.email}</h5>
                   </div>
                 </div>
-              </div>
-              <div className=" flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
-                <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-                  «От идеи до воплощения корпоративных подарков – волшебный
-                  творческий процесс, требующий четкой организации. Время –
-                  самое бесценное в нашей жизни. Мы стремимся к эффективному
-                  управлению, чтобы потребители вашего бренда стали еще ближе к
-                  вам»
-                </span>
               </div>
             </>
           ))}
@@ -161,15 +151,15 @@ const About = () => {
               <h5>{about?.employers[1].email}</h5>
             </div>
           </div>
-        </div>
-        <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+        </div> */}
+        {/* <div className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
           <span className="font-normal text-sm flex justify-center items-center text-center px-4">
             «От идеи до воплощения корпоративных подарков – волшебный творческий
             процесс, требующий четкой организации. Время – самое бесценное в
             нашей жизни. Мы стремимся к эффективному управлению, чтобы
             потребители вашего бренда стали еще ближе к вам»
           </span>
-        </div>
+        </div> */}
       </div>
 
       <div className=" hidden md:flex flex-col md:flex-row bg-[#343434]  mx-auto px-9   w-auto py-5">
@@ -196,7 +186,7 @@ const About = () => {
             чтобы аудитория отвечала взаимностью, впуская ваш бренд в свою
             повседневную жизнь»
           </span>
-        </div> */}
+        </div>
       </div>
       <div className="bg-white w-auto h-7"></div>
 

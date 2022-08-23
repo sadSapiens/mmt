@@ -8,6 +8,7 @@ import newspoto from "./assets/blognew.png";
 import { useAppDispatch } from "../../store";
 import { useBlogNews } from "../../store/varia/hooks";
 import { fetchBlogInfo } from "../../store/varia";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const dispatch = useAppDispatch();
@@ -71,133 +72,34 @@ const Blog = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
               <div className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5">
-                <img
-                  src={newsone}
-                  alt=""
-                  className="w-96 flex justify-center items-center place-self-center "
-                />
-                <div className="md:px-4 ">
-                  <div className="flex justify-between ">
-                    <span className="hidden md:flex">Последние новости</span>
-                    <p className="text-sm flex items-center">
-                      <time>11.07.2022</time> -- ММТ
-                    </p>
-                  </div>
-                  <div className="py-10">
-                    <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
-                      {blogNews.data[0].title}
-                    </h2>
-                    <p className="py-4 hidden md:flex">
-                      {blogNews.data[0].content}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
-                <img
-                  src={newstwo}
-                  alt=""
-                  className="w-96 flex justify-center items-center place-self-center "
-                />
-                <div className="md:px-4">
-                  <div className="flex justify-between  ">
-                    <span className="hidden md:flex">Мероприятия</span>
-                    <p className="flex justify-center text-sm">
-                      <time>11.07.2022</time> -- ММТ
-                    </p>
-                  </div>
-                  <div className="py-10">
-                    <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
-                      DTF: быстро, выгодно, неожиданно
-                    </h2>
-                    <p className="py-4 hidden md:flex">
-                      Мы уже подробно рассказывали (и показывали!) о
-                      полноцветном термотрансфере в нашем блоге, а в этой
-                      заметке хотим напомнить, в каких случаях и почему стоит
-                      обратить...
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
-                <img
-                  src={newsthree}
-                  alt=""
-                  className="w-96 flex justify-center items-center place-self-center "
-                />
-                <div className="px-4">
-                  <div className="flex justify-between">
-                    <span className="hidden md:flex">Акции</span>
-                    <p className="flex justify-center text-sm">
-                      <time>11.07.2022</time> -- ММТ
-                    </p>
-                  </div>
-                  <div className="py-10">
-                    <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
-                      DTF: быстро, выгодно, неожиданно
-                    </h2>
-                    <p className="py-4 hidden md:flex">
-                      Мы уже подробно рассказывали (и показывали!) о
-                      полноцветном термотрансфере в нашем блоге, а в этой
-                      заметке хотим напомнить, в каких случаях и почему стоит
-                      обратить...
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
-                <img
-                  src={newsthree}
-                  alt=""
-                  className="w-96 flex justify-center items-center place-self-center "
-                />
-                <div className="md:px-4">
-                  <div className="flex justify-between">
-                    <span className="hidden md:flex">Акции</span>
-                    <p className="flex justify-center text-sm">
-                      <time>11.07.2022</time> -- ММТ
-                    </p>
-                  </div>
-                  <div className="py-10">
-                    <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
-                      DTF: быстро, выгодно, неожиданно
-                    </h2>
-                    <p className="py-4 hidden md:flex">
-                      Мы уже подробно рассказывали (и показывали!) о
-                      полноцветном термотрансфере в нашем блоге, а в этой
-                      заметке хотим напомнить, в каких случаях и почему стоит
-                      обратить...
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-3/12 w-5/12  flex flex-col shadow-xl my-5 md:mx-5 ">
-                <img
-                  src={newsthree}
-                  alt=""
-                  className="w-96 flex justify-center items-center place-self-center "
-                />
-                <div className="md:px-4">
-                  <div className="flex justify-between">
-                    <span className="hidden md:flex">Акции</span>
-                    <p className="flex justify-center text-sm">
-                      <time>11.07.2022</time> -- ММТ
-                    </p>
-                  </div>
-                  <div className="py-10">
-                    <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
-                      DTF: быстро, выгодно, неожиданно
-                    </h2>
-                    <p className="py-4 hidden md:flex">
-                      Мы уже подробно рассказывали (и показывали!) о
-                      полноцветном термотрансфере в нашем блоге, а в этой
-                      заметке хотим напомнить, в каких случаях и почему стоит
-                      обратить...
-                    </p>
-                  </div>
-                </div>
+                {blogNews.data.map((item) => (
+                  <Link to={`/blog/${item.author}`}>
+                    <img
+                      src={newsone}
+                      alt=""
+                      className="w-96 flex justify-center items-center place-self-center "
+                    />
+                    <div className="md:px-4 ">
+                      <div className="flex justify-between ">
+                        <span className="hidden md:flex">
+                          Последние новости
+                        </span>
+                        <p className="text-sm flex items-center">
+                          <time>11.07.2022</time> -- ММТ
+                        </p>
+                      </div>
+                      <div className="py-10">
+                        <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
+                          {item.title}
+                        </h2>
+                        <p className="py-4 hidden md:flex">{item.content}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

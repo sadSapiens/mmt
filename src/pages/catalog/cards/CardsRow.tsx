@@ -1,5 +1,6 @@
 import React from "react";
 import shopbag from "../assets/shopbag.png";
+import som from "../assets/som.png";
 
 interface IProduct {
   id: string;
@@ -28,52 +29,49 @@ interface Props {
 }
 const CardsRow = ({ product }: Props) => {
   return (
-    <div className="py-7 flex justify-center  w-11/12">
-      <div className=" border border-black w-[100%] flex justify-between">
-        <div className=" flex w-3/12">
+    <div className="py-7 flex justify-center  md:w-11/12 w-full">
+      <div className=" py-2 border border-black w-[100%] flex flex-row">
+        <div className=" flex md:w-3/12 w-4/12">
           <img
-            className="w-[100%]"
+            className="w-[100%] object-contain"
             src={product.colors[0].images[0].small}
             alt=""
           />
         </div>
-        <div className="w-6/12 flex flex-col justify-center">
-          <h4 className="w-6/12 font-jost font-medium text-black">
+        <div className="md:w-6/12 pl-3 w-full flex flex-col justify-center">
+          <h4 className="flex font-jost md:font-medium font-normal text-black text-start">
             {product.name}
           </h4>
-          {/*  */}
-          {/* <div className="flex flex-wrap break-all flex-col md:flex-row justify-center items-center px-1 ">
-            <h5 className="flex px-3">Код товара: 1050</h5>
 
-            <div className="w-6/12 flex justify-center gap-2">
-              <div className="h-3 w-3 bg-[#14153C] rounded-full ..."></div>
-              <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."></div>
-              <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."></div>
-            </div> */}
-
-          {/* <div className="flex flex-wrap break-all"></div> */}
-          <div className="flex justify-between">
-            <div className="flex flex-col justify-start px-5 flex-start items-start">
+          <div className="flex justify-between flex-col text-sm">
+            <div className="flex flex-col justify-start flex-start items-start">
               <span>WASS. Гелиевая ручка</span>
               <span> Остаток: {product.total_stock}</span>
               <h5 className=""> Код товара: {product.article}</h5>
             </div>
-            <div className="flex justify-end items-end gap-3">
+            <div className="flex md:justify-end md:items-end md:gap-3  py-2 justify-between">
               <div className="flex ">
-                <span className="font-light">Цена:</span>
-                <b>{product.price} C</b>
+                <span className="font-light md:flex hidden">Цена:</span>
+                <b className="flex">
+                  {product.price}
+                  <img src={som} alt="" className="object-contain" />
+                </b>
               </div>
               <div>
-                <div className="w-10 h-10 bg-[#343434] rounded-full ... flex justify-center items-center">
-                  <img src={shopbag} alt="" />
-                </div>
+                <button className="md:w-10 md:h-10 h-7 w-7 bg-[#343434] rounded-full ... focus:outline-none flex justify-center items-center">
+                  <img src={shopbag} alt="" className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="flex  md:hidden justify-center items-center gap-3 w-3/12">
+                <div className="bg-[#14153C] h-3 w-3 rounded-full ... "></div>
+                <div className="bg-[#65A8E0] h-3 w-3 rounded-full ... "></div>
               </div>
             </div>
           </div>
-          {/* </div> */}
+
           <div className="flex justify-center flex-col px-5 text-black font-jost "></div>
         </div>
-        <div className="flex justify-center items-center gap-3 w-3/12">
+        <div className="md:flex hidden justify-center items-center gap-3 w-3/12">
           <div className="bg-[#14153C] h-2 w-2 rounded-full ... "></div>
           <div className="bg-[#65A8E0] h-2 w-2 rounded-full ... "></div>
           <div className="bg-[#A91E1E] h-2 w-2 rounded-full ... "></div>
