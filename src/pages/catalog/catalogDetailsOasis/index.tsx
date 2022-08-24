@@ -20,6 +20,7 @@ import {
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
 import { IProductState } from "../../../store/catalog/interfaces/data.interface";
 import API from "../../../constants/api";
+import { stat } from "fs";
 
 const CatalogDetailsOasis = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const CatalogDetailsOasis = () => {
   const params = useParams();
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
+  const [currentDrawing, setCurrentDrawing] = useState<any>();
 
   useEffect(() => {
     if (!params.id) return;
@@ -37,9 +39,16 @@ const CatalogDetailsOasis = () => {
   useEffect(() => {
     if (!selectedProduct || !selectedProduct.color_groups[0]) return;
     setCurrentProduct(selectedProduct.color_groups[0]);
+    if (selectedProduct.locations) {
+      setCurrentDrawing({
+        ...selectedProduct.locations[0],
+        selectedCostomTypeId: "",
+      });
+    }
   }, [selectedProduct]);
-  console.log(currentProduct);
   console.log(selectedProduct);
+  console.log(currentProduct);
+  console.log(currentDrawing);
 
   const handleSendProductToCart = async () => {
     if (!currentProduct) return;
@@ -255,12 +264,20 @@ const CatalogDetailsOasis = () => {
                               My field
                             </label>
                             <select
+                              onChange={(e) =>
+                                setCurrentDrawing({
+                                  ...currentDrawing,
+                                  selectedCostomTypeId: e.target.value,
+                                })
+                              }
                               className="appearance-none w-full py-1 px-2 bg-white"
                               name="whatever"
                               id="frm-whatever"
                             >
-                              <option value="">Please choose&hellip;</option>
-                              <option value="1">Item 1</option>
+                              {currentDrawing &&
+                                currentDrawing.costom_types.map((type: any) => (
+                                  <option value={type.id}>{type.costom}</option>
+                                ))}
                             </select>
                             <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                               <svg
@@ -292,14 +309,31 @@ const CatalogDetailsOasis = () => {
                               name="whatever"
                               id="frm-whatever"
                             >
-                              {selectedProduct.color_groups.map(
-                                (item: any, i) => (
-                                  <option value="" key={i}>
-                                    {" "}
-                                    {item.color.name}
-                                  </option>
-                                )
+                              {currentDrawing &&
+                              currentDrawing.selectedCostomTypeId ? (
+                                currentDrawing.costom_types.map((type: any) => {
+                                  return type.id ==
+                                    currentDrawing.selectedCostomTypeId
+                                    ? type.colors.map((color: any) => (
+                                        <option value="">{color.name}</option>
+                                      ))
+                                    : null;
+                                })
+                              ) : (
+                                <option value="">Выберите тип нанесения</option>
                               )}
+
+                              {/* {currentDrawing.selectedCostomTypeId ? (
+                                currentDrawing.map((type: any) => {
+                                  type.id == currentDrawing.selectedCostomTypeId
+                                    ? type.colors.map((color: any) => (
+                                        <option value="">{color.name}</option>
+                                      ))
+                                    : null;
+                                })
+                              ) : (
+                                <option value="">Выберите тип нанесения</option>
+                              )} */}
                             </select>
                             <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                               <svg
