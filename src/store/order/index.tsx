@@ -6,7 +6,7 @@ import { fetchOrderSuccess } from "./actions";
 export const fetchOrder = () => async (dispatch: Dispatch) => {
   try {
     const res: any = await API.get("/orders/cart");
-    dispatch(fetchOrderSuccess);
+    dispatch(fetchOrderSuccess(res.data.data));
   } catch (e) {
     console.log(e);
   }

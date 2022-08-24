@@ -3,7 +3,7 @@ import { fetchOrderSuccess } from "./actions";
 import { IOrderState } from "./interfaces/data.interface";
 
 export const initialState: IOrderState = {
-  orderCart: [],
+  orderCart: null,
 };
 
 export default createReducer<IOrderState>(initialState, (builder) =>

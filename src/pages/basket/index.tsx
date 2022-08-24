@@ -25,169 +25,181 @@ const Basket = () => {
       <div className="flex md:justify-between md:flex-row flex-col ">
         <div className="md:w-8/12 w-full md:flex flex-col hidden ">
           <div className="flex flex-col ">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 ">
-              <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="overflow-hidden">
-                  <table className="min-w-full">
-                    <thead className="border-b  ">
-                      <tr className="">
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                        >
-                          Товар
-                        </th>
+            <div className=" sm:-mx-6 lg:-mx-8 flex flex-col ">
+              <div className="py-2 flex flex-col min-w-full sm:px-6 lg:px-8">
+                <table className="min-w-full ">
+                  <thead className="border-b  ">
+                    <tr className="flex justify-between">
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Товар
+                      </th>
 
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-center"
-                        >
-                          Количество
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                        >
-                          Цена
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="">
-                      {/*  */}
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-center"
+                      >
+                        Количество
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
+                        Цена
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="">
+                    {/*  */}
 
-                      {/*  */}
+                    {/*  */}
 
-                      <tr className="md:bg-white bg-[#F1F1F1] border-b">
-                        <td className="flex px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          <img src={orderhistoryphoto} alt="" />
-                          <div className="flex flex-col  px-8 flex-wrap">
-                            <h2 className="font-semibold">
-                              Ручка пластиковая <br /> шариковая «Наварра»
-                            </h2>
-                            <span className="font-light">Цвет: Черный</span>
-                            <span className="font-light">
-                              Тип нанесения: термопечать
-                            </span>
-                          </div>
-                        </td>
-
-                        <td className="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
-                          <div className="flex justify-center items-center align-middle gap-2 py-2">
-                            <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5">
-                              <img src={minus} alt="" />
-                            </button>
-                            <input
-                              type="text"
-                              className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
-                              value="500 шт."
-                            />
-
-                            <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 ">
-                              <img src={plus} alt="" />
-                            </button>
-                          </div>
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <div className="flex gap-2">
-                            <span>32 000, 00</span>
-                            <div className="flex flex-col justify-center items-center text-center">
-                              <div className="flex">C</div>
-                              <div className="mt-[-4vh] flex items-center">
-                                _
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <div className="flex justify-center">
+                    {order ? (
+                      <tr className="md:bg-white bg-[#F1F1F1] border-b flex flex-col">
+                        {order.items.map((item) => (
+                          <div className="flex flex-row justify-center items-center">
                             {/*  */}
 
-                            <button
-                              className="  font-bold uppercase text-sm px-6 py-3 "
-                              type="button"
-                              onClick={() => setShowModal(true)}
-                            >
-                              X
-                            </button>
-                            {showModal ? (
-                              <>
-                                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    {/*content*/}
-                                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                      {/*header*/}
-                                      <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                        <h3 className="text-3xl font-semibold">
-                                          Удалить товар из корзины?
-                                        </h3>
-                                        <button
-                                          className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                          onClick={() => setShowModal(false)}
-                                        >
-                                          <span className="bg-transparent text-black h-4 w-6 text-3xl font-light block outline-none focus:outline-none">
-                                            X
-                                          </span>
-                                        </button>
-                                      </div>
-                                      {/*body*/}
-                                      <div className="relative p-6 flex-auto ">
-                                        {/* <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                         
-                                        </p> */}
-                                        <div className="flex justify-between">
-                                          <img src={orderhistoryphoto} alt="" />
-                                          <div className="">
-                                            <span className="font-semibold flex flex-wrap">
-                                              Ручка пластиковая <br /> шариковая
-                                              «Наварра»
-                                            </span>
-                                            <span className="font-light">
-                                              Цвет: Черный
-                                            </span>
-                                            <span className="font-light">
-                                              Тип нанесения: термопечать
-                                            </span>
+                            <td className="flex py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              {item.product.images.small && (
+                                <img
+                                  src={item.product.images.small}
+                                  alt=""
+                                  className="h-auto w-28"
+                                />
+                              )}
+                              <div className="flex flex-col justify-center items-center  px-8 flex-wrap">
+                                <h2 className="font-semibold">
+                                  {item.product.name}
+                                </h2>
+                                <span className="font-light">Цвет:</span>
+                                <span className="font-light">
+                                  Тип нанесения: термопечать
+                                </span>
+                              </div>
+                            </td>
+
+                            <td className="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
+                              <div className="flex justify-center items-center align-middle gap-2 py-2">
+                                <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5">
+                                  <img src={minus} alt="" />
+                                </button>
+                                <input
+                                  type="text"
+                                  className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
+                                  value="500 шт."
+                                />
+
+                                <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 ">
+                                  <img src={plus} alt="" />
+                                </button>
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <div className="flex gap-2">
+                                <span>{item.price}</span>
+                                <div className="flex flex-col justify-center items-center text-center">
+                                  <div className="flex">C</div>
+                                  <div className="mt-[-4vh] flex items-center">
+                                    _
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+
+                            <div className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <div className="flex justify-center">
+                                <button
+                                  className="  font-bold uppercase text-sm px-6 py-3 "
+                                  type="button"
+                                  onClick={() => setShowModal(true)}
+                                >
+                                  X
+                                </button>
+                                {showModal ? (
+                                  <>
+                                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                      <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                          <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                            <h3 className="text-3xl font-semibold">
+                                              Удалить товар из корзины?
+                                            </h3>
+                                            <button
+                                              className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                              onClick={() =>
+                                                setShowModal(false)
+                                              }
+                                            >
+                                              <span className="bg-transparent text-black h-4 w-6 text-3xl font-light block outline-none focus:outline-none">
+                                                X
+                                              </span>
+                                            </button>
                                           </div>
-                                          <div className="flex justify-center items-center">
-                                            <input
-                                              type="text"
-                                              className="rounded-full ... border border-black px-2 w-[39%] text-base "
-                                              value="500 шт."
-                                            />
+                                          <div className="relative p-6 flex-auto ">
+                                            <div className="flex justify-between">
+                                              <img
+                                                src={orderhistoryphoto}
+                                                alt=""
+                                              />
+                                              <div className="">
+                                                <span className="font-semibold flex flex-wrap">
+                                                  Ручка пластиковая <br />{" "}
+                                                  шариковая «Наварра»
+                                                </span>
+                                                <span className="font-light">
+                                                  Цвет: Черный
+                                                </span>
+                                                <span className="font-light">
+                                                  Тип нанесения: термопечать
+                                                </span>
+                                              </div>
+                                              <div className="flex justify-center items-center">
+                                                <input
+                                                  type="text"
+                                                  className="rounded-full ... border border-black px-2 w-[39%] text-base "
+                                                  value="500 шт."
+                                                />
+                                              </div>
+                                            </div>
+                                          </div>
+                                          {/*footer*/}
+                                          <div className="flex items-center justify-center gap-5 p-6 border-t border-solid border-slate-200 rounded-b ">
+                                            <button
+                                              className="rounded-full ... bg-[#CECECE] w-[30vh] h-7"
+                                              type="button"
+                                              onClick={() =>
+                                                setShowModal(false)
+                                              }
+                                            >
+                                              Отмена
+                                            </button>
+                                            <button
+                                              className=" rounded-full ... bg-[#1F1F1F] shadow hover:shadow-lg outline-none text-white w-[30vh] h-7"
+                                              type="button"
+                                              onClick={() =>
+                                                setShowModal(false)
+                                              }
+                                            >
+                                              Удалить
+                                            </button>
                                           </div>
                                         </div>
                                       </div>
-                                      {/*footer*/}
-                                      <div className="flex items-center justify-center gap-5 p-6 border-t border-solid border-slate-200 rounded-b ">
-                                        <button
-                                          className="rounded-full ... bg-[#CECECE] w-[30vh] h-7"
-                                          type="button"
-                                          onClick={() => setShowModal(false)}
-                                        >
-                                          Отмена
-                                        </button>
-                                        <button
-                                          className=" rounded-full ... bg-[#1F1F1F] shadow hover:shadow-lg outline-none text-white w-[30vh] h-7"
-                                          type="button"
-                                          onClick={() => setShowModal(false)}
-                                        >
-                                          Удалить
-                                        </button>
-                                      </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                              </>
-                            ) : null}
-
-                            {/*  */}
+                                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                  </>
+                                ) : null}
+                              </div>
+                            </div>
                           </div>
-                        </td>
+                        ))}
                       </tr>
-                    </tbody>
-                  </table>
-                </div>
+                    ) : null}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -233,9 +245,6 @@ const Basket = () => {
                           </div>
                           {/*body*/}
                           <div className="relative p-2 flex-auto ">
-                            {/* <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                         
-                                        </p> */}
                             <div className="flex justify-between">
                               <div>
                                 <img src={orderhistoryphoto} alt="" />
@@ -345,28 +354,22 @@ const Basket = () => {
 
           <div className="row font-jost text-sm m-0">
             <div className="w-8/12 catalog-items__characteristics  flex flex-col gap-4 p-0">
-              <p className="">
-                Итого
-                <span className="font-light">Товары, 3 шт.</span>
-              </p>
+              <p className="">Итого</p>
+              <span className="font-light">Товары, 3 шт.</span>
+
               <p>Адрес доставки</p>
-              <p>Цвет товара</p>
-              <p>Материал товара</p>
-              <p>Размер товара</p>
             </div>
             <div className="w-4/12 flex flex-col gap-4 p-0">
               <p className="flex">
                 96 000, 00
                 <img className="flex object-contain" src={cLine} alt="" />
               </p>
+              <p></p>
               <p>
                 <button className="underline underline-offset-2">
                   Добавить
                 </button>
               </p>
-              <p>Черный</p>
-              <p>АБС пластик</p>
-              <p>d 2,4 x 2,2 x 5,7 см</p>
             </div>
           </div>
 
