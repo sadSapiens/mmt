@@ -94,11 +94,7 @@ const CatalogDetailsOasis = () => {
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li>
-                  <a href="/" className="!text-black">
-                    Категории
-                  </a>
-                </li>
+                <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
@@ -109,21 +105,26 @@ const CatalogDetailsOasis = () => {
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">
                 {selectedProduct &&
-                  selectedProduct.color_groups.length &&
-                  selectedProduct.color_groups.map(
-                    (product) =>
-                      product.images.length && (
+                selectedProduct.color_groups.length &&
+                selectedProduct.color_groups.length >= 6
+                  ? selectedProduct.color_groups
+                      .slice(0, 5)
+                      .map((product) => (
                         <img
                           onClick={() => setCurrentProduct(product)}
                           src={product.images[0].small}
                           alt=""
                           className="w-16 h-16"
                         />
-                      )
-                  )}
-
-                {/* <img src={penTwo} alt="" className="w-16 h-16" />
-                  <img src={penThree} alt="" className="w-16 h-16" /> */}
+                      ))
+                  : selectedProduct.color_groups.map((product) => (
+                      <img
+                        onClick={() => setCurrentProduct(product)}
+                        src={product.images[0].small}
+                        alt=""
+                        className="w-16 h-16"
+                      />
+                    ))}
               </div>
 
               <div className="md:w-5/12 w-full gap-4">
@@ -140,9 +141,29 @@ const CatalogDetailsOasis = () => {
                   "Loading..."
                 )}
                 <div className="flex justify-center items-center md:w-9/12 w-full py-5 gap-4">
-                  <img src={penBig} className="h-12 w-12" alt="" />
-                  <img src={penBig} className="h-12 w-12 opacity-25" alt="" />
-                  <img src={penBig} className="h-12 w-12 opacity-25" alt="" />
+                  <div className="md:flex hidden flex-row overflow-x-scroll scroll-photo w-96 gap-5">
+                    {selectedProduct &&
+                    selectedProduct.color_groups.length &&
+                    selectedProduct.color_groups.length < 6
+                      ? selectedProduct.color_groups
+                          .slice(6)
+                          .map((product) => (
+                            <img
+                              onClick={() => setCurrentProduct(product)}
+                              src={product.images[0].small}
+                              alt=""
+                              className="w-16 h-16"
+                            />
+                          ))
+                      : selectedProduct.color_groups.map((product) => (
+                          <img
+                            onClick={() => setCurrentProduct(product)}
+                            src={product.images[0].small}
+                            alt=""
+                            className="h-12 w-12"
+                          />
+                        ))}
+                  </div>
                 </div>
                 {/*  */}
                 <div className="flex md:hidden justify-between">
@@ -353,14 +374,14 @@ const CatalogDetailsOasis = () => {
 
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
                     <div className="flex  w-5/12 justify-between">
-                      <label htmlFor="input2">Ширина</label>
-                      {selectedProduct.locations.length > 0 ? (
-                        <div>
+                      <div>
+                        <label htmlFor="input2">Ширина</label>
+                        {selectedProduct.locations.length > 0 ? (
                           <span className=" border-b-2 border-black w-20">
                             {selectedProduct.locations[0].costom_types[0].width}
                           </span>
-                        </div>
-                      ) : null}
+                        ) : null}
+                      </div>
 
                       <div>
                         <label htmlFor="input2">Высота</label>
@@ -384,7 +405,7 @@ const CatalogDetailsOasis = () => {
                 {/*  */}
 
                 <div className="flex flex-col">
-                  <div className="overflow-x-auto sm:-mx-4 lg:-mx-4">
+                  <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                       <div className="overflow-hidden">
                         <table className="min-w-full">
@@ -469,8 +490,8 @@ const CatalogDetailsOasis = () => {
                               <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
                                 <p>{item.name}</p>
                               </div>
-                              <div className="col-6 flex flex-col gap-4">
-                                <p>{item.value}</p>
+                              <div className="col-6 flex flex-col gap-4 ">
+                                <p className="py-3">{item.value}</p>
                               </div>
                             </div>
                           ))}
@@ -484,7 +505,7 @@ const CatalogDetailsOasis = () => {
                                 <p>Количество в упаковке</p>
                                 <p>Объем единицы</p>
                               </div>
-                              <div className="col-6 flex flex-col gap-4">
+                              <div className="col-6 flex flex-col gap-5 ">
                                 <p>{selectedProduct.package.package_type}</p>
                                 <p>{selectedProduct.package.weight}.</p>
                                 <p>

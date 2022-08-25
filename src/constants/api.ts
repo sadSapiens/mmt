@@ -21,7 +21,7 @@ API.interceptors.request.use((config: any) => {
 //   },
 //   async (err) => {
 //     const originalRequest = err.config;
-//     if (err.response.status == 401 && !err.config._isRetry) {
+//     if (err.response.status === 401 && !err.config._isRetry) {
 //       originalRequest._isRetry = true;
 //       try {
 //         const response = await axios.post(

@@ -7,7 +7,6 @@ import API from "../../constants/api";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-// import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 interface ImageObj {
   blobUrl: string;

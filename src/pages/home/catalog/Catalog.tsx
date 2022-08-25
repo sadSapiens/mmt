@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import heart from "./catalog-images/heart.png";
 import calendar from "./catalog-images/calendar.svg";
 import client from "./catalog-images/client.png";
@@ -16,6 +16,8 @@ import eight from "./catalog-images/eight.png";
 import arrow from "./catalog-images/arrow.svg";
 
 const Catalog = () => {
+  const [isButton, setIsButton] = useState(true);
+
   return (
     <div className="container mx-auto px-4 ">
       <div className="flex flex-col md:flex-row mt-3 justify-start text-center  items-center align-middle  py-2 ">
@@ -23,21 +25,13 @@ const Catalog = () => {
           Каталог
         </span>
         <div className="flex flex-row gap-4  overflow-x-auto overflow-y-clip h-8 justify-start md:justify-center px-4 w-full md:w-auto">
-          <button className=" flex   align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-3 text-white text-center text-xs md:text-base ">
+          <button
+            className={`${
+              !isButton ? "bg-black text-white " : "bg-white text-black"
+            } flex   align-middle justify-center items-center  rounded-full ... bg-[#1F1F1F] p-1 px-3 text-white text-center text-xs md:text-base `}
+          >
             <img className=" flex px-2" src={heart} alt="" />
             Тренды
-          </button>
-          <button className=" flex items-center justify-center py-2 min-w-max rounded-full ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
-            <img className=" flex px-2" src={calendar} alt="" />
-            По праздникам
-          </button>
-          <button className=" flex items-center rounded-full min-w-max  ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
-            <img className=" flex px-2" src={client} alt="" />
-            По клиентам
-          </button>
-          <button className=" flex items-center rounded-full min-w-max ... border-black border md:p-1 md:px-7 px-10 flex-row w-auto text-black text-xs md:text-base">
-            <img className=" flex px-2" src={bag} alt="" />
-            По секторам
           </button>
         </div>
       </div>

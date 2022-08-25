@@ -22,7 +22,7 @@ const Footer = () => {
                 <span className="text-white">INSTAGRAM</span>
               </div>
               <ul className="list-none footer-links">
-                <li className="mb-2">{/* <a href="/"></a> */}</li>
+                <li className="mb-2"></li>
               </ul>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
@@ -135,7 +135,7 @@ const Footer = () => {
               </a>
             </button>
           </div>
-          <div className="flex justify-between px-4 text-white">
+          <div className="md:hidden flex sm:hidden  justify-between px-4 text-white">
             <div>Публичная оферта</div>
             <div>Политика конфеденциальности</div>
           </div>

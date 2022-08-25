@@ -6,7 +6,6 @@ import { useCategoryProducts } from "../../store/category/hooks";
 import catalog from "../../assets/img/catalog.png";
 
 import "./megamenu.css";
-import TypeProduct from "./TypeProduct";
 import { useHome } from "../../store/varia/hooks";
 import { fetchHome } from "../../store/varia";
 
@@ -50,9 +49,12 @@ const MegaMenu = () => {
               className="megablock bg-[#343434] p-3  "
             >
               {home && home.types.length && (
-                <div className="sm:hidden  flex flex-row gap-4  overflow-x-auto overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
-                  {home.types.map((item) => (
-                    <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                <div className="sm:hidden  flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
+                  {home.types.map((item, i) => (
+                    <button
+                      key={i}
+                      className="bg-[#65A8E0] px-4 rounded-full ..."
+                    >
                       {item.name}
                     </button>
                   ))}
@@ -68,7 +70,7 @@ const MegaMenu = () => {
                 <div className="flex-col justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
                   {categories.length > 0 &&
                     categories.map((category: any, i: number) => (
-                      <>
+                      <div key={i}>
                         <li
                           className="  category h-10 flex justify-start pl-14 text-left leading-normal items-center w-full"
                           key={i}
@@ -78,17 +80,20 @@ const MegaMenu = () => {
                         >
                           {category.name}
                         </li>
-                      </>
+                      </div>
                     ))}
                 </div>
 
                 <ul className=" w-full px-6">
                   <div className="hidden  md:flex w-full overflow-x-auto ">
                     {home && home.types.length && (
-                      <div className="flex flex-row gap-4  overflow-x-auto overflow-y-clip  justify-start md:justify-center px-4 w-full md:w-auto">
+                      <div className="flex flex-row gap-4  overflow-x-auto  overflow-y-clip  justify-start md:justify-center px-4 w-full md:w-auto">
                         {/* {home?.data.map((item) => { */}
-                        {home.types.map((item) => (
-                          <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                        {home.types.map((item, i) => (
+                          <button
+                            key={i}
+                            className="bg-[#65A8E0] px-4 rounded-full ..."
+                          >
                             {item.name}
                           </button>
                         ))}
@@ -107,7 +112,7 @@ const MegaMenu = () => {
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link
-                            // key={i}
+                            key={i}
                             onClick={() => setIsOpenCatalog(false)}
                             to={`catalog?categoryId=${item.id}`}
                             className="h-8 py-2  w-full hidden md:flex"
@@ -120,7 +125,7 @@ const MegaMenu = () => {
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link
-                            // key={i}
+                            key={i}
                             onClick={() => setIsOpenCatalog(false)}
                             to={`catalog?categoryId=${item.id}`}
                             className="h-8 py-2  w-full hidden md:flex"
@@ -133,7 +138,7 @@ const MegaMenu = () => {
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link
-                            // key={i}
+                            key={i}
                             onClick={() => setIsOpenCatalog(false)}
                             to={`catalog?categoryId=${item.id}`}
                             className="h-8 py-2  w-full hidden md:flex"
@@ -154,14 +159,3 @@ const MegaMenu = () => {
 };
 
 export default MegaMenu;
-//  {home.reviews.map((item) => (
-//                   <>
-//                     <img className="rounded-full" src={item.picture} alt="" />
-//                     <span className=" flex  text-center">
-//                       Валентина Евгеньевна <br /> Маркетолог “Alfa Bank”
-//                     </span>
-//                     <p className="font-light	">
-//                       {item.review}
-//                     </p>
-//                   </>
-//                 )}

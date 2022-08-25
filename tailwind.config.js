@@ -5,7 +5,7 @@ module.exports = {
     "./src/**/*.jsx",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./public/index.html",
+    "./src/**/*.{html,js}",
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {

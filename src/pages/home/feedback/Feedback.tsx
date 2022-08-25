@@ -24,8 +24,8 @@ const Feedback = () => {
       <div className="flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto items-start w-full">
         {home && home.reviews.length && (
           <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle ">
-            {home.reviews.map((item) => (
-              <>
+            {home.reviews.map((item, i) => (
+              <div key={i}>
                 <div className="flex flex-col overflow-y-clip px-4 w-full">
                   <img className="rounded-full" src={item.picture} alt="" />
                   <span className=" flex  text-center">
@@ -33,7 +33,7 @@ const Feedback = () => {
                   </span>
                   <p className="font-light	">{item.review}</p>
                 </div>
-              </>
+              </div>
             ))}
             <></>
           </div>

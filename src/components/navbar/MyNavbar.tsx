@@ -32,7 +32,6 @@ const NavBar = () => {
     if (searchValue) navigate("/catalog");
   }, [categoryId, searchValue]);
 
-  // const [isLogged, setIsLogged] = useState(!false);
   const handleLogout = async (e: any) => {
     e.preventDefault();
     try {
@@ -79,7 +78,7 @@ const NavBar = () => {
             </div>
 
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
-              <div className="sm:hidden flex md:mx-3">
+              <div className="sm:hidden md:flex md:mx-3">
                 <img className="h-1 w-auto sm:h-5" src={phone} alt="" />
                 <a href="tel:+1234567890" className="text-white">
                   {" "}
@@ -87,7 +86,10 @@ const NavBar = () => {
                 </a>
               </div>
               <button className=" md:flex flex rounded-full w-auto text-white px-2 py-1  border border-white ">
-                <a href="tel:+1234567890" className="text-white">
+                <a
+                  href="tel:+1234567890"
+                  className="text-white text-base font-light"
+                >
                   {" "}
                   Заказать звонок
                 </a>

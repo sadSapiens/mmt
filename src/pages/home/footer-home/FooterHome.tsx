@@ -171,13 +171,15 @@ const FooterHome = () => {
       </div>
       {/*  */}
       <div className="hidden md:flex font-jost justify-between bg-[#484848] text-white  mx-auto px-9   w-auto py-5">
-        <h1 className="font-bold	 text-4xl">
-          <span>
-            1000+ довольных <br /> клиентов
-          </span>
-        </h1>
-        <span className="font-bold text-4xl">
-          9+ лет <br /> опыта
+        <span className="font-bold text-3xl w-96 flex flex-wrap">
+          <span className="underline-9 underline decoration-blue-800">
+            1000+
+          </span>{" "}
+          довольных клиентов
+        </span>
+        <span className="font-bold text-3xl w-36 flex flex-wrap">
+          <span className="underline-9 underline decoration-blue-800">9+</span>{" "}
+          <p> лет опыта</p>
         </span>
       </div>
     </>

@@ -30,12 +30,17 @@ export interface IBlog {
 
 export interface IHomeData {
   brands: [];
-  catalogs: [];
+  homeCatalog: IHomeCatalog;
   faq: any[];
   portfolio: [];
   reviews: any[];
   types: any[];
 }
+
+export interface IHomeCatalog {
+  icon: null;
+}
+
 export interface IVariaState {
   blog: IBlogs | null;
   about: IAbout | null;

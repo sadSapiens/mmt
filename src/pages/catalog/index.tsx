@@ -5,7 +5,6 @@ import rightarrow from "./assets/rightarrow.png";
 import schema from "./assets/schema.svg";
 import list from "./assets/list.svg";
 import "./style.css";
-import Filters from "./filters/Filters";
 import Cards from "./cards/Cards";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../store";
@@ -206,7 +205,6 @@ const CatalogPage = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
-  console.log(selectedProduct, "ssss2");
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
@@ -421,7 +419,7 @@ const CatalogPage = () => {
             <img src={union} alt="" />
           </button>
         </div>
-        <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto overflow-scroll">
+        <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto  overflow-scroll">
           <div className="block text-center self-center">
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
@@ -495,7 +493,7 @@ const CatalogPage = () => {
             >
               Цена
             </label>
-            <div className="accordion__content overflow-hidden bg-grey-lighter flex justify-center">
+            <div className="accordion__content overflow-hidden  bg-grey-lighter flex justify-center">
               <div className="flex justify-around items-center">
                 {/*  */}
 
@@ -565,7 +563,7 @@ const CatalogPage = () => {
             >
               Цвет
             </label>
-            <div className="accordion__content overflow-y-scroll bg-grey-lighter">
+            <div className="accordion__content overflow-y-scroll  bg-grey-lighter">
               <div className="flex justify-start px-5 py-3 ">
                 <div className="flex flex-col justify-start">
                   {filters && (
@@ -609,7 +607,7 @@ const CatalogPage = () => {
             >
               Количество
             </label>
-            <div className="accordion__content overflow-hidden bg-grey-lighter">
+            <div className="accordion__content overflow-hidden  bg-grey-lighter">
               <div className="flex flex-col justify-center">
                 <div className="flex justify-center w-1/4 py-2">
                   <span>От</span>
@@ -640,7 +638,7 @@ const CatalogPage = () => {
             >
               Материал
             </label>
-            <div className="accordion__content overflow-y-scroll overflow-x-clip bg-grey-lighter">
+            <div className="accordion__content overflow-y-scroll  overflow-x-clip bg-grey-lighter">
               <div className="flex justify-start  py-3">
                 <div className="flex flex-col justify-start">
                   {filters && (
@@ -686,7 +684,7 @@ const CatalogPage = () => {
             >
               Метод нанесения
             </label>
-            <div className="accordion__content overflow-y-scroll bg-grey-lighter">
+            <div className="accordion__content overflow-y-scroll  bg-grey-lighter">
               <div className="flex justify-center px-1 py-3">
                 <div className="flex flex-col justify-start">
                   {/*  */}

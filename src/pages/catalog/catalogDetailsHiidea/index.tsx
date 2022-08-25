@@ -47,11 +47,7 @@ const CatalogDetailsHiidea = () => {
           <li>
             <img src={arrow} alt="" />
           </li>
-          <li>
-            <a href="/" className="text-black">
-              Категории
-            </a>
-          </li>
+          <li className="text-black">Категории</li>
           <li>
             <img src={arrow} alt="" />
           </li>
@@ -290,7 +286,7 @@ const CatalogDetailsHiidea = () => {
           <div className="flex flex-col">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="overflow-hidden">
+                <div className="overflow-hidden ">
                   <table className="min-w-full">
                     <thead className="">
                       <tr className="flex gap-24">
