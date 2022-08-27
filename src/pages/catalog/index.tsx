@@ -452,8 +452,8 @@ const CatalogPage = () => {
                 <div className="gap-3 flex flex-col justify-center">
                   {filters && (
                     <div className="form-check flex justify-center items-center flex-col">
-                      {filters.types.map((item: any) => (
-                        <div className="py-2">
+                      {filters.types.map((item: any, i) => (
+                        <div className="py-2 " key={i}>
                           <input
                             className="form-check-input  h-4 w-4 border border-black rounded-sm bg-white  focus:outline-none transition duration-200 items-center place-items-center align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
@@ -499,49 +499,49 @@ const CatalogPage = () => {
 
                 {/*  */}
 
-                <div className="flex flex-col">
-                  <div className=" sm:-mx-6 lg:-mx-8">
-                    <div className="py-2  min-w-full sm:px-6 lg:px-8 flex flex-col">
-                      <div className="flex flex-row justify-between">
-                        <div>
-                          <span>От</span>
-                        </div>
-                        <div>
-                          <span>До</span>
-                        </div>
+                <div className="flex w-full sm:-mx-6 lg:-mx-8">
+                  <div className="py-2  min-w-full sm:px-6 lg:px-8 flex flex-col">
+                    <div className="flex flex-row justify-around items-center ">
+                      <div>
+                        <span>От</span>
                       </div>
-                      <div className="flex flex-row justify-around">
-                        <div>
-                          <input
-                            className=" flex text-center font-jost justify-center border-black border-[1px] rounded-full ... w-3 px-6 py-1 text-black placeholder:text-stone-900"
-                            placeholder="15"
-                            type="number"
-                            name="search"
-                            value={price.minPrice}
-                            onChange={(e) =>
-                              setPrice({
-                                ...price,
-                                minPrice: Number(e.target.value),
-                              })
-                            }
-                          />
-                        </div>
-                        <div>---</div>
-                        <div>
-                          <input
-                            className=" flex text-center font-jost justify-center border-black border-[1px] rounded-full ... w-3 px-6 py-1 text-black placeholder:text-stone-900"
-                            placeholder="400"
-                            type="number"
-                            name="search"
-                            value={price.maxPrice}
-                            onChange={(e) =>
-                              setPrice({
-                                ...price,
-                                maxPrice: Number(e.target.value),
-                              })
-                            }
-                          />
-                        </div>
+                      <div>
+                        <span>До</span>
+                      </div>
+                    </div>
+                    <div className="flex flex-row justify-around gap-5 py-2">
+                      <div>
+                        <input
+                          className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
+                          placeholder="15"
+                          type="number"
+                          name="search"
+                          value={price.minPrice}
+                          onChange={(e) =>
+                            setPrice({
+                              ...price,
+                              minPrice: Number(e.target.value),
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="flex flex-row w-20 items-center justify-center">
+                        ---
+                      </div>
+                      <div>
+                        <input
+                          className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
+                          placeholder="400"
+                          type="number"
+                          name="search"
+                          value={price.maxPrice}
+                          onChange={(e) =>
+                            setPrice({
+                              ...price,
+                              maxPrice: Number(e.target.value),
+                            })
+                          }
+                        />
                       </div>
                     </div>
                   </div>
@@ -568,8 +568,8 @@ const CatalogPage = () => {
                 <div className="flex flex-col justify-start">
                   {filters && (
                     <div className="form-check py-2">
-                      {filters.colors.map((item: any) => (
-                        <div className="py-2">
+                      {filters.colors.map((item: any, i) => (
+                        <div className="py-2" key={i}>
                           <input
                             className="form-check-input  h-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
@@ -609,12 +609,12 @@ const CatalogPage = () => {
             </label>
             <div className="accordion__content overflow-hidden  bg-grey-lighter">
               <div className="flex flex-col justify-center">
-                <div className="flex justify-center w-1/4 py-2">
+                <div className="flex justify-center  py-2">
                   <span>От</span>
                 </div>
-                <div>
+                <div className=" flex justify-center items-center text-center font-normal">
                   <input
-                    className=" flex text-center font-normal font-jost justify-center border-black border rounded-full ... w-20 text-black
+                    className=" font-jost text-center  border-black border-[1px] py-1 px-2 rounded-full ... w-auto text-black
                   placeholder:text-stone-900
                   "
                     placeholder="400"
@@ -690,8 +690,8 @@ const CatalogPage = () => {
                   {/*  */}
                   {filters && (
                     <div className="form-check ">
-                      {filters.costom_types.map((item: any) => (
-                        <div className="py-2">
+                      {filters.costom_types.map((item: any, i) => (
+                        <div className="py-2" key={i}>
                           <input
                             className="form-check-input  h-4  border-2 border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left  cursor-pointer"
                             type="checkbox"

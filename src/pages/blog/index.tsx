@@ -58,11 +58,15 @@ const Blog = () => {
                       {/* {} */}
                       {blogNews.data[0].title}
                     </h2>
-                    <p className="py-4 flex">{blogNews.data[0].content}</p>
+                    <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
+                      {blogNews.data[0].content}
+                    </p>
                     <div className="flex justify-center items-center md:flex md:justify-start">
-                      <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
-                        Читать статью
-                      </button>
+                      <Link to={`/blog/${blogNews.data[0].author}`}>
+                        <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
+                          Читать статью
+                        </button>
+                      </Link>
                     </div>
 
                     <p className="hidden md:flex">
@@ -74,8 +78,8 @@ const Blog = () => {
             </div>
 
             <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
-              <div className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5">
-                {blogNews.data.map((item) => (
+              {blogNews.data.map((item) => (
+                <div className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5 ">
                   <Link to={`/blog/${item.author}`}>
                     <img
                       src={newsone}
@@ -92,15 +96,17 @@ const Blog = () => {
                         </p>
                       </div>
                       <div className="py-10">
-                        <h2 className="md:font-semibold md:text-lg text-black text-sm flex">
+                        <h2 className="md:font-semibold md:text-lg text-black text-sm flex text-ellipsis overflow-hidden ... ">
                           {item.title}
                         </h2>
-                        <p className="py-4 hidden md:flex">{item.content}</p>
+                        <p className="py-4 hidden md:flex text-ellipsis overflow-hidden ... text-black">
+                          {item.content}
+                        </p>
                       </div>
                     </div>
                   </Link>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </>

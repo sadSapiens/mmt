@@ -28,6 +28,7 @@ const ProfileComponent = () => {
     company: "",
     email: "",
   });
+  console.log(inputs, "profile");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });

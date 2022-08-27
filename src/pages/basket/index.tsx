@@ -196,7 +196,7 @@ const Basket = () => {
                                 </div>
                               </div>
                             </tr>
-                            <tr className="md:bg-white bg-[#F1F1F1] border-t flex w-[100%] ">
+                            {/* <tr className="md:bg-white bg-[#F1F1F1] border-t flex w-[100%] ">
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 w-[70%]">
                                 <div className="timeline">
                                   <ul className="days">
@@ -227,7 +227,7 @@ const Basket = () => {
                               <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 uygiuygiyg
                               </td>
-                            </tr>
+                            </tr> */}
                           </>
                         ))}
                       </>

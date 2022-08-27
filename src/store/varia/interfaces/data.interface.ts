@@ -29,16 +29,30 @@ export interface IBlog {
 // }
 
 export interface IHomeData {
-  brands: [];
-  homeCatalog: IHomeCatalog;
+  brands: IBrands[];
+  catalogs: IHomeCatalog[];
   faq: any[];
   portfolio: [];
   reviews: any[];
   types: any[];
 }
 
+export interface IBrands {
+  name: string;
+  logotype: string;
+}
+
 export interface IHomeCatalog {
-  icon: null;
+  icon: string | any;
+  is_holidays: boolean;
+  name: string;
+  categories: IHomeCatalogCategories[];
+}
+export interface IHomeCatalogCategories {
+  id: number;
+  level: number;
+  name: string;
+  picture: string | any;
 }
 
 export interface IVariaState {

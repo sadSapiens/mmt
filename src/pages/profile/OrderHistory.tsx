@@ -69,7 +69,7 @@ const OrderHistory = () => {
                             </div>
                           </div>
 
-                          <div className="timeline">
+                          {/* <div className="timeline">
                             <ul className="days">
                               <li className="day">
                                 <div className="events">
@@ -85,7 +85,7 @@ const OrderHistory = () => {
                                 </div>
                               </li>
                             </ul>
-                          </div>
+                          </div> */}
                           {/* <div className="page">
                             <div className="timeline">
                               <div className="timeline__group">

@@ -333,7 +333,7 @@ const CatalogDetailsOasis = () => {
                               {currentDrawing &&
                               currentDrawing.selectedCostomTypeId ? (
                                 currentDrawing.costom_types.map((type: any) => {
-                                  return type.id ==
+                                  return type.id ===
                                     currentDrawing.selectedCostomTypeId
                                     ? type.colors.map((color: any) => (
                                         <option value="">{color.name}</option>

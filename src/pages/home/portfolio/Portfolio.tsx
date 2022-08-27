@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import arrow from "./assets/arrow.svg";
 
 import one from "./assets/one.png";
@@ -11,8 +11,18 @@ import threeUser from "./assets/threeUser.png";
 import category from "./assets/Category.png";
 
 import "./port.css";
+import { useAppDispatch } from "../../../store";
+import { useHome } from "../../../store/varia/hooks";
+import { fetchHome } from "../../../store/varia";
 
 const Portfolio = () => {
+  const dispatch = useAppDispatch();
+  const home = useHome();
+  useEffect(() => {
+    dispatch(fetchHome() as any);
+  }, []);
+  console.log(home?.portfolio, "portHome");
+
   return (
     <div className="container mx-auto px-4">
       <div>
@@ -43,20 +53,23 @@ const Portfolio = () => {
         </div>
       </div>
 
-      <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
-        <div className="flex">
-          <img className="md:h-56 md:w-64 w-96 h-40" src={one} alt="" />
+      {home?.portfolio ? (
+        <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
+          {home.portfolio.map((item: any, i) => (
+            <div className="flex">
+              {item.photo ? (
+                <img
+                  className="md:h-56 md:w-64 w-96 h-40"
+                  src={item.photo}
+                  alt=""
+                />
+              ) : (
+                <img className="md:h-56 md:w-64 w-96 h-40" src={one} alt="" />
+              )}
+            </div>
+          ))}
         </div>
-        <div className="flex">
-          <img className="md:h-56 md:w-64 w-96 h-40" src={two} alt="" />
-        </div>
-        <div className="flex">
-          <img className="md:h-56 md:w-64 w-96 h-40" src={three} alt="" />
-        </div>
-        <div className="flex">
-          <img className="md:h-56 md:w-64 w-96 h-40" src={four} alt="" />
-        </div>
-      </div>
+      ) : null}
 
       <div className="flex justify-center py-4">
         <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">

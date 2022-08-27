@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import API from "../../constants/api";
+import API, { PUBLIC_API } from "../../constants/api";
 import {
   fetchAboutSuccess,
   fetchBlogNewsSuccess,
@@ -33,7 +33,7 @@ export const fetchPortfolio = () => async (dispatch: Dispatch) => {
 };
 export const fetchHome = () => async (dispatch: Dispatch) => {
   try {
-    const res: any = await API.get("/home");
+    const res: any = await PUBLIC_API.get("/home");
     dispatch(fetchHomeSuccess(res.data.data));
   } catch (e) {
     console.log(e);
