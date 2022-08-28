@@ -47,9 +47,6 @@ const CatalogDetailsHiidea = () => {
       });
     }
   }, [selectedProduct]);
-  console.log(selectedProduct);
-  console.log(currentProduct);
-  console.log(currentDrawing);
 
   const handleSendProductToCart = async () => {
     if (!currentProduct) return;
@@ -110,21 +107,25 @@ const CatalogDetailsHiidea = () => {
                 selectedProduct.color_groups.length >= 6
                   ? selectedProduct.color_groups
                       .slice(0, 5)
-                      .map((product) => (
+                      .map((product, i) => (
+                        <div key={i}>
+                          <img
+                            onClick={() => setCurrentProduct(product)}
+                            src={product.images[0].small}
+                            alt=""
+                            className="w-16 h-16"
+                          />
+                        </div>
+                      ))
+                  : selectedProduct.color_groups.map((product, i) => (
+                      <div key={i}>
                         <img
                           onClick={() => setCurrentProduct(product)}
                           src={product.images[0].small}
                           alt=""
                           className="w-16 h-16"
                         />
-                      ))
-                  : selectedProduct.color_groups.map((product) => (
-                      <img
-                        onClick={() => setCurrentProduct(product)}
-                        src={product.images[0].small}
-                        alt=""
-                        className="w-16 h-16"
-                      />
+                      </div>
                     ))}
               </div>
 
@@ -148,21 +149,25 @@ const CatalogDetailsHiidea = () => {
                     selectedProduct.color_groups.length < 6
                       ? selectedProduct.color_groups
                           .slice(6)
-                          .map((product) => (
+                          .map((product, i) => (
+                            <div key={i}>
+                              <img
+                                onClick={() => setCurrentProduct(product)}
+                                src={product.images[0].small}
+                                alt=""
+                                className="w-16 h-16"
+                              />
+                            </div>
+                          ))
+                      : selectedProduct.color_groups.map((product, i) => (
+                          <div key={i}>
                             <img
                               onClick={() => setCurrentProduct(product)}
                               src={product.images[0].small}
                               alt=""
-                              className="w-16 h-16"
+                              className="h-12 w-12"
                             />
-                          ))
-                      : selectedProduct.color_groups.map((product) => (
-                          <img
-                            onClick={() => setCurrentProduct(product)}
-                            src={product.images[0].small}
-                            alt=""
-                            className="h-12 w-12"
-                          />
+                          </div>
                         ))}
                   </div>
                 </div>
@@ -297,9 +302,13 @@ const CatalogDetailsHiidea = () => {
                               id="frm-whatever"
                             >
                               {currentDrawing &&
-                                currentDrawing.costom_types.map((type: any) => (
-                                  <option value={type.id}>{type.costom}</option>
-                                ))}
+                                currentDrawing.costom_types.map(
+                                  (type: any, i: number) => (
+                                    <option key={i} value={type.id}>
+                                      {type.costom}
+                                    </option>
+                                  )
+                                )}
                             </select>
                             <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                               <svg
@@ -333,14 +342,20 @@ const CatalogDetailsHiidea = () => {
                             >
                               {currentDrawing &&
                               currentDrawing.selectedCostomTypeId ? (
-                                currentDrawing.costom_types.map((type: any) => {
-                                  return type.id ===
-                                    currentDrawing.selectedCostomTypeId
-                                    ? type.colors.map((color: any) => (
-                                        <option value="">{color.name}</option>
-                                      ))
-                                    : null;
-                                })
+                                currentDrawing.costom_types.map(
+                                  (type: any, i: number) => {
+                                    return type.id ===
+                                      currentDrawing.selectedCostomTypeId
+                                      ? type.colors.map(
+                                          (color: any, i: number) => (
+                                            <option key={i} value="">
+                                              {color.name}
+                                            </option>
+                                          )
+                                        )
+                                      : null;
+                                  }
+                                )
                               ) : (
                                 <option value="">Выберите тип нанесения</option>
                               )}
@@ -435,23 +450,25 @@ const CatalogDetailsHiidea = () => {
                           </thead>
                           <tbody>
                             {currentProduct && currentProduct.sizes.length
-                              ? currentProduct.sizes.map((size: any) => (
-                                  <tr className=" flex">
-                                    <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                      {size.size}
-                                    </td>
-                                    <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
-                                      {size.quantity}
-                                    </td>
-                                    <td className="flex mx-2 w-44   px-2 py-2 border border-5">
-                                      <input
-                                        type="number"
-                                        placeholder="1"
-                                        className="border-b-2 w-40 border-5  border-b-black  ..."
-                                      />
-                                    </td>
-                                  </tr>
-                                ))
+                              ? currentProduct.sizes.map(
+                                  (size: any, i: number) => (
+                                    <tr key={i} className=" flex">
+                                      <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                        {size.size}
+                                      </td>
+                                      <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                        {size.quantity}
+                                      </td>
+                                      <td className="flex mx-2 w-44   px-2 py-2 border border-5">
+                                        <input
+                                          type="number"
+                                          placeholder="1"
+                                          className="border-b-2 w-40 border-5  border-b-black  ..."
+                                        />
+                                      </td>
+                                    </tr>
+                                  )
+                                )
                               : null}
                           </tbody>
                         </table>

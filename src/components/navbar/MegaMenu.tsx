@@ -12,6 +12,8 @@ import { fetchHome } from "../../store/varia";
 const MegaMenu = () => {
   const [open, setOpen] = useState(false);
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
+  const [isExpanded, toggleExpansion] = React.useState(false);
+
   const dispatch = useAppDispatch();
   const categories = useCategoryProducts();
 
@@ -36,7 +38,10 @@ const MegaMenu = () => {
             onMouseLeave={() => setIsOpenCatalog(false)}
             className="drop-downn flex md:flex-row flex-col"
           >
-            <div className="flex flex-row md:justify-center md:items-center justify-end items-end h-10">
+            <div
+              onClick={() => toggleExpansion(!isExpanded)}
+              className="flex flex-row md:justify-center md:items-center justify-end items-end h-10"
+            >
               <img src={catalog} className="object-contain" alt="" />
               Каталог
             </div>

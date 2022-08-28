@@ -21,7 +21,7 @@ import {
   fetchFiltersSuccess,
   setSearchValue,
 } from "../../store/catalog/actions";
-import API from "../../constants/api";
+import API, { PUBLIC_API } from "../../constants/api";
 import { useCategoryProducts } from "../../store/category/hooks";
 import { fetchSlectedCatalogProduct } from "../../store/catalog";
 
@@ -80,7 +80,7 @@ const CatalogPage = () => {
         }&price_ascending=${priceSort.ascending}&price_descending=${
           priceSort.descending
         }`;
-        const res: any = await API.get(url);
+        const res: any = await PUBLIC_API.get(url);
         dispatch(fetchCatalogSuccess(res.data.data));
         dispatch(
           fetchFiltersSuccess({
@@ -88,6 +88,7 @@ const CatalogPage = () => {
             costom_types: res.data.costom_types,
             materials: res.data.materials,
             types: res.data.types,
+            total_count: res.data.total_count,
           })
         );
 
@@ -290,13 +291,13 @@ const CatalogPage = () => {
                   </ul>
                 </div>
                 <span>
-                  <> {selectedProduct?.total_stock}товаров</>
+                  <> товаров</>
                 </span>
               </div>
             </div>
             <div className="flex bg-black  h-0.5"></div>
           </div>
-          <div className="flex justify-around items-center w-4/12">
+          <div className="flex justify-around items-end w-4/12">
             <button
               onClick={() => setRow("row")}
               className={`${
@@ -339,7 +340,7 @@ const CatalogPage = () => {
             </button>
           </div>
         </div>
-        <div className=" hidden md:flex justify-center items-center gap-3 w-6/12">
+        <div className=" hidden md:flex justify-end items-center gap-3 w-6/12">
           <button
             onClick={() => setRow("row")}
             className={`${
@@ -721,13 +722,6 @@ const CatalogPage = () => {
             </div>
           </div>
           <div className="flex flex-col  justify-center items-center gap-4 font-jost py-2">
-            {/* <button
-              className="bg-white text-black font-normal rounded-full ... border border-black w-48 hover:text-white  px-4 py-1 
-          hover:!bg-[#79B15E]
-          "
-            >
-              Показать товары (67)
-            </button> */}
             <button
               onClick={() => handleResetFilters()}
               className="border border-black rounded-full ... w-48  px-4 py-1 

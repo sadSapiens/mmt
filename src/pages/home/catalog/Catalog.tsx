@@ -28,8 +28,6 @@ const Catalog = () => {
     dispatch(fetchHome() as any);
   }, []);
 
-  console.log(home?.catalogs, "catalogHpme");
-
   return (
     <div className="container mx-auto px-4 ">
       {home?.catalogs && (
@@ -71,8 +69,11 @@ const Catalog = () => {
                 className="flex flex-wrap md:flex-row justify-center items-center md:gap-20 gap-10 py-3"
               >
                 {item.categories.length
-                  ? item.categories.map((item) => (
-                      <div className="  md:h-56 md:w-56 h-32 w-32 border  border-black ">
+                  ? item.categories.map((item, i) => (
+                      <div
+                        key={i}
+                        className="  md:h-56 md:w-56 h-32 w-32 border  border-black "
+                      >
                         <>
                           <img src={item.picture ? item.picture : one} alt="" />
                           <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
