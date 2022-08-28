@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import aiyl from "./assets/aiylbank.png";
 import beeline from "./assets/beeline.png";
 import bonetskogo from "./assets/bonetskogo.png";
@@ -20,8 +20,27 @@ import bakaibank from "./assets/bakaibank.png";
 
 import logo from "./assets/logo.png";
 import ellipse from "./assets/ellipse.png";
+import { PUBLIC_API } from "../../../constants/api";
 
 const FooterHome = () => {
+  const [inputNumber, setInputNumber] = useState("");
+
+  const handleSendNumber = async (e: any) => {
+    e.preventDefault();
+    setInputNumber("");
+    try {
+      const res = await PUBLIC_API.post("/partners/aplication", {
+        phone_number: inputNumber,
+        inputNumber: "",
+      });
+    } catch (e: any) {
+      setInputNumber(e);
+      console.log(e);
+    }
+  };
+
+  console.log(inputNumber, "input");
+
   return (
     <>
       <div className="hidden md:flex justify-between bg-[#484848] mx-auto    w-auto py-5">
@@ -49,12 +68,17 @@ const FooterHome = () => {
           <img src={logo} className="bottom-36 relative" alt="" />
           <img src={ellipse} className="absolute h-[32rem] w-[30rem]" alt="" />
 
-          <form className="hidden md:flex md:flex-col  relative justify-center items-center flex-col">
+          <form
+            onSubmit={handleSendNumber}
+            className="hidden md:flex md:flex-col  relative justify-center items-center flex-col"
+          >
             <span className="block  font-bold	 text-white md:text-3xl text-sm text-center">
               Становитесь нашим партнером
             </span>
             <label className="flex justify-center items-center">
               <input
+                value={inputNumber}
+                onChange={(e) => setInputNumber(e.target.value)}
                 type="text"
                 placeholder="Номер телефона"
                 className="mt-1 text-center w-64 flex justify-center px-3 py-2 bg-[#484848]  border border-white rounded-full text-white text-sm shadow-sm placeholder-slate-400
@@ -63,7 +87,10 @@ const FooterHome = () => {
     "
               />
             </label>
-            <button className="bg-white w-64 hover:bg-sky-700 rounded-full ... mt-1 block  px-3 py-2 font-bold">
+            <button
+              type="submit"
+              className="bg-white w-64 hover:bg-sky-700 rounded-full ... mt-1 block  px-3 py-2 font-bold"
+            >
               Отправить
             </button>
           </form>
@@ -107,12 +134,17 @@ const FooterHome = () => {
             className="relative md:hidden flex justify-center items-center md:h-[35rem] w-md:[30rem] pt-10 "
             alt=""
           />
-          <form className=" md:hidden top-[-30rem] flex justify-start items-center relative md:justify-center md:items-center flex-col">
+          <form
+            onSubmit={handleSendNumber}
+            className=" md:hidden top-[-30rem] flex justify-start items-center relative md:justify-center md:items-center flex-col"
+          >
             <span className="block  font-bold	py-3 text-white text-2xl md:text-3xl text-center">
               Становитесь нашим партнером
             </span>
             <label className="flex justify-center items-center">
               <input
+                value={inputNumber}
+                onChange={(e) => setInputNumber(e.target.value)}
                 type="text"
                 placeholder="Номер телефона"
                 className="mt-1 text-center w-64 flex justify-center px-3 py-2 bg-[#484848]  border border-white rounded-full text-white text-sm shadow-sm placeholder-slate-400
@@ -121,7 +153,10 @@ const FooterHome = () => {
     "
               />
             </label>
-            <button className="bg-white w-64 hover:bg-sky-700 rounded-full ... mt-1 block  px-3 py-2 font-bold">
+            <button
+              type="submit"
+              className="bg-white w-64 hover:bg-sky-700 rounded-full ... mt-1 block  px-3 py-2 font-bold"
+            >
               Отправить
             </button>
 

@@ -21,6 +21,7 @@ import { fetchSlectedCatalogProduct } from "../../../store/catalog";
 import { IProductState } from "../../../store/catalog/interfaces/data.interface";
 import API from "../../../constants/api";
 import { stat } from "fs";
+import { fetchOrder } from "../../../store/order";
 
 const CatalogDetailsOasis = () => {
   const location = useLocation();
@@ -63,6 +64,7 @@ const CatalogDetailsOasis = () => {
         product_color_group_id: currentProduct.id,
         sizes,
       });
+      dispatch(fetchOrder() as any);
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -296,6 +298,7 @@ const CatalogDetailsOasis = () => {
                               id="frm-whatever"
                             >
                               {currentDrawing &&
+                                currentDrawing.costom_types &&
                                 currentDrawing.costom_types.map((type: any) => (
                                   <option value={type.id}>{type.costom}</option>
                                 ))}

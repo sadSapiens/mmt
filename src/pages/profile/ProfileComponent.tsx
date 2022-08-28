@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import trashBlack from "./assets/trashBlack.png";
 import avatar from "./assets/2222.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import API from "../../constants/api";
 
 import PhoneInput from "react-phone-input-2";
@@ -16,9 +16,10 @@ interface ImageObj {
 const ProfileComponent = () => {
   const [valuee, setValue] = useState("");
   const [errorText, setErrorText] = useState([]);
-
+  const [isEdit, setIsEdit] = useState(true);
   const [images, setImages] = React.useState<ImageObj[]>([]);
   const navigate = useNavigate();
+  const location = useLocation();
   const [inputs, setInputs] = useState({
     name: "",
     surname: "",
@@ -54,15 +55,25 @@ const ProfileComponent = () => {
     e.preventDefault();
     setErrorText([]);
     try {
-      const res = await API.post("/user/profile", {
-        first_name: inputs.name,
-        last_name: inputs.surname,
-        phone: valuee,
-        city: inputs.city,
-        address: inputs.address,
-        company: inputs.company,
-        email: inputs.email,
-      });
+      const res = await (isEdit
+        ? API.put("/user/profile", {
+            first_name: inputs.name,
+            last_name: inputs.surname,
+            phone: valuee,
+            city: inputs.city,
+            address: inputs.address,
+            company: inputs.company,
+            email: inputs.email,
+          })
+        : API.post("/user/profile", {
+            first_name: inputs.name,
+            last_name: inputs.surname,
+            phone: valuee,
+            city: inputs.city,
+            address: inputs.address,
+            company: inputs.company,
+            email: inputs.email,
+          }));
       navigate("/");
     } catch (e) {
       // @ts-ignore
@@ -82,10 +93,21 @@ const ProfileComponent = () => {
           company: res.data.data.company,
           email: res.data.data.email,
         });
+        setIsEdit(true);
         setValue(res.data.data.phone);
       })
-      .catch((e) => console.log("user not found"));
+      .catch((e) => setIsEdit(false));
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    console.log(params);
+    if (isEdit) {
+      navigate("/profile?isEdit=true");
+      return;
+    }
+    navigate("/profile?isEdit=false");
+  }, [isEdit]);
 
   return (
     <div>
@@ -217,7 +239,7 @@ const ProfileComponent = () => {
             type="submit"
             className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
           >
-            Сохранить
+            {isEdit ? "Изменить" : "Сохранить"}
           </button>
         </form>
       </div>

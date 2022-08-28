@@ -23,10 +23,6 @@ export interface IBlog {
   created_at: string;
   title: string;
 }
-// export interface IFaq {
-//   answer: {};
-//   question: {};
-// }
 
 export interface IHomeData {
   brands: IBrands[];

@@ -135,7 +135,7 @@ const Footer = () => {
               </a>
             </button>
           </div>
-          <div className="md:hidden flex sm:hidden  justify-between px-4 text-white">
+          <div className="md:hidden flex sm:hidden text-sm   justify-between px-4 text-white">
             <div>Публичная оферта</div>
             <div>Политика конфеденциальности</div>
           </div>
@@ -163,18 +163,20 @@ const Footer = () => {
           </div>
           <div
             className="md:hidden flex  items-center justify-between w-auto text-
-           py-2 px-4"
+           py-2 px-4 gap-2"
           >
             <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6">
-              <div className="flex gap-3">
+              <div className="flex gap-2 justify-center items-center">
                 <img src={instagram} className="object-contain" alt="" />{" "}
-                <span className="text-white text-3xl">INSTAGRAM</span>
+                <span className="text-white text-xl text-center">
+                  INSTAGRAM
+                </span>
               </div>
             </div>
             <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6 sm:mt-0">
-              <div className="flex gap-3">
-                <img src={fbBig} className="object-fill h-8 w-8" alt="" />{" "}
-                <span className="text-white text-3xl">FACEBOOK</span>
+              <div className="flex gap-2 justify-center items-center">
+                <img src={fbBig} className="object-fill h-8 w-full" alt="" />{" "}
+                <span className="text-white text-xl text-center">FACEBOOK</span>
               </div>
               {/* <ul className="list-none footer-links">
                 <li className="mb-2"></li>

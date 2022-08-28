@@ -15,8 +15,10 @@ import "./megamenu.css";
 import { useAppDispatch } from "../../store";
 import { useSearchValue } from "../../store/catalog/hooks";
 import { setSearchValue } from "../../store/catalog/actions";
+import { fetchOrder } from "../../store/order";
+import { useOrder } from "../../store/order/hooks";
 
-const NavBar = () => {
+const NavBar = ({}) => {
   const [open, setOpen] = React.useState(false);
   const [isExpanded, toggleExpansion] = React.useState(false);
   const token = localStorage.getItem("token");
@@ -24,6 +26,7 @@ const NavBar = () => {
   const dispatch = useAppDispatch();
   const searchValue = useSearchValue();
   const { search } = useLocation();
+  const order = useOrder();
 
   const [categoryId, setCategoryId] = useState(
     new URLSearchParams(search).get("categoryId")
@@ -31,6 +34,10 @@ const NavBar = () => {
   useEffect(() => {
     if (searchValue) navigate("/catalog");
   }, [categoryId, searchValue]);
+
+  useEffect(() => {
+    dispatch(fetchOrder() as any);
+  }, [dispatch]);
 
   const handleLogout = async (e: any) => {
     e.preventDefault();
@@ -78,9 +85,13 @@ const NavBar = () => {
             </div>
 
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
-              <div className="sm:hidden md:flex md:mx-3">
-                <img className="h-1 w-auto sm:h-5" src={phone} alt="" />
-                <a href="tel:+1234567890" className="text-white">
+              <div className="sm:hidden hidden md:flex md:mx-3">
+                <img
+                  className="h-1 w-auto sm:h-5 sm:hidden"
+                  src={phone}
+                  alt=""
+                />
+                <a href="tel:+1234567890" className="text-white sm:hidden">
                   {" "}
                   0 555 88 35 00{" "}
                 </a>
@@ -168,11 +179,19 @@ const NavBar = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center space-x-1 gap-4">
+            <div className="hidden md:flex items-center  justify-center gap-4">
               <Link to="/cart">
-                <div className="flex items-center align-middle text-center gap-2">
-                  <img src={shopbag} alt="" />
-                  <span className="text-white">Корзина</span>
+                <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                  <div className="relative flex space-x-2 justify-center">
+                    <img className="h-6 w-6 " src={shopbag} alt="" />
+                    <span className="text-[10px] absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                      {/* {size}7 */}
+                      {order?.items.length}
+                    </span>
+                    <span className="text-white flex flex-wrap sm:text-sm p-0">
+                      Корзина
+                    </span>
+                  </div>
                 </div>
               </Link>
               <div>
@@ -196,10 +215,12 @@ const NavBar = () => {
                   <>
                     <div className="flex  gap-4">
                       <Link to="/profile">
-                        <div className="flex items-center align-middle text-center gap-2">
+                        <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
                           <img className="h-6 w-6" src={userCircle} alt="" />
 
-                          <span className="text-white">Личный кабинет</span>
+                          <span className="text-white flex flex-wrap sm:text-sm p-0">
+                            Личный кабинет
+                          </span>
                         </div>
                       </Link>
                       <button
@@ -235,8 +256,14 @@ const NavBar = () => {
             </div>
             <div>
               <Link to="/cart">
-                <div className="flex items-center align-middle text-center gap-2">
-                  <img src={shopbag} alt="" />
+                <div className="flex relative items-center align-middle text-center gap-2">
+                  <img src={shopbag} alt="" className="relative h-7 w-7" />
+                  <div className="flex justify-end items-end">
+                    <span className="text-[10px] absolute  font-normal bottom-5 left-3 px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                      {/* {size}7 */}
+                      {order?.items.length}
+                    </span>
+                  </div>
                 </div>
               </Link>
             </div>

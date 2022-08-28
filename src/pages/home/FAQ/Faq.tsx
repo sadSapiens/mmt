@@ -48,7 +48,7 @@ const Faq = () => {
           )}
         </div>
       </div>
-      <div className="hidden md:flex flex-row basis-1/2 relative">
+      <div className="hidden md:flex flex-row basis-1/2 relative lg:flex lg:w-6/12">
         <div className="flex  ">
           <img
             className="h-[30rem] w-auto block object-contain"

@@ -721,13 +721,13 @@ const CatalogPage = () => {
             </div>
           </div>
           <div className="flex flex-col  justify-center items-center gap-4 font-jost py-2">
-            <button
+            {/* <button
               className="bg-white text-black font-normal rounded-full ... border border-black w-48 hover:text-white  px-4 py-1 
           hover:!bg-[#79B15E]
           "
             >
               Показать товары (67)
-            </button>
+            </button> */}
             <button
               onClick={() => handleResetFilters()}
               className="border border-black rounded-full ... w-48  px-4 py-1 

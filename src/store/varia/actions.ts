@@ -16,5 +16,5 @@ export const fetchPortfolioSuccess = createAction<IPortfolio>(
   "portfolio/fetchPortfolioSuccess"
 );
 export const fetchHomeSuccess = createAction<IHomeData>(
-  "portfolio/fetchHomeSuccess"
+  "home/fetchHomeSuccess"
 );

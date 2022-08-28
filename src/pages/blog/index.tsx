@@ -56,7 +56,7 @@ const Blog = () => {
               <span>{ item.id}</span>
               )} */}
                       {/* {} */}
-                      {blogNews.data[0].title}
+                      {blogNews ? blogNews.data[0].title : null}
                     </h2>
                     <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
                       {blogNews.data[0].content}
