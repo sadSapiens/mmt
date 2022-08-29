@@ -219,17 +219,19 @@ const CatalogPage = () => {
           </Link>
           <div className="hidden md:flex">
             <label className="relative flex justify-end flex-row items-center !mb-0">
+              <img
+                className="h-2 w-auto sm:h-5 absolute pr-44 object-contain focus:outline-none"
+                src={searchL}
+                alt=""
+              />
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-black block pl-2  w-full border-[1px] font-normal border-black rounded-full py-1 pr-3 focus:outline-none sm:text-sm"
+                className=" placeholder:text-black block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
                 name="search"
               />
-              <button className="absolute pr-2 focus:outline-none">
-                <img className="h-2 w-auto sm:h-5" src={searchL} alt="" />
-              </button>
             </label>
           </div>
         </div>
@@ -290,7 +292,7 @@ const CatalogPage = () => {
                   </ul>
                 </div>
                 <span>
-                  <> {selectedProduct?.total_stock}товаров</>
+                  <> {selectedProduct?.total_stock} товаров</>
                 </span>
               </div>
             </div>
@@ -339,7 +341,7 @@ const CatalogPage = () => {
             </button>
           </div>
         </div>
-        <div className=" hidden md:flex justify-center items-center gap-3 w-6/12">
+        <div className=" hidden md:flex justify-end items-center gap-3 w-6/12">
           <button
             onClick={() => setRow("row")}
             className={`${
@@ -443,13 +445,13 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-1"
-              className=" label-faq relative block text-black p-4 shadow border-b border-black"
+              className=" label-faq relative block text-black p-2  border-b border-black"
             >
               Тип товара
             </label>
             <div className="accordion__content overflow-y-auto overflow-x-clip  flex justify-center items-center">
               <div className="flex justify-center">
-                <div className="gap-3 flex flex-col justify-center">
+                <div className="gap-2 flex flex-col justify-center">
                   {filters && (
                     <div className="form-check flex justify-center items-center flex-col">
                       {filters.types.map((item: any, i) => (
@@ -489,7 +491,7 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-2"
-              className="label-faq  relative block  text-black p-4 shadow border-b border-black"
+              className="label-faq  relative block  text-black p-2  border-b border-black"
             >
               Цена
             </label>
@@ -559,7 +561,7 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-3"
-              className="label-faq relative block  text-black p-4 shadow border-b border-black"
+              className="label-faq relative block  text-black p-2  border-b border-black"
             >
               Цвет
             </label>
@@ -603,7 +605,7 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-4"
-              className="label-faq relative block  text-black p-4 shadow border-b border-black"
+              className="label-faq relative block  text-black p-2  border-b border-black"
             >
               Количество
             </label>
@@ -634,7 +636,7 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-5"
-              className="label-faq relative block  text-black p-4 shadow border-b border-black"
+              className="label-faq relative block  text-black p-2  border-b border-black"
             >
               Материал
             </label>
@@ -680,7 +682,7 @@ const CatalogPage = () => {
             />
             <label
               htmlFor="panel-6"
-              className="label-faq relative block  text-black p-4 shadow border-b border-black"
+              className="label-faq relative block  text-black p-2  border-b border-black"
             >
               Метод нанесения
             </label>
@@ -742,9 +744,9 @@ const CatalogPage = () => {
         <div className="flex  justify-between md:w-9/12 w-[100%] items-center align-middle text-center self-start flex-col">
           <div className="md:w-[100%] md:px-10 hidden md:block">
             <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
-              <div className="bg-red-600">
+              <div className="">
                 <span>
-                  <> {selectedProduct?.total_stock}товаров</>
+                  <> {selectedProduct?.total_stock} товаров</>
                 </span>
               </div>
               <div className="flex justify-center">

@@ -85,7 +85,7 @@ const NavBar = ({}) => {
             </div>
 
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
-              <div className="sm:hidden hidden md:flex md:mx-3">
+              <div className="sm:hidden hidden  md:flex md:mx-3">
                 <img
                   className="h-1 w-auto sm:h-5 sm:hidden"
                   src={phone}
@@ -166,14 +166,16 @@ const NavBar = ({}) => {
                       onChange={(e: any) =>
                         dispatch(setSearchValue(e.target.value))
                       }
-                      className="  placeholder:text-white block bg-[#1F1F1F] md:w-72  border-none rounded-full py-2 pl-2 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
+                      className="  placeholder:text-white block bg-[#1F1F1F] md:w-72  border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
                       placeholder="Поиск..."
                       type="text"
                       name="search"
                     />
-                    <button className="absolute pr-2 focus:outline-none">
-                      <img className="h-2 w-auto sm:h-5" src={searchl} alt="" />
-                    </button>
+                    <img
+                      className="absolute pr-64 focus:outline-none h-2 w-auto sm:h-5"
+                      src={searchl}
+                      alt=""
+                    />
                   </label>
                 </div>
               </div>

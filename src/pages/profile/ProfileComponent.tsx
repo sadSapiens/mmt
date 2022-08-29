@@ -74,7 +74,7 @@ const ProfileComponent = () => {
             company: inputs.company,
             email: inputs.email,
           }));
-      navigate("/");
+      navigate("/nice");
     } catch (e) {
       // @ts-ignore
       setErrorText([Object.entries(e.response.data)]);
