@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import trashBlack from "./assets/trashBlack.png";
 import avatar from "./assets/2222.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import API from "../../constants/api";
 
 import PhoneInput from "react-phone-input-2";
@@ -19,7 +19,6 @@ const ProfileComponent = () => {
   const [isEdit, setIsEdit] = useState(true);
   const [images, setImages] = React.useState<ImageObj[]>([]);
   const navigate = useNavigate();
-  const location = useLocation();
   const [inputs, setInputs] = useState({
     name: "",
     surname: "",
@@ -74,7 +73,7 @@ const ProfileComponent = () => {
             company: inputs.company,
             email: inputs.email,
           }));
-      navigate("/");
+      navigate("/nice");
     } catch (e) {
       // @ts-ignore
       setErrorText([Object.entries(e.response.data)]);
@@ -232,7 +231,7 @@ const ProfileComponent = () => {
           <div className="text-red-800 ">
             {
               //@ts-ignore
-              errorText.length && errorText[0].map((err) => err[1])
+              errorText.length ? errorText[0].map((err) => err[1]) : null
             }
           </div>
           <button

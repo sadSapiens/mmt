@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import arrow from "./assets/direction-right.png";
 import orderhistoryphoto from "./assets/orderhistoryphoto.png";
 import minus from "./assets/minus.png";
@@ -10,23 +10,51 @@ import { useAppDispatch } from "../../store";
 import { useOrder } from "../../store/order/hooks";
 import API from "../../constants/api";
 import CartEmpty from "./cart/cartEmpty/CartEmpty";
+import { fetchOrder } from "../../store/order";
 
 const Basket = ({}) => {
   const [showModal, setShowModal] = React.useState(false);
   const [payModalShow, setPayModalShow] = React.useState(false);
-  const order = useOrder();
+  const [payInputs, setPayInputs] = useState({
+    city: "",
+    address: "",
+    company: "",
+    referalCode: "",
+    paymantType: "",
+  });
 
+  const handleChangePayInputs = (e: any) => {
+    setPayInputs({ ...payInputs, [e.target.name]: e.target.value });
+  };
+  const order = useOrder();
+  const dispatch = useAppDispatch();
   const handleDeleteProductFromCart = async (id: any) => {
     console.log(id);
     if (!id) return;
     setShowModal(false);
     try {
       const res = await API.delete("/orders/cart", {
-        // params: {
-        // item_id: id,
-        // },
+        params: {
+          item_id: id,
+        },
       });
+      dispatch(fetchOrder() as any);
       console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(payInputs);
+
+  const handlePay = async () => {
+    const referalCode = payInputs.referalCode && payInputs.referalCode;
+    try {
+      const res = await API.post("/orders/payment", {
+        total_amount: order?.total_amount,
+        address: `address:${payInputs.address}, city:${payInputs.city}, company:${payInputs.company}`,
+        referalCode,
+        payment_type: payInputs.paymantType,
+      });
     } catch (e) {
       console.log(e);
     }
@@ -408,10 +436,19 @@ const Basket = ({}) => {
                     <span className="font-light">Товары, 3 шт.</span>
 
                     <p>Адрес доставки</p>
+                    <input
+                      type="text"
+                      className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                      placeholder="Компания"
+                      name="referalCode"
+                      value={payInputs.referalCode}
+                      onChange={handleChangePayInputs}
+                    />
                   </div>
+
                   <div className="w-4/12 flex flex-col gap-5 p-0">
                     <p className="flex">
-                      96 000, 00
+                      {order?.total_amount}
                       <img className="flex object-contain" src={cLine} alt="" />
                     </p>
                     <p></p>
@@ -439,16 +476,25 @@ const Basket = ({}) => {
                             type="text"
                             className="px-5 py-2 border-black border-[1px] rounded-full ... "
                             placeholder="Город"
+                            name="city"
+                            value={payInputs.city}
+                            onChange={handleChangePayInputs}
                           />
                           <input
                             type="text"
                             className="px-5 py-2 border-black border-[1px] rounded-full ... "
                             placeholder="Адрес"
+                            name="address"
+                            value={payInputs.address}
+                            onChange={handleChangePayInputs}
                           />
                           <input
                             type="text"
                             className="px-5 py-2 border-black border-[1px] rounded-full ... "
                             placeholder="Компания"
+                            name="company"
+                            value={payInputs.company}
+                            onChange={handleChangePayInputs}
                           />
                           <button
                             onClick={() => setPayModalShow(false)}
@@ -468,10 +514,10 @@ const Basket = ({}) => {
                       <input
                         className="  rounded-sm h-4 w-4 border border-red-600 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition  mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                         type="radio"
-                        name="inlineRadioOptions"
+                        name="paymantType"
                         id="inlineRadio1"
-                        value="option1"
-                        readOnly
+                        value="2"
+                        onChange={handleChangePayInputs}
                       />
                       <label
                         className="form-check-label inline-block text-gray-800"
@@ -484,10 +530,10 @@ const Basket = ({}) => {
                       <input
                         className=" form-check-input  rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                         type="radio"
-                        name="inlineRadioOptions"
+                        name="paymantType"
                         id="inlineRadio2"
-                        value="option2"
-                        readOnly
+                        value="1"
+                        onChange={handleChangePayInputs}
                       />
                       <label
                         className="form-check-label inline-block text-gray-800"
@@ -499,7 +545,10 @@ const Basket = ({}) => {
                   </div>
                 </div>
                 <div className="flex justify-center py-2">
-                  <button className="bg-[#1F1F1F] rounded-full ... px-4 py-2 flex justify-center items-center text-white">
+                  <button
+                    onClick={handlePay}
+                    className="bg-[#1F1F1F] rounded-full ... px-4 py-2 flex justify-center items-center text-white"
+                  >
                     К оплате
                     <img src={arrow} alt="" />
                   </button>

@@ -22,6 +22,8 @@ import Recovery from "./signin/Recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
 import OrderHistory from "./profile/OrderHistory";
 import EditProfile from "./profile/editProfile/EditProfile";
+import Congratulation from "./signup/Congratulation/Congratulation";
+import NewPassword from "./signup/newPassword/NewPassword";
 
 function App() {
   return (
@@ -41,8 +43,12 @@ function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/create-password" element={<NewPassword />} />
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/nice" element={<Congratulation />} />
+            <Route path="/new-password" element={<NewPassword />} />
+
             <Route
               path="/catalog-detailoasis/:id"
               element={<CatalogDetailsOasis />}
