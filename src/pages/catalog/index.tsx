@@ -389,7 +389,6 @@ const CatalogPage = () => {
         </div>
       </div>
 
-      {/*  */}
       <div>
         <nav className="bg-grey-light rounded-md w-full">
           <ol className="flex  ">
