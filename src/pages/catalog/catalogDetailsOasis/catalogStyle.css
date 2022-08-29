@@ -1,0 +1,36 @@
+.catalog-items__characteristics p {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+.catalog-items__characteristics p:after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-image: radial-gradient(#030303 10%, transparent 50%);
+  background-size: 3px 3px;
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  display: block;
+  margin-left: 3px;
+  padding: 3px 0 3px 0;
+}
+.scroll-photo::-webkit-scrollbar {
+  width: 2px;
+  background-color: rgb(208, 208, 208);
+  opacity: 0.5;
+  height: 3px;
+}
+
+.scroll-photo::-webkit-scrollbar-track {
+  background-color: #f9f9fd;
+  border-radius: 5px;
+  width: 10px;
+  height: 5px;
+}
+
+.scroll-photo::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: linear-gradient(180deg, #a9a5a5, #a3a3a3);
+}

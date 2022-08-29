@@ -1,58 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import valentina from "./feedback-images/Valentina.png";
 import alexey from "./feedback-images/Alexey.png";
 import aiday from "./feedback-images/Aiday.png";
 import temirlan from "./feedback-images/Teemirlan.png";
+import { useAppDispatch } from "../../../store";
+import { useHome } from "../../../store/varia/hooks";
+import { fetchHome } from "../../../store/varia";
 
 const Feedback = () => {
+  const dispatch = useAppDispatch();
+  const home = useHome();
+  useEffect(() => {
+    dispatch(fetchHome() as any);
+  }, []);
   return (
     <div className="container mx-auto px-4">
-      <div>
-        <span className="text-[36px] text-[#383838] font-bold	">Отзывы</span>
+      <div className="flex md:flex-auto md:justify-start justify-center">
+        <span className="text-3xl text-[#383838] font-bold	flex py-4">
+          Отзывы
+        </span>
       </div>
-      <div>
-        <div className="flex flex-row gap-4 justify-center align-middle items-center">
-          <div className="basis-1/2 md:basis-1/3 flex justify-center align-middle items-center flex-col	">
-            <img className="rounded-full" src={valentina} alt="" />
-            <span className="px-5 flex  text-center">
-              Валентина Евгеньевна Маркетолог “Alfa Bank”
-            </span>
-            <p className="font-light text-[18px]	">
-              Работаю с компанией уже 5 год, ни разу не подвидили, профессионалы
-              своего дела
-            </p>
+
+      <div className="flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto items-start w-full">
+        {home && home.reviews.length && (
+          <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle ">
+            {home.reviews.map((item, i) => (
+              <div key={i}>
+                <div className="flex flex-col overflow-y-clip px-4 w-full">
+                  <img className="rounded-full" src={item.picture} alt="" />
+                  <span className=" flex  text-center">
+                    {item.name} <br /> {item.position}
+                  </span>
+                  <p className="font-light	">{item.review}</p>
+                </div>
+              </div>
+            ))}
+            <></>
           </div>
-          <div className="basis-1/2 md:basis-1/3  flex justify-center align-middle items-center flex-col">
-            <img className="rounded-full" src={alexey} alt="" />
-            <span className="px-5 flex  text-center">
-              Валентина Евгеньевна Маркетолог “Alfa Bank”
-            </span>
-            <p className="font-light	">
-              Работаю с компанией уже 5 год, ни разу не подвидили, профессионалы
-              своего дела
-            </p>
-          </div>
-          <div className="basis-1/2 md:basis-1/3  flex justify-center align-middle items-center flex-col">
-            <img className="rounded-full" src={aiday} alt="" />
-            <span className="px-5 flex  text-center">
-              Валентина Евгеньевна Маркетолог “Alfa Bank”
-            </span>
-            <p className="font-light	">
-              Работаю с компанией уже 5 год, ни разу не подвидили, профессионалы
-              своего дела
-            </p>
-          </div>
-          <div className="basis-1/2 md:basis-1/3  flex justify-center align-middle items-center flex-col">
-            <img className="rounded-full" src={temirlan} alt="" />
-            <span className="px-5 flex  text-center">
-              Валентина Евгеньевна Маркетолог “Alfa Bank”
-            </span>
-            <p className="font-light	">
-              Работаю с компанией уже 5 год, ни разу не подвидили, профессионалы
-              своего дела
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

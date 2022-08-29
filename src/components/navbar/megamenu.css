@@ -1,0 +1,83 @@
+a:hover {
+  text-decoration-line: none;
+  color: rgb(217, 217, 217);
+}
+
+.drop-downn:hover {
+  display: block;
+}
+
+.drop-downn:hover .megablock {
+  width: 100%;
+  background: #343434;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  flex-direction: row;
+
+  z-index: 39;
+  color: white;
+}
+
+.category:hover .subcategory {
+  display: block;
+  height: 50rem;
+  width: 100%;
+  background: #343434;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  flex-direction: row;
+  z-index: 39;
+}
+.subcategory {
+  display: none;
+}
+
+/*responsive*/
+@media (min-width: 767px) {
+  .exo-menu > li > a {
+    display: block;
+    padding: 20px 22px;
+  }
+  .mega-menu,
+  .flyout-mega-wrap,
+  .flyout-right > ul,
+  .flyout-left > ul,
+  li.drop-downn > ul {
+    position: absolute;
+  }
+}
+@media (max-width: 767px) {
+  .exo-menu {
+    min-height: 58px;
+    width: 100%;
+  }
+
+  .exo-menu > li > a {
+    width: 100%;
+    display: none;
+  }
+  .exo-menu > li {
+    width: 100%;
+  }
+  .display.exo-menu > li > a {
+    display: block;
+    padding: 20px 22px;
+  }
+
+  .mega-menu,
+  .flyout-right > ul,
+  .flyout-left > ul,
+  li.drop-downn > ul {
+    position: absolute;
+  }
+}
+a.toggle-menu {
+  position: absolute;
+  right: 0px;
+  padding: 20px;
+  font-size: 27px;
+  background-color: #ccc;
+  top: 0px;
+}

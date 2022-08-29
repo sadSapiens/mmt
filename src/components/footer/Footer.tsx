@@ -1,11 +1,12 @@
 import React from "react";
-import "./footer.css";
 import instagram from "./assets/instagram.png";
 import facebook from "./assets/facebook.png";
 import discovery from "./assets/Discovery.png";
 import message from "./assets/Message.png";
 import call from "./assets/Call.png";
 import logo from "./assets/logo.png";
+import fbBig from "./assets/fbBig.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,22 +14,18 @@ const Footer = () => {
       <hr className=" bg-white w-auto h-0.1 " />
 
       <footer className="footer-1 bg-[#484848] py-8 sm:py-12">
-        <div className="container mx-auto px-4">
-          <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+        <div className="container mx-auto px-2">
+          <div className="sm:flex sm:flex-wrap sm:-mx-2 md:py-4 hidden">
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">PRODUCT</h5> */}
               <div className="flex gap-2">
                 <img src={instagram} alt="" />{" "}
                 <span className="text-white">INSTAGRAM</span>
               </div>
               <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a href="#">0</a>
-                </li>
+                <li className="mb-2"></li>
               </ul>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">Resources</h5> */}
               <div className="flex gap-2">
                 <img src={facebook} alt="" />{" "}
                 <span className="text-white">FACEBOOK</span>
@@ -38,62 +35,38 @@ const Footer = () => {
                 <li className="mb-2"></li>
               </ul>
             </div>
-            <div className="px-4 mt-4 sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">About</h5> */}
+            <div className="px-4 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
               <div className="flex gap-2">
                 <img src={message} alt="" />{" "}
                 <span className="text-white">info@mmt.kg</span>
               </div>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white text-white"
-                  >
-                    <div className="flex gap-2">
-                      <img
-                        className="w-[30px] h-[30px]"
-                        src={discovery}
-                        alt=""
-                      />{" "}
-                      <span className="text-white font-thin">
-                        г.Бишкек, пер.Сонкульский, 8
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li className="mb-2"></li>
-              </ul>
+              <div className="flex gap-2">
+                <img className="w-8 h-8" src={discovery} alt="" />{" "}
+                <span className="text-white">
+                  {" "}
+                  г.Бишкек, пер.Сонкульский, 8
+                </span>
+              </div>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-              {/* <h5 className="text-xl font-bold mb-6 text-white">Help</h5> */}
-              <div className="flex gap-2">
+              <div className="flex gap-2 ">
                 <img src={call} alt="" />{" "}
-                {/* <span className="text-white">INSTAGRAM</span> */}
-                <a href="tel:+1234567890 " className="text-white">
+                <a href="/" className="text-white">
                   {" "}
                   0 555 88 35 00{" "}
                 </a>
               </div>
-              <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a href="tel:+1234567890 " className="text-white">
+              <ul className="list-none footer-links pl-4">
+                <li className="mb-2 pl-2">
+                  <a href="/" className="text-white">
                     {" "}
                     0 555 88 35 00{" "}
                   </a>
                 </li>
-                <li className="mb-2">
-                  <a href="tel:+1234567890 " className="text-white">
+                <li className="mb-2 pl-2">
+                  <a href="/" className="text-white">
                     {" "}
                     0 555 88 35 00{" "}
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-white"
-                  >
-                    Contact Us
                   </a>
                 </li>
               </ul>
@@ -104,35 +77,118 @@ const Footer = () => {
             "
             >
               <button className="rounded-full ... w-full h-12 object-contain bg-slate-50">
-                Заказать звонок
+                <a
+                  href="tel:+1234567890"
+                  className="text-black hover:text-black"
+                >
+                  {" "}
+                  Заказать звонок
+                </a>
               </button>
 
-              <div className="flex sm:justify-center xl:justify-start">
-                {/* <a
-                  href=""
-                  className="w-8 h-8  border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a
-                  href=""
-                  className="w-8 h-8 border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400"
-                >
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a
-                  href=""
-                  className="w-8 h-8  border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600"
-                >
-                  <i className="fab fa-discord"></i>
-                </a> */}
+              <div className="flex sm:justify-center xl:justify-start"></div>
+            </div>
+          </div>
+          {/* mobile responsive */}
+          <div
+            className="md:hidden flex sm:hidden items-center
+            justify-between px-2
+           "
+          >
+            <div className=" text-white items-center flex  md:hidden pb-0">
+              <span className="font-normal ">Контакты:</span>
+            </div>
+            <div>
+              <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-2 md:mt-0">
+                <div className="flex gap-2 ">
+                  <img src={call} alt="" />{" "}
+                  <a href="tel:+1234567890 " className="text-white">
+                    {" "}
+                    + 996 312 88 35 00{" "}
+                  </a>
+                </div>
+                <ul className="flex flex-col items-end list-none footer-links">
+                  <li className=" px-2">
+                    <a href="tel:+1234567890 " className="text-white">
+                      {" "}
+                      0 555 88 35 00{" "}
+                    </a>
+                  </li>
+                  <li className=" px-2">
+                    <a href="tel:+1234567890 " className="text-white">
+                      {" "}
+                      0 555 88 35 00{" "}
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
+          <div
+            className="md:hidden flex sm:hidden  items-center justify-center w-auto
+           py-2 px-10"
+          >
+            <button className=" px-5 rounded-full ... w-screen h-12 object-contain bg-slate-50">
+              <a href="tel:+1234567890" className="text-black hover:text-black">
+                {" "}
+                Заказать звонок
+              </a>
+            </button>
+          </div>
+          <div className="md:hidden flex sm:hidden text-sm   justify-between px-4 text-white">
+            <div>Публичная оферта</div>
+            <div>Политика конфеденциальности</div>
+          </div>
+          <div
+            className="md:hidden flex  items-center
+            justify-between
+             text-center font-normal text-base
+           py-2"
+          >
+            <div className=" flex flex-col  px-4 sm:w-2/2 md:w-2/4 xl:w-2/6">
+              <div className="flex items-center  gap-2">
+                <img src={message} alt="" />{" "}
+                <span className="text-white">info@mmt.kg</span>
+              </div>
+            </div>
+            <div className="px-2 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto items-center">
+              <div className="flex items-center  gap-1">
+                <img className="w-[30px] h-[30px]" src={discovery} alt="" />{" "}
+                <span className="text-white  text-base">
+                  {" "}
+                  г.Бишкек, пер.Сонкульский, 8
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="md:hidden flex  items-center justify-between w-auto text-
+           py-2 px-4 gap-2"
+          >
+            <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6">
+              <div className="flex gap-2 justify-center items-center">
+                <img src={instagram} className="object-contain" alt="" />{" "}
+                <span className="text-white text-xl text-center">
+                  INSTAGRAM
+                </span>
+              </div>
+            </div>
+            <div className=" sm:w-1/2 md:w-1/4 xl:w-1/6 sm:mt-0">
+              <div className="flex gap-2 justify-center items-center">
+                <img src={fbBig} className="object-fill h-8 w-full" alt="" />{" "}
+                <span className="text-white text-xl text-center">FACEBOOK</span>
+              </div>
+              {/* <ul className="list-none footer-links">
+                <li className="mb-2"></li>
+                <li className="mb-2"></li>
+              </ul> */}
+            </div>
+          </div>
+          {/*  */}
         </div>
       </footer>
       <hr className=" bg-white w-auto h-0.1 " />
-      <div className="flex justify-center bg-[#484848] py-5">
+      <div className="flex justify-center bg-[#484848] py-2">
         <img src={logo} alt="" />
       </div>
     </div>
