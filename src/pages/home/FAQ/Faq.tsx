@@ -61,7 +61,6 @@ const Faq = () => {
         </label>
 
         <a href="tel:+1234567890">
-          {" "}
           <img
             src={calling}
             className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
