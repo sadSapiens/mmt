@@ -7,7 +7,6 @@ import { useHome } from "../../../store/varia/hooks";
 import { useAppDispatch } from "../../../store";
 
 const Faq = () => {
-  const dispatch = useAppDispatch();
   const home = useHome();
 
   return (
