@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import API from "../../constants/api";
+import API, { PUBLIC_API } from "../../constants/api";
 import {
   // fetchCatalogSuccess,
   // fetchFiltersSuccess,
@@ -34,7 +34,7 @@ import {
 export const fetchSlectedCatalogProduct =
   (id: string) => async (dispatch: Dispatch) => {
     try {
-      const res: any = await API.get(`/products/${id}`);
+      const res: any = await PUBLIC_API.get(`/products/${id}`);
       dispatch(fetchSelectedCatalogProductSuccess(res.data.data));
       dispatch(fetchSimilarProductsSuccess(res.data.similar_products));
     } catch (e) {

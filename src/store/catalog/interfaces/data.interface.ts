@@ -27,6 +27,7 @@ export interface IFilters {
   costom_types: [];
   materials: [];
   types: [];
+  total_count: any;
 }
 
 export interface IProductColor {

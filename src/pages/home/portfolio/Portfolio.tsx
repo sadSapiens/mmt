@@ -21,7 +21,6 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home?.portfolio, "portHome");
 
   return (
     <div className="container mx-auto px-4">
@@ -56,7 +55,7 @@ const Portfolio = () => {
       {home?.portfolio ? (
         <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
           {home.portfolio.map((item: any, i) => (
-            <div className="flex">
+            <div className="flex" key={i}>
               {item.photo ? (
                 <img
                   className="md:h-56 md:w-64 w-96 h-40"

@@ -101,8 +101,10 @@ const SignUpPage = () => {
               <i onClick={togglePasswordVisiblity}>{eye}</i>{" "}
             </div>
             {error &&
-              error.map((err) => (
-                <div className="text-red-600 w-full text-start">{err}</div>
+              error.map((err, i) => (
+                <div key={i} className="text-red-600 w-full text-start">
+                  {err}
+                </div>
               ))}
 
             <div>

@@ -31,7 +31,7 @@ const Portfolio = () => {
       <div className="flex flex-row overflow-x-auto ...  align-middle items-center py-5 gap-4">
         {portfolio &&
           portfolio.categories.map((item: any, i: number) => (
-            <div className="flex gap-3">
+            <div key={i} className="flex gap-3">
               <button className=" border h-10 w-28 !border-[black]  rounded-full ... px-2  py-1 flex justify-start items-center gap-2">
                 {/* <img src={one} alt="" /> */}
                 <span>{item.name}</span>

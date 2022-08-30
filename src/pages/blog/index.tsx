@@ -55,11 +55,11 @@ const Blog = () => {
                 <div className="md:w-9/12  md:px-9    ">
                   <div className="">
                     <h2 className="font-semibold text-black">
-                      {/* {blogNews.data.map(item) => (
-              <span>{ item.id}</span>
-              )} */}
-                      {/* {} */}
-                      {blogNews ? blogNews.data[0].title : null}
+                      {blogNews && blogNews.data
+                        ? blogNews.data.map((item: any, i: number) => (
+                            <div>{item.title}</div>
+                          ))
+                        : null}
                     </h2>
                     <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
                       {blogNews.data[0].content}
@@ -80,37 +80,44 @@ const Blog = () => {
               </div>
             </div>
 
-            <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
-              {blogNews.data.map((item) => (
-                <div className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5 ">
-                  <Link to={`/blog/${item.author}`}>
-                    <img
-                      src={newsone}
-                      alt=""
-                      className="w-96 flex justify-center items-center place-self-center "
-                    />
-                    <div className="md:px-4 ">
-                      <div className="flex justify-between ">
-                        <span className="hidden md:flex text-black text-sm">
-                          Последние новости
-                        </span>
-                        <p className="text-sm flex items-center text-black sm:text-xs flex-row">
-                          <time>11.07.2022 -- ММТ</time>
-                        </p>
+            {blogNews ? (
+              <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
+                {blogNews.data.map((item, i) => (
+                  <div
+                    key={i}
+                    className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5 "
+                  >
+                    <Link to={`/blog/${item.author}`}>
+                      <img
+                        src={newsone}
+                        alt=""
+                        className="w-96 flex justify-center items-center place-self-center "
+                      />
+                      <div className="md:px-4 ">
+                        <div className="flex justify-between ">
+                          <span className="hidden md:flex">
+                            Последние новости
+                          </span>
+                          <p className="text-sm flex items-center">
+                            <time>11.07.2022</time> -- ММТ
+                          </p>
+                        </div>
+                        <div className="py-10">
+                          <h2 className="md:font-semibold md:text-lg text-black text-sm flex text-ellipsis overflow-hidden ... ">
+                            {item.title ? item.title : null}
+                          </h2>
+                          <p className="py-4 hidden md:flex text-ellipsis overflow-hidden ... text-black">
+                            {item.content}
+                          </p>
+                        </div>
                       </div>
-                      <div className="py-10">
-                        <h2 className="md:font-semibold md:text-lg text-black text-sm flex text-ellipsis overflow-hidden ... ">
-                          {item.title}
-                        </h2>
-                        <p className="py-4 hidden md:flex text-ellipsis overflow-hidden ... text-black">
-                          {item.content}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>nothing</p>
+            )}
           </div>
         </>
       ) : null}

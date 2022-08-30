@@ -17,7 +17,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchHome() as any);
   }, []);
-  console.log(home, "home");
 
   return (
     <>

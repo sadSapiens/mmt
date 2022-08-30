@@ -14,8 +14,6 @@ const Brands = () => {
     dispatch(fetchHome() as any);
   }, []);
 
-  console.log(home?.brands, " brands");
-
   return (
     <div className="container mx-auto px-4 my-5">
       <div>

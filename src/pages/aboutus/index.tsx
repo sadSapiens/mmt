@@ -17,7 +17,6 @@ const About = () => {
   useEffect(() => {
     dispatch(fetchAbout() as any);
   }, []);
-  console.log(about, "dddddddddddddddd");
 
   return (
     <>
@@ -117,8 +116,11 @@ const About = () => {
           )}
           {/*  */}
           <div className=" hidden   md:flex-row flex-col text-black justify-around mx-auto  px-0   w-auto md:py-5">
-            {about?.employers.map((item: any) => (
-              <div className="flex justify-around md:flex-row flex-col px-3">
+            {about?.employers.map((item: any, i: number) => (
+              <div
+                key={i}
+                className="flex justify-around md:flex-row flex-col px-3"
+              >
                 <div className="flex justify-around items-center flex-wrap  flex-col ">
                   <img
                     className="bg-[#202020] w-auto h-auto md:h-[28rem] "

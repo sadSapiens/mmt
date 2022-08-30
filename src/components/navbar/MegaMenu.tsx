@@ -10,14 +10,15 @@ import { useHome } from "../../store/varia/hooks";
 import { fetchHome } from "../../store/varia";
 
 const MegaMenu = () => {
-  const [open, setOpen] = useState(false);
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
+  const [isExpanded, toggleExpansion] = React.useState(false);
+
   const dispatch = useAppDispatch();
   const categories = useCategoryProducts();
 
   useEffect(() => {
     dispatch(fetchCategories() as any);
-  }, []);
+  }, [dispatch]);
 
   const [subcategories, setSubcategories] = useState([]);
 
@@ -25,20 +26,20 @@ const MegaMenu = () => {
   const home = useHome();
   useEffect(() => {
     dispatch(fetchHome() as any);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <div className="w-full">
-        <div className="  w-full" onClick={() => setOpen(true)}>
+        <div className="  w-full">
           <div
             onMouseMove={() => setIsOpenCatalog(true)}
             onMouseLeave={() => setIsOpenCatalog(false)}
             className="drop-downn flex md:flex-row flex-col"
           >
             <div
-              onClick={() => setIsOpenCatalog(true)}
-              className="flex flex-row md:justify-center md:items-center justify-end items-end h-10 py-3"
+              onClick={() => toggleExpansion(!isExpanded)}
+              className="flex flex-row md:justify-center md:items-center justify-end items-end h-10"
             >
               <img src={catalog} className="object-contain" alt="" />
               Каталог

@@ -3,29 +3,41 @@ import { useNavigate } from "react-router-dom";
 import { PUBLIC_API } from "../../../constants/api";
 
 const NewPassword = () => {
-  // const [error, setError] = useState("");
-  // const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    code: "",
+    newPassword: "",
+    confirmNewPassword: "",
+  });
 
-  // const [code, setCode] = useState("");
-  // const handleSubmit = async (e: any) => {
-  //   e.preventDefault();
-  //   setError("");
+  const handleChageInputs = (e: any) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
-  //   try {
-  //     const res = await PUBLIC_API.post("/user/activation", { code });
-  //     navigate("/signin");
-  //   } catch (e) {
-  //     console.log(e);
-  //     setError("Неверные значения или пользователь был активирован");
-  //   }
-  // };
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const res = await PUBLIC_API.post("/user/passwords/update-password", {
+        code: inputs.code,
+        new_password: inputs.newPassword,
+        confirm_new_password: inputs.confirmNewPassword,
+      });
+      navigate("/signin");
+    } catch (e) {
+      console.log(e);
+      setError("Неверные значения или пользователь был активирован");
+    }
+  };
   return (
     <>
       <div className="">
         <div className="bg-white h-1"></div>
         <div className="bg-[#343434] mx-auto px-9 w-auto py-5">
           <form
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             className="flex justify-center flex-col items-center text-center "
           >
             <div className="text-white text-4xl py-7">
@@ -37,6 +49,9 @@ const NewPassword = () => {
                 placeholder="Введите код"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
                 required
+                value={inputs.code}
+                name="code"
+                onChange={handleChageInputs}
               />
             </div>
             <div className="pass-wrapper">
@@ -45,19 +60,22 @@ const NewPassword = () => {
                 placeholder="Введите пароль"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
                 required
+                value={inputs.newPassword}
+                name="newPassword"
+                onChange={handleChageInputs}
               />
             </div>
             <div className="pass-wrapper">
               <input
-                // onChange={(e) => setCode(e.target.value)}
                 type="text"
                 placeholder="Введите пароль"
                 className="mt-1 block text-[#929292] px-3 py-2 bg-[#343434] border border-white rounded-full ... text-sm shadow-sm placeholder-[#929292] w-72"
                 required
+                value={inputs.confirmNewPassword}
+                name="confirmNewPassword"
+                onChange={handleChageInputs}
               />
             </div>
-            {/* {error && <div className="text-red-600"> {error}</div>} */}
-
             <div>
               <button
                 type="submit"

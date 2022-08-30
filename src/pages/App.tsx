@@ -43,6 +43,7 @@ function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/create-password" element={<NewPassword />} />
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/nice" element={<Congratulation />} />

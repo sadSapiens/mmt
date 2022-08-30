@@ -28,8 +28,6 @@ const Catalog = () => {
     dispatch(fetchHome() as any);
   }, []);
 
-  console.log(home?.catalogs, "catalogHpme");
-
   return (
     <div className="container mx-auto px-4 ">
       {home?.catalogs && (

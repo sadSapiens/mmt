@@ -21,7 +21,7 @@ import {
   fetchFiltersSuccess,
   setSearchValue,
 } from "../../store/catalog/actions";
-import API from "../../constants/api";
+import API, { PUBLIC_API } from "../../constants/api";
 import { useCategoryProducts } from "../../store/category/hooks";
 import { fetchSlectedCatalogProduct } from "../../store/catalog";
 import { useWindowSize } from "../../hooks/UseWindowSize";
@@ -35,9 +35,7 @@ const CatalogPage = () => {
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
   const { search } = useLocation();
-  const categories = useCategoryProducts();
   const categoryId = new URLSearchParams(search).get("categoryId");
-  const location = useLocation();
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
@@ -45,6 +43,7 @@ const CatalogPage = () => {
 
   const [showFilter, setShowFilter] = useState(false);
 
+  const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState<{
     colors: any[];
     materials: any[];
@@ -89,7 +88,7 @@ const CatalogPage = () => {
         }&price_ascending=${priceSort.ascending}&price_descending=${
           priceSort.descending
         }`;
-        const res: any = await API.get(url);
+        const res: any = await PUBLIC_API.get(url);
         dispatch(fetchCatalogSuccess(res.data.data));
         dispatch(
           fetchFiltersSuccess({
@@ -97,9 +96,11 @@ const CatalogPage = () => {
             costom_types: res.data.costom_types,
             materials: res.data.materials,
             types: res.data.types,
+            total_count: res.data.total_count,
           })
         );
-
+        console.log(res.data);
+        setBreadCrumbs(res.data.bread_crumbs.slice(1));
         setIsAllProducts(res.data.is_all);
         setProductsCount(res.data.count);
         setTotalCount(res.data.total_count);
@@ -214,6 +215,7 @@ const CatalogPage = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
+  console.log(breadCrumbs);
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
@@ -307,7 +309,7 @@ const CatalogPage = () => {
             </div>
             <div className="flex bg-black  h-0.5"></div>
           </div>
-          <div className="flex justify-around items-center w-4/12">
+          <div className="flex justify-around items-end w-4/12">
             <button
               onClick={() => setRow("row")}
               className={`${
@@ -396,7 +398,6 @@ const CatalogPage = () => {
         </div>
       </div>
 
-      {/*  */}
       <div>
         <nav className="bg-grey-light rounded-md w-full">
           <ol className="flex  ">
@@ -405,17 +406,15 @@ const CatalogPage = () => {
                 Каталог
               </Link>
             </li>
-            <li>
-              <img src={rightarrow} alt="" />
-            </li>
-            <li>
-              {/* <Link to={cateries.id}>
-              </Link> */}
-              <span className="!text-black ">
-                {/* {categories.name} */}
-                mmmmm
-              </span>
-            </li>
+            <li></li>
+
+            {breadCrumbs.length > 0 &&
+              breadCrumbs.map((item: any) => (
+                <li className="flex">
+                  <img src={rightarrow} alt="" />
+                  <span className="!text-black ">{item.name}</span>
+                </li>
+              ))}
           </ol>
         </nav>
       </div>
@@ -749,13 +748,6 @@ const CatalogPage = () => {
             </div>
           </div>
           <div className="flex flex-col  justify-center items-center gap-4 font-jost py-2">
-            {/* <button
-              className="bg-white text-black font-normal rounded-full ... border border-black w-48 hover:text-white  px-4 py-1 
-          hover:!bg-[#79B15E]
-          "
-            >
-              Показать товары (67)
-            </button> */}
             <button
               onClick={() => handleResetFilters()}
               className="border border-black rounded-full ... w-48  px-4 py-1 
