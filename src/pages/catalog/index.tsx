@@ -229,7 +229,7 @@ const CatalogPage = () => {
             </div>
           </Link>
           <div className="hidden md:flex">
-            <label className="relative flex justify-end flex-row items-center !mb-0">
+            <label className="relative flex justify-end flex-row items-center !mb-0 cursor-pointer">
               <img
                 className="h-2 w-auto sm:h-5 absolute pr-44 object-contain focus:outline-none"
                 src={searchL}
@@ -238,7 +238,7 @@ const CatalogPage = () => {
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-black block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
+                className=" placeholder:text-black cursor-pointer block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
                 name="search"
@@ -422,9 +422,9 @@ const CatalogPage = () => {
 
       <div className="py-3 ">
         <div className="flex justify-between items-center">
-          <div>
+          {/* <div>
             <span className="text-black text-2xl">Мужские аксессуары</span>
-          </div>
+          </div> */}
           <button
             className="md:hidden block focus:outline-none cursor-pointer"
             onClick={() => setShowFilter(!showFilter)}
@@ -432,16 +432,16 @@ const CatalogPage = () => {
             <img src={union} alt="" />
           </button>
         </div>
-        <div className="md:gap-4 gap-5 flex py-4  md:overflow-auto  overflow-scroll">
+        <div className=" md:gap-4 gap-5 md:hidden  flex py-4  md:overflow-auto  overflow-scroll">
           <div className="block text-center self-center">
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
           </div>
 
-          <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
+          {/* <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
             Барсетки
-          </button>
+          </button> */}
         </div>
       </div>
       {/*  */}
@@ -488,7 +488,7 @@ const CatalogPage = () => {
 
                         <label
                           htmlFor={item.name}
-                          className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 py-2 rounded-full ... w-28 !mb-0"
+                          className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 py-1 rounded-full ... w-28 !mb-0"
                         >
                           {item.name}
                         </label>
@@ -672,6 +672,7 @@ const CatalogPage = () => {
                       {filters.materials.map((item: any, i) => (
                         <div key={i}>
                           <input
+                            readOnly
                             className="  h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
                             value={item.id}
@@ -720,6 +721,7 @@ const CatalogPage = () => {
                       {filters.costom_types.map((item: any, i) => (
                         <div className="py-2" key={i}>
                           <input
+                            readOnly
                             className=" h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
                             value=""

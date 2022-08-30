@@ -33,7 +33,7 @@ const Catalog = () => {
       {home?.catalogs && (
         <>
           <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
-            <span className="  py-2 font-semibold text-black text-bold text-center ">
+            <span className="  py-4 font-semibold text-black text-bold text-center ">
               Каталог
             </span>
 
@@ -55,7 +55,9 @@ const Catalog = () => {
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />
-                  {item.name}
+                  <span className="flex justify-center items-center">
+                    {item.name}
+                  </span>
                 </button>
               ))}
             </div>
@@ -69,20 +71,20 @@ const Catalog = () => {
               >
                 {item.categories.length && item.categories.length > 6
                   ? item.categories.slice(2).map((item) => (
-                      <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                      <div className="  md:h-52 md:w-52 h-32 w-32 border-[1px]  border-black ">
                         <>
                           <img src={item.picture ? item.picture : one} alt="" />
-                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                          <span className="flex py-2 items-center align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {item.name}
                           </span>
                         </>
                       </div>
                     ))
                   : item.categories.map((item) => (
-                      <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                      <div className="  md:h-52 md:w-52 h-32 w-32 border-[1px]  border-black ">
                         <>
                           <img src={item.picture ? item.picture : one} alt="" />
-                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                          <span className="flex py-2 items-center align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {item.name}
                           </span>
                         </>

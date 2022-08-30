@@ -14,7 +14,7 @@ const Faq = () => {
   }, []);
 
   return (
-    <div className="flex justify-between container mx-auto px-4">
+    <div className="flex md:justify-between justify-center container mx-auto px-4">
       <div className="flex flex-col w-10/12">
         <span className="flex justify-center items-center md:justify-start py-2 text-3xl text-[#383838] font-bold">
           FAQ
