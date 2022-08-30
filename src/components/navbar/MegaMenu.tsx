@@ -44,7 +44,8 @@ const MegaMenu = () => {
               style={{
                 display: isOpenCatalog ? "block" : "none",
               }}
-              className="megablock bg-[#343434] p-3  "
+              className="megablock bg-[#343434] py-2  "
+              onClick={() => setIsOpenCatalog(true)}
             >
               {home && home.types.length && (
                 <div className="sm:hidden  flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
@@ -57,22 +58,21 @@ const MegaMenu = () => {
                     </button>
                   ))}
                   <></>
-                  <span>termos</span>
-                  <span>termos</span>
-                  <span>termos</span>
-                  <span>termos</span>
-                  <span>termos</span>
+                  {/* <span>termos</span> */}
                 </div>
               )}
               <ul className="flex justify-around items-start text-start">
-                <div className="flex-col justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
+                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
                   {categories.length > 0 &&
                     categories.map((category: any, i: number) => (
                       <div key={i}>
                         <li
-                          className="  category h-10 flex justify-start pl-14 text-left leading-normal items-center w-full"
+                          className="  category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
                           key={i}
                           onMouseMove={() =>
+                            setSubcategories(category.subcategories)
+                          }
+                          onClick={() =>
                             setSubcategories(category.subcategories)
                           }
                         >
@@ -82,10 +82,10 @@ const MegaMenu = () => {
                     ))}
                 </div>
 
-                <ul className=" w-full px-6">
+                <ul className="hidden md:flex flex-col w-full px-6">
                   <div className="hidden  md:flex w-full overflow-x-auto ">
                     {home && home.types.length && (
-                      <div className="flex flex-row gap-4  overflow-x-auto  overflow-y-clip  justify-start md:justify-center px-4 w-full md:w-auto">
+                      <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
                         {/* {home?.data.map((item) => { */}
                         {home.types.map((item, i) => (
                           <button
@@ -98,41 +98,11 @@ const MegaMenu = () => {
                         <></>
                         {/* })} */}
                         <span>termos</span>
-                        <span>termos</span>
-                        <span>termos</span>
-                        <span>termos</span>
-                        <span>termos</span>
                       </div>
                     )}
                   </div>
                   <div className="flex flex-row">
-                    <div className="w-4/12">
-                      {subcategories.length > 0 &&
-                        subcategories.map((item: any, i: number) => (
-                          <Link
-                            key={i}
-                            onClick={() => setIsOpenCatalog(false)}
-                            to={`catalog?categoryId=${item.id}`}
-                            className="h-8 py-2  w-full hidden md:flex"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                    </div>
-                    <div className="w-4/12">
-                      {subcategories.length > 0 &&
-                        subcategories.map((item: any, i: number) => (
-                          <Link
-                            key={i}
-                            onClick={() => setIsOpenCatalog(false)}
-                            to={`catalog?categoryId=${item.id}`}
-                            className="h-8 py-2  w-full hidden md:flex"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                    </div>
-                    <div className="w-4/12">
+                    <div className="w-4/12 h-56 overflo-x-scroll overflow-y-clip">
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link

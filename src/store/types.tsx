@@ -13,4 +13,5 @@ export interface Store {
   category: ICategoryState;
   order: IOrderState;
   home: IVariaState;
+  historyOrder: IOrderState;
 }

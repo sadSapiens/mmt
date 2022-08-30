@@ -25,10 +25,6 @@ input[name="panel"]:checked ~ .accordion__content {
   box-sizing: border-box;
 }
 
-html {
-  font: 2ch/1.2 Consolas;
-}
-
 html,
 body {
   width: 100%;

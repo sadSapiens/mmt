@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import newsone from "./assets/newsone.png";
 import newstwo from "./assets/newsyellow.png";
 import newsthree from "./assets/newsthree.png";
@@ -13,9 +13,10 @@ import { Link } from "react-router-dom";
 const Blog = () => {
   const dispatch = useAppDispatch();
   const blogNews = useBlogNews();
+  const [search, setSerch] = useState("");
   useEffect(() => {
-    dispatch(fetchBlogInfo() as any);
-  }, []);
+    dispatch(fetchBlogInfo(search) as any);
+  }, [search, dispatch]);
 
   return (
     <>
@@ -35,7 +36,9 @@ const Blog = () => {
                   <img className="h-2 w-auto sm:h-5" src={search} alt="" />
                 </span>
                 <input
-                  className=" placeholder:text-slate-800 font-jost font-light block w-full border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  value={search}
+                  onChange={(e: any) => setSerch(e.target.value)}
+                  className=" placeholder:text-slate-800 font-jost font-light block w-full border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none   sm:text-sm"
                   placeholder="Поиск..."
                   type="text"
                   name="search"

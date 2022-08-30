@@ -24,9 +24,12 @@ import {
 import API, { PUBLIC_API } from "../../constants/api";
 import { useCategoryProducts } from "../../store/category/hooks";
 import { fetchSlectedCatalogProduct } from "../../store/catalog";
+import { useWindowSize } from "../../hooks/UseWindowSize";
 
 const CatalogPage = () => {
   const filters = useFilters();
+  const width = useWindowSize();
+
   const [row, setRow] = useState("row");
   const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
@@ -37,6 +40,9 @@ const CatalogPage = () => {
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
   const [totalCount, setTotalCount] = useState();
+
+  const [showFilter, setShowFilter] = useState(false);
+
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState<{
     colors: any[];
@@ -54,10 +60,13 @@ const CatalogPage = () => {
     maxPrice: 999999999999999,
   });
 
+  console.log(selectedFilters, "ff");
+
   const [priceSort, setPriceSort] = useState({
     ascending: 0,
     descending: 0,
   });
+
   const fetchCatalogProducts =
     (categoryId: string | null, searchValue: string | null) =>
     async (dispatch: Dispatch) => {
@@ -416,7 +425,10 @@ const CatalogPage = () => {
           <div>
             <span className="text-black text-2xl">Мужские аксессуары</span>
           </div>
-          <button>
+          <button
+            className="md:hidden block focus:outline-none cursor-pointer"
+            onClick={() => setShowFilter(!showFilter)}
+          >
             <img src={union} alt="" />
           </button>
         </div>
@@ -433,10 +445,17 @@ const CatalogPage = () => {
         </div>
       </div>
       {/*  */}
-      <div className="flex pt-10 font-jost">
-        <div className="accordion  hidden  flex-col w-3/12  justify-center md:block ">
+      <div className="md:flex  pt-10 font-jost">
+        <div
+          className={
+            showFilter && width.width < 1000
+              ? " z-50 outline-none focus:outline-none bg-red w-full accordion block"
+              : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block "
+          }
+        >
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-1"
@@ -448,41 +467,42 @@ const CatalogPage = () => {
             >
               Тип товара
             </label>
-            <div className="accordion__content overflow-y-auto overflow-x-clip  flex justify-center items-center">
-              <div className="flex justify-center">
-                <div className="gap-2 flex flex-col justify-center">
-                  {filters && (
-                    <div className="form-check flex justify-center items-center flex-col">
-                      {filters.types.map((item: any, i) => (
-                        <div className="py-2 " key={i}>
-                          <input
-                            className="form-check-input  h-4 w-4 border border-black rounded-sm bg-white  focus:outline-none transition duration-200 items-center place-items-center align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox"
-                            value={item.id}
-                            id={item.name}
-                            checked={selectedFilters.types.includes(item.id)}
-                            onClick={() =>
-                              handleSelectFilters(item.id, "types")
-                            }
-                          />
+            <div className="accordion__content overflow-y-auto overflow-x-clip  flex justify-start items-center">
+              <div className="gap-2 flex flex-col justify-center">
+                {filters && (
+                  <div className="form-check flex justify-start items-center flex-col px-3">
+                    {filters.types.map((item: any, i) => (
+                      <div
+                        className="py-1 flex justify-start  items-center flex-row"
+                        key={i}
+                      >
+                        <input
+                          readOnly
+                          className="  h-4 w-4 border border-black rounded-sm bg-white  focus:outline-none transition -200 items-center  bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          type="checkbox"
+                          value={item.id}
+                          id={item.name}
+                          checked={selectedFilters.types.includes(item.id)}
+                          onClick={() => handleSelectFilters(item.id, "types")}
+                        />
 
-                          <label
-                            htmlFor={item.name}
-                            className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 rounded-full ... w-28 "
-                          >
-                            {item.name}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                {/*  */}
+                        <label
+                          htmlFor={item.name}
+                          className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 py-2 rounded-full ... w-28 !mb-0"
+                        >
+                          {item.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
+              {/*  */}
             </div>
           </div>
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-2"
@@ -513,6 +533,7 @@ const CatalogPage = () => {
                     <div className="flex flex-row justify-around gap-5 py-2">
                       <div>
                         <input
+                          readOnly
                           className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
                           placeholder="15"
                           type="number"
@@ -531,6 +552,7 @@ const CatalogPage = () => {
                       </div>
                       <div>
                         <input
+                          readOnly
                           className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
                           placeholder="400"
                           type="number"
@@ -553,6 +575,7 @@ const CatalogPage = () => {
           </div>
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-3"
@@ -565,38 +588,39 @@ const CatalogPage = () => {
               Цвет
             </label>
             <div className="accordion__content overflow-y-scroll  bg-grey-lighter">
-              <div className="flex justify-start px-5 py-3 ">
-                <div className="flex flex-col justify-start">
-                  {filters && (
-                    <div className="form-check py-2">
-                      {filters.colors.map((item: any, i) => (
-                        <div className="py-2" key={i}>
-                          <input
-                            className="form-check-input  h-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                            type="checkbox"
-                            value={item.id}
-                            id={item.name}
-                            checked={selectedFilters.colors.includes(item.id)}
-                            onClick={() =>
-                              handleSelectFilters(item.id, "color")
-                            }
-                          />
-                          <label
-                            className="form-check-label text-gray-800 flex flex-col w-full justify-start"
-                            htmlFor={item.name}
-                          >
-                            {item.name}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className="flex justify-start   py-1 ">
+                {filters && (
+                  <div className="form-check py-2">
+                    {filters.colors.map((item: any, i) => (
+                      <div
+                        className="py-2 flex justify-center items-center flex-row"
+                        key={i}
+                      >
+                        <input
+                          readOnly
+                          className="  h-4 border border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          type="checkbox"
+                          value={item.id}
+                          id={item.name}
+                          checked={selectedFilters.colors.includes(item.id)}
+                          onClick={() => handleSelectFilters(item.id, "color")}
+                        />
+                        <label
+                          className="form-check-label text-gray-800 flex flex-col w-full justify-start"
+                          htmlFor={item.name}
+                        >
+                          {item.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-4"
@@ -628,6 +652,7 @@ const CatalogPage = () => {
           </div>
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-5"
@@ -647,7 +672,7 @@ const CatalogPage = () => {
                       {filters.materials.map((item: any, i) => (
                         <div key={i}>
                           <input
-                            className="form-check-input  h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            className="  h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
                             value={item.id}
                             id={item.name}
@@ -674,6 +699,7 @@ const CatalogPage = () => {
           </div>
           <div className="w-1/8">
             <input
+              readOnly
               type="checkbox"
               name="panel"
               id="panel-6"
@@ -685,16 +711,16 @@ const CatalogPage = () => {
             >
               Метод нанесения
             </label>
-            <div className="accordion__content overflow-y-scroll  bg-grey-lighter">
-              <div className="flex justify-center px-1 py-3">
+            <div className="accordion__content overflow-y-scroll  overflow-x-clip bg-grey-lighter">
+              <div className="flex justify-center py-3">
                 <div className="flex flex-col justify-start">
                   {/*  */}
                   {filters && (
-                    <div className="form-check ">
+                    <div className="form-check px-4">
                       {filters.costom_types.map((item: any, i) => (
                         <div className="py-2" key={i}>
                           <input
-                            className="form-check-input  h-4  border-2 border-gray-300 rounded-md bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left  cursor-pointer"
+                            className=" h-4 w-4 border border-black rounded-md bg-white  focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="checkbox"
                             value=""
                             id="MethodChase"

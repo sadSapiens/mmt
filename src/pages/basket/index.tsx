@@ -474,7 +474,7 @@ const Basket = ({}) => {
                           <label htmlFor="address">Адреса доставки</label>
                           <input
                             type="text"
-                            className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                            className="px-5 py-2 border-black border-[1px] rounded-full ... text-black"
                             placeholder="Город"
                             name="city"
                             value={payInputs.city}
@@ -482,7 +482,7 @@ const Basket = ({}) => {
                           />
                           <input
                             type="text"
-                            className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                            className="px-5 py-2 border-black border-[1px] rounded-full ... text-black"
                             placeholder="Адрес"
                             name="address"
                             value={payInputs.address}
@@ -490,7 +490,7 @@ const Basket = ({}) => {
                           />
                           <input
                             type="text"
-                            className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                            className="px-5 py-2 border-black border-[1px] rounded-full ... text-black"
                             placeholder="Компания"
                             name="company"
                             value={payInputs.company}

@@ -1,5 +1,6 @@
 export interface IOrderState {
   orderCart: IOrderProductsCart | null;
+  historyOrder: IHistoryOrder | null;
 }
 export interface IOrderProductsCart {
   items: [
@@ -12,6 +13,26 @@ export interface IOrderProductsCart {
     }
   ];
   total_amount: number;
+}
+
+export interface IHistoryOrder {
+  item: {
+    id: number;
+    product: IHistoryOrderItemProduct[];
+    costoms: [];
+    quantity: number;
+    amount: number;
+  };
+  created_at: string;
+  delivery_status: string;
+  payment_status: string;
+}
+
+export interface IHistoryOrderItemProduct {
+  id: string;
+  name: string;
+  article: string;
+  color: string;
 }
 
 export interface IOrderProduct {
