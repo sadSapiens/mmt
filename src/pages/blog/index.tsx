@@ -18,7 +18,7 @@ const Blog = () => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
 
-  console.log(blogNews, "blog");
+  console.log(blogNews?.data[0].author, "blog");
 
   return (
     <>
@@ -64,7 +64,7 @@ const Blog = () => {
                         : null}
                     </h2>
                     <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
-                      {blogNews.data[0].content}
+                      {blogNews.data[0].brief_about}
                     </p>
                     <div className="flex justify-center items-center md:flex md:justify-start">
                       <Link to={`/blog/${blogNews.data[0].author}`}>
@@ -89,7 +89,7 @@ const Blog = () => {
                     key={i}
                     className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5 "
                   >
-                    <Link to={`/blog/${item.author}`}>
+                    <Link to={`/blog/${item.id}`}>
                       <img
                         src={newsone}
                         alt=""
@@ -109,7 +109,7 @@ const Blog = () => {
                             {item.title ? item.title : null}
                           </h2>
                           <p className="py-4 hidden md:flex text-ellipsis overflow-hidden ... text-black">
-                            {item.content}
+                            {item.brief_about}
                           </p>
                         </div>
                       </div>

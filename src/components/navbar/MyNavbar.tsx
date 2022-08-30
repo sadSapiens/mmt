@@ -298,7 +298,7 @@ const NavBar = ({}) => {
           <Link to="/blog" className="py-1 px-3 text-[#ffffff]  ">
             Блог
           </Link>
-          <Link to="/contacts" className="py-1 px-3 text-[#ffffff]  ">
+          <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
             Контакты
           </Link>
           <Link to="/" className="py-1 px-3 text-[#ffffff]  ">
