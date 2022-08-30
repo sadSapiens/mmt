@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./faq.css";
 import faqImage from "./assets/faq-image.png";
 import calling from "./assets/Calling.png";
-import { fetchHome } from "../../../store/varia";
 import { useHome } from "../../../store/varia/hooks";
 import { useAppDispatch } from "../../../store";
 
