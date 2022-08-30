@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./faq.css";
 import faqImage from "./assets/faq-image.png";
 import calling from "./assets/Calling.png";
 import { useHome } from "../../../store/varia/hooks";
-import { useAppDispatch } from "../../../store";
 
 const Faq = () => {
   const home = useHome();
