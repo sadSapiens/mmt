@@ -19,14 +19,8 @@ const MegaMenu = () => {
   useEffect(() => {
     dispatch(fetchCategories() as any);
   }, [dispatch]);
-
   const [subcategories, setSubcategories] = useState([]);
-
-  //
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, [dispatch]);
 
   return (
     <>

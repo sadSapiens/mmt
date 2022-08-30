@@ -10,9 +10,6 @@ import { fetchHome } from "../../../store/varia";
 const Brands = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="container mx-auto px-4 my-5">

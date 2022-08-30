@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./faq.css";
 import faqImage from "./assets/faq-image.png";
 import calling from "./assets/Calling.png";
-import { fetchHome } from "../../../store/varia";
 import { useHome } from "../../../store/varia/hooks";
-import { useAppDispatch } from "../../../store";
 
 const Faq = () => {
-  const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="flex md:justify-between justify-center container mx-auto px-4">
@@ -64,7 +58,6 @@ const Faq = () => {
         </label>
 
         <a href="tel:+1234567890">
-          {" "}
           <img
             src={calling}
             className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
