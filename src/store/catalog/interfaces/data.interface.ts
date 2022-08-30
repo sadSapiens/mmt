@@ -34,6 +34,7 @@ export interface IProductColor {
   discount: number;
   discount_price: number;
   price: number;
+  rating: string;
   color: {
     hex_code: any;
     id: number;

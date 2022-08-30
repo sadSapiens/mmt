@@ -19,8 +19,8 @@ import { useHome } from "../../../store/varia/hooks";
 import { fetchHome } from "../../../store/varia";
 
 const Catalog = () => {
-  const [isButton, setIsButton] = useState(true);
   const [openTab, setOpenTab] = useState(0);
+  const [more, setMore] = useState(false);
 
   const dispatch = useAppDispatch();
   const home = useHome();
@@ -34,24 +34,23 @@ const Catalog = () => {
     <div className="container mx-auto px-4 ">
       {home?.catalogs && (
         <>
-          <div className="flex flex-col md:flex-row mt-3 justify-start text-center  items-center align-middle  py-2 ">
+          <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
             <span className="  py-2 font-semibold text-black text-bold text-center ">
               Каталог
             </span>
 
-            <div className="flex flex-row gap-4  overflow-x-auto overflow-y-clip h-8 justify-start md:justify-center px-4 w-full md:w-auto">
+            <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-8 justify-start md:justify-center px-10 w-full md:w-auto">
               {home.catalogs.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => {
                     setOpenTab(index);
-                    setIsButton(false);
                   }}
                   className={`${
                     index === openTab
                       ? "bg-black text-white "
                       : "bg-white text-black"
-                  } flex   align-middle justify-center items-center  rounded-full ... p-1 px-3  text-center text-xs md:text-base text-black border-[1px] border-black  `}
+                  } flex   align-middle justify-center items-center  rounded-full ... py-1 px-5 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
                 >
                   <img
                     className=" flex px-2"
@@ -70,9 +69,9 @@ const Catalog = () => {
                 key={index}
                 className="flex flex-wrap md:flex-row justify-center items-center md:gap-20 gap-10 py-3"
               >
-                {item.categories.length
-                  ? item.categories.map((item) => (
-                      <div className="  md:h-56 md:w-56 h-32 w-32 border  border-black ">
+                {item.categories.length && item.categories.length > 6
+                  ? item.categories.slice(2).map((item) => (
+                      <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
                         <>
                           <img src={item.picture ? item.picture : one} alt="" />
                           <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
@@ -81,7 +80,16 @@ const Catalog = () => {
                         </>
                       </div>
                     ))
-                  : null}
+                  : item.categories.map((item) => (
+                      <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                        <>
+                          <img src={item.picture ? item.picture : one} alt="" />
+                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                            {item.name}
+                          </span>
+                        </>
+                      </div>
+                    ))}
               </div>
             ) : null;
           })}
