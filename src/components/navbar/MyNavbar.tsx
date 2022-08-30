@@ -244,7 +244,7 @@ const NavBar = ({}) => {
            py-2"
           >
             <div className="items-center flex  md:hidden">
-              <label className="relative block !mb-0">
+              <label className="relative block !mb-0 cursor-pointer">
                 <input
                   value={searchValue}
                   onChange={(e: any) =>

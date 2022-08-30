@@ -18,11 +18,13 @@ const Blog = () => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
 
+  console.log(blogNews, "blog");
+
   return (
     <>
       {blogNews ? (
         <>
-          <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center">
+          <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center container">
             <span className="flex items-center justify-center text-white text-2xl font-semibold">
               Блог
             </span>

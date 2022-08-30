@@ -19,7 +19,7 @@
 .scroll-photo::-webkit-scrollbar {
   width: 2px;
   background-color: rgb(208, 208, 208);
-  opacity: 0.5;
+  opacity: 0.2;
   height: 3px;
 }
 

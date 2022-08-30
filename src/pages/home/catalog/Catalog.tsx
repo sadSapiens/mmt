@@ -22,7 +22,7 @@ const Catalog = () => {
       {home?.catalogs && (
         <>
           <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
-            <span className="  py-2 font-semibold text-black text-bold text-center ">
+            <span className="  py-4 font-semibold text-black text-bold text-center ">
               Каталог
             </span>
 
@@ -44,7 +44,9 @@ const Catalog = () => {
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />
-                  {item.name}
+                  <span className="flex justify-center items-center">
+                    {item.name}
+                  </span>
                 </button>
               ))}
             </div>
