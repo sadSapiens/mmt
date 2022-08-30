@@ -17,16 +17,12 @@ import arrow from "./catalog-images/arrow.svg";
 import { useAppDispatch } from "../../../store";
 import { useHome } from "../../../store/varia/hooks";
 import { fetchHome } from "../../../store/varia";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
   const [isButton, setIsButton] = useState(true);
   const [openTab, setOpenTab] = useState(0);
-
-  const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="container mx-auto px-4 ">
@@ -74,12 +70,12 @@ const Catalog = () => {
                         key={i}
                         className="  md:h-56 md:w-56 h-32 w-32 border  border-black "
                       >
-                        <>
-                          <img src={item.picture ? item.picture : one} alt="" />
+                        <img src={item.picture ? item.picture : one} alt="" />
+                        <Link to={`catalog?categoryId=${item.id}`}>
                           <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {item.name}
                           </span>
-                        </>
+                        </Link>
                       </div>
                     ))
                   : null}

@@ -9,9 +9,6 @@ import { useAppDispatch } from "../../../store";
 const Faq = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="flex justify-between container mx-auto px-4">
@@ -48,7 +45,7 @@ const Faq = () => {
           )}
         </div>
       </div>
-      <div className="hidden md:flex flex-row basis-1/2 relative lg:flex lg:w-6/12">
+      <div className="hidden  xl:flex flex-row basis-1/2 relative  lg:w-6/12">
         <div className="flex  ">
           <img
             className="h-[30rem] w-auto block object-contain"
