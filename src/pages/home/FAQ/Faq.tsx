@@ -1,26 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./faq.css";
 import faqImage from "./assets/faq-image.png";
 import calling from "./assets/Calling.png";
-import { fetchHome } from "../../../store/varia";
 import { useHome } from "../../../store/varia/hooks";
-import { useAppDispatch } from "../../../store";
 
 const Faq = () => {
-  const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="flex justify-between container mx-auto px-4">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-10/12">
         <span className="flex justify-center items-center md:justify-start py-2 text-3xl text-[#383838] font-bold">
           FAQ
         </span>
 
-        <div className="accordion flex flex-col  justify-center md:w-[59rem] w-full ">
+        <div className="accordion flex flex-col justify-center  ">
           {home && home.faq.length && (
             <div className="w-1/8">
               {home.faq.map((item, i) => (
@@ -48,10 +42,10 @@ const Faq = () => {
           )}
         </div>
       </div>
-      <div className="hidden md:flex flex-row basis-1/2 relative lg:flex lg:w-6/12">
+      <div className="hidden md:flex flex-row relative lg:flex lg:w-3/12">
         <div className="flex  ">
           <img
-            className="h-[30rem] w-auto block object-contain"
+            className="h-[30rem]  block object-contain"
             src={faqImage}
             alt=""
           />
@@ -63,11 +57,13 @@ const Faq = () => {
           СВЯЗАТЬСЯ
         </label>
 
-        <img
-          src={calling}
-          className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
-          alt=""
-        />
+        <a href="tel:+1234567890">
+          <img
+            src={calling}
+            className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
+            alt=""
+          />
+        </a>
       </div>
     </div>
   );

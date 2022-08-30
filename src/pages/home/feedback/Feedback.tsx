@@ -10,9 +10,7 @@ import { fetchHome } from "../../../store/varia";
 const Feedback = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
+
   return (
     <div className="container mx-auto px-4">
       <div className="flex md:flex-auto md:justify-start justify-center">
@@ -27,7 +25,11 @@ const Feedback = () => {
             {home.reviews.map((item, i) => (
               <div key={i}>
                 <div className="flex flex-col overflow-y-clip px-4 w-full">
-                  <img className="rounded-full" src={item.picture} alt="" />
+                  <img
+                    className="rounded-full  w-20 h-20 flex justify-center items-center place-items-center"
+                    src={item ? item.picture : { valentina }}
+                    alt=""
+                  />
                   <span className=" flex  text-center">
                     {item.name} <br /> {item.position}
                   </span>

@@ -18,9 +18,6 @@ import { fetchHome } from "../../../store/varia";
 const Portfolio = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
-  useEffect(() => {
-    dispatch(fetchHome() as any);
-  }, []);
 
   return (
     <div className="container mx-auto px-4">

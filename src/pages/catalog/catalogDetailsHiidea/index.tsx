@@ -117,16 +117,7 @@ const CatalogDetailsHiidea = () => {
                           />
                         </div>
                       ))
-                  : selectedProduct.color_groups.map((product, i) => (
-                      <div key={i}>
-                        <img
-                          onClick={() => setCurrentProduct(product)}
-                          src={product.images[0].small}
-                          alt=""
-                          className="w-16 h-16"
-                        />
-                      </div>
-                    ))}
+                  : null}
               </div>
 
               <div className="md:w-5/12 w-full gap-4">
@@ -205,10 +196,31 @@ const CatalogDetailsHiidea = () => {
                         <p>Объем единицы</p>
                       </div>
                       <div className="col-6 flex flex-col gap-4">
-                        <p>{selectedProduct.package.package_type}</p>
-                        <p>{selectedProduct.package.weight}.</p>
-                        <p>{selectedProduct.package.package_quantity}.</p>
-                        <p>{selectedProduct.package.volume}.</p>
+                        <p>
+                          {selectedProduct.package &&
+                          selectedProduct.package.package_type
+                            ? selectedProduct.package.package_type
+                            : null}
+                        </p>
+                        <p>
+                          {selectedProduct.package &&
+                          selectedProduct.package.weight
+                            ? selectedProduct.package.weight
+                            : null}
+                        </p>
+                        <p>
+                          {selectedProduct.package &&
+                          selectedProduct.package.package_quantity
+                            ? selectedProduct.package.package_quantity
+                            : null}
+                        </p>
+                        <p>
+                          {selectedProduct.package &&
+                          selectedProduct.package.volume
+                            ? selectedProduct.package.volume
+                            : null}
+                          .
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -524,12 +536,26 @@ const CatalogDetailsHiidea = () => {
                                 <p>Объем единицы</p>
                               </div>
                               <div className="col-6 flex flex-col gap-5 ">
-                                <p>{selectedProduct.package.package_type}</p>
-                                <p>{selectedProduct.package.weight}.</p>
                                 <p>
-                                  {selectedProduct.package.package_quantity}.
+                                  {selectedProduct.package.package_type
+                                    ? selectedProduct.package.package_type
+                                    : null}
                                 </p>
-                                <p>{selectedProduct.package.volume}.</p>
+                                <p>
+                                  {selectedProduct.package &&
+                                    selectedProduct.package.weight}
+                                  .
+                                </p>
+                                <p>
+                                  {selectedProduct.package &&
+                                    selectedProduct.package.package_quantity}
+                                  .
+                                </p>
+                                <p>
+                                  {selectedProduct.package &&
+                                    selectedProduct.package.volume}
+                                  .
+                                </p>
                               </div>
                             </div>
                           </div>

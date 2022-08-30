@@ -246,6 +246,10 @@ const NavBar = ({}) => {
             <div className="items-center flex  md:hidden">
               <label className="relative block !mb-0">
                 <input
+                  value={searchValue}
+                  onChange={(e: any) =>
+                    dispatch(setSearchValue(e.target.value))
+                  }
                   className=" placeholder:text-slate-400 block bg-black w-full border-none rounded-full py-2  pl-9 pr-3 shadow-sm focus:outline-none  focus:ring-1 sm:text-sm"
                   placeholder="Поиск"
                   type="text"

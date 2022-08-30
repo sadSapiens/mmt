@@ -9,6 +9,7 @@ import catalog from "./catalog/reducer";
 import category from "./category/reducer";
 import similar from "./category/reducer";
 import order from "./order/reducer";
+import historyOrder from "./order/reducer";
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     similar,
     category,
     portfolio,
+    historyOrder,
   },
 });
 

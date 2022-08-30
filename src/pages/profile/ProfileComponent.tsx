@@ -5,6 +5,8 @@ import avatar from "./assets/2222.png";
 import { useNavigate } from "react-router-dom";
 import API from "../../constants/api";
 
+import nice from "./assets/nice.png";
+
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -29,6 +31,8 @@ const ProfileComponent = () => {
     email: "",
   });
   console.log(inputs, "profile");
+
+  const [successfully, setSuccessfully] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -109,7 +113,7 @@ const ProfileComponent = () => {
   }, [isEdit]);
 
   return (
-    <div>
+    <>
       <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
         <form onSubmit={handleSubmit} className="w-96">
           <div className="flex justify-between py-5 flex-col md:flex-row md:items-center ">
@@ -228,6 +232,28 @@ const ProfileComponent = () => {
               rounded-full ... focus:outline-none border-solid"
             />
           </label>
+
+          {successfully ? (
+            <>
+              <div className="bg-[#343434] justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
+                <div className="bg-[#343434] h-1"></div>
+
+                <div className="flex justify-center items-center flex-col gap-5">
+                  <label htmlFor=""></label>
+                  <img src={nice} alt="" />
+                  <p className="text-white">Вы успешно зарегистрировались</p>
+                  <button
+                    onClick={() => navigate("/")}
+                    className="focus:outline-none rounded-full bg-white px-3 py-2  flex justify-center items-center"
+                  >
+                    Готово
+                  </button>
+                </div>
+                <div className="bg-white h-1"></div>
+              </div>
+            </>
+          ) : null}
+
           <div className="text-red-800 ">
             {
               //@ts-ignore
@@ -242,7 +268,7 @@ const ProfileComponent = () => {
           </button>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
