@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-import heart from "./catalog-images/heart.png";
 import calendar from "./catalog-images/calendar.svg";
-import client from "./catalog-images/client.png";
-import bag from "./catalog-images/bag.png";
-
 import one from "./catalog-images/one.png";
-import two from "./catalog-images/two.png";
-import three from "./catalog-images/three.png";
-import four from "./catalog-images/four.png";
-import five from "./catalog-images/five.png";
-import six from "./catalog-images/six.png";
-import seven from "./catalog-images/seven.png";
-import eight from "./catalog-images/eight.png";
-
 import arrow from "./catalog-images/arrow.svg";
 import { useAppDispatch } from "../../../store";
 import { useHome } from "../../../store/varia/hooks";
 import { fetchHome } from "../../../store/varia";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
   const [openTab, setOpenTab] = useState(0);
@@ -69,26 +58,38 @@ const Catalog = () => {
                 key={index}
                 className="flex flex-wrap md:flex-row justify-center items-center md:gap-20 gap-10 py-3"
               >
-                {item.categories.length && item.categories.length > 6
-                  ? item.categories.slice(2).map((item) => (
-                      <div className="  md:h-52 md:w-52 h-32 w-32 border-[1px]  border-black ">
-                        <>
-                          <img src={item.picture ? item.picture : one} alt="" />
-                          <span className="flex py-2 items-center align-bottom justify-center text-black text-sm  md:text-base text-center">
-                            {item.name}
+                {item.categories.length && item.categories.length > 6 && !more
+                  ? item.categories.slice(0, 6).map((el) => (
+                      <Link
+                        to={
+                          item.is_holidays
+                            ? `catalog?categoryId=${el.id}&is-holidays=true`
+                            : `catalog?categoryId=${el.id}`
+                        }
+                      >
+                        <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                          <img src={el.picture ? el.picture : one} alt="" />
+                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                            {el.name}
                           </span>
-                        </>
-                      </div>
+                        </div>
+                      </Link>
                     ))
-                  : item.categories.map((item) => (
-                      <div className="  md:h-52 md:w-52 h-32 w-32 border-[1px]  border-black ">
-                        <>
-                          <img src={item.picture ? item.picture : one} alt="" />
-                          <span className="flex py-2 items-center align-bottom justify-center text-black text-sm  md:text-base text-center">
-                            {item.name}
+                  : item.categories.map((el) => (
+                      <Link
+                        to={
+                          item.is_holidays
+                            ? `catalog?categoryId=${el.id}&is-holidays=true`
+                            : `catalog?categoryId=${el.id}`
+                        }
+                      >
+                        <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                          <img src={el.picture ? el.picture : one} alt="" />
+                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                            {el.name}
                           </span>
-                        </>
-                      </div>
+                        </div>
+                      </Link>
                     ))}
               </div>
             ) : null;
@@ -97,8 +98,11 @@ const Catalog = () => {
       )}
 
       <div className="flex justify-center">
-        <button className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10 text-white">
-          Больше товаров
+        <button
+          onClick={() => setMore(!more)}
+          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10 text-white"
+        >
+          {more ? "Скрыть" : "Больше товаров"}
           <img
             className=" flex justify-center items-center align-middle"
             src={arrow}

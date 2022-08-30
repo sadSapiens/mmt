@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import searchL from "./assets/search.png";
 import union from "./assets/Union.png";
 import rightarrow from "./assets/rightarrow.png";
-import schema from "./assets/schema.svg";
-import list from "./assets/list.svg";
 import "./style.css";
 import Cards from "./cards/Cards";
 import { Link, useLocation, useParams } from "react-router-dom";
@@ -21,15 +19,13 @@ import {
   fetchFiltersSuccess,
   setSearchValue,
 } from "../../store/catalog/actions";
-import API, { PUBLIC_API } from "../../constants/api";
-import { useCategoryProducts } from "../../store/category/hooks";
+import { PUBLIC_API } from "../../constants/api";
 import { fetchSlectedCatalogProduct } from "../../store/catalog";
 import { useWindowSize } from "../../hooks/UseWindowSize";
 
 const CatalogPage = () => {
   const filters = useFilters();
   const width = useWindowSize();
-
   const [row, setRow] = useState("row");
   const searchValue = useSearchValue();
   const dispatch = useAppDispatch();
@@ -40,10 +36,12 @@ const CatalogPage = () => {
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
   const [totalCount, setTotalCount] = useState();
-
   const [showFilter, setShowFilter] = useState(false);
-
   const [breadCrumbs, setBreadCrumbs] = useState([]);
+  const selectedProduct = useSelectedCatalogProduct();
+  const params = useParams();
+  const isHolidaysCategory = new URLSearchParams(search).get("is-holidays");
+
   const [selectedFilters, setSelectedFilters] = useState<{
     colors: any[];
     materials: any[];
@@ -60,7 +58,7 @@ const CatalogPage = () => {
     maxPrice: 999999999999999,
   });
 
-  console.log(selectedFilters, "ff");
+  console.log(isHolidaysCategory);
 
   const [priceSort, setPriceSort] = useState({
     ascending: 0,
@@ -72,13 +70,15 @@ const CatalogPage = () => {
     async (dispatch: Dispatch) => {
       try {
         const url = `/products${
-          categoryId ? `/category/${categoryId}` : `/all`
+          categoryId
+            ? `/${isHolidaysCategory ? "holiday" : "category"}/${categoryId}`
+            : `/all`
         }?count=${
           productsCount + 12
         }&more=${isAllProducts}&search=${searchValue}&colors=${selectedFilters.colors.map(
           (color) => `${color}`
         )}&costom=${selectedFilters.custom_types.map(
-          (color) => `${color}`
+          (custom_type) => `${custom_type}`
         )}&types=${selectedFilters.types.map(
           (type) => `${type}`
         )}&materials=${selectedFilters.materials.map(
@@ -209,8 +209,6 @@ const CatalogPage = () => {
     }
   };
 
-  const selectedProduct = useSelectedCatalogProduct();
-  const params = useParams();
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
