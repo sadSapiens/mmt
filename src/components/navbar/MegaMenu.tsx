@@ -50,7 +50,7 @@ const MegaMenu = () => {
               style={{
                 display: isOpenCatalog ? "block" : "none",
               }}
-              className="megablock bg-[#343434] p-3  "
+              className="megablock bg-[#343434] py-2  "
               onClick={() => setIsOpenCatalog(true)}
             >
               {home && home.types.length && (
@@ -68,7 +68,7 @@ const MegaMenu = () => {
                 </div>
               )}
               <ul className="flex justify-around items-start text-start">
-                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip py-3 h-80 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
+                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
                   {categories.length > 0 &&
                     categories.map((category: any, i: number) => (
                       <div key={i}>
