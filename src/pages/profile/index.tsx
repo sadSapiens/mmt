@@ -6,17 +6,7 @@ import ProfileComponent from "./ProfileComponent";
 
 const Profile = () => {
   const [isProfile, setIsProfile] = useState(true);
-
   const navigate = useNavigate();
-  const [inputs, setInputs] = useState({
-    name: "",
-    surname: "",
-    phoneNumber: "",
-    city: "",
-    address: "",
-    company: "",
-    email: "",
-  });
 
   useEffect(() => {
     if (isProfile) {
