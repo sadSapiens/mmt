@@ -18,8 +18,6 @@ const Blog = () => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
 
-  console.log(blogNews?.data[0].author, "blog");
-
   return (
     <>
       {blogNews ? (

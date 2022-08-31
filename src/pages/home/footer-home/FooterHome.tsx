@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import aiyl from "./assets/aiylbank.png";
 import beeline from "./assets/beeline.png";
 import bonetskogo from "./assets/bonetskogo.png";
@@ -38,8 +38,6 @@ const FooterHome = () => {
       console.log(e);
     }
   };
-
-  console.log(inputNumber, "input");
 
   return (
     <>

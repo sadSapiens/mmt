@@ -11,7 +11,10 @@ import { fetchHome } from "../../store/varia";
 
 const MegaMenu = () => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
+  const [isOpenSub, setIsOpenSub] = useState(false);
+
   const [isExpanded, toggleExpansion] = React.useState(false);
+  const [subcategories, setSubcategories] = useState([]);
 
   const dispatch = useAppDispatch();
   const categories = useCategoryProducts();
@@ -19,7 +22,6 @@ const MegaMenu = () => {
   useEffect(() => {
     dispatch(fetchCategories() as any);
   }, [dispatch]);
-  const [subcategories, setSubcategories] = useState([]);
   const home = useHome();
 
   return (
@@ -66,18 +68,18 @@ const MegaMenu = () => {
                   {categories.length > 0 &&
                     categories.map((category: any, i: number) => (
                       <div key={i}>
-                        <li
-                          className="  category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
-                          key={i}
-                          onMouseMove={() =>
-                            setSubcategories(category.subcategories)
-                          }
-                          onClick={() =>
-                            setSubcategories(category.subcategories)
-                          }
-                        >
-                          {category.name}
-                        </li>
+                        <Link to={`catalog?categoryId=${category.id}`}>
+                          <li
+                            className="  category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
+                            key={i}
+                            onMouseMove={() =>
+                              setSubcategories(category.subcategories)
+                            }
+                            // onClick={() => setIsOpenSub(!isOpenSub)}
+                          >
+                            {category.name}
+                          </li>
+                        </Link>
                       </div>
                     ))}
                 </div>
@@ -101,15 +103,20 @@ const MegaMenu = () => {
                       </div>
                     )}
                   </div>
-                  <div className="flex flex-row">
+                  <div
+                  // style={{
+                  //   display: isOpenSub ? "block" : "none",
+                  // }}
+                  // onClick={() => setIsOpenSub(true)}
+                  >
                     <div className="w-4/12 h-56 overflow-x-auto overflow-y-clip">
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link
                             key={i}
-                            onClick={() => setIsOpenCatalog(false)}
+                            onClick={() => setIsOpenCatalog(true)}
                             to={`catalog?categoryId=${item.id}`}
-                            className="h-8 py-2  w-full hidden md:flex"
+                            className="h-8 py-2  w-full   md:flex"
                           >
                             {item.name}
                           </Link>

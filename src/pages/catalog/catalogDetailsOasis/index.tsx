@@ -109,7 +109,7 @@ const CatalogDetailsOasis = () => {
                             onClick={() => setCurrentProduct(product)}
                             src={product.images[0].small}
                             alt=""
-                            className="w-16 h-16"
+                            className="w-16 h-16 object-fill"
                           />
                         </div>
                       ))
@@ -119,7 +119,7 @@ const CatalogDetailsOasis = () => {
                           onClick={() => setCurrentProduct(product)}
                           src={product.images[0].small}
                           alt=""
-                          className="w-16 h-16"
+                          className="w-16 h-16 object-fill"
                         />
                       </div>
                     ))}
@@ -131,37 +131,41 @@ const CatalogDetailsOasis = () => {
                 </span>{" "}
                 {currentProduct && currentProduct.images.length ? (
                   <img
-                    className="w-auto md:h-96  h-72"
+                    className="w-auto md:h-96  h-72 object-fill"
                     src={currentProduct.images[0].superbig}
                     alt=""
                   />
                 ) : (
                   "Loading..."
                 )}
-                <div className="flex justify-center items-center md:w-9/12 w-full py-5 gap-4">
-                  <div className="md:flex hidden flex-row overflow-x-scroll scroll-photo w-96 gap-5">
+                <div className="flex justify-center items-center md:w-8/12 w-full py-5 gap-2">
+                  <div className="md:flex hidden flex-row  gap-2 scroll-photo  overflow-y-clip  overflow-x-scroll">
                     {selectedProduct &&
                     selectedProduct.color_groups.length &&
                     selectedProduct.color_groups.length < 6
                       ? selectedProduct.color_groups
                           .slice(6)
                           .map((product, i) => (
-                            <div key={i}>
+                            <div
+                              key={i}
+                              className="w-[100%]
+                            "
+                            >
                               <img
                                 onClick={() => setCurrentProduct(product)}
                                 src={product.images[0].small}
                                 alt=""
-                                className="w-16 h-16"
+                                className="w-80 h-16 object-contain"
                               />
                             </div>
                           ))
                       : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i}>
+                          <div key={i} className="w-[100%]">
                             <img
                               onClick={() => setCurrentProduct(product)}
                               src={product.images[0].small}
                               alt=""
-                              className="h-12 w-12"
+                              className="w-80 h-16 object-contain"
                             />
                           </div>
                         ))}

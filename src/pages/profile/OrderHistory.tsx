@@ -11,7 +11,6 @@ const OrderHistory = () => {
   useEffect(() => {
     dispatch(fetchOrder() as any);
   }, []);
-  console.log(historyOrder, "history");
   return (
     <div className="mx-auto md:px-16 px-2 w-auto py-5 font-jost container">
       <div>

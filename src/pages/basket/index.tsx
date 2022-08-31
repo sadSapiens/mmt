@@ -52,7 +52,6 @@ const Basket = ({}) => {
       console.log(e);
     }
   };
-  console.log(cartProducts);
 
   const handlePay = async () => {
     const referalCode = payInputs.referalCode && payInputs.referalCode;
