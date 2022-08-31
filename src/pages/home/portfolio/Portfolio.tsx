@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import arrow from "./assets/arrow.svg";
 
 import one from "./assets/one.png";
-import two from "./assets/two.png";
-import three from "./assets/three.png";
-import four from "./assets/four.png";
 
 import star from "./assets/Star.png";
 import threeUser from "./assets/threeUser.png";
@@ -13,7 +10,6 @@ import category from "./assets/Category.png";
 import "./port.css";
 import { useAppDispatch } from "../../../store";
 import { useHome } from "../../../store/varia/hooks";
-import { fetchHome } from "../../../store/varia";
 
 const Portfolio = () => {
   const dispatch = useAppDispatch();

@@ -29,7 +29,6 @@ const Basket = ({}) => {
   const order = useOrder();
   const dispatch = useAppDispatch();
   const handleDeleteProductFromCart = async (id: any) => {
-    console.log(id);
     if (!id) return;
     setShowModal(false);
     try {
@@ -44,7 +43,6 @@ const Basket = ({}) => {
       console.log(e);
     }
   };
-  console.log(payInputs);
 
   const handlePay = async () => {
     const referalCode = payInputs.referalCode && payInputs.referalCode;

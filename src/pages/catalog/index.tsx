@@ -45,8 +45,6 @@ const CatalogPage = () => {
   const [holiday, setHoliday] = useState<any>();
   const [subcategories, setSubcategories] = useState<any>([]);
 
-  console.log(holiday);
-
   const [selectedFilters, setSelectedFilters] = useState<{
     colors: any[];
     materials: any[];
@@ -62,8 +60,6 @@ const CatalogPage = () => {
     minPrice: 0,
     maxPrice: 999999999999999,
   });
-
-  console.log(subcategories, "sss");
 
   const [priceSort, setPriceSort] = useState({
     ascending: 0,
@@ -104,7 +100,6 @@ const CatalogPage = () => {
             total_count: res.data.total_count,
           })
         );
-        console.log(res.data);
         res.data.holiday && setHoliday(res.data.holiday);
         res.data.holiday && setSubcategories(res.data.subcategories);
         setBreadCrumbs(res.data.bread_crumbs.slice(1));
@@ -421,8 +416,8 @@ const CatalogPage = () => {
             <li></li>
 
             {breadCrumbs.length > 0 &&
-              breadCrumbs.map((item: any) => (
-                <li className="flex">
+              breadCrumbs.map((item: any, i) => (
+                <li className="flex" key={i}>
                   <img src={rightarrow} alt="" />
                   <span className="!text-black ">{item.name}</span>
                 </li>

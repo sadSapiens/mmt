@@ -39,7 +39,6 @@ interface Props {
 
 const Cards = ({ product }: Props) => {
   const filters = useFilters();
-  console.log(product.rating, "card");
 
   return (
     <>

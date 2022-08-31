@@ -14,15 +14,12 @@ import CatalogDetailsHiidea from "./catalog/catalogDetailsHiidea";
 import CatalogDetailsOasis from "./catalog/catalogDetailsOasis";
 import Home from "./home";
 import Profile from "./profile";
-import Redirect from "./redirectPage";
 import SignInPage from "./signin";
 import SignUpPage from "./signup";
 import Portfolio from "./portfolio";
 import Recovery from "./signin/Recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
-import OrderHistory from "./profile/OrderHistory";
 import EditProfile from "./profile/editProfile/EditProfile";
-import Congratulation from "./signup/Congratulation/Congratulation";
 import NewPassword from "./signup/newPassword/NewPassword";
 
 function App() {
