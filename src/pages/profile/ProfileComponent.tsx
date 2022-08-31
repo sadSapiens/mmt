@@ -22,6 +22,7 @@ const ProfileComponent = () => {
   const [images, setImages] = React.useState<ImageObj[]>([]);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
+    avatar: "",
     name: "",
     surname: "",
     phoneNumber: "",
@@ -53,31 +54,28 @@ const ProfileComponent = () => {
     },
     []
   );
+  console.log(images[0]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorText([]);
+    const avatar = new FormData();
+    images.length > 0 && avatar.append("avatar", images[0].file);
+    avatar.append("first_name", inputs.name);
+    avatar.append("last_name", inputs.surname);
+    avatar.append("phone", valuee);
+    avatar.append("city", inputs.city);
+    avatar.append("address", inputs.address);
+    avatar.append("company", inputs.company);
+    avatar.append("email", inputs.email);
     try {
       const res = await (isEdit
-        ? API.put("/user/profile", {
-            first_name: inputs.name,
-            last_name: inputs.surname,
-            phone: valuee,
-            city: inputs.city,
-            address: inputs.address,
-            company: inputs.company,
-            email: inputs.email,
+        ? API.put("/user/profile", avatar, {
+            headers: { "Content-Type": "multipart/form-data" },
           })
-        : API.post("/user/profile", {
-            first_name: inputs.name,
-            last_name: inputs.surname,
-            phone: valuee,
-            city: inputs.city,
-            address: inputs.address,
-            company: inputs.company,
-            email: inputs.email,
+        : API.post("/user/profile", avatar, {
+            headers: { "Content-Type": "multipart/form-data" },
           }));
-      navigate("/nice");
     } catch (e) {
       // @ts-ignore
       setErrorText([Object.entries(e.response.data)]);
@@ -95,6 +93,7 @@ const ProfileComponent = () => {
           address: res.data.data.address,
           company: res.data.data.company,
           email: res.data.data.email,
+          avatar: res.data.data.avatar,
         });
         setIsEdit(true);
         setValue(res.data.data.phone);
@@ -125,7 +124,11 @@ const ProfileComponent = () => {
                   className="w-32 h-32 flex justify-center rounded-full object-cover"
                 />
               ) : (
-                <img src={avatar} alt="" className="h-32 w-32 object-cover" />
+                <img
+                  src={inputs.avatar ? inputs.avatar : avatar}
+                  alt=""
+                  className="h-32 w-32 object-cover"
+                />
               )}
             </div>
             <div className="py-3 flex flex-row justify-center gap-2 w-auto text-sm  md:!flex-col">
