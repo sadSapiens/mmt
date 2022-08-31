@@ -11,10 +11,16 @@ import { useOrder } from "../../store/order/hooks";
 import API from "../../constants/api";
 import CartEmpty from "./cart/cartEmpty/CartEmpty";
 import { fetchOrder } from "../../store/order";
+import { IOrderProductsCart } from "../../store/order/interfaces/data.interface";
+import { useNavigate } from "react-router-dom";
 
 const Basket = ({}) => {
-  const [showModal, setShowModal] = React.useState(false);
-  const [payModalShow, setPayModalShow] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [payModalShow, setPayModalShow] = useState(false);
+  const order = useOrder();
+  const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null>();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [payInputs, setPayInputs] = useState({
     city: "",
     address: "",
@@ -23,13 +29,15 @@ const Basket = ({}) => {
     paymantType: "",
   });
 
+  useEffect(() => {
+    setCartProducts(order);
+  }, [order]);
+
   const handleChangePayInputs = (e: any) => {
     setPayInputs({ ...payInputs, [e.target.name]: e.target.value });
   };
-  const order = useOrder();
-  const dispatch = useAppDispatch();
+
   const handleDeleteProductFromCart = async (id: any) => {
-    console.log(id);
     if (!id) return;
     setShowModal(false);
     try {
@@ -44,28 +52,34 @@ const Basket = ({}) => {
       console.log(e);
     }
   };
-  console.log(payInputs);
+  console.log(cartProducts);
 
   const handlePay = async () => {
     const referalCode = payInputs.referalCode && payInputs.referalCode;
     try {
       const res = await API.post("/orders/payment", {
-        total_amount: order?.total_amount,
+        total_amount: cartProducts?.total_amount,
         address: `address:${payInputs.address}, city:${payInputs.city}, company:${payInputs.company}`,
         referalCode,
         payment_type: payInputs.paymantType,
       });
+      console.log(res);
+      if (res.data.payment_url) {
+        window.location.href = res.data.payment_url;
+        return;
+      }
+      navigate("/profile/order-history");
     } catch (e) {
       console.log(e);
     }
   };
 
-  // const size = order?.items.length;
+  // const size = cartProducts?.items.length;
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
       <span className="text-[#000000]">Моя корзина</span>
 
-      {order ? (
+      {cartProducts ? (
         <div className="flex md:justify-between md:flex-row flex-col ">
           <div className="md:w-8/12 w-full md:flex flex-col hidden ">
             <div className="flex flex-col ">
@@ -96,9 +110,9 @@ const Basket = ({}) => {
                       </tr>
                     </thead>
                     <tbody className="">
-                      {order ? (
+                      {cartProducts ? (
                         <>
-                          {order.items.map((item: any, i: number) => (
+                          {cartProducts.items.map((item: any, i: number) => (
                             <>
                               <tr className="md:bg-white bg-[#F1F1F1] border-t flex flex-col  border-b-[1px]">
                                 <div
@@ -129,17 +143,85 @@ const Basket = ({}) => {
 
                                   <td className="text-sm text-black font-light px-1 py-4 whitespace-nowrap">
                                     <div className="flex justify-start items-start align-middle gap-2 py-2">
-                                      <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5">
+                                      <button
+                                        onClick={() => {
+                                          cartProducts.items.map((el: any) => {
+                                            if (el.id === item.id) {
+                                              API.put("/orders/cart", {
+                                                item_id: el.id,
+                                                quantity:
+                                                  Number(el.quantity) - 1,
+                                              }).then((res) => {
+                                                dispatch(fetchOrder() as any);
+                                              });
+                                            }
+                                          });
+                                        }}
+                                        className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5"
+                                      >
                                         <img src={minus} alt="" />
                                       </button>
                                       <input
                                         type="text"
                                         className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
                                         value={item.quantity}
-                                        readOnly
+                                        onChange={(e) => {
+                                          let changetItemId = 0;
+                                          const updatedItems =
+                                            cartProducts.items.map(
+                                              (el: any) => {
+                                                if (el.id !== item.id) {
+                                                  return JSON.parse(
+                                                    JSON.stringify(el)
+                                                  );
+                                                } else {
+                                                  changetItemId = el.id;
+                                                  return {
+                                                    ...el,
+                                                    costoms: JSON.parse(
+                                                      JSON.stringify(el.costoms)
+                                                    ),
+                                                    product: JSON.parse(
+                                                      JSON.stringify(el.product)
+                                                    ),
+                                                    quantity: e.target.value,
+                                                  };
+                                                }
+                                              }
+                                            );
+
+                                          setCartProducts({
+                                            ...cartProducts,
+                                            //@ts-ignore
+                                            items: updatedItems,
+                                          });
+                                          API.put("/orders/cart", {
+                                            item_id: changetItemId,
+                                            quantity: e.target.value
+                                              ? e.target.value
+                                              : 0,
+                                          }).then((res) => {
+                                            dispatch(fetchOrder() as any);
+                                          });
+                                        }}
                                       />
 
-                                      <button className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 ">
+                                      <button
+                                        onClick={() => {
+                                          cartProducts.items.map((el: any) => {
+                                            if (el.id === item.id) {
+                                              API.put("/orders/cart", {
+                                                item_id: el.id,
+                                                quantity:
+                                                  Number(el.quantity) + 1,
+                                              }).then((res) => {
+                                                dispatch(fetchOrder() as any);
+                                              });
+                                            }
+                                          });
+                                        }}
+                                        className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 "
+                                      >
                                         <img src={plus} alt="" />
                                       </button>
                                     </div>
@@ -259,10 +341,10 @@ const Basket = ({}) => {
             </div>
           </div>
           {/*  */}
-          {order ? (
+          {cartProducts ? (
             <>
               <div className=" md:hidden my-2">
-                {order.items.map((item, i) => (
+                {cartProducts.items.map((item, i) => (
                   <tr
                     key={i}
                     className="md:bg-white bg-[#F1F1F1] border-b flex flex-col my-4"
@@ -439,7 +521,7 @@ const Basket = ({}) => {
                     <input
                       type="text"
                       className="px-5 py-2 border-black border-[1px] rounded-full ... "
-                      placeholder="Компания"
+                      placeholder="Промокод"
                       name="referalCode"
                       value={payInputs.referalCode}
                       onChange={handleChangePayInputs}
@@ -448,7 +530,7 @@ const Basket = ({}) => {
 
                   <div className="w-4/12 flex flex-col gap-5 p-0">
                     <p className="flex">
-                      {order?.total_amount}
+                      {cartProducts?.total_amount}
                       <img className="flex object-contain" src={cLine} alt="" />
                     </p>
                     <p></p>

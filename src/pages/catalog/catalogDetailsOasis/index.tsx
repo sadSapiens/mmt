@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
-import penOne from "../assets/penOne.png";
-import penTwo from "../assets/penTwo.png";
-import penThree from "../assets/penThree.png";
-import penBig from "../assets/penBig.png";
 import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
 import som from "../assets/som.png";
-
 import "./catalogStyle.css";
-
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import {
@@ -18,9 +11,7 @@ import {
   useSimilartProducts,
 } from "../../../store/catalog/hooks";
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
-import { IProductState } from "../../../store/catalog/interfaces/data.interface";
 import API from "../../../constants/api";
-import { stat } from "fs";
 import { fetchOrder } from "../../../store/order";
 
 const CatalogDetailsOasis = () => {
@@ -53,7 +44,10 @@ const CatalogDetailsOasis = () => {
     const sizes = currentProduct.sizes.map((size: any) => {
       return {
         product_size_id: size.id,
-        quantity: size.quantity,
+        quantity:
+          size.quantityToCart || size.quantityToCart === "0"
+            ? size.quantityToCart
+            : "0",
       };
     });
     try {
@@ -67,6 +61,7 @@ const CatalogDetailsOasis = () => {
       console.log(e);
     }
   };
+  console.log(currentProduct);
 
   return (
     <div>
@@ -465,6 +460,26 @@ const CatalogDetailsOasis = () => {
                                         <input
                                           type="number"
                                           placeholder="1"
+                                          onChange={(e) => {
+                                            const updatedSizes =
+                                              currentProduct.sizes.map(
+                                                (el: any) => {
+                                                  return el.id !== size.id
+                                                    ? el
+                                                    : {
+                                                        ...el,
+                                                        quantityToCart:
+                                                          e.target.value,
+                                                      };
+                                                }
+                                              );
+
+                                            setCurrentProduct({
+                                              ...currentProduct,
+                                              images: currentProduct.images,
+                                              sizes: updatedSizes,
+                                            });
+                                          }}
                                           className="border-b-2 w-40 border-5  border-b-black  ..."
                                         />
                                       </td>
