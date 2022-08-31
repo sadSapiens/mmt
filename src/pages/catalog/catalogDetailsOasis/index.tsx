@@ -171,7 +171,6 @@ const CatalogDetailsOasis = () => {
                         ))}
                   </div>
                 </div>
-                {/*  */}
                 <div className="flex md:hidden justify-between">
                   <h4>Код товара: {selectedProduct.article}</h4>
                   <h4>На складе: {selectedProduct.total_stock}</h4>
