@@ -186,7 +186,7 @@ const NavBar = ({}) => {
                 <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
                   <div className="relative flex space-x-2 justify-center">
                     <img className="h-6 w-6 " src={shopbag} alt="" />
-                    <span className="text-[10px] absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                    <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
                       {/* {size}7 */}
                       {order?.items.length}
                     </span>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./faq.css";
-import faqImage from "./assets/faq-image.png";
+import faqImage from "./assets/zhyldyz.svg";
 import calling from "./assets/Calling.png";
 import { useHome } from "../../../store/varia/hooks";
 
@@ -43,9 +43,16 @@ const Faq = () => {
         </div>
       </div>
       <div className="hidden md:flex flex-row relative lg:flex lg:w-3/12">
-        <div className="flex  ">
+        <div className="flex  flex-col ">
+          <label
+            htmlFor=""
+            className="text-white absolute z-50 flex justify-center items-center text-center text-sm py-2 px-2"
+          >
+            Если у Вас остались вопросы, свяжитесь бесплатно с нашим менеджером
+          </label>
+
           <img
-            className="h-[30rem]  block object-contain"
+            className="h-[25rem]  relative  block object-contain bg-[#424242]"
             src={faqImage}
             alt=""
           />
