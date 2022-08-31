@@ -32,8 +32,8 @@ const MegaMenu = () => {
             className="drop-downn flex md:flex-row flex-col"
           >
             <div
-              onClick={() => toggleExpansion(!isExpanded)}
-              className="flex flex-row md:justify-center md:items-center justify-end items-end h-10"
+              onClick={() => setIsOpenCatalog(!isOpenCatalog)}
+              className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
             >
               <img src={catalog} className="object-contain" alt="" />
               Каталог
@@ -102,7 +102,7 @@ const MegaMenu = () => {
                     )}
                   </div>
                   <div className="flex flex-row">
-                    <div className="w-4/12 h-56 overflo-x-scroll overflow-y-clip">
+                    <div className="w-4/12 h-56 overflow-x-auto overflow-y-clip">
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link

@@ -46,7 +46,6 @@ function App() {
             <Route path="/create-password" element={<NewPassword />} />
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/nice" element={<Congratulation />} />
             <Route path="/new-password" element={<NewPassword />} />
 
             <Route

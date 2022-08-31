@@ -63,7 +63,9 @@ body {
 }
 
 .react-tel-input .form-control {
-  border-radius: 50% !important;
+  border-radius: 25% !important;
+  left: 2px !important;
+  width: 310px !important ;
 }
 
 /*  */
