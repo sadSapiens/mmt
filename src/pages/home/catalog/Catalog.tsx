@@ -97,7 +97,7 @@ const Catalog = () => {
         </>
       )}
 
-      <div className="flex justify-center">
+      <div className="flex justify-center py-3">
         <button
           onClick={() => setMore(!more)}
           className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10 text-white"

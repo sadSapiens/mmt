@@ -31,6 +31,7 @@ const CatalogPage = () => {
   const dispatch = useAppDispatch();
   const catalogProducts = useCatalogProducts();
   const { search } = useLocation();
+  const location = useLocation();
   const categoryId = new URLSearchParams(search).get("categoryId");
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
@@ -41,6 +42,10 @@ const CatalogPage = () => {
   const selectedProduct = useSelectedCatalogProduct();
   const params = useParams();
   const isHolidaysCategory = new URLSearchParams(search).get("is-holidays");
+  const [holiday, setHoliday] = useState<any>();
+  const [subcategories, setSubcategories] = useState<any>([]);
+
+  console.log(holiday);
 
   const [selectedFilters, setSelectedFilters] = useState<{
     colors: any[];
@@ -58,7 +63,7 @@ const CatalogPage = () => {
     maxPrice: 999999999999999,
   });
 
-  console.log(isHolidaysCategory);
+  console.log(subcategories, "sss");
 
   const [priceSort, setPriceSort] = useState({
     ascending: 0,
@@ -100,6 +105,8 @@ const CatalogPage = () => {
           })
         );
         console.log(res.data);
+        res.data.holiday && setHoliday(res.data.holiday);
+        res.data.holiday && setSubcategories(res.data.subcategories);
         setBreadCrumbs(res.data.bread_crumbs.slice(1));
         setIsAllProducts(res.data.is_all);
         setProductsCount(res.data.count);
@@ -117,7 +124,15 @@ const CatalogPage = () => {
 
   useEffect(() => {
     dispatch(fetchCatalogProducts(categoryId, searchValue) as any);
-  }, [selectedFilters, price, priceSort, dispatch, categoryId, searchValue]);
+  }, [
+    selectedFilters,
+    price,
+    priceSort,
+    dispatch,
+    categoryId,
+    searchValue,
+    location,
+  ]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
@@ -213,7 +228,6 @@ const CatalogPage = () => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
   }, []);
-  console.log(breadCrumbs);
 
   return (
     <div className="mx-auto md:px-9 px-4  w-auto  font-jost py-9">
@@ -436,14 +450,28 @@ const CatalogPage = () => {
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
           </div>
+        </div>
 
-          {/* <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
-            Барсетки
-          </button> */}
+        <div className="flex flex-row justify-start items-center gap-4">
+          {isHolidaysCategory
+            ? subcategories.map((item: any, i: number) => (
+                <Link
+                  key={i}
+                  to={`/catalog?categoryId=${item.id}&is-holidays=true`}
+                >
+                  <div className="flex justify-center items-center gap-2 flex-row">
+                    <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
+                      {item.name}
+                    </button>
+                  </div>
+                </Link>
+              ))
+            : null}
         </div>
       </div>
       {/*  */}
-      <div className="md:flex  pt-10 font-jost">
+
+      <div className="md:flex pt-10 font-jost">
         <div
           className={
             showFilter && width.width < 1000
@@ -822,6 +850,28 @@ const CatalogPage = () => {
             </div>
             <div className="flex bg-black  h-0.5"></div>
           </div>
+
+          {/*  */}
+          {holiday ? (
+            <div className="py-4 px-4">
+              <div className="flex justify-center items-center text-3xl font-bold px-4">
+                <span>{holiday.name}</span>
+              </div>
+              <div>
+                <img
+                  src={`http://localhost:3030/${holiday.banner}`}
+                  className="object-contain flex justify-center items-center h-40 w-72 py-4"
+                  alt=""
+                />
+              </div>
+
+              <div className="flex justify-start text-left ... items-center py-5">
+                <p>{holiday.description}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {/*  */}
           {row === "row" ? (
             <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
               {catalogProducts ? (

@@ -18,10 +18,12 @@ export interface IBlogs {
 }
 
 export interface IBlog {
+  id: number;
   author: number;
   content: string;
   created_at: string;
   title: string;
+  brief_about: string;
 }
 
 export interface IHomeData {
