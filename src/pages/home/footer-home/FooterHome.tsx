@@ -96,21 +96,21 @@ const FooterHome = () => {
           </form>
         </div>
 
-        <div className="flex justify-between  flex-col py-40 w-4/12">
+        <div className="flex justify-between  flex-col py-40 w-4/12 sm:8/12 ">
           <div className="flex justify-around py-2">
-            <img src={halyk} alt="" />
-            <img src={zk} alt="" />
-            <img src={sfb} alt="" />
+            <img src={halyk} alt="" className="sm:w-4/12" />
+            <img src={zk} alt="" className="sm:w-4/12" />
+            <img src={sfb} alt="" className="sm:w-4/12 object-contain " />
           </div>
-          <div className="flex pl-5 h-14 gap-5 items-center py-2 ">
+          <div className="flex pl-5 h-14 gap-2 items-center py-2 sm:w-8/12">
             <img src={gazprom} className="object-contain h-14 " alt="" />
-            <img src={bakai} className=" object-cover h-10 " alt="" />
+            <img src={bakai} className=" object-cover h-10 w-10/12" alt="" />
           </div>
-          <div className="flex pl-5 h-14 gap-3 items-center py-2">
+          <div className="flex pl-5 h-14 gap-3 items-center py-2 sm:w-8/12">
             <img src={huawei} alt="" />
             <img src={kompanion} alt="" />
           </div>
-          <div className="flex justify-around py-2">
+          <div className="flex justify-around py-2 sm:w-8/12">
             <img src={fly} alt="" />
             <img src={dcb} alt="" />
           </div>

@@ -75,9 +75,9 @@ const NavBar = ({}) => {
                 <Link to="/blog" className="py-3 px-3 text-[#ffffff]  ">
                   Блог
                 </Link>
-                <Link to="/contacts" className="py-3 px-3 text-[#ffffff]  ">
+                {/* <Link to="/contacts" className="py-3 px-3 text-[#ffffff]  ">
                   Контакты
-                </Link>
+                </Link> */}
                 <Link to="/" className="py-3 px-3 text-[#ffffff]  ">
                   FAQ
                 </Link>
@@ -126,10 +126,10 @@ const NavBar = ({}) => {
                 <img className="" src={userCircle} alt="" />
               </Link>
               <button
-                className="mobile-menu-button"
+                className="mobile-menu-button focus:outline-none"
                 onClick={() => toggleExpansion(!isExpanded)}
               >
-                <div className="space-y-2">
+                <div className="space-y-2 focus:outline-none">
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
@@ -298,9 +298,9 @@ const NavBar = ({}) => {
           <Link to="/blog" className="py-1 px-3 text-[#ffffff]  ">
             Блог
           </Link>
-          <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
+          {/* <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
             Контакты
-          </Link>
+          </Link> */}
           <Link to="/" className="py-1 px-3 text-[#ffffff]  ">
             FAQ
           </Link>

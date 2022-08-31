@@ -135,7 +135,7 @@ const Basket = ({}) => {
                                       <input
                                         type="text"
                                         className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
-                                        value="500 шт."
+                                        value={item.quantity}
                                         readOnly
                                       />
 
@@ -207,7 +207,7 @@ const Basket = ({}) => {
                                                       <input
                                                         type="text"
                                                         className="rounded-full ... border border-black px-2 w-[39%] text-base "
-                                                        value="500 шт."
+                                                        value={item.quantity}
                                                         readOnly
                                                       />
                                                     </div>
@@ -332,7 +332,7 @@ const Basket = ({}) => {
                                           <input
                                             type="text"
                                             className="rounded-full ... border border-solid border-black  px-2 text-sm w-16"
-                                            value="500 шт."
+                                            value={item.quantity}
                                             readOnly
                                           />
 
@@ -399,7 +399,7 @@ const Basket = ({}) => {
                             <input
                               type="text"
                               className="rounded-full ... border border-solid border-black  px-2 text-sm w-20"
-                              value="500 шт."
+                              value={item.quantity}
                               readOnly
                             />
 
