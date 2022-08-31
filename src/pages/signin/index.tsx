@@ -96,10 +96,15 @@ const SignInPage = () => {
                 <span className="font-normal text-[#929292]">
                   Еще нет аккаунта?{" "}
                 </span>
-                <button>Зарегистрироваться</button>
+
+                <Link to="/signup">
+                  <button className="focus:outline-none">
+                    Зарегистрироваться
+                  </button>
+                </Link>
               </div>
               <Link to="/recovery">
-                <button>Забыли пароль?</button>
+                <button className="focus:outline-none">Забыли пароль?</button>
               </Link>
             </div>
           </form>

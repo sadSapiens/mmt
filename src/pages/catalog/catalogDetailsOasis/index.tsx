@@ -86,14 +86,14 @@ const CatalogDetailsOasis = () => {
                     Каталог
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <img src={arrow} alt="" />
                 </li>
                 <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li className="text-gray-500">Ручки</li>
+                <li className="text-gray-500">Ручки</li> */}
               </ol>
             </div>
             <div className="flex justify-between py-5 md:flex-row flex-col">

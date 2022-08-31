@@ -40,7 +40,7 @@ const Catalog = () => {
                   } flex   align-middle justify-center items-center  rounded-full ... py-1 px-5 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
                 >
                   <img
-                    className=" flex px-2"
+                    className=" flex px-2 h-3 w-3"
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />

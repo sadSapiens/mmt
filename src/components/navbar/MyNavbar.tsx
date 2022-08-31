@@ -186,10 +186,17 @@ const NavBar = ({}) => {
                 <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
                   <div className="relative flex space-x-2 justify-center">
                     <img className="h-6 w-6 " src={shopbag} alt="" />
-                    <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                      {/* {size}7 */}
-                      {order?.items.length}
-                    </span>
+                    {
+                      // @ts-ignore
+                      order?.items.length > 0 ? (
+                        // @ts-ignore
+                        <>
+                          <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                            {order?.items.length}
+                          </span>
+                        </>
+                      ) : null
+                    }
                     <span className="text-white flex flex-wrap sm:text-sm p-0">
                       Корзина
                     </span>
@@ -201,7 +208,7 @@ const NavBar = ({}) => {
                   <>
                     <div className="flex gap-4 justify-center items-center">
                       <Link to="/signup">
-                        <button className="text-white flex items-center text-center justify-center">
+                        <button className="text-white cursor-pointer focus:outline-none flex items-center text-center justify-center">
                           Регистрация
                         </button>
                       </Link>
