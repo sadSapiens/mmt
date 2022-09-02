@@ -18,7 +18,7 @@ import { fetchOrder } from "../../store/order";
 import { useOrder } from "../../store/order/hooks";
 
 const NavBar = ({}) => {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [isExpanded, toggleExpansion] = React.useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -77,8 +77,8 @@ const NavBar = ({}) => {
                 {/* <Link to="/contacts" className="py-3 px-3 text-[#ffffff]  ">
                   Контакты
                 </Link> */}
-                <Link to="/" className="py-3 px-3 text-[#ffffff]  ">
-                  FAQ
+                <Link to="/about" className="py-3 px-3 text-[#ffffff]  ">
+                  О нас
                 </Link>
               </div>
             </div>
@@ -312,8 +312,8 @@ const NavBar = ({}) => {
           {/* <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
             Контакты
           </Link> */}
-          <Link to="/" className="py-1 px-3 text-[#ffffff]  ">
-            FAQ
+          <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
+            О нас
           </Link>
           <button onClick={handleLogout} className="py-1 px-3 text-[#ffffff]  ">
             Выйти

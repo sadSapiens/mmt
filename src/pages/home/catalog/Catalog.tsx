@@ -59,8 +59,9 @@ const Catalog = () => {
                 className="flex flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
               >
                 {item.categories.length && item.categories.length > 6 && !more
-                  ? item.categories.slice(0, 6).map((el) => (
+                  ? item.categories.slice(0, 6).map((el, i) => (
                       <Link
+                        key={i}
                         to={
                           item.is_holidays
                             ? `catalog?categoryId=${el.id}&is-holidays=true`
@@ -79,8 +80,9 @@ const Catalog = () => {
                         </div>
                       </Link>
                     ))
-                  : item.categories.map((el) => (
+                  : item.categories.map((el, i) => (
                       <Link
+                        key={i}
                         to={
                           item.is_holidays
                             ? `catalog?categoryId=${el.id}&is-holidays=true`

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../store";
 import { fetchCategories } from "../../store/category";
 import { useCategoryProducts } from "../../store/category/hooks";
@@ -7,13 +7,12 @@ import catalog from "../../assets/img/catalog.png";
 
 import "./megamenu.css";
 import { useHome } from "../../store/varia/hooks";
-import { fetchHome } from "../../store/varia";
 
 const MegaMenu = () => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
-  const [isOpenSub, setIsOpenSub] = useState(false);
+  // const [isOpenSub, setIsOpenSub] = useState(false);
 
-  const [isExpanded, toggleExpansion] = React.useState(false);
+  // const [isExpanded, toggleExpansion] = React.useState(false);
   const [subcategories, setSubcategories] = useState([]);
 
   const dispatch = useAppDispatch();
@@ -97,7 +96,7 @@ const MegaMenu = () => {
                             {item.name}
                           </button>
                         ))}
-                        <></>
+
                         {/* })} */}
                         <span>termos</span>
                       </div>

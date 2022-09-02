@@ -6,7 +6,6 @@ import message from "./assets/Message.png";
 import call from "./assets/Call.png";
 import logo from "./assets/logo.png";
 import fbBig from "./assets/fbBig.svg";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
