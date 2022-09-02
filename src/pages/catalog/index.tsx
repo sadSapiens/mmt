@@ -257,7 +257,7 @@ const CatalogPage = () => {
         {/*  */}
         <div className="md:hidden flex flex-row justify-between">
           <div className="md:hidden w-8/12 flex  ">
-            <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
+            <div className=" mx-auto  w-auto  font-jost py-2 flex justify-between flex-row ">
               <div className="flex justify-center flex-col">
                 <div className="dropdown relative">
                   <button
@@ -295,7 +295,7 @@ const CatalogPage = () => {
                       onClick={() =>
                         setPriceSort({ descending: 0, ascending: 1 })
                       }
-                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-b-2 border-t-2 border-black"
                     >
                       По возрастанию цены
                     </li>
@@ -455,7 +455,7 @@ const CatalogPage = () => {
                   to={`/catalog?categoryId=${item.id}&is-holidays=true`}
                 >
                   <div className="flex justify-center items-center gap-2 flex-row">
-                    <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
+                    <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4 text-black">
                       {item.name}
                     </button>
                   </div>
@@ -854,7 +854,7 @@ const CatalogPage = () => {
               </div>
               <div>
                 <img
-                  src={`http://localhost:3030/${holiday.banner}`}
+                  src={holiday.banner}
                   className="object-contain flex justify-center items-center h-40 w-72 py-4"
                   alt=""
                 />

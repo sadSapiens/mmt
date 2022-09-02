@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import newsone from "./assets/newsone.png";
-import newstwo from "./assets/newsyellow.png";
-import newsthree from "./assets/newsthree.png";
-import BlogNews from "./blogDetail/BlogNews";
 import searchl from "./assets/search.png";
 import newspoto from "./assets/blognew.png";
 import { useAppDispatch } from "../../store";
@@ -65,7 +62,7 @@ const Blog = () => {
                       {blogNews.data[0].brief_about}
                     </p>
                     <div className="flex justify-center items-center md:flex md:justify-start">
-                      <Link to={`/blog/${blogNews.data[0].author}`}>
+                      <Link to={`/blog/${blogNews.data[0].id}`}>
                         <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
                           Читать статью
                         </button>
@@ -93,9 +90,9 @@ const Blog = () => {
                         alt=""
                         className="w-96 flex justify-center items-center place-self-center "
                       />
-                      <div className="md:px-4 ">
+                      <div className="md:px-4 text-black">
                         <div className="flex justify-between ">
-                          <span className="hidden md:flex">
+                          <span className="hidden md:flex text-black hover:text-black">
                             Последние новости
                           </span>
                           <p className="text-sm flex items-center">

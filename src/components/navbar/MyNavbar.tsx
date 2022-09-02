@@ -3,7 +3,6 @@ import logo from "../../assets/img/logo.svg";
 import searchl from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
-import catalog from "../../assets/img/catalog.png";
 import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
@@ -182,25 +181,25 @@ const NavBar = ({}) => {
             </div>
 
             <div className="hidden md:flex items-center  justify-center gap-4">
-              <Link to="/cart">
-                <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
-                  <div className="relative flex space-x-2 justify-center">
-                    <img className="h-6 w-6 " src={shopbag} alt="" />
-                    {
+              <Link to="/cart" className="flex">
+                <div className="flex relative justify-center items-center align-middle text-center gap-2 sm:gap-1">
+                  {/* <div className="relative flex space-x-2 justify-center"> */}
+                  <img className="h-6 w-6 " src={shopbag} alt="" />
+                  {
+                    // @ts-ignore
+                    order?.items.length > 0 ? (
                       // @ts-ignore
-                      order?.items.length > 0 ? (
-                        // @ts-ignore
-                        <>
-                          <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                            {order?.items.length}
-                          </span>
-                        </>
-                      ) : null
-                    }
-                    <span className="text-white flex flex-wrap sm:text-sm p-0">
-                      Корзина
-                    </span>
-                  </div>
+                      <>
+                        <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                          {order?.items.length}
+                        </span>
+                      </>
+                    ) : null
+                  }
+                  <span className="text-white flex flex-wrap sm:text-sm p-0">
+                    Корзина
+                  </span>
+                  {/* </div> */}
                 </div>
               </Link>
               <div>
@@ -223,7 +222,7 @@ const NavBar = ({}) => {
                 ) : (
                   <>
                     <div className="flex  gap-4">
-                      <Link to="/profile">
+                      <Link to="/profile" className="flex">
                         <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
                           <img className="h-6 w-6" src={userCircle} alt="" />
 
@@ -271,12 +270,17 @@ const NavBar = ({}) => {
               <Link to="/cart">
                 <div className="flex relative items-center align-middle text-center gap-2">
                   <img src={shopbag} alt="" className="relative h-7 w-7" />
-                  <div className="flex justify-end items-end">
-                    <span className="text-[10px] absolute  font-normal bottom-5 left-3 px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                      {/* {size}7 */}
-                      {order?.items.length}
-                    </span>
-                  </div>
+                  {
+                    // @ts-ignore
+                    order?.items.length > 0 ? (
+                      // @ts-ignore
+                      <>
+                        <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                          {order?.items.length}
+                        </span>
+                      </>
+                    ) : null
+                  }
                 </div>
               </Link>
             </div>

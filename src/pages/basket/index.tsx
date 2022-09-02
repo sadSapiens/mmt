@@ -73,7 +73,6 @@ const Basket = ({}) => {
     }
   };
 
-  // const size = cartProducts?.items.length;
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
       <span className="text-[#000000]">Моя корзина</span>
@@ -133,7 +132,6 @@ const Basket = ({}) => {
                                       <h2 className="font-semibold">
                                         {item.product.name}
                                       </h2>
-                                      {/* <span className="font-light">Цвет:</span> */}
                                       <span className="font-light">
                                         Тип нанесения: термопечать
                                       </span>
@@ -517,14 +515,18 @@ const Basket = ({}) => {
                     <span className="font-light">Товары, 3 шт.</span>
 
                     <p>Адрес доставки</p>
-                    <input
-                      type="text"
-                      className="px-5 py-2 border-black border-[1px] rounded-full ... "
-                      placeholder="Промокод"
-                      name="referalCode"
-                      value={payInputs.referalCode}
-                      onChange={handleChangePayInputs}
-                    />
+
+                    <div className="flex">
+                      <label htmlFor=""> Промокод</label>
+                      <input
+                        type="text"
+                        className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                        placeholder="Промокод"
+                        name="referalCode"
+                        value={payInputs.referalCode}
+                        onChange={handleChangePayInputs}
+                      />
+                    </div>
                   </div>
 
                   <div className="w-4/12 flex flex-col gap-5 p-0">

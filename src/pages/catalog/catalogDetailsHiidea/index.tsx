@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
 import penOne from "../assets/penOne.png";
 import penTwo from "../assets/penTwo.png";
 import penThree from "../assets/penThree.png";

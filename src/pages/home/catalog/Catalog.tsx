@@ -56,7 +56,7 @@ const Catalog = () => {
             return index === openTab ? (
               <div
                 key={index}
-                className="flex flex-wrap md:flex-row justify-center items-center md:gap-20 gap-10 py-3"
+                className="flex flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
               >
                 {item.categories.length && item.categories.length > 6 && !more
                   ? item.categories.slice(0, 6).map((el) => (
@@ -68,7 +68,11 @@ const Catalog = () => {
                         }
                       >
                         <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
-                          <img src={el.picture ? el.picture : one} alt="" />
+                          <img
+                            src={el.picture ? el.picture : one}
+                            alt=""
+                            className="object-contain"
+                          />
                           <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {el.name}
                           </span>
@@ -84,8 +88,16 @@ const Catalog = () => {
                         }
                       >
                         <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
-                          <img src={el.picture ? el.picture : one} alt="" />
-                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                          <img
+                            src={el.picture ? el.picture : one}
+                            alt=""
+                            className=" h-44 w-56 object-contain"
+                          />
+                          <span
+                            className="flex align-bottom justify-center items-end text-black text-sm  md:text-base text-end
+                          
+                          "
+                          >
                             {el.name}
                           </span>
                         </div>
@@ -100,7 +112,7 @@ const Catalog = () => {
       <div className="flex justify-center py-3">
         <button
           onClick={() => setMore(!more)}
-          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10 text-white"
+          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10  text-white"
         >
           {more ? "Скрыть" : "Больше товаров"}
           <img

@@ -48,7 +48,7 @@ const FooterHome = () => {
             <img src={beeline} className="" alt="" />
           </div>
 
-          <div className="flex justify-between h-9 pr-7">
+          <div className="flex justify-between ">
             <img src={unodc} className="w-auto" alt="" />
             <img src={cocaCola} className="w-auto pr-6" alt="" />
           </div>
@@ -95,20 +95,20 @@ const FooterHome = () => {
         </div>
 
         <div className="flex justify-between  flex-col py-40 w-4/12 sm:8/12 ">
-          <div className="flex justify-around py-2">
+          <div className="flex justify-around py-2 h-25">
             <img src={halyk} alt="" className="sm:w-4/12" />
             <img src={zk} alt="" className="sm:w-4/12" />
-            <img src={sfb} alt="" className="sm:w-4/12 object-contain " />
+            <img src={sfb} alt="" className="sm:w-4/12 object-center " />
           </div>
-          <div className="flex pl-5 h-14 gap-2 items-center py-2 sm:w-8/12">
+          <div className="flex pl-5 h-14 gap-2 items-center justify-between py-2 sm:w-8/12">
             <img src={gazprom} className="object-contain h-14 " alt="" />
             <img src={bakai} className=" object-cover h-10 w-10/12" alt="" />
           </div>
-          <div className="flex pl-5 h-14 gap-3 items-center py-2 sm:w-8/12">
+          <div className="flex pl-5 h-14 gap-3 items-center py-2 sm:w-8/12 justify-between">
             <img src={huawei} alt="" />
             <img src={kompanion} alt="" />
           </div>
-          <div className="flex justify-around py-2 sm:w-8/12">
+          <div className="flex justify-between items-center py-2 sm:w-8/12 ">
             <img src={fly} alt="" />
             <img src={dcb} alt="" />
           </div>

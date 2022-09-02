@@ -1,6 +1,6 @@
 import React from "react";
 import "./faq.css";
-import faqImage from "./assets/zhyldyz.svg";
+import faqImage from "./assets/zhyldyz2.png";
 import calling from "./assets/Calling.png";
 import { useHome } from "../../../store/varia/hooks";
 
