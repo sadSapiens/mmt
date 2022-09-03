@@ -3,7 +3,6 @@ import logo from "../../assets/img/logo.svg";
 import searchl from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
-import catalog from "../../assets/img/catalog.png";
 import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
@@ -19,8 +18,8 @@ import { fetchOrder } from "../../store/order";
 import { useOrder } from "../../store/order/hooks";
 
 const MyNavbar = ({}) => {
-  const [open, setOpen] = React.useState(false);
-  const [isExpanded, toggleExpansion] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
+  // const [isExpanded, toggleExpansion] = React.useState(false);
   const [isBurger, setIsBurger] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -86,13 +85,16 @@ const MyNavbar = ({}) => {
             </div>
 
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
-              <div className="sm:hidden hidden  md:flex md:mx-3">
+              <div className="lg:flex hidden  md:flex md:mx-3 gap-2 items-center justify-center">
                 <img
-                  className="h-1 w-auto sm:h-5 sm:hidden"
+                  className="h-1 w-auto sm:h-5 sm:hidden lg:flex"
                   src={phone}
                   alt=""
                 />
-                <a href="tel:+1234567890" className="text-white sm:hidden">
+                <a
+                  href="tel:+1234567890"
+                  className="text-white sm:hidden lg:flex"
+                >
                   {" "}
                   0 555 88 35 00{" "}
                 </a>

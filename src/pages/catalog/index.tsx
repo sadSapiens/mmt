@@ -36,7 +36,7 @@ const CatalogPage = () => {
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
-  const [totalCount, setTotalCount] = useState();
+  const [totalCount, setTotalCount] = useState<any>();
   const [showFilter, setShowFilter] = useState(false);
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const selectedProduct = useSelectedCatalogProduct();
