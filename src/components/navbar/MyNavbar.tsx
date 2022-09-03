@@ -279,10 +279,17 @@ const MyNavbar = ({}) => {
                 <div className="flex relative items-center align-middle text-center gap-2">
                   <img src={shopbag} alt="" className="relative h-7 w-7" />
                   <div className="flex justify-end items-end">
-                    <span className="text-[10px] absolute  font-normal bottom-5 left-3 px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                      {/* {size}7 */}
-                      {order?.items.length}
-                    </span>
+                    {
+                      // @ts-ignore
+                      order?.items.length > 0 ? (
+                        // @ts-ignore
+                        <>
+                          <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                            {order?.items.length}
+                          </span>
+                        </>
+                      ) : null
+                    }
                   </div>
                 </div>
               </Link>
@@ -295,13 +302,10 @@ const MyNavbar = ({}) => {
         // className={`${isBurger ? `block` : `hidden`
         //   } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
         className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${
-          isBurger ? "header__right_active" : ""
+          isBurger ? "header__right_active" : "header__right"
         }`}
       >
-        <Link
-          to="/"
-          className="md:hidden px-3 text-[#ffffff] !items-start flex"
-        >
+        <Link to="/" className="px-3 text-[#ffffff] !items-start flex">
           <MegaMenu isBurger={isBurger} />
         </Link>
         <div
