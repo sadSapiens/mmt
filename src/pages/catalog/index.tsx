@@ -418,8 +418,10 @@ const CatalogPage = () => {
             {breadCrumbs.length > 0 &&
               breadCrumbs.map((item: any, i) => (
                 <li className="flex" key={i}>
-                  <img src={rightarrow} alt="" />
-                  <span className="!text-black ">{item.name}</span>
+                  <img src={rightarrow} className="object-contain" alt="" />
+                  <span className="!text-black lg:text-base  text-sm">
+                    {item.name}
+                  </span>
                 </li>
               ))}
           </ol>
@@ -439,13 +441,13 @@ const CatalogPage = () => {
             <img src={union} alt="" />
           </button>
         </div>
-        <div className=" md:gap-4 gap-5 md:hidden  flex py-4  md:overflow-auto  overflow-scroll">
+        {/* <div className=" md:gap-4 gap-5 md:hidden  flex py-4  md:overflow-auto  overflow-scroll">
           <div className="block text-center self-center">
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-row justify-start items-center gap-4">
           {isHolidaysCategory

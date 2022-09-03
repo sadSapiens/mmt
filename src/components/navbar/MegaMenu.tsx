@@ -4,17 +4,20 @@ import { useAppDispatch } from "../../store";
 import { fetchCategories } from "../../store/category";
 import { useCategoryProducts } from "../../store/category/hooks";
 import catalog from "../../assets/img/catalog.png";
-
+import arrow from "../../assets/direction-right.png";
 import "./megamenu.css";
 import { useHome } from "../../store/varia/hooks";
 import { fetchHome } from "../../store/varia";
-
-const MegaMenu = () => {
+interface IMyProps {
+  isBurger: boolean,
+}
+const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
   const [isOpenSub, setIsOpenSub] = useState(false);
 
-  const [isExpanded, toggleExpansion] = React.useState(false);
+  const [isCategoryes, setIsCategoryes] = React.useState(false);
   const [subcategories, setSubcategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('');
 
   const dispatch = useAppDispatch();
   const categories = useCategoryProducts();
@@ -23,6 +26,15 @@ const MegaMenu = () => {
     dispatch(fetchCategories() as any);
   }, [dispatch]);
   const home = useHome();
+
+  const handleClear = () => {
+    setSubcategories([])
+    setActiveCategory('')
+    setSubcategories([])
+    setIsCategoryes(false)
+  }
+  console.log(isOpenCatalog);
+
   return (
     <>
       <div className="w-full">
@@ -32,13 +44,16 @@ const MegaMenu = () => {
             onMouseLeave={() => setIsOpenCatalog(false)}
             className="drop-downn flex md:flex-row flex-col"
           >
-            <div
-              onClick={() => setIsOpenCatalog(!isOpenCatalog)}
-              className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
-            >
-              <img src={catalog} className="object-contain" alt="" />
-              Каталог
-            </div>
+            {!isOpenCatalog && (
+
+              <div
+                onClick={() => setIsOpenCatalog(!isOpenCatalog)}
+                className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
+              >
+                <img src={catalog} className="object-contain" alt="" />
+                Каталог
+              </div>
+            )}
             {/*  */}
             {/*  */}
             <div
@@ -46,10 +61,24 @@ const MegaMenu = () => {
                 display: isOpenCatalog ? "block" : "none",
               }}
               className="megablock bg-[#343434] py-2  "
-              onClick={() => setIsOpenCatalog(true)}
+            // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
             >
+              {props.isBurger && (
+                <div className="ml-3 mb-3 text-left">
+                  {`< `}
+                  {/* <img src={arrow} alt="" /> */}
+                  {subcategories.length > 0 ? (
+                    <span className="font-light text-xl" onClick={handleClear}>
+                      {activeCategory}
+                    </span>
+                  ) : (
+                    <span className="font-light text-xl" onClick={() => setIsOpenCatalog(false)}>Каталог</span>
+                  )}
+                </div>
+              )}
+
               {home && home.types.length && (
-                <div className="sm:hidden  flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
+                <div className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
                   {home.types.map((item, i) => (
                     <button
                       key={i}
@@ -64,7 +93,7 @@ const MegaMenu = () => {
               )}
               <ul className="flex justify-around items-start text-start">
                 <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
-                  {categories.length > 0 &&
+                  {!isCategoryes && categories.length > 0 ?
                     categories.map((category: any, i: number) => (
                       <div key={i}>
                         <Link to={`catalog?categoryId=${category.id}`}>
@@ -74,13 +103,36 @@ const MegaMenu = () => {
                             onMouseMove={() =>
                               setSubcategories(category.subcategories)
                             }
+                            onClick={() => {
+                              setSubcategories(category.subcategories)
+                              setActiveCategory(category.name)
+                              setIsCategoryes(props.isBurger)
+                            }
+                            }
                           // onClick={() => setIsOpenSub(!isOpenSub)}
                           >
                             {category.name}
                           </li>
                         </Link>
                       </div>
-                    ))}
+                    )) : (
+                      <div className="header__link md:hidden flex flex-col gap-1 items-start font-light ml-3">
+                        <span className="text-xl font-medium mt-4">{activeCategory}</span>
+
+                        {
+                          subcategories.length > 0 &&
+                          subcategories.map((item: any, i: number) => (
+                            <Link
+                              key={i}
+                              onClick={() => setIsOpenCatalog(true)}
+                              to={`catalog?categoryId=${item.id}`}
+                              className="w-full py-1 md:flex"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                      </div>
+                    )}
                 </div>
 
                 <ul className="hidden md:flex flex-col w-full px-6">
@@ -121,6 +173,7 @@ const MegaMenu = () => {
                           </Link>
                         ))}
                     </div>
+
                   </div>
                 </ul>
               </ul>

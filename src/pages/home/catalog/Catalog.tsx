@@ -56,11 +56,12 @@ const Catalog = () => {
             return index === openTab ? (
               <div
                 key={index}
-                className="flex flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
+                className="flex  flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
               >
                 {item.categories.length && item.categories.length > 6 && !more
                   ? item.categories.slice(0, 6).map((el, i) => (
                       <Link
+                        className=""
                         key={i}
                         to={
                           item.is_holidays
@@ -82,6 +83,7 @@ const Catalog = () => {
                     ))
                   : item.categories.map((el, i) => (
                       <Link
+                        className="border  border-black"
                         key={i}
                         to={
                           item.is_holidays
@@ -89,7 +91,7 @@ const Catalog = () => {
                             : `catalog?categoryId=${el.id}`
                         }
                       >
-                        <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                        <div className="  md:h-56 md:w-52 h-48 w-32  ">
                           <img
                             src={el.picture ? el.picture : one}
                             alt=""
@@ -111,7 +113,7 @@ const Catalog = () => {
         </>
       )}
 
-      <div className="flex justify-center py-3">
+      <div className="flex justify-center py-14 ">
         <button
           onClick={() => setMore(!more)}
           className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10  text-white"

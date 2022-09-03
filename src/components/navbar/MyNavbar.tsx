@@ -162,7 +162,7 @@ const MyNavbar = ({}) => {
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
                 <div className="py-2 px-3 text-[#ffffff]  text-center items-center flex align-middle ">
                   <Link to="/catalog">
-                    <MegaMenu />
+                    <MegaMenu isBurger={isBurger} />
                   </Link>
                 </div>
 
@@ -302,7 +302,7 @@ const MyNavbar = ({}) => {
           to="/"
           className="md:hidden px-3 text-[#ffffff] !items-start flex"
         >
-          <MegaMenu />
+          <MegaMenu isBurger={isBurger} />
         </Link>
         <div
           onClick={() => setIsBurger(false)}
