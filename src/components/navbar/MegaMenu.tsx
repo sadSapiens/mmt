@@ -42,12 +42,12 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
             onMouseLeave={() => setIsOpenCatalog(false)}
             onClick={() => setIsOpenCatalog(!isOpenCatalog)}
           >
-            {/* {!isOpenCatalog && (
-            )} */}
-            <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10">
-              <img src={catalog} className="object-contain flex" alt="" />
-              <span onMouseMove={() => setIsOpenCatalog(true)}>Каталог</span>
-            </div>
+            {!isOpenCatalog && (
+              <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10">
+                <img src={catalog} className="object-contain flex" alt="" />
+                <span onMouseMove={() => setIsOpenCatalog(true)}>Каталог</span>
+              </div>
+            )}
             {/*  */}
             {/*  */}
             <div
@@ -100,7 +100,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                       <div key={i}>
                         <Link to={`catalog?categoryId=${category.id}`}>
                           <li
-                            className="  category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
+                            className=" hover:bg-gray-600 category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
                             key={i}
                             onMouseMove={() =>
                               setSubcategories(category.subcategories)

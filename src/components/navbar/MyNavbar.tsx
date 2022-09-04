@@ -190,17 +190,17 @@ const MyNavbar = ({}) => {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center  justify-center gap-4">
-              <Link to="/cart">
-                <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
-                  <div className="relative flex space-x-2 justify-center">
+            <div className="hidden md:flex items-center  justify-center gap-4 ">
+              <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                <Link to="/cart" className="flex justify-center items-center">
+                  <div className="relative flex  justify-center items-center gap-2">
                     <img className="h-6 w-6 " src={shopbag} alt="" />
                     {
                       // @ts-ignore
                       order?.items.length > 0 ? (
                         // @ts-ignore
                         <>
-                          <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                          <span className=" absolute left-2 font-normal px-0.5  w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
                             {order?.items.length}
                           </span>
                         </>
@@ -210,8 +210,9 @@ const MyNavbar = ({}) => {
                       Корзина
                     </span>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
+
               <div>
                 {!token ? (
                   <>
@@ -230,25 +231,25 @@ const MyNavbar = ({}) => {
                     </div>
                   </>
                 ) : (
-                  <>
-                    <div className="flex  gap-4">
-                      <Link to="/profile">
-                        <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
-                          <img className="h-6 w-6" src={userCircle} alt="" />
-
-                          <span className="text-white flex flex-wrap sm:text-sm p-0">
-                            Личный кабинет
-                          </span>
-                        </div>
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                  <div className="flex  gap-4">
+                    <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                      <Link
+                        to="/profile"
+                        className="flex justify-center items-center gap-2"
                       >
-                        Выйти
-                      </button>
+                        <img className="h-6 w-6" src={userCircle} alt="" />
+                        <span className="text-white flex flex-wrap sm:text-sm p-0">
+                          Личный кабинет
+                        </span>
+                      </Link>
                     </div>
-                  </>
+                    <button
+                      onClick={handleLogout}
+                      className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                    >
+                      Выйти
+                    </button>
+                  </div>
                 )}
               </div>
             </div>

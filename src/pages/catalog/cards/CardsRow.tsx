@@ -42,7 +42,7 @@ const CardsRow = ({ product }: Props) => {
             : `/catalog-detailhiidea/${product.id}`
         }
       >
-        <div className="py-7 flex justify-center  md:w-11/12 w-full">
+        <div className="py-7 flex justify-center   md:w-[50rem] w-full">
           <div className=" py-2 border border-black w-[100%] flex flex-row">
             <div className=" flex md:w-3/12 w-4/12">
               <img

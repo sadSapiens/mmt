@@ -67,12 +67,7 @@ const CatalogDetailsOasis = () => {
     <div>
       {selectedProduct ? (
         <>
-          <div
-            className="mx-auto
-    md:px-10 px-3
-    w-auto
-    py-5"
-          >
+          <div className="mx-auto md:px-10 px-3 w-auto py-5">
             <div></div>
 
             <div className="rounded-md w-full font-jost">

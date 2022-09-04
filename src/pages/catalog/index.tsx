@@ -511,7 +511,7 @@ const CatalogPage = () => {
 
                         <label
                           htmlFor={item.name}
-                          className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 py-1 rounded-full ... w-28 !mb-0"
+                          className="flex justify-center cursor-pointer items-center  px-4 py-1 rounded-full ... w-28 !mb-0"
                         >
                           {item.name}
                         </label>
