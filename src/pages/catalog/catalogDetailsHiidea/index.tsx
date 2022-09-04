@@ -148,10 +148,10 @@ const CatalogDetailsHiidea = () => {
                 </span>{" "}
                 {currentProduct &&
                 currentProduct.images &&
-                currentProduct.images.length ? (
+                currentProduct.images.length > 0 ? (
                   <img
                     className="w-auto md:h-96  h-72 object-fill"
-                    src={currentProduct.images[0].superbig}
+                    src={currentProduct.images[0].big}
                     alt=""
                   />
                 ) : (
