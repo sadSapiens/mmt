@@ -12,9 +12,9 @@ const CartEmpty = () => {
           <h1 className="font-bold font-jost text-3xl text-black ">
             Корзина пуста
           </h1>
-          <span>Похоже вы еще не добавили товары</span>
+          <span className="py-3">Похоже вы еще не добавили товары</span>
 
-          <div className="flex justify-center mr-36">
+          <div className="flex justify-center lg:mr-36 mr-10 py-3">
             <img src={empty} alt="" />
           </div>
           <Link to="/catalog">

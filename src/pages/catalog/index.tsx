@@ -36,7 +36,7 @@ const CatalogPage = () => {
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
-  const [totalCount, setTotalCount] = useState();
+  const [totalCount, setTotalCount] = useState<any>();
   const [showFilter, setShowFilter] = useState(false);
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const selectedProduct = useSelectedCatalogProduct();
@@ -257,7 +257,7 @@ const CatalogPage = () => {
         {/*  */}
         <div className="md:hidden flex flex-row justify-between">
           <div className="md:hidden w-8/12 flex  ">
-            <div className=" mx-auto  w-auto  font-jost py-9 flex justify-between flex-row ">
+            <div className=" mx-auto  w-auto  font-jost py-2 flex justify-between flex-row ">
               <div className="flex justify-center flex-col">
                 <div className="dropdown relative">
                   <button
@@ -295,7 +295,7 @@ const CatalogPage = () => {
                       onClick={() =>
                         setPriceSort({ descending: 0, ascending: 1 })
                       }
-                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-black"
+                      className="dropdown-item cursor-pointer text-sm px-4 block w-full text-black hover:bg-white border-2 border-b-2 border-t-2 border-black"
                     >
                       По возрастанию цены
                     </li>
@@ -418,8 +418,10 @@ const CatalogPage = () => {
             {breadCrumbs.length > 0 &&
               breadCrumbs.map((item: any, i) => (
                 <li className="flex" key={i}>
-                  <img src={rightarrow} alt="" />
-                  <span className="!text-black ">{item.name}</span>
+                  <img src={rightarrow} className="object-contain" alt="" />
+                  <span className="!text-black lg:text-base  text-sm">
+                    {item.name}
+                  </span>
                 </li>
               ))}
           </ol>
@@ -439,13 +441,13 @@ const CatalogPage = () => {
             <img src={union} alt="" />
           </button>
         </div>
-        <div className=" md:gap-4 gap-5 md:hidden  flex py-4  md:overflow-auto  overflow-scroll">
+        {/* <div className=" md:gap-4 gap-5 md:hidden  flex py-4  md:overflow-auto  overflow-scroll">
           <div className="block text-center self-center">
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
             <div className="bg-black h-[2px] w-4 my-1 p-0 m-0"></div>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-row justify-start items-center gap-4">
           {isHolidaysCategory
@@ -455,7 +457,7 @@ const CatalogPage = () => {
                   to={`/catalog?categoryId=${item.id}&is-holidays=true`}
                 >
                   <div className="flex justify-center items-center gap-2 flex-row">
-                    <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4">
+                    <button className="rounded-full ... border !border-black md:w-[10%] w-auto h-8 px-4 text-black">
                       {item.name}
                     </button>
                   </div>
@@ -509,7 +511,7 @@ const CatalogPage = () => {
 
                         <label
                           htmlFor={item.name}
-                          className="flex justify-center cursor-pointer items-center bg-[#65A8E0] px-4 py-1 rounded-full ... w-28 !mb-0"
+                          className="flex justify-center cursor-pointer items-center  px-4 py-1 rounded-full ... w-28 !mb-0"
                         >
                           {item.name}
                         </label>
@@ -854,7 +856,7 @@ const CatalogPage = () => {
               </div>
               <div>
                 <img
-                  src={`http://localhost:3030/${holiday.banner}`}
+                  src={holiday.banner}
                   className="object-contain flex justify-center items-center h-40 w-72 py-4"
                   alt=""
                 />

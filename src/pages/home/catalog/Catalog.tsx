@@ -40,7 +40,7 @@ const Catalog = () => {
                   } flex   align-middle justify-center items-center  rounded-full ... py-1 px-5 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
                 >
                   <img
-                    className=" flex px-2"
+                    className=" flex px-2 h-3 w-3"
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />
@@ -56,11 +56,13 @@ const Catalog = () => {
             return index === openTab ? (
               <div
                 key={index}
-                className="flex flex-wrap md:flex-row justify-center items-center md:gap-20 gap-10 py-3"
+                className="flex  flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
               >
                 {item.categories.length && item.categories.length > 6 && !more
-                  ? item.categories.slice(0, 6).map((el) => (
+                  ? item.categories.slice(0, 6).map((el, i) => (
                       <Link
+                        className=""
+                        key={i}
                         to={
                           item.is_holidays
                             ? `catalog?categoryId=${el.id}&is-holidays=true`
@@ -68,24 +70,38 @@ const Catalog = () => {
                         }
                       >
                         <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
-                          <img src={el.picture ? el.picture : one} alt="" />
+                          <img
+                            src={el.picture ? el.picture : one}
+                            alt=""
+                            className="object-contain"
+                          />
                           <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {el.name}
                           </span>
                         </div>
                       </Link>
                     ))
-                  : item.categories.map((el) => (
+                  : item.categories.map((el, i) => (
                       <Link
+                        className="border  border-black"
+                        key={i}
                         to={
                           item.is_holidays
                             ? `catalog?categoryId=${el.id}&is-holidays=true`
                             : `catalog?categoryId=${el.id}`
                         }
                       >
-                        <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
-                          <img src={el.picture ? el.picture : one} alt="" />
-                          <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                        <div className="  md:h-56 md:w-52 h-48 w-32  ">
+                          <img
+                            src={el.picture ? el.picture : one}
+                            alt=""
+                            className=" h-44 w-56 object-contain"
+                          />
+                          <span
+                            className="flex align-bottom justify-center items-end text-black text-sm  md:text-base text-end
+                          
+                          "
+                          >
                             {el.name}
                           </span>
                         </div>
@@ -97,10 +113,10 @@ const Catalog = () => {
         </>
       )}
 
-      <div className="flex justify-center py-3">
+      <div className="flex justify-center py-14 ">
         <button
           onClick={() => setMore(!more)}
-          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10 text-white"
+          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10  text-white"
         >
           {more ? "Скрыть" : "Больше товаров"}
           <img

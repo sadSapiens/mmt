@@ -132,7 +132,7 @@ const ProfileComponent = () => {
               )}
             </div>
             <div className="py-3 flex flex-row justify-center gap-2 w-auto text-sm  md:!flex-col">
-              <div className="  text-[#79B15E] rounded-full ...  border-[#79B15E] flex items-center justify-center py-1 px-8 md:border ">
+              <div className="  text-[#79B15E] rounded-full ...  border-[#79B15E] flex items-center justify-center py-1 px-8 md:border border-[1px] ">
                 <input
                   onChange={(e) => onSelectImage(e)}
                   accept="image/*"

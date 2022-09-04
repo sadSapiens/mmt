@@ -56,7 +56,7 @@ const SignUpPage = () => {
     <>
       <div className="">
         <div className="bg-white h-1"></div>
-        <div className="bg-[#343434] mx-auto px-9 w-auto py-5">
+        <div className="bg-[#343434] mx-auto px-9 w-auto py-5 flex flex-col justify-center items-center">
           <form
             onSubmit={handleSubmit}
             className="flex justify-center flex-col items-center text-center "
@@ -118,7 +118,9 @@ const SignUpPage = () => {
             </div>
           </form>
           <Link to="/signin">
-            <button className="text-white py-3">Уже есть аккаунт?</button>
+            <button className="text-white py-3 flex justify-center items-center focus:outline-none">
+              Уже есть аккаунт?
+            </button>
           </Link>
         </div>
         <div className="bg-white h-1"></div>

@@ -3,7 +3,6 @@ import logo from "../../assets/img/logo.svg";
 import searchl from "../../assets/img/Vector.png";
 import phone from "../../assets/img/phone.png";
 import location from "../../assets/img/location.png";
-import catalog from "../../assets/img/catalog.png";
 import shopbag from "../../assets/img/shopbag.png";
 
 import userCircle from "../../assets/img/user-circle.png";
@@ -18,9 +17,10 @@ import { setSearchValue } from "../../store/catalog/actions";
 import { fetchOrder } from "../../store/order";
 import { useOrder } from "../../store/order/hooks";
 
-const NavBar = ({}) => {
-  const [open, setOpen] = React.useState(false);
-  const [isExpanded, toggleExpansion] = React.useState(false);
+const MyNavbar = ({}) => {
+  // const [open, setOpen] = React.useState(false);
+  // const [isExpanded, toggleExpansion] = React.useState(false);
+  const [isBurger, setIsBurger] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -85,13 +85,16 @@ const NavBar = ({}) => {
             </div>
 
             <div className="hidden md:flex items-center align-middle justify-between  gap-6  ">
-              <div className="sm:hidden hidden  md:flex md:mx-3">
+              <div className="lg:flex hidden  md:flex md:mx-3 gap-2 items-center justify-center">
                 <img
-                  className="h-1 w-auto sm:h-5 sm:hidden"
+                  className="h-1 w-auto sm:h-5 sm:hidden lg:flex"
                   src={phone}
                   alt=""
                 />
-                <a href="tel:+1234567890" className="text-white sm:hidden">
+                <a
+                  href="tel:+1234567890"
+                  className="text-white sm:hidden lg:flex"
+                >
                   {" "}
                   0 555 88 35 00{" "}
                 </a>
@@ -121,11 +124,11 @@ const NavBar = ({}) => {
                 />
               </div>
             </Link>
-            <div className="flex gap-5">
+            <div className="flex gap-5 flex items-center">
               <Link to="/profile">
-                <img className="" src={userCircle} alt="" />
+                <img className="userAccount" src={userCircle} alt="" />
               </Link>
-              <button
+              {/* <button
                 className="mobile-menu-button focus:outline-none"
                 onClick={() => toggleExpansion(!isExpanded)}
               >
@@ -134,7 +137,13 @@ const NavBar = ({}) => {
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
                   <span className="block w-6 h-0.5 bg-slate-50"></span>
                 </div>
-              </button>
+              </button> */}
+              <div
+                className={`burger ${isBurger ? "burger__active" : ""}`}
+                onClick={() => setIsBurger(!isBurger)}
+              >
+                <span className="burger__line" />
+              </div>
             </div>
           </div>
         </div>
@@ -155,7 +164,7 @@ const NavBar = ({}) => {
               <div className="hidden md:flex  items-center space-x-1 text-center align-middle">
                 <div className="py-2 px-3 text-[#ffffff]  text-center items-center flex align-middle ">
                   <Link to="/catalog">
-                    <MegaMenu />
+                    <MegaMenu isBurger={isBurger} />
                   </Link>
                 </div>
 
@@ -181,27 +190,35 @@ const NavBar = ({}) => {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center  justify-center gap-4">
-              <Link to="/cart">
-                <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
-                  <div className="relative flex space-x-2 justify-center">
+            <div className="hidden md:flex items-center  justify-center gap-4 ">
+              <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                <Link to="/cart" className="flex justify-center items-center">
+                  <div className="relative flex  justify-center items-center gap-2">
                     <img className="h-6 w-6 " src={shopbag} alt="" />
-                    <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                      {/* {size}7 */}
-                      {order?.items.length}
-                    </span>
+                    {
+                      // @ts-ignore
+                      order?.items.length > 0 ? (
+                        // @ts-ignore
+                        <>
+                          <span className=" absolute left-2 font-normal px-0.5  w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                            {order?.items.length}
+                          </span>
+                        </>
+                      ) : null
+                    }
                     <span className="text-white flex flex-wrap sm:text-sm p-0">
                       Корзина
                     </span>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
+
               <div>
                 {!token ? (
                   <>
                     <div className="flex gap-4 justify-center items-center">
                       <Link to="/signup">
-                        <button className="text-white flex items-center text-center justify-center">
+                        <button className="text-white cursor-pointer focus:outline-none flex items-center text-center justify-center">
                           Регистрация
                         </button>
                       </Link>
@@ -214,25 +231,25 @@ const NavBar = ({}) => {
                     </div>
                   </>
                 ) : (
-                  <>
-                    <div className="flex  gap-4">
-                      <Link to="/profile">
-                        <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
-                          <img className="h-6 w-6" src={userCircle} alt="" />
-
-                          <span className="text-white flex flex-wrap sm:text-sm p-0">
-                            Личный кабинет
-                          </span>
-                        </div>
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                  <div className="flex  gap-4">
+                    <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                      <Link
+                        to="/profile"
+                        className="flex justify-center items-center gap-2"
                       >
-                        Выйти
-                      </button>
+                        <img className="h-6 w-6" src={userCircle} alt="" />
+                        <span className="text-white flex flex-wrap sm:text-sm p-0">
+                          Личный кабинет
+                        </span>
+                      </Link>
                     </div>
-                  </>
+                    <button
+                      onClick={handleLogout}
+                      className="block rounded-full w-auto text-white px-10 py-1  bg-[#1F1F1F] "
+                    >
+                      Выйти
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
@@ -265,10 +282,17 @@ const NavBar = ({}) => {
                 <div className="flex relative items-center align-middle text-center gap-2">
                   <img src={shopbag} alt="" className="relative h-7 w-7" />
                   <div className="flex justify-end items-end">
-                    <span className="text-[10px] absolute  font-normal bottom-5 left-3 px-0.5 h-3 w-3 flex justify-center items-center py-1 rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
-                      {/* {size}7 */}
-                      {order?.items.length}
-                    </span>
+                    {
+                      // @ts-ignore
+                      order?.items.length > 0 ? (
+                        // @ts-ignore
+                        <>
+                          <span className=" absolute left-2 font-normal px-0.5 h-3 w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                            {order?.items.length}
+                          </span>
+                        </>
+                      ) : null
+                    }
                   </div>
                 </div>
               </Link>
@@ -278,33 +302,35 @@ const NavBar = ({}) => {
       </nav>
 
       <div
-        className={`${
-          isExpanded ? `block` : `hidden`
-        } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
+        // className={`${isBurger ? `block` : `hidden`
+        //   } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
+        className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${
+          isBurger ? "header__right_active" : "header__right"
+        }`}
       >
-        <Link
-          to="/"
-          className="md:hidden py-1 px-3 text-[#ffffff] !items-start flex"
-        >
-          <MegaMenu />
+        <Link to="/" className="px-3 text-[#ffffff] !items-start flex">
+          <MegaMenu isBurger={isBurger} />
         </Link>
-        <div className="md:hidden flex flex-col items-end gap-5 font-light">
-          <Link to="/" className="py-1 px-3 text-[#ffffff] ">
+        <div
+          onClick={() => setIsBurger(false)}
+          className="header__link md:hidden flex flex-col gap-3 items-end font-light"
+        >
+          <Link to="/" className="px-3 text-[#ffffff] ">
             Компания
           </Link>
-          <Link to="/portfolio" className="py-1 px-3 text-[#ffffff]  ">
+          <Link to="/portfolio" className="px-3 text-[#ffffff]  ">
             Портфолио
           </Link>
-          <Link to="/blog" className="py-1 px-3 text-[#ffffff]  ">
+          <Link to="/blog" className="px-3 text-[#ffffff]  ">
             Блог
           </Link>
-          {/* <Link to="/about" className="py-1 px-3 text-[#ffffff]  ">
+          {/* <Link to="/about" className="px-3 text-[#ffffff]  ">
             Контакты
           </Link> */}
-          <Link to="/" className="py-1 px-3 text-[#ffffff]  ">
+          <Link to="/" className="px-3 text-[#ffffff]  ">
             FAQ
           </Link>
-          <button onClick={handleLogout} className="py-1 px-3 text-[#ffffff]  ">
+          <button onClick={handleLogout} className="pb-3 px-3 text-[#ffffff]  ">
             Выйти
           </button>
         </div>
@@ -312,4 +338,4 @@ const NavBar = ({}) => {
     </>
   );
 };
-export default NavBar;
+export default MyNavbar;

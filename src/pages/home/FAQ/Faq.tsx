@@ -1,6 +1,6 @@
 import React from "react";
 import "./faq.css";
-import faqImage from "./assets/zhyldyz.svg";
+import faqImage from "./assets/zhyldyz2.png";
 import calling from "./assets/Calling.png";
 import { useHome } from "../../../store/varia/hooks";
 
@@ -57,20 +57,22 @@ const Faq = () => {
             alt=""
           />
         </div>
-        <label
-          htmlFor=""
-          className="absolute   flex top-[22rem] right-[6rem] text-white font-jost font-semibold"
-        >
-          СВЯЗАТЬСЯ
-        </label>
+        <div className="flex justify-center items-center ">
+          <label
+            htmlFor=""
+            className="absolute   flex top-[22rem] lg:right-36 right-[5rem] text-white font-jost font-semibold"
+          >
+            СВЯЗАТЬСЯ
+          </label>
 
-        <a href="tel:+1234567890">
-          <img
-            src={calling}
-            className="absolute flex  justify-end items-end top-80 right-7 h-16 w-16"
-            alt=""
-          />
-        </a>
+          <a href="tel:+1234567890">
+            <img
+              src={calling}
+              className="absolute flex  justify-end items-end top-80 lg:right-16 right-7 h-16 w-16"
+              alt=""
+            />
+          </a>
+        </div>
       </div>
     </div>
   );

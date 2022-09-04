@@ -12,6 +12,7 @@ a:hover {
   background: #343434;
   position: absolute;
   left: 0;
+  /* margin-top: 35px; */
   text-align: center;
   flex-direction: row;
 
@@ -80,4 +81,78 @@ a.toggle-menu {
   font-size: 27px;
   background-color: #ccc;
   top: 0px;
+}
+
+.burger {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.burger__active .burger__line {
+  height: 0;
+  transition: 0s;
+}
+.burger__active .burger__line::before {
+  background: white;
+  transform: rotate(-45deg);
+  top: 0;
+  transition: 0.3s;
+}
+.burger__active .burger__line::after {
+  background: white;
+  transform: rotate(45deg);
+  top: 0;
+  transition: 0.3s;
+}
+.burger__line {
+  width: 33.33px;
+  height: 2.33px;
+  background: #ffffff;
+  border-radius: 4px;
+  position: relative;
+  transition: 0.3s;
+}
+.burger__line::before {
+  position: absolute;
+  content: "";
+  width: 33.33px;
+  height: 2.33px;
+  background: #ffffff;
+  border-radius: 4px;
+  top: -10px;
+  left: 0;
+  transition: 0.3s;
+}
+.burger__line::after {
+  position: absolute;
+  content: "";
+  width: 33.33px;
+  height: 2.33px;
+  background: #ffffff;
+  border-radius: 4px;
+  top: 10px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.header__right {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -100%;
+  z-index: 9;
+  transition: 0.5s;
+}
+
+.header__right_active {
+  top: 135px;
+  transition: 0.5s;
+}
+.header__link {
+  transition: 0.5s;
 }

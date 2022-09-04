@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import newsone from "./assets/newsone.png";
-import newstwo from "./assets/newsyellow.png";
-import newsthree from "./assets/newsthree.png";
-import BlogNews from "./blogDetail/BlogNews";
-import search from "./assets/search.png";
+import searchl from "./assets/search.png";
 import newspoto from "./assets/blognew.png";
 import { useAppDispatch } from "../../store";
 import { useBlogNews } from "../../store/varia/hooks";
@@ -22,18 +19,18 @@ const Blog = () => {
     <>
       {blogNews ? (
         <>
-          <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center container">
-            <span className="flex items-center justify-center text-white text-2xl font-semibold">
+          <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center ">
+            <span className="flex items-center justify-center text-white text-2xl font-semibold w-full">
               Блог
             </span>
           </div>
 
           <div className="mx-auto md:px-9 px-0   w-auto py-5 font-jost">
             <div className="mt-[-10vh] flex justify-center items-center">
-              <label className="relative block">
+              <label className="relative block ">
                 <span className="sr-only">Search</span>
-                <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <img className="h-2 w-auto sm:h-5" src={search} alt="" />
+                <span className="absolute inset-y-0  left-0 flex items-center pl-2">
+                  <img className="h-2 w-auto sm:h-5 " src={searchl} alt="" />
                 </span>
                 <input
                   value={search}
@@ -65,7 +62,7 @@ const Blog = () => {
                       {blogNews.data[0].brief_about}
                     </p>
                     <div className="flex justify-center items-center md:flex md:justify-start">
-                      <Link to={`/blog/${blogNews.data[0].author}`}>
+                      <Link to={`/blog/${blogNews.data[0].id}`}>
                         <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
                           Читать статью
                         </button>
@@ -85,7 +82,7 @@ const Blog = () => {
                 {blogNews.data.map((item, i) => (
                   <div
                     key={i}
-                    className="md:w-3/12 w-5/12 flex flex-col shadow-xl my-5 md:mx-5 "
+                    className="md:w-3/12 h-[35rem]  w-5/12 flex flex-col shadow-xl my-5 md:mx-5 "
                   >
                     <Link to={`/blog/${item.id}`}>
                       <img
@@ -93,9 +90,9 @@ const Blog = () => {
                         alt=""
                         className="w-96 flex justify-center items-center place-self-center "
                       />
-                      <div className="md:px-4 ">
+                      <div className="md:px-4 text-black">
                         <div className="flex justify-between ">
-                          <span className="hidden md:flex">
+                          <span className="hidden md:flex text-black hover:text-black">
                             Последние новости
                           </span>
                           <p className="text-sm flex items-center">

@@ -17,6 +17,7 @@ const About = () => {
   useEffect(() => {
     dispatch(fetchAbout() as any);
   }, []);
+  console.log(about);
 
   return (
     <>
@@ -50,7 +51,7 @@ const About = () => {
               современными технологиями персонализации и всегда порекомендуем
               вам оптимальный вариант.
             </p> */}
-                <p>{about && about.main_info.description}</p>
+                <p>{about ? about.main_info.description : null}</p>
               </div>
               <div className="flex items-center align-middle gap-4 pb-56 md:pb-2">
                 <button className="border border-white rounded-full ... w-auto px-12 ">
@@ -63,7 +64,11 @@ const About = () => {
             </div>
             <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
               <img
-                src={about && about.main_info.picture}
+                src={
+                  about && about.main_info.picture
+                    ? about.main_info.picture
+                    : aboutImage
+                }
                 className="md:h-[33rem] md:w-[25rem] h-auto w-72"
                 alt=""
               />
@@ -148,17 +153,21 @@ const About = () => {
                 <div className="md:hidden flex justify-center items-center flex-col px-9">
                   <img
                     className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                    src={zhyldyz}
+                    src={
+                      about.employers[0].picture
+                        ? about.employers[0].picture
+                        : aidai
+                    }
                     alt=""
                   />
                   <div className="text-center text-black">
                     <h2 className="font-bold">{about.employers[0].name}</h2>
-                    <span>{about?.employers[1].position}</span>
+                    <span>{about?.employers[0].position}</span>
 
                     <div className="flex text-center justify-center">
                       <img src={mail} alt="" />
 
-                      <h5>{about?.employers[1].email}</h5>
+                      <h5>{about?.employers[0].email}</h5>
                     </div>
                   </div>
                 </div>
@@ -176,7 +185,11 @@ const About = () => {
                 <div className="md:hidden flex justify-center items-center flex-col px-9">
                   <img
                     className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                    src={zhyldyz}
+                    src={
+                      about.employers[1].picture
+                        ? about.employers[1].picture
+                        : bermet
+                    }
                     alt=""
                   />
                   <div className="text-center text-black">
@@ -204,17 +217,21 @@ const About = () => {
                 <div className="md:hidden flex justify-center items-center flex-col px-9">
                   <img
                     className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                    src={zhyldyz}
+                    src={
+                      about?.employers[2].picture
+                        ? about?.employers[2].picture
+                        : zhyldyz
+                    }
                     alt=""
                   />
                   <div className="text-center text-black">
-                    <h2 className="font-bold">{about?.employers[1].name}</h2>
-                    <span>{about?.employers[1].position}</span>
+                    <h2 className="font-bold">{about?.employers[2].name}</h2>
+                    <span>{about?.employers[2].position}</span>
 
                     <div className="flex text-center justify-center">
                       <img src={mail} alt="" />
 
-                      <h5>{about?.employers[1].email}</h5>
+                      <h5>{about?.employers[2].email}</h5>
                     </div>
                   </div>
                 </div>

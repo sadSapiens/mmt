@@ -68,12 +68,7 @@ const CatalogDetailsOasis = () => {
     <div>
       {selectedProduct ? (
         <>
-          <div
-            className="mx-auto
-    md:px-10 px-3
-    w-auto
-    py-5"
-          >
+          <div className="mx-auto md:px-10 px-3 w-auto py-5">
             <div></div>
 
             <div className="rounded-md w-full font-jost">
@@ -86,14 +81,14 @@ const CatalogDetailsOasis = () => {
                     Каталог
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <img src={arrow} alt="" />
                 </li>
                 <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li className="text-gray-500">Ручки</li>
+                <li className="text-gray-500">Ручки</li> */}
               </ol>
             </div>
             <div className="flex justify-between py-5 md:flex-row flex-col">

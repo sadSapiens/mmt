@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
-// import CatalogChangeDetail from "../catalog-change-detail/CatalogChangeDetail";
-import penOne from "../assets/penOne.png";
+// import React, { useEffect, useState } from "react";
+// import penOne from "../assets/penOne.png";
 import penTwo from "../assets/penTwo.png";
-import penThree from "../assets/penThree.png";
-import penBig from "../assets/penBig.png";
+// import penThree from "../assets/penThree.png";
+// import penBig from "../assets/penBig.png";
+// import arrow from "../assets/arrowLink.png";
+// import detailtrash from "../assets/detailtrash.png";
+// import shopbag from "../assets/shopbag.png";
+
+// import som from "../assets/som.png";
+
+// import colich from "../assets/colich.png";
+
+// import "../catalogDetailsOasis/catalogStyle.css";
+
+import React, { useEffect, useState } from "react";
 import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
-
 import som from "../assets/som.png";
-
-import colich from "../assets/colich.png";
-
 import "../catalogDetailsOasis/catalogStyle.css";
-
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import {
@@ -22,6 +27,7 @@ import {
 } from "../../../store/catalog/hooks";
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
 import API from "../../../constants/api";
+import { fetchOrder } from "../../../store/order";
 
 const CatalogDetailsHiidea = () => {
   const location = useLocation();
@@ -53,7 +59,10 @@ const CatalogDetailsHiidea = () => {
     const sizes = currentProduct.sizes.map((size: any) => {
       return {
         product_size_id: size.id,
-        quantity: size.quantity,
+        quantity:
+          size.quantityToCart || size.quantityToCart === "0"
+            ? size.quantityToCart
+            : "0",
       };
     });
     try {
@@ -61,11 +70,13 @@ const CatalogDetailsHiidea = () => {
         product_color_group_id: currentProduct.id,
         sizes,
       });
+      dispatch(fetchOrder() as any);
       console.log(res);
     } catch (e) {
       console.log(e);
     }
   };
+  console.log(currentProduct);
 
   return (
     <div>
@@ -89,14 +100,14 @@ const CatalogDetailsHiidea = () => {
                     Каталог
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <img src={arrow} alt="" />
                 </li>
                 <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li className="text-gray-500">Ручки</li>
+                <li className="text-gray-500">Ручки</li> */}
               </ol>
             </div>
             <div className="flex justify-between py-5 md:flex-row flex-col">
@@ -113,56 +124,72 @@ const CatalogDetailsHiidea = () => {
                             onClick={() => setCurrentProduct(product)}
                             src={product.images[0].small}
                             alt=""
-                            className="w-16 h-16"
+                            className="w-16 h-16 object-fill"
                           />
                         </div>
                       ))
-                  : null}
+                  : selectedProduct.color_groups.map((product, i) => (
+                      <div key={i}>
+                        <img
+                          onClick={() => setCurrentProduct(product)}
+                          src={
+                            product.images ? product.images[0].small : "null"
+                          }
+                          alt=""
+                          className="w-16 h-16 object-fill"
+                        />
+                      </div>
+                    ))}
               </div>
 
               <div className="md:w-5/12 w-full gap-4">
                 <span className="md:hidden flex text-2xl font-medium font-jost text-black py-2">
-                  {selectedProduct.full_name}
+                  {selectedProduct && selectedProduct.full_name}
                 </span>{" "}
-                {currentProduct && currentProduct.images.length ? (
+                {currentProduct &&
+                currentProduct.images &&
+                currentProduct.images.length ? (
                   <img
-                    className="w-auto md:h-96  h-72"
+                    className="w-auto md:h-96  h-72 object-fill"
                     src={currentProduct.images[0].superbig}
                     alt=""
                   />
                 ) : (
                   "Loading..."
                 )}
-                <div className="flex justify-center items-center md:w-9/12 w-full py-5 gap-4">
-                  <div className="md:flex hidden flex-row overflow-x-scroll scroll-photo w-96 gap-5">
+                <div className="flex justify-center items-center md:w-8/12 w-full py-5 gap-2">
+                  <div className="md:flex hidden flex-row  gap-2 scroll-photo  overflow-y-clip  overflow-x-scroll">
                     {selectedProduct &&
                     selectedProduct.color_groups.length &&
                     selectedProduct.color_groups.length < 6
                       ? selectedProduct.color_groups
                           .slice(6)
                           .map((product, i) => (
-                            <div key={i}>
+                            <div
+                              key={i}
+                              className="w-[100%]
+                            "
+                            >
                               <img
                                 onClick={() => setCurrentProduct(product)}
                                 src={product.images[0].small}
                                 alt=""
-                                className="w-16 h-16"
+                                className="w-80 h-16 object-contain"
                               />
                             </div>
                           ))
                       : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i}>
+                          <div key={i} className="w-[100%]">
                             <img
                               onClick={() => setCurrentProduct(product)}
                               src={product.images[0].small}
                               alt=""
-                              className="h-12 w-12"
+                              className="w-80 h-16 object-contain"
                             />
                           </div>
                         ))}
                   </div>
                 </div>
-                {/*  */}
                 <div className="flex md:hidden justify-between">
                   <h4>Код товара: {selectedProduct.article}</h4>
                   <h4>На складе: {selectedProduct.total_stock}</h4>
@@ -197,27 +224,33 @@ const CatalogDetailsHiidea = () => {
                       </div>
                       <div className="col-6 flex flex-col gap-4">
                         <p>
-                          {selectedProduct.package &&
-                          selectedProduct.package.package_type
-                            ? selectedProduct.package.package_type
+                          {selectedProduct
+                            ? selectedProduct.package
+                              ? selectedProduct.package.package_type
+                              : null
                             : null}
                         </p>
                         <p>
-                          {selectedProduct.package &&
-                          selectedProduct.package.weight
-                            ? selectedProduct.package.weight
+                          {selectedProduct
+                            ? selectedProduct.package
+                              ? selectedProduct.package.weight
+                              : null
                             : null}
+                          .
                         </p>
                         <p>
-                          {selectedProduct.package &&
-                          selectedProduct.package.package_quantity
-                            ? selectedProduct.package.package_quantity
+                          {selectedProduct
+                            ? selectedProduct.package
+                              ? selectedProduct.package.package_quantity
+                              : null
                             : null}
+                          .
                         </p>
                         <p>
-                          {selectedProduct.package &&
-                          selectedProduct.package.volume
-                            ? selectedProduct.package.volume
+                          {selectedProduct
+                            ? selectedProduct.package
+                              ? selectedProduct.package.volume
+                              : null
                             : null}
                           .
                         </p>
@@ -232,22 +265,36 @@ const CatalogDetailsHiidea = () => {
                     {selectedProduct.full_name}
                   </span>
                   <div className="flex justify-between">
-                    <h4>Код товара: {selectedProduct.article}</h4>
-                    <h4>На складе: {selectedProduct.total_stock}</h4>
+                    <h4>
+                      Код товара:{" "}
+                      {selectedProduct.article ? selectedProduct.article : null}
+                    </h4>
+                    <h4>
+                      На складе:{" "}
+                      {selectedProduct.total_stock
+                        ? selectedProduct.total_stock
+                        : null}
+                    </h4>
                   </div>
                   <div>
-                    <p>{selectedProduct.description}</p>
+                    <p>
+                      {selectedProduct.description
+                        ? selectedProduct.description
+                        : null}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex justify-start gap-4 items-center">
-                  <div>
-                    <button className="rounded-full ... border  border-black px-5 py-2 font-jost font-medium">
+                <div className="flex justify-start gap-4 items-start flex-col">
+                  <div className="flex justify-start">
+                    <span>Цвета: </span>
+                    <span>Цвета: </span>
+                  </div>
+
+                  <div className="justify-start flex items-center gap-3 ">
+                    <button className="rounded-full ... border-[1px]  border-black px-5 py-2 font-jost font-medium">
                       +Добавить нанесение
                     </button>
-                  </div>
-                  <div>
-                    {" "}
                     <img src={detailtrash} alt="" />
                   </div>
                 </div>
@@ -256,39 +303,44 @@ const CatalogDetailsHiidea = () => {
                     <label htmlFor="input2">Место</label>
                     {/*  */}
 
-                    {selectedProduct.locations.length > 0 && (
-                      <form className="w-full p-2">
-                        <fieldset>
-                          <div className="relative border-b-2 border-black text-gray-800 bg-white ">
-                            <>
-                              <select
-                                className="appearance-none w-full py-1 px-2 bg-white"
-                                name="whatever"
-                                id="frm-whatever"
-                              >
-                                {selectedProduct.locations.map(
-                                  (item: any, i) => (
-                                    <option value="" key={i}>
-                                      {" "}
-                                      {item.name}
-                                    </option>
-                                  )
-                                )}
-                              </select>
-                              <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
-                                <svg
-                                  className="h-4 w-4"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                              </div>
-                            </>
-                          </div>
-                        </fieldset>
-                      </form>
-                    )}
+                    {selectedProduct
+                      ? selectedProduct.locations
+                        ? selectedProduct.locations.length > 0 && (
+                            <form className="w-full p-2">
+                              <fieldset>
+                                <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                                  <>
+                                    <select
+                                      className="appearance-none w-full py-1 px-2 bg-white"
+                                      name="whatever"
+                                      id="frm-whatever"
+                                    >
+                                      {selectedProduct &&
+                                        selectedProduct.locations.map(
+                                          (item: any, i) => (
+                                            <option value="" key={i}>
+                                              {" "}
+                                              {item.name}
+                                            </option>
+                                          )
+                                        )}
+                                    </select>
+                                    <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                      <svg
+                                        className="h-4 w-4"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                      >
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                      </svg>
+                                    </div>
+                                  </>
+                                </div>
+                              </fieldset>
+                            </form>
+                          )
+                        : null
+                      : null}
 
                     {/*  */}
                   </div>
@@ -314,6 +366,7 @@ const CatalogDetailsHiidea = () => {
                               id="frm-whatever"
                             >
                               {currentDrawing &&
+                                currentDrawing.costom_types &&
                                 currentDrawing.costom_types.map(
                                   (type: any, i: number) => (
                                     <option key={i} value={type.id}>
@@ -404,7 +457,9 @@ const CatalogDetailsHiidea = () => {
                     <div className="flex  w-5/12 justify-between">
                       <div>
                         <label htmlFor="input2">Ширина</label>
-                        {selectedProduct.locations.length > 0 ? (
+                        {selectedProduct &&
+                        selectedProduct.locations &&
+                        selectedProduct.locations.length > 0 ? (
                           <span className=" border-b-2 border-black w-20">
                             {selectedProduct.locations[0].costom_types[0].width}
                           </span>
@@ -413,7 +468,9 @@ const CatalogDetailsHiidea = () => {
 
                       <div>
                         <label htmlFor="input2">Высота</label>
-                        {selectedProduct.locations.length > 0 ? (
+                        {selectedProduct &&
+                        selectedProduct.locations &&
+                        selectedProduct.locations.length > 0 ? (
                           <span className=" border-b-2 border-black w-72">
                             {
                               selectedProduct.locations[0].costom_types[0]
@@ -475,6 +532,26 @@ const CatalogDetailsHiidea = () => {
                                         <input
                                           type="number"
                                           placeholder="1"
+                                          onChange={(e) => {
+                                            const updatedSizes =
+                                              currentProduct.sizes.map(
+                                                (el: any) => {
+                                                  return el.id !== size.id
+                                                    ? el
+                                                    : {
+                                                        ...el,
+                                                        quantityToCart:
+                                                          e.target.value,
+                                                      };
+                                                }
+                                              );
+
+                                            setCurrentProduct({
+                                              ...currentProduct,
+                                              images: currentProduct.images,
+                                              sizes: updatedSizes,
+                                            });
+                                          }}
                                           className="border-b-2 w-40 border-5  border-b-black  ..."
                                         />
                                       </td>
@@ -537,22 +614,25 @@ const CatalogDetailsHiidea = () => {
                               </div>
                               <div className="col-6 flex flex-col gap-5 ">
                                 <p>
-                                  {selectedProduct.package.package_type
-                                    ? selectedProduct.package.package_type
-                                    : null}
+                                  {selectedProduct &&
+                                    selectedProduct.package &&
+                                    selectedProduct.package.package_type}
                                 </p>
                                 <p>
-                                  {selectedProduct.package &&
+                                  {selectedProduct &&
+                                    selectedProduct.package &&
                                     selectedProduct.package.weight}
                                   .
                                 </p>
                                 <p>
-                                  {selectedProduct.package &&
+                                  {selectedProduct &&
+                                    selectedProduct.package &&
                                     selectedProduct.package.package_quantity}
                                   .
                                 </p>
                                 <p>
-                                  {selectedProduct.package &&
+                                  {selectedProduct &&
+                                    selectedProduct.package &&
                                     selectedProduct.package.volume}
                                   .
                                 </p>

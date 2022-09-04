@@ -28,7 +28,7 @@ const Profile = () => {
               onClick={() => setIsProfile(false)}
               className={`${
                 !isProfile ? "bg-black text-white " : "bg-white text-black"
-              } border-gray-900 border-2  h-auto flex md:flex rounded-full ... md:w-auto w-6/12 px-3 items-center py-2 gap-2 text-xs md:text-lg flex-row`}
+              } border-gray-900 border-2 !focus:outline-none h-auto flex md:flex rounded-full ... md:w-auto w-6/12 px-3 items-center py-2 gap-2 text-xs md:text-lg flex-row`}
             >
               <svg
                 width="24"
