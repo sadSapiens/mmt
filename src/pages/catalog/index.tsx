@@ -102,7 +102,9 @@ const CatalogPage = () => {
         );
         res.data.holiday && setHoliday(res.data.holiday);
         res.data.holiday && setSubcategories(res.data.subcategories);
-        setBreadCrumbs(res.data.bread_crumbs.slice(1));
+        res.data.bread_crumbs &&
+          res.data.bread_crumbs.length > 0 &&
+          setBreadCrumbs(res.data.bread_crumbs.slice(1));
         setIsAllProducts(res.data.is_all);
         setProductsCount(res.data.count);
         setTotalCount(res.data.total_count);
