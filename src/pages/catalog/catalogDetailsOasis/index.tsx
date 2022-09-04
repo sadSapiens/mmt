@@ -4,7 +4,7 @@ import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
 import som from "../assets/som.png";
 import "./catalogStyle.css";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import {
   useSelectedCatalogProduct,
@@ -22,7 +22,7 @@ const CatalogDetailsOasis = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
@@ -58,6 +58,7 @@ const CatalogDetailsOasis = () => {
       dispatch(fetchOrder() as any);
       console.log(res);
     } catch (e) {
+      navigate("/signup");
       console.log(e);
     }
   };
