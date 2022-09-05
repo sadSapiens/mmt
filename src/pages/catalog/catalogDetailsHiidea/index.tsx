@@ -1,18 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import penOne from "../assets/penOne.png";
-import penTwo from "../assets/penTwo.png";
-// import penThree from "../assets/penThree.png";
-// import penBig from "../assets/penBig.png";
-// import arrow from "../assets/arrowLink.png";
-// import detailtrash from "../assets/detailtrash.png";
-// import shopbag from "../assets/shopbag.png";
-
-// import som from "../assets/som.png";
-
-// import colich from "../assets/colich.png";
-
-// import "../catalogDetailsOasis/catalogStyle.css";
-
 import React, { useEffect, useState } from "react";
 import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
@@ -71,12 +56,12 @@ const CatalogDetailsHiidea = () => {
         sizes,
       });
       dispatch(fetchOrder() as any);
-      console.log(res);
     } catch (e) {
       console.log(e);
     }
   };
   console.log(currentProduct);
+  console.log(selectedProduct);
 
   return (
     <div>
@@ -114,7 +99,7 @@ const CatalogDetailsHiidea = () => {
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">
                 {selectedProduct &&
-                selectedProduct.color_groups.length &&
+                selectedProduct.color_groups.length > 0 &&
                 selectedProduct.color_groups.length >= 6
                   ? selectedProduct.color_groups
                       .slice(0, 5)
@@ -287,7 +272,6 @@ const CatalogDetailsHiidea = () => {
 
                 <div className="flex justify-start gap-4 items-start flex-col">
                   <div className="flex justify-start">
-                    <span>Цвета: </span>
                     <span>Цвета: </span>
                   </div>
 

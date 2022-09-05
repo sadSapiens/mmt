@@ -82,6 +82,7 @@ export interface IProductAttributes {
 }
 
 export interface IProductState {
+  id: string;
   article: string;
   attributes: IProductAttributes[];
   color_groups: IProductColor[];

@@ -54,8 +54,12 @@ const Cards = ({ product }: Props) => {
           <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
             <div className=" flex">
               <img
-                className="md:w-[100%]  "
-                src={product.colors[0].images[0].small}
+                className="md:w-[100%] max-h-48"
+                src={
+                  product.shop === "1"
+                    ? product.colors[0].images[0].small
+                    : product.colors[0].images[0].big
+                }
                 alt=""
               />
             </div>
