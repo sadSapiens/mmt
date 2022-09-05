@@ -9,7 +9,7 @@ const Faq = () => {
 
   return (
     <div className="flex md:justify-between justify-center container mx-auto px-4">
-      <div className="flex flex-col w-10/12">
+      <div className="flex flex-col lg:w-10/12 w-full">
         <span className="flex justify-center items-center md:justify-start py-2 text-3xl text-[#383838] font-bold">
           FAQ
         </span>
@@ -27,12 +27,12 @@ const Faq = () => {
                   />
                   <label
                     htmlFor={`panel-${i}`}
-                    className=" label-faq relative block text-black font-medium p-4 shadow border-b border-black"
+                    className=" label-faq relative block text-black font-medium py-4 px-1 shadow border-b border-black"
                   >
                     {item.question}
                   </label>
                   <div className="accordion__content overflow-hidden bg-grey-lighter ">
-                    <p className="flex accordion__body  justify-center items-center px-10 py-3">
+                    <p className="flex accordion__body  justify-center items-center px-1 py-3">
                       {item.answer}
                     </p>
                   </div>

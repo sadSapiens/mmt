@@ -7,7 +7,7 @@ import apps from "./assets/apps.svg";
 const Whyus = () => {
   return (
     <div className="py-5">
-      <div className="bg-[#383838] flex md:flex-row flex-col justify-between text-white font-jost ">
+      <div className="bg-[#383838] px-2 flex md:flex-row flex-col justify-between text-white font-jost ">
         <div className="md:w-4/12 w-auto pt-4 md:flex md:justify-start flex justify-center md:pt-5 md:pl-6 ">
           <h1 className="font-bold">Почему мы?</h1>
         </div>

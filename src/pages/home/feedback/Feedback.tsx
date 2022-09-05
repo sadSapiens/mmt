@@ -24,7 +24,7 @@ const Feedback = () => {
           <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle ">
             {home.reviews.map((item, i) => (
               <div key={i}>
-                <div className="flex flex-col overflow-y-clip px-4 w-full">
+                <div className="flex flex-col justify-center items-center overflow-y-clip px-4 w-full">
                   <img
                     className="rounded-full  w-20 h-20 flex justify-center items-center place-items-center"
                     src={item ? item.picture : { valentina }}

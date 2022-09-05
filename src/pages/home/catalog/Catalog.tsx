@@ -37,14 +37,14 @@ const Catalog = () => {
                     index === openTab
                       ? "bg-black text-white "
                       : "bg-white text-black"
-                  } flex   align-middle justify-center items-center  rounded-full ... py-1 px-5 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
+                  } flex   align-middle justify-center items-center  rounded-full ... py-1 px-3 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
                 >
                   <img
                     className=" flex px-2 h-3 w-3"
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />
-                  <span className="flex justify-center items-center">
+                  <span className="flex justify-center items-center flex-nowrap w-full">
                     {item.name}
                   </span>
                 </button>
@@ -83,7 +83,7 @@ const Catalog = () => {
                     ))
                   : item.categories.map((el, i) => (
                       <Link
-                        className="border  border-black"
+                        className="border-[1px]  border-black"
                         key={i}
                         to={
                           item.is_holidays
@@ -91,12 +91,14 @@ const Catalog = () => {
                             : `catalog?categoryId=${el.id}`
                         }
                       >
-                        <div className="  md:h-56 md:w-52 h-48 w-32  ">
-                          <img
-                            src={el.picture ? el.picture : one}
-                            alt=""
-                            className=" h-44 w-56 object-contain"
-                          />
+                        <div className="  md:h-56 md:w-52 h-36 w-32  ">
+                          <div>
+                            <img
+                              src={el.picture ? el.picture : one}
+                              alt=""
+                              className="  object-contain"
+                            />
+                          </div>
                           <span
                             className="flex align-bottom justify-center items-end text-black text-sm  md:text-base text-end
                           

@@ -4,7 +4,7 @@ import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
 import som from "../assets/som.png";
 import "./catalogStyle.css";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import {
   useSelectedCatalogProduct,
@@ -15,6 +15,8 @@ import API from "../../../constants/api";
 import { fetchOrder } from "../../../store/order";
 
 const CatalogDetailsOasis = () => {
+  // const token = localStorage.getItem("token");
+
   const location = useLocation();
   const dispatch = useAppDispatch();
   const selectedProduct = useSelectedCatalogProduct();
@@ -22,6 +24,7 @@ const CatalogDetailsOasis = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!params.id) return;
@@ -488,31 +491,39 @@ const CatalogDetailsOasis = () => {
                           </tbody>
                         </table>
                         <div className="flex py-4 items-center justify-around px-3">
-                          <div className="flex flex-col">
-                            <span>Цена:</span>
-                            <p className="flex justify-center items-center">
-                              {" "}
-                              {selectedProduct.color_groups[0].price}
-                              <img
-                                src={som}
-                                alt=""
-                                className="object-contain h-3 w-3"
-                              />
-                            </p>
-                          </div>
-                          <div className="flex gap-3">
-                            <button
-                              onClick={() => handleSendProductToCart()}
-                              className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
-                            >
-                              <img src={shopbag} alt="" />В корзину
-                            </button>
-                          </div>
-                          <div className="flex flex-col">
-                            <span>{selectedProduct.total_stock}</span>
-                            <hr className="border-b-2 border-b-black ..." />
-                            <span>Итого</span>
-                          </div>
+                          <>
+                            <div className="flex flex-col">
+                              <span>Цена:</span>
+                              <p className="flex justify-center items-center">
+                                {" "}
+                                {selectedProduct.color_groups[0].price}
+                                <img
+                                  src={som}
+                                  alt=""
+                                  className="object-contain h-3 w-3"
+                                />
+                              </p>
+                            </div>
+
+                            {/* {token ? ( */}
+                            <div className="flex gap-3">
+                              <button
+                                onClick={() => handleSendProductToCart()}
+                                className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                              >
+                                <img src={shopbag} alt="" />В корзину
+                              </button>
+                            </div>
+                            {/* ) : (
+                              navigate("/signup")
+                            )} */}
+
+                            <div className="flex flex-col">
+                              <span>{selectedProduct.total_stock}</span>
+                              <hr className="border-b-2 border-b-black ..." />
+                              <span>Итого</span>
+                            </div>
+                          </>
                         </div>
 
                         {/*  */}
