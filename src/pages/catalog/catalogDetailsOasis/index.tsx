@@ -22,6 +22,11 @@ const CatalogDetailsOasis = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
+  const [widthHeight, setWidthHeight] = useState({
+    width: "",
+    height: "",
+  });
+  console.log(currentDrawing);
 
   useEffect(() => {
     if (!params.id) return;
@@ -61,7 +66,24 @@ const CatalogDetailsOasis = () => {
       console.log(e);
     }
   };
-  console.log(currentProduct);
+
+  const handleSendCostomCost = async () => {
+    if (!selectedProduct) return;
+    try {
+      const res = await API.post(
+        `/products/${selectedProduct.id}/costom-cost`,
+        {
+          costom_type_id: +currentDrawing.costom_type_id,
+          color_id: +currentDrawing.color_id,
+          width: +widthHeight.width,
+          height: +widthHeight.height,
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(widthHeight);
 
   return (
     <div>
@@ -224,7 +246,10 @@ const CatalogDetailsOasis = () => {
 
                 <div className="flex justify-start gap-4 items-center">
                   <div>
-                    <button className="rounded-full ... border  border-black px-5 py-2 font-jost font-medium">
+                    <button
+                      onClick={handleSendCostomCost}
+                      className="rounded-full ... border  border-black px-5 py-2 font-jost font-medium"
+                    >
                       +Добавить нанесение
                     </button>
                   </div>
@@ -247,11 +272,17 @@ const CatalogDetailsOasis = () => {
                                 className="appearance-none w-full py-1 px-2 bg-white"
                                 name="whatever"
                                 id="frm-whatever"
+                                onChange={(e) => {
+                                  console.log(e.target.value);
+                                  setCurrentDrawing({
+                                    ...currentDrawing,
+                                    selectedCostomTypeId: e.target.value,
+                                  });
+                                }}
                               >
                                 {selectedProduct.locations.map(
                                   (item: any, i) => (
-                                    <option value="" key={i}>
-                                      {" "}
+                                    <option value={item.id} key={i}>
                                       {item.name}
                                     </option>
                                   )
@@ -285,12 +316,14 @@ const CatalogDetailsOasis = () => {
                               My field
                             </label>
                             <select
-                              onChange={(e) =>
+                              onChange={(e) => {
+                                console.log(e.target.value);
+
                                 setCurrentDrawing({
                                   ...currentDrawing,
-                                  selectedCostomTypeId: e.target.value,
-                                })
-                              }
+                                  costom_type_id: e.target.value,
+                                });
+                              }}
                               className="appearance-none w-full py-1 px-2 bg-white"
                               name="whatever"
                               id="frm-whatever"
@@ -334,16 +367,22 @@ const CatalogDetailsOasis = () => {
                               className="appearance-none w-full py-1 px-2 bg-white"
                               name="whatever"
                               id="frm-whatever"
+                              onChange={(e) =>
+                                setCurrentDrawing({
+                                  ...currentDrawing,
+                                  color_id: e.target.value,
+                                })
+                              }
                             >
                               {currentDrawing &&
                               currentDrawing.selectedCostomTypeId ? (
                                 currentDrawing.costom_types.map(
                                   (type: any, i: number) => {
-                                    return type.id ===
-                                      currentDrawing.selectedCostomTypeId
+                                    return type.id ==
+                                      currentDrawing.costom_type_id
                                       ? type.colors.map(
                                           (color: any, i: number) => (
-                                            <option key={i} value="">
+                                            <option key={i} value={color.id}>
                                               {color.name}
                                             </option>
                                           )
@@ -354,18 +393,6 @@ const CatalogDetailsOasis = () => {
                               ) : (
                                 <option value="">Выберите тип нанесения</option>
                               )}
-
-                              {/* {currentDrawing.selectedCostomTypeId ? (
-                                currentDrawing.map((type: any) => {
-                                  type.id == currentDrawing.selectedCostomTypeId
-                                    ? type.colors.map((color: any) => (
-                                        <option value="">{color.name}</option>
-                                      ))
-                                    : null;
-                                })
-                              ) : (
-                                <option value="">Выберите тип нанесения</option>
-                              )} */}
                             </select>
                             <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                               <svg
@@ -386,24 +413,72 @@ const CatalogDetailsOasis = () => {
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
                     <div className="flex  w-5/12 justify-between">
                       <div>
-                        <label htmlFor="input2">Ширина</label>
-                        {selectedProduct.locations.length > 0 ? (
-                          <span className=" border-b-2 border-black w-20">
-                            {selectedProduct.locations[0].costom_types[0].width}
-                          </span>
-                        ) : null}
+                        <label htmlFor="input2">Ширина()</label>
+                        {currentDrawing &&
+                        currentDrawing.selectedCostomTypeId ? (
+                          currentDrawing.costom_types.map(
+                            (type: any, i: number) => {
+                              setWidthHeight({
+                                width: type.width,
+                                height: type.height,
+                              });
+                              return (
+                                type.id == currentDrawing.costom_type_id && (
+                                  <input
+                                    type="number"
+                                    defaultValue={type.width}
+                                    // value={widthHeight.width}
+                                    onChange={(e) =>
+                                      setWidthHeight({
+                                        ...widthHeight,
+                                        width: e.target.value,
+                                      })
+                                    }
+                                    className=" border-b-2 border-black w-20"
+                                  />
+                                )
+                              );
+                            }
+                          )
+                        ) : (
+                          <input
+                            type="text"
+                            value={"Выберите тип нанесения"}
+                            className=" border-b-2 border-black w-20"
+                          />
+                        )}
                       </div>
 
                       <div>
                         <label htmlFor="input2">Высота</label>
-                        {selectedProduct.locations.length > 0 ? (
-                          <span className=" border-b-2 border-black w-72">
-                            {
-                              selectedProduct.locations[0].costom_types[0]
-                                .height
+                        {currentDrawing &&
+                        currentDrawing.selectedCostomTypeId ? (
+                          currentDrawing.costom_types.map(
+                            (type: any, i: number) => {
+                              return type.id ==
+                                currentDrawing.costom_type_id ? (
+                                <input
+                                  type="number"
+                                  defaultValue={type.height}
+                                  // value={widthHeight.height}
+                                  onChange={(e) =>
+                                    setWidthHeight({
+                                      ...widthHeight,
+                                      height: e.target.value,
+                                    })
+                                  }
+                                  className=" border-b-2 border-black w-20"
+                                />
+                              ) : null;
                             }
-                          </span>
-                        ) : null}
+                          )
+                        ) : (
+                          <input
+                            type="text"
+                            value={"Выберите тип нанесения"}
+                            className=" border-b-2 border-black w-20"
+                          />
+                        )}
                       </div>
                     </div>
                     <div className="flex justify-center items-center py-4 w-7/12">
