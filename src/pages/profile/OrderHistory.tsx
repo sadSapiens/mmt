@@ -16,7 +16,7 @@ const OrderHistory = () => {
       <div>
         <div className="flex flex-col font-jost">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-4">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-4 flex-col">
+            <div className="py-2 hidden  lg:inline-block min-w-full sm:px-6 lg:px-4 flex-col">
               <div className="overflow-hidden">
                 <table className="min-w-full ">
                   <thead className="border-b  font-jost font-light  first-letter ">
@@ -91,77 +91,6 @@ const OrderHistory = () => {
                           </>
 
                           {/*  */}
-                          {/* responsive */}
-                          <div className="md:hidden flex flex-col">
-                            <div className="flex justify-between">
-                              <th
-                                scope="col"
-                                className="text-sm font-light text-black px-6 py-4 text-left"
-                              >
-                                Дата заказа
-                              </th>
-                              <div className="flex justify-center items-center align-middle flex-col">
-                                <h3 className="font-semibold">18.07.2022</h3>
-                                <span>12:30:55</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-between">
-                              <th
-                                scope="col"
-                                className="text-sm font-light text-black px-6 py-4 text-left"
-                              >
-                                Количество
-                              </th>
-                              <div className="flex justify-center items-center align-middle flex-col">
-                                <h3 className="font-semibold">18.07.2022</h3>
-                                <span>12:30:55</span>
-                              </div>
-                            </div>
-                            <div className="flex justify-between">
-                              <th
-                                scope="col"
-                                className="text-sm font-light text-black px-6 py-4 text-left"
-                              >
-                                Цена
-                              </th>
-                              <div className="flex justify-center items-center align-middle flex-col">
-                                <div className="flex gap-2">
-                                  <span>32 000, 00</span>
-                                  <img
-                                    src={som}
-                                    className="object-contain"
-                                    alt=""
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex justify-between">
-                              <th
-                                scope="col"
-                                className="text-sm font-light text-black px-6 py-4 text-left"
-                              >
-                                Доставка
-                              </th>
-                              <div className="flex justify-center items-center align-middle flex-col">
-                                <button className="rounded-full ... border border-[#5FBA33] text-[#5FBA33] px-2 py-1">
-                                  Доставлено
-                                </button>
-                              </div>
-                            </div>
-                            <div className="flex justify-between">
-                              <th
-                                scope="col"
-                                className="text-sm font-light text-black px-6 py-4 text-left"
-                              >
-                                Статус
-                              </th>
-                              <div className="flex justify-center items-center align-middle flex-col">
-                                <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">
-                                  В процессе
-                                </button>
-                              </div>
-                            </div>
-                          </div>
 
                           {/*  */}
                         </td>
@@ -209,6 +138,96 @@ const OrderHistory = () => {
                 </table>
               </div>
             </div>
+
+            {/* responsive */}
+            {historyOrder &&
+              historyOrder.item.product.map((item, i) => (
+                <div className="md:hidden flex flex-col">
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      <div key={i} id={item.id} className="flex flex-col">
+                        <img src={orderhistoryphoto} alt="" />
+                      </div>
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <div className="flex flex-col px-8 flex-wrap">
+                        <h2 className="font-semibold flex flex-wrap">
+                          {item.name}
+                        </h2>
+                        <span className="font-normal">{item.article}</span>
+                        <span className="font-normal">{item.color}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      Дата заказа
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <h3 className="font-semibold">18.07.2022</h3>
+                      <span>12:30:55</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      Количество
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <h3 className="font-semibold">18.07.2022</h3>
+                      <span>12:30:55</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      Цена
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <div className="flex gap-2">
+                        <span>32 000, 00</span>
+                        <img src={som} className="object-contain" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      Доставка
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <button className="rounded-full ... border border-[#5FBA33] text-[#5FBA33] px-2 py-1">
+                        Доставлено
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <th
+                      scope="col"
+                      className="text-sm font-light text-black px-6 py-4 text-left"
+                    >
+                      Статус
+                    </th>
+                    <div className="flex justify-center items-center align-middle flex-col">
+                      <button className="text-[#F1A400] rounded-full ... border border-[#F1A400] px-2 py-1">
+                        В процессе
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

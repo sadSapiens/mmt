@@ -124,7 +124,7 @@ const MyNavbar = ({}) => {
                 />
               </div>
             </Link>
-            <div className="flex gap-5 flex items-center">
+            <div className="flex gap-5  items-center">
               <Link to="/profile">
                 <img className="userAccount" src={userCircle} alt="" />
               </Link>
