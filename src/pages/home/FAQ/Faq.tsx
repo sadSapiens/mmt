@@ -14,9 +14,9 @@ const Faq = () => {
           FAQ
         </span>
 
-        <div className="accordion flex flex-col justify-center  ">
+        <div className="accordion flex flex-col justify-center  mb-2">
           {home && home.faq.length && (
-            <div className="w-1/8">
+            <div className="width">
               {home.faq.map((item, i) => (
                 <div key={i}>
                   <input
@@ -27,12 +27,12 @@ const Faq = () => {
                   />
                   <label
                     htmlFor={`panel-${i}`}
-                    className=" label-faq relative block text-black font-medium py-4 px-1 shadow border-b border-black"
+                    className=" label-faq relative block text-black font-medium py-4 px-1 shadow border-b border-black pl-96"
                   >
                     {item.question}
                   </label>
-                  <div className="accordion__content overflow-hidden bg-grey-lighter ">
-                    <p className="flex accordion__body  justify-center items-center px-1 py-3">
+                  <div className="accordion__content overflow-hidden bg-grey-lighter pl-5">
+                    <p className="flex accordion__body  justify-center items-center px-1 py-3 ">
                       {item.answer}
                     </p>
                   </div>
@@ -46,7 +46,7 @@ const Faq = () => {
         <div className="flex  flex-col ">
           <label
             htmlFor=""
-            className="text-white absolute z-50 flex justify-center items-center text-center text-sm py-2 px-2"
+            className="text-white absolute z-50 flex justify-center items-center text-center text-sm py-2 px-2 w-72"
           >
             Если у Вас остались вопросы, свяжитесь бесплатно с нашим менеджером
           </label>
@@ -54,7 +54,7 @@ const Faq = () => {
           <img
             className="h-[25rem]  relative  block object-contain bg-[#424242]"
             src={faqImage}
-            alt=""
+            alt="image"
           />
         </div>
         <div className="flex justify-center items-center ">
@@ -69,7 +69,7 @@ const Faq = () => {
             <img
               src={calling}
               className="absolute flex  justify-end items-end top-80 lg:right-16 right-7 h-16 w-16"
-              alt=""
+              alt="image"
             />
           </a>
         </div>

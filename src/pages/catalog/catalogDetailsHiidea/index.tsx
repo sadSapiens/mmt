@@ -73,7 +73,7 @@ const CatalogDetailsHiidea = () => {
     w-auto
     py-5"
           >
-            <div></div>
+            <div/>
 
             <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
@@ -642,11 +642,11 @@ const CatalogDetailsHiidea = () => {
               </div>
             </div>
             <div className="flex gap-3 ">
-              <div className="columns-5"></div>
-              <div className="columns-5"></div>
-              <div className="columns-2"></div>
+              <div className="columns-5"/>
+              <div className="columns-5"/>
+              <div className="columns-2"/>
             </div>
-            <div className="flex"></div>
+            <div className="flex"/>
           </div>
         </>
       ) : null}
@@ -690,9 +690,9 @@ const CatalogDetailsHiidea = () => {
                       </Link>
                     </h4>
                     <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">
-                      <div className="h-3 w-3 bg-[#14153C] rounded-full ..."></div>
-                      <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."></div>
-                      <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."></div>
+                      <div className="h-3 w-3 bg-[#14153C] rounded-full ..."/>
+                      <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."/>
+                      <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."/>
                     </div>
                   </div>
                   <div className="flex justify-between md:px-5 px-2 text-black font-jost ">

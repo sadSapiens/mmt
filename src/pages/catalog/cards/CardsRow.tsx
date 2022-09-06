@@ -48,7 +48,7 @@ const CardsRow = ({ product }: Props) => {
               <img
                 className="w-[100%] object-contain"
                 src={product.colors[0].images[0].small}
-                alt=""
+                alt="image"
               />
             </div>
             <div className="md:w-6/12 pl-3 w-full flex flex-col justify-center">
@@ -76,21 +76,21 @@ const CardsRow = ({ product }: Props) => {
                     </button>
                   </div>
                   <div className="flex  md:hidden justify-center items-center gap-3 w-3/12">
-                    <div className="bg-[#14153C] h-3 w-3 rounded-full ... "></div>
-                    <div className="bg-[#65A8E0] h-3 w-3 rounded-full ... "></div>
+                    <div className="bg-[#14153C] h-3 w-3 rounded-full ... "/>
+                    <div className="bg-[#65A8E0] h-3 w-3 rounded-full ... "/>
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-center flex-col px-5 text-black font-jost "></div>
+              <div className="flex justify-center flex-col px-5 text-black font-jost "/>
             </div>
             <div className="md:flex hidden justify-center items-center gap-3 w-3/12">
-              <div className="bg-[#14153C] h-2 w-2 rounded-full ... "></div>
-              <div className="bg-[#65A8E0] h-2 w-2 rounded-full ... "></div>
-              <div className="bg-[#A91E1E] h-2 w-2 rounded-full ... "></div>
-              <div className="bg-[#00F20A] h-2 w-2 rounded-full ... "></div>
-              <div className="bg-[#FFCC33] h-2 w-2 rounded-full ... "></div>
-              <div className="bg-[#F1A400] h-2 w-2 rounded-full ... "></div>
+              <div className="bg-[#14153C] h-2 w-2 rounded-full ... "/>
+              <div className="bg-[#65A8E0] h-2 w-2 rounded-full ... "/>
+              <div className="bg-[#A91E1E] h-2 w-2 rounded-full ... "/>
+              <div className="bg-[#00F20A] h-2 w-2 rounded-full ... "/>
+              <div className="bg-[#FFCC33] h-2 w-2 rounded-full ... "/>
+              <div className="bg-[#F1A400] h-2 w-2 rounded-full ... "/>
             </div>
           </div>
         </div>
