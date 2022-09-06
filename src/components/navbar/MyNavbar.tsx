@@ -28,6 +28,10 @@ const MyNavbar = ({}) => {
     const {search} = useLocation();
     const order = useOrder();
 
+
+    console.log(isBurger)
+
+
     const [categoryId, setCategoryId] = useState(
         new URLSearchParams(search).get("categoryId")
     );
@@ -314,28 +318,29 @@ const MyNavbar = ({}) => {
                 //   } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
                 className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${
                     isBurger ? "header__right_active" : "header__right"
+
                 }`}
             >
                 <Link to="/" className="px-3 text-[#ffffff] !items-start flex">
                     <MegaMenu isBurger={isBurger}/>
                 </Link>
                 <div
-                    onClick={() => setIsBurger(false)}
+                    onClick={() => setIsBurger(true)}
                     className="header__link md:hidden flex flex-col gap-3 items-end font-light"
                 >
-                    <Link to="/" className="px-3 text-[#ffffff] " onClick={() => setIsBurger(false)} >
+                    <Link to="/" className="px-3 text-[#ffffff] " onClick={() => setIsBurger(false)}>
                         Компания
                     </Link>
-                    <Link to="/portfolio" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/portfolio" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         Портфолио
                     </Link>
-                    <Link to="/blog" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/blog" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         Блог
                     </Link>
                     {/* <Link to="/about" className="px-3 text-[#ffffff]  ">
             Контакты
           </Link> */}
-                    <Link to="/" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         FAQ
                     </Link>
                     <button onClick={handleLogout} className="pb-3 px-3 text-[#ffffff]  ">
