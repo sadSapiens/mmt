@@ -40,12 +40,38 @@ const CatalogDetailsOasis = () => {
     if (!selectedProduct || !selectedProduct.color_groups[0]) return;
     setCurrentProduct(selectedProduct.color_groups[0]);
     if (selectedProduct.locations) {
-      setCurrentDrawing({
-        ...selectedProduct.locations[0],
-        selectedCostomTypeId: "",
-      });
+      console.log(selectedProduct.locations[0]);
+      try {
+        setCurrentDrawing({
+          ...selectedProduct.locations[0],
+          selectedCostomTypeId: selectedProduct.locations[0].costom_types[0].id,
+          // @ts-ignore
+          color_id: selectedProduct.locations[0].costom_types[0].colors[0].id,
+          costom_type_id: selectedProduct.locations[0].costom_types[0].id,
+        });
+      } catch (e) {
+        setCurrentDrawing({
+          ...selectedProduct.locations[0],
+          selectedCostomTypeId: "",
+        });
+      }
     }
   }, [selectedProduct]);
+
+  // useEffect(() => {
+  //   if (!currentDrawing) return;
+  //   try {
+  //     currentDrawing.map((type: any) => {
+  //       type.id == currentDrawing.costom_type_id &&
+  //         setWidthHeight({
+  //           width: type.width,
+  //           height: type.height,
+  //         });
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [currentDrawing]);
 
   const handleSendProductToCart = async () => {
     if (!currentProduct) return;
@@ -54,7 +80,7 @@ const CatalogDetailsOasis = () => {
         product_size_id: size.id,
         quantity:
           size.quantityToCart || size.quantityToCart === "0"
-            ? size.quantityToCart
+            ? +size.quantityToCart
             : "0",
       };
     });
@@ -62,6 +88,14 @@ const CatalogDetailsOasis = () => {
       const res = await API.post("/orders/cart", {
         product_color_group_id: currentProduct.id,
         sizes,
+        costoms: [
+          {
+            costom_type_id: +currentDrawing.costom_type_id,
+            color_id: +currentDrawing.color_id,
+            width: +widthHeight.width,
+            height: +widthHeight.height,
+          },
+        ],
       });
       dispatch(fetchOrder() as any);
       console.log(res);
@@ -88,6 +122,7 @@ const CatalogDetailsOasis = () => {
     }
   };
   console.log(widthHeight);
+  console.log(selectedProduct);
 
   return (
     <div>
@@ -212,21 +247,22 @@ const CatalogDetailsOasis = () => {
                   </div>
                   <div className="font-jost">
                     <h2 className="font-semibold py-4">Упаковка</h2>
-
-                    <div className="row font-jost text-sm">
-                      <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
-                        <p>Вид упаковки</p>
-                        <p>Вес с упаковкой</p>
-                        <p>Количество в упаковке</p>
-                        <p>Объем единицы</p>
+                    {selectedProduct && selectedProduct.package && (
+                      <div className="row font-jost text-sm">
+                        <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                          <p>Вид упаковки</p>
+                          <p>Вес с упаковкой</p>
+                          <p>Количество в упаковке</p>
+                          <p>Объем единицы</p>
+                        </div>
+                        <div className="col-6 flex flex-col gap-4">
+                          <p>{selectedProduct.package.package_type}</p>
+                          <p>{selectedProduct.package.weight}.</p>
+                          <p>{selectedProduct.package.package_quantity}.</p>
+                          <p>{selectedProduct.package.volume}.</p>
+                        </div>
                       </div>
-                      <div className="col-6 flex flex-col gap-4">
-                        <p>{selectedProduct.package.package_type}</p>
-                        <p>{selectedProduct.package.weight}.</p>
-                        <p>{selectedProduct.package.package_quantity}.</p>
-                        <p>{selectedProduct.package.volume}.</p>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -413,29 +449,30 @@ const CatalogDetailsOasis = () => {
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
                     <div className="flex  w-5/12 justify-between">
                       <div>
-                        <label htmlFor="input2">Ширина()</label>
                         {currentDrawing &&
                         currentDrawing.selectedCostomTypeId ? (
                           currentDrawing.costom_types.map(
                             (type: any, i: number) => {
-                              setWidthHeight({
-                                width: type.width,
-                                height: type.height,
-                              });
                               return (
                                 type.id == currentDrawing.costom_type_id && (
-                                  <input
-                                    type="number"
-                                    defaultValue={type.width}
-                                    // value={widthHeight.width}
-                                    onChange={(e) =>
-                                      setWidthHeight({
-                                        ...widthHeight,
-                                        width: e.target.value,
-                                      })
-                                    }
-                                    className=" border-b-2 border-black w-20"
-                                  />
+                                  <>
+                                    <label htmlFor="input2">
+                                      Ширина({type.width}мм)
+                                    </label>
+
+                                    <input
+                                      type="number"
+                                      defaultValue={type.width}
+                                      // value={widthHeight.width}
+                                      onChange={(e) =>
+                                        setWidthHeight({
+                                          ...widthHeight,
+                                          width: e.target.value,
+                                        })
+                                      }
+                                      className=" border-b-2 border-black w-20"
+                                    />
+                                  </>
                                 )
                               );
                             }
@@ -450,25 +487,30 @@ const CatalogDetailsOasis = () => {
                       </div>
 
                       <div>
-                        <label htmlFor="input2">Высота</label>
                         {currentDrawing &&
                         currentDrawing.selectedCostomTypeId ? (
                           currentDrawing.costom_types.map(
                             (type: any, i: number) => {
                               return type.id ==
                                 currentDrawing.costom_type_id ? (
-                                <input
-                                  type="number"
-                                  defaultValue={type.height}
-                                  // value={widthHeight.height}
-                                  onChange={(e) =>
-                                    setWidthHeight({
-                                      ...widthHeight,
-                                      height: e.target.value,
-                                    })
-                                  }
-                                  className=" border-b-2 border-black w-20"
-                                />
+                                <>
+                                  <label htmlFor="input2">
+                                    Высота({type.height}мм)
+                                  </label>
+
+                                  <input
+                                    type="number"
+                                    defaultValue={type.height}
+                                    // value={widthHeight.height}
+                                    onChange={(e) =>
+                                      setWidthHeight({
+                                        ...widthHeight,
+                                        height: e.target.value,
+                                      })
+                                    }
+                                    className=" border-b-2 border-black w-20"
+                                  />
+                                </>
                               ) : null;
                             }
                           )
@@ -611,25 +653,27 @@ const CatalogDetailsOasis = () => {
                               </div>
                             </div>
                           ))}
+
                           <div className="font-jost">
                             <h2 className="font-semibold py-4">Упаковка</h2>
-
-                            <div className="row font-jost text-sm">
-                              <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
-                                <p>Вид упаковки</p>
-                                <p>Вес с упаковкой</p>
-                                <p>Количество в упаковке</p>
-                                <p>Объем единицы</p>
+                            {selectedProduct && selectedProduct.package && (
+                              <div className="row font-jost text-sm">
+                                <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                                  <p>Вид упаковки</p>
+                                  <p>Вес с упаковкой</p>
+                                  <p>Количество в упаковке</p>
+                                  <p>Объем единицы</p>
+                                </div>
+                                <div className="col-6 flex flex-col gap-5 ">
+                                  <p>{selectedProduct.package.package_type}</p>
+                                  <p>{selectedProduct.package.weight}.</p>
+                                  <p>
+                                    {selectedProduct.package.package_quantity}.
+                                  </p>
+                                  <p>{selectedProduct.package.volume}.</p>
+                                </div>
                               </div>
-                              <div className="col-6 flex flex-col gap-5 ">
-                                <p>{selectedProduct.package.package_type}</p>
-                                <p>{selectedProduct.package.weight}.</p>
-                                <p>
-                                  {selectedProduct.package.package_quantity}.
-                                </p>
-                                <p>{selectedProduct.package.volume}.</p>
-                              </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                         {/*  */}
