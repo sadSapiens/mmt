@@ -7,9 +7,9 @@ import arrow from "../../assets/direction-right.png";
 const CartEmpty = () => {
   return (
     <div>
-      <div className="mx-auto px-9   w-auto py-5 h-screen font-jost">
+      <div className="mx-auto px-9   w-auto py-20 ">
         <div className="flex justify-center flex-col items-center">
-          <h1 className="font-bold font-jost text-3xl text-black ">
+          <h1 className="font-black font-jost text-3xl text-black ">
             Корзина пуста
           </h1>
           <span className="py-3">Похоже вы еще не добавили товары</span>

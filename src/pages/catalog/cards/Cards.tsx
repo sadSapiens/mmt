@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import red from '../../../assets/img/sele.red.svg'
 import { useAppDispatch } from "../../../store";
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
 import {
@@ -51,7 +52,9 @@ const Cards = ({ product }: Props) => {
         }
       >
         <div className="py-7  flex justify-center md:w-72 w-64  relative ">
-          <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
+          <img src={red} alt="red" className='absolute -right-5 mt-2'/>
+          <h1 className='absolute text-xl text-white right-4 mt-3 font-extrabold'>-28%</h1>
+          <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center ">
             <div className=" flex">
               <img
                 className="md:w-[100%] max-h-48"
@@ -64,7 +67,7 @@ const Cards = ({ product }: Props) => {
               />
             </div>
             <div>
-              <div className="flex justify-between">
+              <div className="flex justify-between ">
                 <h5 className="md:flex md:px-3 flex justify-start md:justify-center text-sm font-light">
                   Код товара: {product.article}
                 </h5>
@@ -72,8 +75,9 @@ const Cards = ({ product }: Props) => {
                   Остаток: {product.total_stock}
                 </h5>
               </div>
-              <div className="flex justify-start flex-wrap break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
-                <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-auto text-start">
+              <div className="flex justify-start  break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
+                <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex
+                 break-words justify-start w-auto text-start">
                   {" "}
                   {product.name}
                   {/* <span className="hidden md:flex"> «Montreal»</span> */}
@@ -87,8 +91,8 @@ const Cards = ({ product }: Props) => {
                 {/* <div className="flex flex-wrap break-all"></div> */}
               </div>
               <div className="flex justify-between md:px-5 px-2 text-black font-jost ">
-                <div className="flex flex-col">
-                  <span className="font-light">Цена:</span>
+                <div className="flex flex-col justify-start">
+                  <span className="font-light mr-9">Цена:</span>
                   <b>{product.price} C</b>
                 </div>
                 <div className="md:w-10 md:h-10 w-8 h-8 bg-[#343434] rounded-full ... flex justify-center items-center">
