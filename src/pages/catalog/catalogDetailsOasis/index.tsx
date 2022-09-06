@@ -704,7 +704,7 @@ const CatalogDetailsOasis = () => {
       ) : null}
 
       {similar.length ? (
-        <div className="py-7 flex justify-center mx-3">
+        <div className="py-7 flex justify-center mx-3 ">
           {similar.map((item: any, i) => (
             <div
               key={i}
@@ -727,7 +727,7 @@ const CatalogDetailsOasis = () => {
                       Остаток: {item.total_stock}
                     </h5>
                   </div>
-                  <div className="flex justify-start flex-wrap break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
+                  <div className="flex justify-between items-center md:px-5 px-2 text-black font-jost ">
                     <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-auto text-start">
                       <Link
                         className="!text-black"
