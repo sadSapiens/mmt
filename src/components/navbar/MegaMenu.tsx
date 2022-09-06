@@ -11,6 +11,7 @@ interface IMyProps {
 }
 const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
+  console.log("isOpenCatalog",isOpenCatalog)
   // const [isOpenSub, setIsOpenSub] = useState(false);
 
   const [isCategoryes, setIsCategoryes] = React.useState(false);
@@ -40,7 +41,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
           <div
             className="drop-downn flex md:flex-row flex-col"
             onMouseLeave={() => setIsOpenCatalog(false)}
-            onClick={() => setIsOpenCatalog(!isOpenCatalog)}
+            // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
           >
             {!isOpenCatalog && (
               <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10">
@@ -125,14 +126,16 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
 
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
-                          <Link
-                            key={i}
-                            onClick={() => setIsOpenCatalog(true)}
-                            to={`catalog?categoryId=${item.id}`}
-                            className="w-full py-1 md:flex"
-                          >
-                            {item.name}
-                          </Link>
+                            <div key={item.id}>
+                              <Link
+                                  key={i}
+                                  onClick={() => setIsOpenCatalog(true)}
+                                  to={`catalog ? categoryId=${item.id}`}
+                                  className="w-full py-1 md:flex"
+                              >
+                                {item.name}
+                              </Link>
+                            </div>
                         ))}
                     </div>
                   )}
