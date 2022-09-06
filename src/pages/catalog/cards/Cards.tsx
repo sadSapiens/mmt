@@ -79,9 +79,9 @@ const Cards = ({ product }: Props) => {
                   {/* <span className="hidden md:flex"> «Montreal»</span> */}
                 </h4>
                 <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">
-                  <div className="h-3 w-3 bg-[#14153C] rounded-full ..."></div>
-                  <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."></div>
-                  <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."></div>
+                  <div className="h-3 w-3 bg-[#14153C] rounded-full ..."/>
+                  <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."/>
+                  <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."/>
                 </div>
 
                 {/* <div className="flex flex-wrap break-all"></div> */}

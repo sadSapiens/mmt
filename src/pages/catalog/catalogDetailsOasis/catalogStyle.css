@@ -34,3 +34,31 @@
   border-radius: 5px;
   background: linear-gradient(180deg, #a9a5a5, #a3a3a3);
 }
+
+.general {
+  width: 400px;
+  /*height: 60px;*/
+  padding: 10px 10px;
+  overflow-x: scroll;
+}
+.general div img {
+  width: 100px;
+  /*height: 20px;*/
+  height: 90px;
+  margin: 0 30px;
+  position: relative;
+  z-index: 99999;
+  object-fit: contain;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.general div img:hover {
+  transform: scale(1.1);
+}
+
+/*@media (max-width: 768px) {*/
+/*  .catalog {*/
+/*    width: 100px;*/
+/*  }*/
+/*}*/

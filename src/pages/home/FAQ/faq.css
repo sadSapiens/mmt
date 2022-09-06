@@ -17,3 +17,15 @@ input:checked + .label-faq:after {
 input[name="panel"]:checked ~ .accordion__content {
   max-height: 50em;
 }
+.width {
+  width: 1000px;
+  margin-left: 50px;
+}
+
+
+@media (max-width: 1440px) {
+  .width {
+    width: 90%;
+    margin-left: 0;
+  }
+}

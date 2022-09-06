@@ -129,7 +129,7 @@ const CatalogDetailsOasis = () => {
       {selectedProduct ? (
         <>
           <div className="mx-auto md:px-10 px-3 w-auto py-5">
-            <div></div>
+            <div/>
 
             <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
@@ -195,7 +195,7 @@ const CatalogDetailsOasis = () => {
                   "Loading..."
                 )}
                 <div className="flex justify-center items-center md:w-8/12 w-full py-5 gap-2">
-                  <div className="md:flex hidden flex-row  gap-2 scroll-photo  overflow-y-clip  overflow-x-scroll">
+                  <div className="md:flex hidden flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
                     {selectedProduct &&
                     selectedProduct.color_groups.length &&
                     selectedProduct.color_groups.length < 6
@@ -204,24 +204,20 @@ const CatalogDetailsOasis = () => {
                           .map((product, i) => (
                             <div
                               key={i}
-                              className="w-[100%]
-                            "
                             >
                               <img
                                 onClick={() => setCurrentProduct(product)}
                                 src={product.images[0].small}
-                                alt=""
-                                className="w-80 h-16 object-contain"
+                                alt="image"
                               />
                             </div>
                           ))
                       : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i} className="w-[100%]">
+                          <div key={i} >
                             <img
                               onClick={() => setCurrentProduct(product)}
                               src={product.images[0].small}
-                              alt=""
-                              className="w-80 h-16 object-contain"
+                              alt="image"
                             />
                           </div>
                         ))}
@@ -540,7 +536,7 @@ const CatalogDetailsOasis = () => {
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4">
                     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                       <div className="overflow-hidden">
-                        <table className="min-w-full">
+                        <table className=" flex justify-between flex-wrap">
                           <thead className="">
                             <tr className="flex gap-24">
                               <th
@@ -568,7 +564,7 @@ const CatalogDetailsOasis = () => {
                             {currentProduct && currentProduct.sizes.length
                               ? currentProduct.sizes.map(
                                   (size: any, i: number) => (
-                                    <tr key={i} className=" flex">
+                                    <tr key={i} className=" flex ">
                                       <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
                                         {size.size}
                                       </td>
@@ -610,7 +606,7 @@ const CatalogDetailsOasis = () => {
                         </table>
                         <div className="flex py-4 items-center justify-around px-3">
                           <>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
                               <span>Цена:</span>
                               <p className="flex justify-center items-center">
                                 {" "}
@@ -698,11 +694,11 @@ const CatalogDetailsOasis = () => {
               </div>
             </div>
             <div className="flex gap-3 ">
-              <div className="columns-5"></div>
-              <div className="columns-5"></div>
-              <div className="columns-2"></div>
+              <div className="columns-5"/>
+              <div className="columns-5"/>
+              <div className="columns-2"/>
             </div>
-            <div className="flex"></div>
+            <div className="flex"/>
           </div>
         </>
       ) : null}
@@ -746,9 +742,9 @@ const CatalogDetailsOasis = () => {
                       </Link>
                     </h4>
                     <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">
-                      <div className="h-3 w-3 bg-[#14153C] rounded-full ..."></div>
-                      <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."></div>
-                      <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."></div>
+                      <div className="h-3 w-3 bg-[#14153C] rounded-full ..."/>
+                      <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."/>
+                      <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."/>
                     </div>
                   </div>
                   <div className="flex justify-between md:px-5 px-2 text-black font-jost ">
