@@ -21,6 +21,10 @@ const CatalogDetailsHiidea = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
+  const [widthHeight, setWidthHeight] = useState({
+    width: "",
+    height: "",
+  });
 
   useEffect(() => {
     if (!params.id) return;
@@ -31,10 +35,21 @@ const CatalogDetailsHiidea = () => {
     if (!selectedProduct || !selectedProduct.color_groups[0]) return;
     setCurrentProduct(selectedProduct.color_groups[0]);
     if (selectedProduct.locations) {
-      setCurrentDrawing({
-        ...selectedProduct.locations[0],
-        selectedCostomTypeId: "",
-      });
+      console.log(selectedProduct.locations[0]);
+      try {
+        setCurrentDrawing({
+          ...selectedProduct.locations[0],
+          selectedCostomTypeId: selectedProduct.locations[0].costom_types[0].id,
+          // @ts-ignore
+          color_id: selectedProduct.locations[0].costom_types[0].colors[0].id,
+          costom_type_id: selectedProduct.locations[0].costom_types[0].id,
+        });
+      } catch (e) {
+        setCurrentDrawing({
+          ...selectedProduct.locations[0],
+          selectedCostomTypeId: "",
+        });
+      }
     }
   }, [selectedProduct]);
 
@@ -53,6 +68,14 @@ const CatalogDetailsHiidea = () => {
       const res = await API.post("/orders/cart", {
         product_color_group_id: currentProduct.id,
         sizes,
+        costoms: [
+          {
+            costom_type_id: +currentDrawing.costom_type_id,
+            color_id: +currentDrawing.color_id,
+            width: +widthHeight.width,
+            height: +widthHeight.height,
+          },
+        ],
       });
       dispatch(fetchOrder() as any);
     } catch (e) {
@@ -61,6 +84,23 @@ const CatalogDetailsHiidea = () => {
   };
   console.log(currentProduct);
   console.log(selectedProduct);
+
+  const handleSendCostomCost = async () => {
+    if (!selectedProduct) return;
+    try {
+      const res = await API.post(
+        `/products/${selectedProduct.id}/costom-cost`,
+        {
+          costom_type_id: +currentDrawing.costom_type_id,
+          color_id: +currentDrawing.color_id,
+          width: +widthHeight.width,
+          height: +widthHeight.height,
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div>
@@ -273,7 +313,10 @@ const CatalogDetailsHiidea = () => {
                   </div>
 
                   <div className="justify-start flex items-center gap-3 ">
-                    <button className="rounded-full ... border-[1px]  border-black px-5 py-2 font-jost font-medium">
+                    <button
+                      onClick={handleSendCostomCost}
+                      className="rounded-full ... border-[1px]  border-black px-5 py-2 font-jost font-medium"
+                    >
                       +Добавить нанесение
                     </button>
                     <img src={detailtrash} alt="" />
