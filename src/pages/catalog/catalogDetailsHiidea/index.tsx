@@ -64,6 +64,7 @@ const CatalogDetailsHiidea = () => {
   console.log(selectedProduct);
 
   return (
+
     <div>
       {selectedProduct ? (
         <>
@@ -74,6 +75,7 @@ const CatalogDetailsHiidea = () => {
     py-5"
           >
             <div/>
+
 
             <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
