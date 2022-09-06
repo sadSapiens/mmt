@@ -506,7 +506,7 @@ const Basket = ({}) => {
                 ))}
               </div>
 
-              <div className="font-jost md:w-4/12 w-full md:px-6 px-4 md:bg-[#F5F5F5] bg-none m-0">
+              <div className="font-jost md:w-4/12 w-full md:px-6 px-4 md:bg-[#F5F5F5] bg-none m-0 static right-0">
                 <h2 className="font-semibold py-4">Характеристики</h2>
 
                 <div className="row font-jost text-sm m-0">
