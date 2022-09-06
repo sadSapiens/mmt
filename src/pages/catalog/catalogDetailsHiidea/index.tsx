@@ -73,8 +73,6 @@ const CatalogDetailsHiidea = () => {
     w-auto
     py-5"
           >
-            <div></div>
-
             <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
                 <li className="text-black font-jost">
@@ -107,7 +105,7 @@ const CatalogDetailsHiidea = () => {
                         <div key={i}>
                           <img
                             onClick={() => setCurrentProduct(product)}
-                            src={product.images[0].small}
+                            src={product.images[0].big}
                             alt=""
                             className="w-16 h-16 object-fill"
                           />
@@ -117,9 +115,7 @@ const CatalogDetailsHiidea = () => {
                       <div key={i}>
                         <img
                           onClick={() => setCurrentProduct(product)}
-                          src={
-                            product.images ? product.images[0].small : "null"
-                          }
+                          src={product.images ? product.images[0].big : "null"}
                           alt=""
                           className="w-16 h-16 object-fill"
                         />
@@ -157,7 +153,7 @@ const CatalogDetailsHiidea = () => {
                             >
                               <img
                                 onClick={() => setCurrentProduct(product)}
-                                src={product.images[0].small}
+                                src={product.images[0].big}
                                 alt=""
                                 className="w-80 h-16 object-contain"
                               />
@@ -167,7 +163,7 @@ const CatalogDetailsHiidea = () => {
                           <div key={i} className="w-[100%]">
                             <img
                               onClick={() => setCurrentProduct(product)}
-                              src={product.images[0].small}
+                              src={product.images[0].big}
                               alt=""
                               className="w-80 h-16 object-contain"
                             />
@@ -661,8 +657,8 @@ const CatalogDetailsHiidea = () => {
               <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
                 <div className=" flex">
                   <img
-                    className="md:w-[100%]  "
-                    src={item.colors[0].images[0].small}
+                    className="md:w-[100%] h-36 "
+                    src={item.colors[0].images[0].big}
                     alt=""
                   />
                 </div>
