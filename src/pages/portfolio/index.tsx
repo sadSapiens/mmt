@@ -63,7 +63,7 @@ const Portfolio = () => {
                       key={index}
                       className="flex flex-wrap md:columns-4 md:gap-4 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row"
                     >
-                      <div className="md:h-56 md:w-56 h-36 w-36 border border-[#1F1F1F] ">
+                      <div className="md:h-56 md:w-56 h-36 w-36 border border-[#1F1F1F] pb-10 ">
                         <img src={one} alt="" />
                         <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
