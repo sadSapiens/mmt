@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {useAppDispatch} from "../../store";
-import {fetchCategories} from "../../store/category";
-import {useCategoryProducts} from "../../store/category/hooks";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store";
+import { fetchCategories } from "../../store/category";
+import { useCategoryProducts } from "../../store/category/hooks";
 import catalog from "../../assets/img/catalog.png";
 import "./megamenu.css";
-import {useHome} from "../../store/varia/hooks";
-
+import { useHome } from "../../store/varia/hooks";
 interface IMyProps {
     isBurger: boolean;
 }
-
 const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
     const [isOpenCatalog, setIsOpenCatalog] = useState(false);
     console.log("isOpenCatalog", isOpenCatalog);
@@ -39,21 +37,20 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
     return (
         <>
             <div className="w-full">
-                <div className="w-full">
+                <div className="  w-full">
                     <div
                         className="drop-downn flex md:flex-row flex-col"
                         onMouseLeave={() => setIsOpenCatalog(false)}
                         // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
                     >
                         {!isOpenCatalog && (
-                            <div
-                                className="flex flex-row md:justify-center md:items-center justify-end items-center h-10">
-                                <img src={catalog} className="object-contain flex" alt=""/>
-                                <span onMouseMove={() => setIsOpenCatalog(true)}>Каталог</span>
+                            <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
+                                 onMouseMove={() => setIsOpenCatalog(true)}
+                            >
+                                <img src={catalog} className="object-contain flex" alt="" />
+                                <span>Каталог</span>
                             </div>
                         )}
-                        {/*  */}
-                        {/*  */}
                         <div
                             className="megablock bg-[#343434] py-2  "
                             style={{
@@ -84,8 +81,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                             )}
 
                             {home && home.types.length && (
-                                <div
-                                    className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
+                                <div className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
                                     {home.types.map((item, i) => (
                                         <Link key={i} to={`/catalog?type=${item.id}`}>
                                             <button className="bg-[#65A8E0] px-4 rounded-full ...">
@@ -96,8 +92,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                                 </div>
                             )}
                             <ul className="flex justify-around items-start text-start ">
-                                <div
-                                    className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
+                                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
                                     {!isCategoryes && categories.length > 0 ? (
                                         categories.map((category: any, i: number) => (
                                             <div key={i}>
@@ -119,8 +114,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                                             </div>
                                         ))
                                     ) : (
-                                        <div
-                                            className="header__link md:hidden flex flex-col gap-1 items-start font-light ml-3">
+                                        <div className="header__link md:hidden flex flex-col gap-1 items-start font-light ml-3">
                       <span className="text-xl font-medium mt-4">
                         {activeCategory}
                       </span>
@@ -145,11 +139,10 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                                 <ul className="hidden md:flex flex-col w-full px-6">
                                     <div className="hidden  md:flex w-full overflow-x-auto ">
                                         {home && home.types.length && (
-                                            <div
-                                                className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
+                                            <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
                                                 {home.types.map((item, i) => (
                                                     <Link key={i} to={`/catalog?type=${item.id}`}>
-                                                        <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                                                        <button className="bg-[#65A8E0]  px-4 rounded-full ...">
                                                             {item.name}
                                                         </button>
                                                     </Link>
