@@ -35,7 +35,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="px-4 flex flex-col sm:w-1/3 xl:w-1/4 sm:mx-auto xl:mt-0 xl:ml-auto">
-              <div className="flex gap-2">
+              <div className="flex gap-2 mb-4">
                 <img src={message} alt="" />{" "}
                 <span className="text-white">info@mmt.kg</span>
               </div>
@@ -48,7 +48,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-              <div className="flex gap-2 ">
+              <div className="flex gap-2 mr-1">
                 <img src={call} alt="" />{" "}
                 <a href="/" className="text-white">
                   {" "}
@@ -75,7 +75,7 @@ const Footer = () => {
             px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0
             "
             >
-              <button className="rounded-full ... w-full h-12 object-contain bg-slate-50">
+              <button className="rounded-full ... w-full h-12 object-contain bg-slate-50 transition .4s hover:scale-105">
                 <a
                   href="tel:+1234567890"
                   className="text-black hover:text-black"

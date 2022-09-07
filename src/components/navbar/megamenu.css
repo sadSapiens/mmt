@@ -82,11 +82,11 @@ a:hover {
 
 a.toggle-menu {
     position: absolute;
-    right: 0px;
+    right: 0;
     padding: 20px;
     font-size: 27px;
     background-color: #ccc;
-    top: 0px;
+    top: 0;
 }
 
 .burger {

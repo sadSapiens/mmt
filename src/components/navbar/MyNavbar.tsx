@@ -28,6 +28,10 @@ const MyNavbar = ({}) => {
     const {search} = useLocation();
     const order = useOrder();
 
+
+    console.log(isBurger)
+
+
     const [categoryId, setCategoryId] = useState(
         new URLSearchParams(search).get("categoryId")
     );
@@ -66,7 +70,7 @@ const MyNavbar = ({}) => {
                             </div>
 
                             <div
-                                className="hidden md:flex md:items-center items-end gap-5 font-light  text-[#ffffff]  hover:text-gray-400">
+                                className="hidden md:flex md:items-center items-end gap-5 font-light  text-[#ffffff] transition.4s hover:text-gray-400">
                                 <Link to="/" className="py-3 px-3 text-[#ffffff]  ">
                                     Компания
                                 </Link>
@@ -101,7 +105,8 @@ const MyNavbar = ({}) => {
                                 </a>
                             </div>
                             <button
-                                className=" md:flex flex rounded-full w-auto text-white px-2 py-1  border border-white ">
+                                className=" md:flex flex rounded-full w-auto text-white px-2 py-1  border border-white
+                                 transition .4s hover:scale-105">
                                 <a
                                     href="tel:+1234567890"
                                     className="text-white text-base font-light"
@@ -193,7 +198,7 @@ const MyNavbar = ({}) => {
                         </div>
 
                         <div className="hidden md:flex items-center  justify-center gap-4 ">
-                            <div className="flex items-center align-middle text-center gap-2 sm:gap-1">
+                            <div className="flex items-center align-middle justify-between w-32 text-center gap-2 sm:gap-1 ">
                                 <Link to="/cart" className="flex justify-center items-center">
                                     <div className="relative flex  justify-center items-center gap-2">
                                         <img className="h-6 w-6 " src={shopbag} alt=""/>
@@ -219,7 +224,7 @@ const MyNavbar = ({}) => {
                             <div>
                                 {!token ? (
                                     <>
-                                        <div className="flex gap-4 justify-center items-center">
+                                        <div className="flex gap-4 justify-between items-center w-60">
                                             <Link to="/signup">
                                                 <button
                                                     className="text-white cursor-pointer focus:outline-none flex items-center text-center justify-center">
@@ -229,7 +234,8 @@ const MyNavbar = ({}) => {
 
                                             <Link to="/signin">
                                                 <button
-                                                    className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1  bg-[#1F1F1F] ">
+                                                    className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1
+                                                    bg-[#1F1F1F] transition .4s hover:scale-105">
                                                     Войти
                                                 </button>
                                             </Link>
@@ -312,28 +318,29 @@ const MyNavbar = ({}) => {
                 //   } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
                 className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${
                     isBurger ? "header__right_active" : "header__right"
+
                 }`}
             >
                 <Link to="/" className="px-3 text-[#ffffff] !items-start flex">
                     <MegaMenu isBurger={isBurger}/>
                 </Link>
                 <div
-                    onClick={() => setIsBurger(false)}
+                    onClick={() => setIsBurger(true)}
                     className="header__link md:hidden flex flex-col gap-3 items-end font-light"
                 >
-                    <Link to="/" className="px-3 text-[#ffffff] " onClick={() => setIsBurger(false)} >
+                    <Link to="/" className="px-3 text-[#ffffff] " onClick={() => setIsBurger(false)}>
                         Компания
                     </Link>
-                    <Link to="/portfolio" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/portfolio" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         Портфолио
                     </Link>
-                    <Link to="/blog" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/blog" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         Блог
                     </Link>
                     {/* <Link to="/about" className="px-3 text-[#ffffff]  ">
             Контакты
           </Link> */}
-                    <Link to="/" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)} >
+                    <Link to="/" className="px-3 text-[#ffffff]  " onClick={() => setIsBurger(false)}>
                         FAQ
                     </Link>
                     <button onClick={handleLogout} className="pb-3 px-3 text-[#ffffff]  ">

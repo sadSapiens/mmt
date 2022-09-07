@@ -20,7 +20,7 @@ const Blog = () => {
       {blogNews ? (
         <>
           <div className="bg-[#3A4FE9] mx-0 h-28 flex justify-center ">
-            <span className="flex items-center justify-center text-white text-2xl font-semibold w-full">
+            <span className="flex items-center justify-center text-white text-3xl font-semibold w-full">
               Блог
             </span>
           </div>
@@ -35,7 +35,8 @@ const Blog = () => {
                 <input
                   value={search}
                   onChange={(e: any) => setSerch(e.target.value)}
-                  className=" placeholder:text-slate-800 font-jost font-light block w-full border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none   sm:text-sm"
+                  className=" placeholder:text-slate-800 font-jost font-light block w-full
+                   border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none   sm:text-sm"
                   placeholder="Поиск..."
                   type="text"
                   name="search"
@@ -44,26 +45,27 @@ const Blog = () => {
             </div>
             {/* <BlogNews /> */}
 
-            <div className="mx-auto px-9   w-auto py-5 font-jost">
+            <div className="mx-auto px-9   w-auto py-16 font-jost">
               <div className="flex flex-col md:flex-row justify-between">
                 <div className="md:w-4/12  ">
                   <img src={newspoto} alt="" />
                 </div>
                 <div className="md:w-9/12  md:px-9    ">
                   <div className="">
-                    <h2 className="font-semibold text-black">
+                    <h1 className="font-semibold text-black ">
                       {blogNews && blogNews.data
                         ? blogNews.data.map((item: any, i: number) => (
                             <div>{item.title}</div>
                           ))
                         : null}
-                    </h2>
+                    </h1>
+
                     <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
                       {blogNews.data[0].brief_about}
                     </p>
                     <div className="flex justify-center items-center md:flex md:justify-start">
                       <Link to={`/blog/${blogNews.data[0].id}`}>
-                        <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-14 py-2">
+                        <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-16 py-2">
                           Читать статью
                         </button>
                       </Link>
@@ -90,12 +92,12 @@ const Blog = () => {
                         alt=""
                         className="w-96 flex justify-center items-center place-self-center "
                       />
-                      <div className="md:px-4 text-black">
-                        <div className="flex justify-between ">
-                          <span className="hidden md:flex text-black hover:text-black">
-                            Последние новости
-                          </span>
-                          <p className="text-sm flex items-center">
+                      <div className="md:px-4 text-black py-2">
+                        <div className="flex justify-end ">
+                          {/*<span className="hidden md:flex text-black hover:text-black">*/}
+                          {/*  Последние новости*/}
+                          {/*</span>*/}
+                          <p className="text-sm ">
                             <time>11.07.2022</time> -- ММТ
                           </p>
                         </div>
@@ -108,16 +110,27 @@ const Blog = () => {
                           </p>
                         </div>
                       </div>
+
                     </Link>
+
                   </div>
+
                 ))}
               </div>
             ) : (
               <p>nothing</p>
             )}
           </div>
+          <div className="flex justify-center items-center pb-5">
+            <Link to={`/blog/${blogNews.data[0].id}`}>
+              <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-16 py-2">
+                Показать еще
+              </button>
+            </Link>
+          </div>
         </>
       ) : null}
+
     </>
   );
 };

@@ -23,7 +23,7 @@ const BlogDetail = () => {
           пальцах объясняем принцип работы, честно говорим о плюсах и минусах,
           показываем цифры, при которых нанесение выгодно.{" "}
         </p>
-        <p className="py-3">
+        <p className="py-3 font-black text-2xl">
           <b>Начнем издалека: что такое термотрансфер</b>
         </p>
         <p className="py-2">
@@ -59,8 +59,8 @@ const BlogDetail = () => {
       </div>
       <div className="font-jost md:flex-row md:flex flex-col flex md:py-10 py-6">
         <div className="md:w-7/12  flex flex-col justify-end md:py-3 ">
-          <h2 className="font-medium text-black">Что такое DTF?</h2>
-          <p className="w-auto font-light">
+          <h2 className="font-medium text-black text-2xl">Что такое DTF?</h2>
+          <p className="w-auto font-light leading-10">
             DTF — это нанесение методом термотрансфера, при котором изображение
             печатается на специальном принтере на пленке (поэтому и DTF,
             direct-to-film, печать на пленке), а затем термопрессом

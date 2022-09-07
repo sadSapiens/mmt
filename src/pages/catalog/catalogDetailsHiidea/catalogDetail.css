@@ -1,0 +1,8 @@
+.delete-img {
+    cursor: pointer;
+    transition: .4s;
+}
+
+.delete-img:hover {
+    transform:scale(1.1);
+}

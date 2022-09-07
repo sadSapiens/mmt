@@ -538,7 +538,7 @@ const CatalogDetailsOasis = () => {
                       <div className="overflow-hidden">
                         <table className=" flex justify-between flex-wrap">
                           <thead className="">
-                            <tr className="flex gap-24">
+                            <tr className="flex gap-24" >
                               <th
                                 scope="col"
                                 className="text-sm font-medium text-gray-900 px-6 py-4 text-left 
