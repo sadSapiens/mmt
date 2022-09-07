@@ -3,22 +3,32 @@ a:hover {
     color: rgb(217, 217, 217);
 }
 
-.drop-downn:hover {
-    display: block;
+/*.drop-downn:hover {*/
+/*    display: block;*/
+/*}*/
+
+.megablock{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 135px;
+    left: 0;
+    z-index: 400;
 }
 
 .drop-downn:hover .megablock {
-    width: 100%;
-    background: #343434;
-    position: fixed;
-    left: 0;
-    /*margin-top: 35px;*/
-    text-align: center;
-    flex-direction: row;
-    z-index: 400;
-    top: 80px;
-    /*margin-top: 100px;*/
-    color: white;
+    /*width: 100%;*/
+    /*background: #343434;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*!*margin-top: 35px;*!*/
+    /*text-align: center;*/
+    /*flex-direction: row;*/
+
+    /*padding-top: 130px;*/
+    /*!*margin-top: 100px;*!*/
+    /*color: white;*/
+    display: block;
 }
 
 .category:hover .subcategory {

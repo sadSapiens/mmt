@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import arrow from "../assets/arrowLink.png";
 import detailtrash from "../assets/detailtrash.png";
 import shopbag from "../assets/shopbag.png";
 import som from "../assets/som.png";
 import "./catalogStyle.css";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch } from "../../../store";
+import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import {useAppDispatch} from "../../../store";
 import {
     useSelectedCatalogProduct,
     useSimilartProducts,
 } from "../../../store/catalog/hooks";
-import { fetchSlectedCatalogProduct } from "../../../store/catalog";
+import {fetchSlectedCatalogProduct} from "../../../store/catalog";
 import API from "../../../constants/api";
-import { fetchOrder } from "../../../store/order";
+import {fetchOrder} from "../../../store/order";
 
 const CatalogDetailsOasis = () => {
     // const token = localStorage.getItem("token");
@@ -195,7 +195,8 @@ const CatalogDetailsOasis = () => {
                                     "Loading..."
                                 )}
                                 <div className="flex justify-center items-center md:w-8/12 w-full py-5 gap-2">
-                                    <div className="md:flex hidden flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
+                                    <div
+                                        className="md:flex hidden flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
                                         {selectedProduct &&
                                         selectedProduct.color_groups.length &&
                                         selectedProduct.color_groups.length < 6
@@ -213,7 +214,7 @@ const CatalogDetailsOasis = () => {
                                                     </div>
                                                 ))
                                             : selectedProduct.color_groups.map((product, i) => (
-                                                <div key={i} >
+                                                <div key={i}>
                                                     <img
                                                         onClick={() => setCurrentProduct(product)}
                                                         src={product.images[0].small}
@@ -231,12 +232,13 @@ const CatalogDetailsOasis = () => {
                                     <p>{selectedProduct.description}</p>
                                 </div>
                                 {/*  */}
-                                <div className="font-jost md:flex hidden md:flex-col">
+                                <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
                                     <div className="">
                                         <h2 className="font-semibold py-4">Характеристики</h2>
                                         {selectedProduct.attributes.map((item, i) => (
                                             <div key={i} className="row font-jost text-sm">
-                                                <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                                                <div
+                                                    className="col-6 catalog-items__characteristics flex flex-col gap-4">
                                                     <p>{item.name}</p>
                                                 </div>
                                                 <div className="col-6 flex flex-col gap-4">
@@ -249,7 +251,8 @@ const CatalogDetailsOasis = () => {
                                         <h2 className="font-semibold py-4">Упаковка</h2>
                                         {selectedProduct && selectedProduct.package && (
                                             <div className="row font-jost text-sm">
-                                                <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                                                <div
+                                                    className="col-6 catalog-items__characteristics flex flex-col gap-4">
                                                     <p>Вид упаковки</p>
                                                     <p>Вес с упаковкой</p>
                                                     <p>Количество в упаковке</p>
@@ -291,7 +294,7 @@ const CatalogDetailsOasis = () => {
                                     </div>
                                     <div>
                                         {" "}
-                                        <img src={detailtrash} alt="" />
+                                        <img src={detailtrash} alt=""/>
                                     </div>
                                 </div>
                                 <div className="flex justify-between flex-wrap gap-2">
@@ -302,7 +305,8 @@ const CatalogDetailsOasis = () => {
                                         {selectedProduct.locations.length > 0 && (
                                             <form className="w-full p-2">
                                                 <fieldset>
-                                                    <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                                                    <div
+                                                        className="relative border-b-2 border-black text-gray-800 bg-white ">
                                                         <>
                                                             <select
                                                                 className="appearance-none w-full py-1 px-2 bg-white"
@@ -324,13 +328,15 @@ const CatalogDetailsOasis = () => {
                                                                     )
                                                                 )}
                                                             </select>
-                                                            <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                                            <div
+                                                                className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                                                                 <svg
                                                                     className="h-4 w-4"
                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                     viewBox="0 0 20 20"
                                                                 >
-                                                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                                    <path
+                                                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                                                 </svg>
                                                             </div>
                                                         </>
@@ -347,7 +353,8 @@ const CatalogDetailsOasis = () => {
                                             <form className="w-full p-2">
                                                 <label htmlFor="input2">Тип нанесения</label>
                                                 <fieldset>
-                                                    <div className="relative border-b-2 border-black  text-gray-800 bg-white ">
+                                                    <div
+                                                        className="relative border-b-2 border-black  text-gray-800 bg-white ">
                                                         <label htmlFor="frm-whatever" className="sr-only">
                                                             My field
                                                         </label>
@@ -374,13 +381,15 @@ const CatalogDetailsOasis = () => {
                                                                     )
                                                                 )}
                                                         </select>
-                                                        <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                                        <div
+                                                            className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                                                             <svg
                                                                 className="h-4 w-4"
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 20 20"
                                                             >
-                                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                                <path
+                                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -395,7 +404,8 @@ const CatalogDetailsOasis = () => {
                                             <form className="w-full p-2">
                                                 <label htmlFor="input2">Цветность</label>
                                                 <fieldset>
-                                                    <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                                                    <div
+                                                        className="relative border-b-2 border-black text-gray-800 bg-white ">
                                                         <label htmlFor="frm-whatever" className="sr-only">
                                                             My field
                                                         </label>
@@ -430,13 +440,15 @@ const CatalogDetailsOasis = () => {
                                                                 <option value="">Выберите тип нанесения</option>
                                                             )}
                                                         </select>
-                                                        <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                                        <div
+                                                            className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
                                                             <svg
                                                                 className="h-4 w-4"
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 20 20"
                                                             >
-                                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                                <path
+                                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                                             </svg>
                                                         </div>
                                                     </div>
@@ -524,7 +536,8 @@ const CatalogDetailsOasis = () => {
                                             </div>
                                         </div>
                                         <div className="flex justify-center items-center py-4 w-7/12">
-                                            <button className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2">
+                                            <button
+                                                className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2">
                                                 Применить
                                             </button>
                                         </div>
@@ -538,7 +551,7 @@ const CatalogDetailsOasis = () => {
                                             <div className="overflow-hidden">
                                                 <table className=" flex justify-between flex-wrap">
                                                     <thead className="">
-                                                    <tr className="flex gap-24" >
+                                                    <tr className="flex gap-24">
                                                         <th
                                                             scope="col"
                                                             className="text-sm font-medium text-gray-900 px-6 py-4 text-left
@@ -625,7 +638,7 @@ const CatalogDetailsOasis = () => {
                                                                 onClick={() => handleSendProductToCart()}
                                                                 className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
                                                             >
-                                                                <img src={shopbag} alt="" />В корзину
+                                                                <img src={shopbag} alt=""/>В корзину
                                                             </button>
                                                         </div>
                                                         {/* ) : (
@@ -634,7 +647,7 @@ const CatalogDetailsOasis = () => {
 
                                                         <div className="flex flex-col">
                                                             <span>{selectedProduct.total_stock}</span>
-                                                            <hr className="border-b-2 border-b-black ..." />
+                                                            <hr className="border-b-2 border-b-black ..."/>
                                                             <span>Итого</span>
                                                         </div>
                                                     </>
@@ -645,7 +658,8 @@ const CatalogDetailsOasis = () => {
                                                     <h2 className="font-semibold py-4">Характеристики</h2>
                                                     {selectedProduct.attributes.map((item, i) => (
                                                         <div key={i} className="row font-jost text-sm">
-                                                            <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                                                            <div
+                                                                className="col-6 catalog-items__characteristics flex flex-col gap-4">
                                                                 <p>{item.name}</p>
                                                             </div>
                                                             <div className="col-6 flex flex-col gap-4 ">
@@ -658,7 +672,8 @@ const CatalogDetailsOasis = () => {
                                                         <h2 className="font-semibold py-4">Упаковка</h2>
                                                         {selectedProduct && selectedProduct.package && (
                                                             <div className="row font-jost text-sm">
-                                                                <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
+                                                                <div
+                                                                    className="col-6 catalog-items__characteristics flex flex-col gap-4">
                                                                     <p>Вид упаковки</p>
                                                                     <p>Вес с упаковкой</p>
                                                                     <p>Количество в упаковке</p>
@@ -710,7 +725,8 @@ const CatalogDetailsOasis = () => {
                             key={i}
                             className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
                         >
-                            <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
+                            <div
+                                className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
                                 <div className=" flex">
                                     <img
                                         className="md:w-[100%]  "
@@ -727,7 +743,8 @@ const CatalogDetailsOasis = () => {
                                             Остаток: {item.total_stock}
                                         </h5>
                                     </div>
-                                    <div className="flex justify-between items-center md:px-5 px-2 text-black font-jost ">
+                                    <div
+                                        className="flex justify-between items-center md:px-5 px-2 text-black font-jost ">
                                         <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-auto text-start">
                                             <Link
                                                 className="!text-black"
@@ -752,8 +769,9 @@ const CatalogDetailsOasis = () => {
                                             <span className="font-light">Цена:</span>
                                             <b>{item.price} C</b>
                                         </div>
-                                        <div className="md:w-10 md:h-10 w-8 h-8 bg-[#343434] rounded-full ... flex justify-center items-center">
-                                            <img src={shopbag} className="h-5 w-5" alt="" />
+                                        <div
+                                            className="md:w-10 md:h-10 w-8 h-8 bg-[#343434] rounded-full ... flex justify-center items-center">
+                                            <img src={shopbag} className="h-5 w-5" alt=""/>
                                         </div>
                                     </div>
                                 </div>

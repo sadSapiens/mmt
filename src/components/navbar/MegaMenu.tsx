@@ -44,13 +44,13 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
             // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
           >
             {!isOpenCatalog && (
-              <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10">
+              <div className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
+                   onMouseMove={() => setIsOpenCatalog(true)}
+              >
                 <img src={catalog} className="object-contain flex" alt="" />
-                <span onMouseMove={() => setIsOpenCatalog(true)}>Каталог</span>
+                <span>Каталог</span>
               </div>
             )}
-            {/*  */}
-            {/*  */}
             <div
               className="megablock bg-[#343434] py-2  "
               style={{
@@ -142,7 +142,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                       <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
                         {home.types.map((item, i) => (
                           <Link key={i} to={`/catalog?type=${item.id}`}>
-                            <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                            <button className="bg-[#65A8E0]  px-4 rounded-full ...">
                               {item.name}
                             </button>
                           </Link>

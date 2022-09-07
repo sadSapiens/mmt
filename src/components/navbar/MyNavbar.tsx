@@ -208,7 +208,10 @@ const MyNavbar = ({}) => {
                                                 // @ts-ignore
                                                 <>
                           <span
-                              className=" absolute left-2 font-normal px-0.5  w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                              className=" absolute left-3 -top-1  h-4  w-4
+                              flex justify-center items-center object-contain py-1
+                              text-xs rounded-full leading-none text-center whitespace-nowrap
+                              align-baseline bg-red-600 text-white  ">
                             {order?.items.length}
                           </span>
                                                 </>

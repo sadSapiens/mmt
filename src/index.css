@@ -39,6 +39,7 @@ body {
 .form-control {
   border: none !important;
   outline: none !important;
+  background: transparent !important;
 }
 
 .form-control:focus {
