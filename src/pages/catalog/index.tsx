@@ -81,9 +81,9 @@ const CatalogPage = () => {
           (color) => `${color}`
         )}&costom=${selectedFilters.custom_types.map(
           (custom_type) => `${custom_type}`
-        )}&types=${selectedFilters.types.map((type) => `${type}`)}${
-          type && type
-        }&materials=${selectedFilters.materials.map(
+        )}&types=${selectedFilters.types.map(
+          (type) => `${type}`
+        )}&materials=${selectedFilters.materials.map(
           (material) => `${material}`
         )}&price_start=${price.minPrice}&price_end=${
           price.maxPrice
