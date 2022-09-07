@@ -28,9 +28,7 @@ const MyNavbar = ({}) => {
     const {search} = useLocation();
     const order = useOrder();
 
-
     console.log(isBurger)
-
 
     const [categoryId, setCategoryId] = useState(
         new URLSearchParams(search).get("categoryId")
@@ -55,7 +53,7 @@ const MyNavbar = ({}) => {
 
     return (
         <>
-            <nav className="bg-[#343434] font-jost ">
+            <nav className="bg-[#343434]  ">
                 <div className="md:max-w-full md:mx-auto md:px-6 py-1 container ">
                     <div className="flex justify-between">
                         <div className=" md:flex items-center flex space-x-5 font-jost">
@@ -198,7 +196,8 @@ const MyNavbar = ({}) => {
                         </div>
 
                         <div className="hidden md:flex items-center  justify-center gap-4 ">
-                            <div className="flex items-center align-middle justify-between w-32 text-center gap-2 sm:gap-1 ">
+                            <div
+                                className="flex items-center align-middle justify-between w-32 text-center gap-2 sm:gap-1 ">
                                 <Link to="/cart" className="flex justify-center items-center">
                                     <div className="relative flex  justify-center items-center gap-2">
                                         <img className="h-6 w-6 " src={shopbag} alt=""/>
@@ -208,7 +207,10 @@ const MyNavbar = ({}) => {
                                                 // @ts-ignore
                                                 <>
                           <span
-                              className=" absolute left-2 font-normal px-0.5  w-3 flex justify-center items-center object-contain py-1 text-sm rounded-full leading-none text-center whitespace-nowrap align-baseline bg-red-600 text-white  ">
+                              className=" absolute left-3 -top-1  h-4  w-4
+                              flex justify-center items-center object-contain py-1
+                              text-xs rounded-full leading-none text-center whitespace-nowrap
+                              align-baseline bg-red-600 text-white  ">
                             {order?.items.length}
                           </span>
                                                 </>
@@ -321,7 +323,7 @@ const MyNavbar = ({}) => {
 
                 }`}
             >
-                <Link to="/" className="px-3 text-[#ffffff] !items-start flex">
+                <Link to="/" className=" text-[#ffffff] !items-start flex">
                     <MegaMenu isBurger={isBurger}/>
                 </Link>
                 <div
