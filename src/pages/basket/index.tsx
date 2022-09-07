@@ -72,6 +72,7 @@ const Basket = ({}) => {
       console.log(e);
     }
   };
+  console.log(order);
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
@@ -119,15 +120,17 @@ const Basket = ({}) => {
                                 >
                                   {/*  */}
                                   <td className="flex py-4 whitespace-nowrap text-sm font-medium text-black w-full">
-                                    {item.product.images.small && (
-                                      <div>
-                                        <img
-                                          src={item.product.images.small}
-                                          alt=""
-                                          className="h-28 w-44"
-                                        />
-                                      </div>
-                                    )}
+                                    <div>
+                                      <img
+                                        src={
+                                          item.product.images.small
+                                            ? item.product.images.small
+                                            : item.product.images.big
+                                        }
+                                        alt=""
+                                        className="h-28 w-44"
+                                      />
+                                    </div>
                                     <div className="flex flex-col justify-start items-start pl-4 w-72 flex-wrap">
                                       <h2 className="font-semibold">
                                         {item.product.name}
@@ -267,6 +270,10 @@ const Basket = ({}) => {
                                                       src={
                                                         item.product.images
                                                           .small
+                                                          ? item.product.images
+                                                              .small
+                                                          : item.product.images
+                                                              .big
                                                       }
                                                       alt=""
                                                     />
@@ -385,15 +392,17 @@ const Basket = ({}) => {
                                   {/*body*/}
                                   <div className="relative p-2 flex-auto ">
                                     <div className="flex justify-between">
-                                      {item.product.images.small && (
-                                        <div>
-                                          <img
-                                            src={item.product.images.small}
-                                            alt=""
-                                            className=""
-                                          />
-                                        </div>
-                                      )}
+                                      <div>
+                                        <img
+                                          src={
+                                            item.product.images.small
+                                              ? item.product.images.small
+                                              : item.product.images.big
+                                          }
+                                          alt=""
+                                          className=""
+                                        />
+                                      </div>
                                       <div className=" flex flex-col px-2">
                                         <span className="font-semibold flex flex-wrap">
                                           {item.product.name}

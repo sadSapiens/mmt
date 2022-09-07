@@ -11,7 +11,7 @@ interface IMyProps {
 }
 const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false);
-  console.log("isOpenCatalog",isOpenCatalog)
+  console.log("isOpenCatalog", isOpenCatalog);
   // const [isOpenSub, setIsOpenSub] = useState(false);
 
   const [isCategoryes, setIsCategoryes] = React.useState(false);
@@ -83,15 +83,12 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
               {home && home.types.length && (
                 <div className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
                   {home.types.map((item, i) => (
-                    <button
-                      key={i}
-                      className="bg-[#65A8E0] px-4 rounded-full ..."
-                    >
-                      {item.name}
-                    </button>
+                    <Link key={i} to={`/catalog?type=${item.id}`}>
+                      <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                        {item.name}
+                      </button>
+                    </Link>
                   ))}
-                  <></>
-                  {/* <span>termos</span> */}
                 </div>
               )}
               <ul className="flex justify-around items-start text-start ">
@@ -99,23 +96,21 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                   {!isCategoryes && categories.length > 0 ? (
                     categories.map((category: any, i: number) => (
                       <div key={i}>
-                        <Link to={`catalog?categoryId=${category.id}`}>
-                          <li
-                            className=" hover:bg-gray-600 category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
-                            key={i}
-                            onMouseMove={() =>
-                              setSubcategories(category.subcategories)
-                            }
-                            onClick={() => {
-                              setSubcategories(category.subcategories);
-                              setActiveCategory(category.name);
-                              setIsCategoryes(props.isBurger);
-                            }}
-                            // onClick={() => setIsOpenSub(!isOpenSub)}
-                          >
-                            {category.name}
-                          </li>
-                        </Link>
+                        <li
+                          className=" hover:bg-gray-600 category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
+                          key={i}
+                          onMouseMove={() =>
+                            setSubcategories(category.subcategories)
+                          }
+                          onClick={() => {
+                            setSubcategories(category.subcategories);
+                            setActiveCategory(category.name);
+                            setIsCategoryes(props.isBurger);
+                          }}
+                          // onClick={() => setIsOpenSub(!isOpenSub)}
+                        >
+                          {category.name}
+                        </li>
                       </div>
                     ))
                   ) : (
@@ -126,16 +121,16 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
 
                       {subcategories.length > 0 &&
                         subcategories.map((item: any, i: number) => (
-                            <div key={item.id}>
-                              <Link
-                                  key={i}
-                                  onClick={() => setIsOpenCatalog(true)}
-                                  to={`catalog ? categoryId=${item.id}`}
-                                  className="w-full py-1 md:flex"
-                              >
-                                {item.name}
-                              </Link>
-                            </div>
+                          <div key={item.id}>
+                            <Link
+                              key={i}
+                              onClick={() => setIsOpenCatalog(true)}
+                              to={`/catalog?categoryId=${item.id}`}
+                              className="w-full py-1 md:flex"
+                            >
+                              {item.name}
+                            </Link>
+                          </div>
                         ))}
                     </div>
                   )}
@@ -145,18 +140,13 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                   <div className="hidden  md:flex w-full overflow-x-auto ">
                     {home && home.types.length && (
                       <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
-                        {/* {home?.data.map((item) => { */}
                         {home.types.map((item, i) => (
-                          <button
-                            key={i}
-                            className="bg-[#65A8E0] px-4 rounded-full ..."
-                          >
-                            {item.name}
-                          </button>
+                          <Link key={i} to={`/catalog?type=${item.id}`}>
+                            <button className="bg-[#65A8E0] px-4 rounded-full ...">
+                              {item.name}
+                            </button>
+                          </Link>
                         ))}
-                        <></>
-                        {/* })} */}
-                        <span>termos</span>
                       </div>
                     )}
                   </div>
@@ -171,8 +161,8 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                         subcategories.map((item: any, i: number) => (
                           <Link
                             key={i}
-                            onClick={() => setIsOpenCatalog(true)}
-                            to={`catalog?categoryId=${item.id}`}
+                            onClick={() => setIsOpenCatalog(false)}
+                            to={`/catalog?categoryId=${item.id}`}
                             className="h-8 py-2  w-full   md:flex"
                           >
                             {item.name}

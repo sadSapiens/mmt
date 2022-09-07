@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import red from '../../../assets/img/sele.red.svg'
-import { useAppDispatch } from "../../../store";
-import { fetchSlectedCatalogProduct } from "../../../store/catalog";
-import {
-  useFilters,
-  useSelectedCatalogProduct,
-} from "../../../store/catalog/hooks";
+import React from "react";
+import { Link } from "react-router-dom";
+import red from "../../../assets/img/sele.red.svg";
+
+import { useFilters } from "../../../store/catalog/hooks";
 
 import shopbag from "../assets/shopbag.png";
 
@@ -35,6 +31,7 @@ interface Props {
     total_stock: number;
     shop: string;
     rating: string;
+    discount?: number;
   };
 }
 
@@ -52,8 +49,18 @@ const Cards = ({ product }: Props) => {
         }
       >
         <div className="py-7  flex justify-center md:w-72 w-64  relative ">
-          <img src={red} alt="red" className='absolute -right-5 mt-2'/>
-          <h1 className='absolute text-xl text-white right-4 mt-3 font-extrabold'>-28%</h1>
+          {product.rating && (
+            <>
+              <img src={red} alt="red" className="absolute -right-5 mt-2" />
+              <h1 className="absolute text-sm text-white right-4 mt-[22px] font-extrabold">
+                {product.rating === "1"
+                  ? "Новинка"
+                  : product.rating === "2"
+                  ? "ЭКО"
+                  : `${product.discount}%`}
+              </h1>
+            </>
+          )}
           <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center ">
             <div className=" flex">
               <img
@@ -76,16 +83,18 @@ const Cards = ({ product }: Props) => {
                 </h5>
               </div>
               <div className="flex justify-start  break-all flex-col md:flex-row md:justify-center md:items-center px-1 ">
-                <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex
-                 break-words justify-start w-auto text-start">
+                <h4
+                  className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex
+                 break-words justify-start w-auto text-start"
+                >
                   {" "}
                   {product.name}
                   {/* <span className="hidden md:flex"> «Montreal»</span> */}
                 </h4>
                 <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">
-                  <div className="h-3 w-3 bg-[#14153C] rounded-full ..."/>
-                  <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..."/>
-                  <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..."/>
+                  <div className="h-3 w-3 bg-[#14153C] rounded-full ..." />
+                  <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..." />
+                  <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..." />
                 </div>
 
                 {/* <div className="flex flex-wrap break-all"></div> */}
@@ -101,7 +110,7 @@ const Cards = ({ product }: Props) => {
               </div>
             </div>
           </div>
-          {product.rating &&
+          {/* {product.rating &&
             (product.rating === "1" ? (
               <div className="absolute right-[-1rem]">
                 {" "}
@@ -201,7 +210,7 @@ const Cards = ({ product }: Props) => {
                   </defs>
                 </svg>
               </div>
-            ) : null)}
+            ) : null)} */}
         </div>
       </Link>
     </>
