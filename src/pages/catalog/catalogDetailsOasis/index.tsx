@@ -130,7 +130,6 @@ const CatalogDetailsOasis = () => {
                 <>
                     <div className="mx-auto md:px-10 px-3 w-auto py-5">
                         <div/>
-
                         <div className="rounded-md w-full font-jost">
                             <ol className="flex !text-black ">
                                 <li className="text-black font-jost">
@@ -269,7 +268,7 @@ const CatalogDetailsOasis = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex md:w-6/12 w-full flex-col gap-4">
+                            <div className="flex md:w-6/12 w-full flex flex-col gap-4">
                                 <div className="hidden md:flex flex-col gap-4">
                   <span className=" text-2xl font-medium font-jost text-black">
                     {selectedProduct.full_name}
@@ -282,7 +281,6 @@ const CatalogDetailsOasis = () => {
                                         <p>{selectedProduct.description}</p>
                                     </div>
                                 </div>
-
                                 <div className="flex justify-start gap-4 items-center">
                                     <div>
                                         <button
@@ -418,8 +416,7 @@ const CatalogDetailsOasis = () => {
                                                                     ...currentDrawing,
                                                                     color_id: e.target.value,
                                                                 })
-                                                            }
-                                                        >
+                                                            }>
                                                             {currentDrawing &&
                                                             currentDrawing.selectedCostomTypeId ? (
                                                                 currentDrawing.costom_types.map(
@@ -543,10 +540,8 @@ const CatalogDetailsOasis = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/*  */}
-
-                                <div className="flex flex-col">
-                                    <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4">
+                                <div className="flex flex-col ">
+                                    <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
                                         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                                             <div className="overflow-hidden">
                                                 <table className=" flex justify-between flex-wrap">
@@ -554,8 +549,7 @@ const CatalogDetailsOasis = () => {
                                                     <tr className="flex gap-24">
                                                         <th
                                                             scope="col"
-                                                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left
-                          "
+                                                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                                         >
                                                             Размер
                                                         </th>
@@ -719,7 +713,7 @@ const CatalogDetailsOasis = () => {
             ) : null}
 
             {similar.length ? (
-                <div className="py-7 flex justify-center mx-3 ">
+                <div className="py-7 flex justify-center mx-3 flex-wrap">
                     {similar.map((item: any, i) => (
                         <div
                             key={i}
