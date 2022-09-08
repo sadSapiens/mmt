@@ -5,6 +5,7 @@ import {
   fetchBlogNewsSuccess,
   fetchHomeSuccess,
   fetchPortfolioSuccess,
+  fetchSelectedBlogSuccess,
 } from "./actions";
 
 export const fetchBlogInfo = (search: string) => async (dispatch: Dispatch) => {
@@ -15,6 +16,18 @@ export const fetchBlogInfo = (search: string) => async (dispatch: Dispatch) => {
     console.log(e);
   }
 };
+
+export const fetchSelectedBlog = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    const res: any = await PUBLIC_API.get(`/blog/news/${id}`);
+    console.log(res);
+
+    dispatch(fetchSelectedBlogSuccess(res.data));
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const fetchAbout = () => async (dispatch: Dispatch) => {
   try {
     const res: any = await PUBLIC_API.get("/about_us");

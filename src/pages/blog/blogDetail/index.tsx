@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import blognew from "../assets/blognew.png";
 import cap from "../assets/cap.png";
 import left from "../assets/arrow-left.svg";
 import right from "../assets/arrow-right.svg";
 import interesting from "../assets/interesting.png";
+import { useAppDispatch } from "../../../store";
+import { useSelectedBlog } from "../../../store/varia/hooks";
+import { fetchSelectedBlog } from "../../../store/varia";
+import { useParams } from "react-router-dom";
 
 const BlogDetail = () => {
+  const dispatch = useAppDispatch();
+  const selectedBlog = useSelectedBlog();
+  const params = useParams();
+  useEffect(() => {
+    if (!params.id) return;
+    dispatch(fetchSelectedBlog(params.id) as any);
+  }, [dispatch, params]);
+  console.log(selectedBlog);
   return (
     <div className="mx-auto md:px-5  px-3  w-auto py-5 font-jost">
       <div className="font-jost flex justify-center flex-col items-center py-4">

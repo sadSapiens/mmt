@@ -58,4 +58,5 @@ export interface IVariaState {
   about: IAbout | null;
   portfolio: IPortfolio | null;
   home: IHomeData | null;
+  selectedBlog: any;
 }

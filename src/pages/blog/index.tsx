@@ -14,6 +14,7 @@ const Blog = () => {
   useEffect(() => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
+  console.log(blogNews);
 
   return (
     <>
@@ -110,11 +111,8 @@ const Blog = () => {
                           </p>
                         </div>
                       </div>
-
                     </Link>
-
                   </div>
-
                 ))}
               </div>
             ) : (
@@ -130,7 +128,6 @@ const Blog = () => {
           </div>
         </>
       ) : null}
-
     </>
   );
 };

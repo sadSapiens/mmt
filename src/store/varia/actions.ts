@@ -9,6 +9,11 @@ import {
 export const fetchBlogNewsSuccess = createAction<IBlogs>(
   "blog/fetchBlogNewsSuccess"
 );
+
+export const fetchSelectedBlogSuccess = createAction<IBlogs>(
+  "blog/fetchSelectedBlogSuccess"
+);
+
 export const fetchAboutSuccess = createAction<IAbout>(
   "about/fetchAboutSuccess"
 );

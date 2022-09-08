@@ -10,6 +10,9 @@ import {
 export const useBlogNews = (): IBlogs | null => {
   return useSelector((state: Store) => state.blog.blog);
 };
+export const useSelectedBlog = (): IBlogs | null => {
+  return useSelector((state: Store) => state.blog.selectedBlog);
+};
 export const useAbout = (): IAbout | null => {
   return useSelector((state: Store) => state.about.about);
 };
