@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "../../store";
-import { fetchOrder } from "../../store/order";
+import { fetcHistoryhOrder, fetchOrder } from "../../store/order";
 import { useHistoryOrder } from "../../store/order/hooks";
 import orderhistoryphoto from "./assets/orderhistoryphoto.png";
 import som from "./assets/som.png";
@@ -9,8 +9,11 @@ const OrderHistory = () => {
   const dispatch = useAppDispatch();
   const historyOrder = useHistoryOrder();
   useEffect(() => {
-    dispatch(fetchOrder() as any);
-  }, []);
+    dispatch(fetcHistoryhOrder() as any);
+  }, [dispatch]);
+
+  console.log(historyOrder);
+
   return (
     <div className="mx-auto md:px-16 px-2 w-auto py-5 font-jost container">
       <div>

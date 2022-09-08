@@ -28,6 +28,7 @@ const Basket = ({}) => {
     referalCode: "",
     paymantType: "",
   });
+  console.log(payInputs.paymantType);
 
   useEffect(() => {
     setCartProducts(order);
@@ -463,14 +464,16 @@ const Basket = ({}) => {
 
                       {/*  */}
                       <div className="flex justify-between">
-                        {item.product.images.small && (
-                          <img
-                            // src={item.product.images.small}
-                            src={orderhistoryphoto}
-                            alt=""
-                            className="h-20 w-20"
-                          />
-                        )}
+                        <img
+                          // src={item.product.images.small}
+                          src={
+                            item.product.images.small
+                              ? item.product.images.small
+                              : item.product.images.big
+                          }
+                          alt=""
+                          className="h-20 w-20"
+                        />
                         <div className="flex flex-col  px-2 flex-wrap whitespace-pre-line ... break-words">
                           <h2 className="font-semibold flex flex-wrap">
                             {item.product.name}
@@ -522,14 +525,17 @@ const Basket = ({}) => {
                   <div className="w-8/12 catalog-items__characteristics  flex flex-col gap-4 p-0">
                     <p className="">Итого</p>
                     <span className="font-light">Товары, 3 шт.</span>
-
-                    <p>Адрес доставки</p>
-
-                    <div className="flex">
-                      <label htmlFor=""> Промокод</label>
+                    <p>
+                      Адрес доставки {payInputs.city},{" "}
+                      {payInputs.address.length > 5
+                        ? payInputs.address.slice(0, 5)
+                        : payInputs.address}
+                    </p>
+                    <div className="">
+                      <label htmlFor=""> Промокод:</label>
                       <input
                         type="text"
-                        className="px-5 py-2 border-black border-[1px] rounded-full ... "
+                        className="px-5 py-1 border-black border-[1px] rounded-full ... "
                         placeholder="Промокод"
                         name="referalCode"
                         value={payInputs.referalCode}
@@ -641,7 +647,9 @@ const Basket = ({}) => {
                     onClick={handlePay}
                     className="bg-[#1F1F1F] rounded-full ... px-4 py-2 flex justify-center items-center text-white"
                   >
-                    К оплате
+                    {payInputs.paymantType && payInputs.paymantType === "2"
+                      ? "К оплате"
+                      : "Заказать"}
                     <img src={arrow} alt="" />
                   </button>
                 </div>
