@@ -10,7 +10,7 @@ import {
 export const useBlogNews = (): IBlogs | null => {
   return useSelector((state: Store) => state.blog.blog);
 };
-export const useSelectedBlog = (): IBlogs | null => {
+export const useSelectedBlog = (): any => {
   return useSelector((state: Store) => state.blog.selectedBlog);
 };
 export const useAbout = (): IAbout | null => {
