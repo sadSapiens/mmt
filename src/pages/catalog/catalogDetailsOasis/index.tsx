@@ -629,7 +629,7 @@ const CatalogDetailsOasis = () => {
                                                         {/* {token ? ( */}
                                                         <div className="flex gap-3">
                                                             <button
-                                                                onClick={() => handleSendProductToCart()}
+                                                                onClick={() =>  selectedProduct.total_stock ? selectedProduct.total_stock > 0 ?  ( handleSendProductToCart() ): null: <p>нет на складе</p>}
                                                                 className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
                                                             >
                                                                 <img src={shopbag} alt=""/>В корзину

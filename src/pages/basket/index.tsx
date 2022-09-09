@@ -110,6 +110,7 @@ const Basket = ({}) => {
                       </tr>
                     </thead>
                     <tbody className="">
+                      
                       {cartProducts ? (
                         <>
                           {cartProducts.items.map((item: any, i: number) => (

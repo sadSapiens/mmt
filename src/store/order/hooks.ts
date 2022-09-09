@@ -5,6 +5,6 @@ import { IHistoryOrder, IOrderProductsCart } from "./interfaces/data.interface";
 export const useOrder = (): IOrderProductsCart | null => {
   return useSelector((state: Store) => state.order.orderCart);
 };
-export const useHistoryOrder = (): IHistoryOrder | null => {
+export const useHistoryOrder = (): IHistoryOrder[] | null => {
   return useSelector((state: Store) => state.order.historyOrder);
 };
