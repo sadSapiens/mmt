@@ -25,6 +25,7 @@ const CatalogDetailsHiidea = () => {
     width: "",
     height: "",
   });
+  const [priceDrawing, setPriceDrawing] = useState(0);
 
   useEffect(() => {
     if (!params.id) return;
@@ -82,8 +83,6 @@ const CatalogDetailsHiidea = () => {
       console.log(e);
     }
   };
-  console.log(currentProduct);
-  console.log(selectedProduct);
 
   const handleSendCostomCost = async () => {
     if (!selectedProduct) return;
@@ -97,6 +96,7 @@ const CatalogDetailsHiidea = () => {
           height: +widthHeight.height,
         }
       );
+      setPriceDrawing(Math.ceil(res.data.data.cost));
     } catch (e) {
       console.log(e);
     }
@@ -482,34 +482,98 @@ const CatalogDetailsHiidea = () => {
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
                     <div className="flex  w-5/12 justify-between">
                       <div>
-                        <label htmlFor="input2">Ширина</label>
-                        {selectedProduct &&
-                        selectedProduct.locations &&
-                        selectedProduct.locations.length > 0 ? (
-                          <span className=" border-b-2 border-black w-20">
-                            {selectedProduct.locations[0].costom_types[0].width}
-                          </span>
-                        ) : null}
+                        {currentDrawing &&
+                        currentDrawing.selectedCostomTypeId ? (
+                          currentDrawing.costom_types.map(
+                            (type: any, i: number) => {
+                              return (
+                                type.id == currentDrawing.costom_type_id && (
+                                  <>
+                                    <label htmlFor="input2">
+                                      Ширина({type.width}мм)
+                                    </label>
+
+                                    <input
+                                      type="number"
+                                      defaultValue={type.width}
+                                      // value={widthHeight.width}
+                                      onChange={(e) =>
+                                        setWidthHeight({
+                                          ...widthHeight,
+                                          width: e.target.value,
+                                        })
+                                      }
+                                      className=" border-b-2 border-black w-20"
+                                    />
+                                  </>
+                                )
+                              );
+                            }
+                          )
+                        ) : (
+                          <input
+                            type="text"
+                            value={"Выберите тип нанесения"}
+                            className=" border-b-2 border-black w-20"
+                          />
+                        )}
                       </div>
 
                       <div>
-                        <label htmlFor="input2">Высота</label>
-                        {selectedProduct &&
-                        selectedProduct.locations &&
-                        selectedProduct.locations.length > 0 ? (
-                          <span className=" border-b-2 border-black w-72">
-                            {
-                              selectedProduct.locations[0].costom_types[0]
-                                .height
+                        {currentDrawing &&
+                        currentDrawing.selectedCostomTypeId ? (
+                          currentDrawing.costom_types.map(
+                            (type: any, i: number) => {
+                              return type.id ==
+                                currentDrawing.costom_type_id ? (
+                                <>
+                                  <label htmlFor="input2">
+                                    Высота({type.height}мм)
+                                  </label>
+
+                                  <input
+                                    type="number"
+                                    defaultValue={type.height}
+                                    // value={widthHeight.height}
+                                    onChange={(e) =>
+                                      setWidthHeight({
+                                        ...widthHeight,
+                                        height: e.target.value,
+                                      })
+                                    }
+                                    className=" border-b-2 border-black w-20"
+                                  />
+                                </>
+                              ) : null;
                             }
-                          </span>
-                        ) : null}
+                          )
+                        ) : (
+                          <input
+                            type="text"
+                            value={"Выберите тип нанесения"}
+                            className=" border-b-2 border-black w-20"
+                          />
+                        )}
                       </div>
                     </div>
                     <div className="flex justify-center items-center py-4 w-7/12">
-                      <button className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2">
+                      {/* <button className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2">
                         Применить
-                      </button>
+                      </button> */}
+                      {!!priceDrawing && (
+                        <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
+                          <span>Цена:</span>
+                          <p className="flex justify-center items-center">
+                            {" "}
+                            {priceDrawing}
+                            <img
+                              src={som}
+                              alt=""
+                              className="object-contain h-3 w-3"
+                            />
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
