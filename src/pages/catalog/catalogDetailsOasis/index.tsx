@@ -27,7 +27,7 @@ const CatalogDetailsOasis = () => {
     height: "",
   });
   const [priceDrawing, setPriceDrawing] = useState(0);
-  console.log(currentDrawing);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!params.id) return;
@@ -56,32 +56,25 @@ const CatalogDetailsOasis = () => {
     }
   }, [selectedProduct]);
 
-  // useEffect(() => {
-  //   if (!currentDrawing) return;
-  //   try {
-  //     currentDrawing.map((type: any) => {
-  //       type.id == currentDrawing.costom_type_id &&
-  //         setWidthHeight({
-  //           width: type.width,
-  //           height: type.height,
-  //         });
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, [currentDrawing]);
-
   const handleSendProductToCart = async () => {
     if (!currentProduct) return;
-    const sizes = currentProduct.sizes.map((size: any) => {
-      return {
-        product_size_id: size.id,
-        quantity:
-          size.quantityToCart || size.quantityToCart === "0"
-            ? +size.quantityToCart
-            : "0",
-      };
-    });
+    setError("");
+    console.log(currentProduct);
+
+    const sizes = currentProduct.sizes
+      .filter((item: any) => item.quantityToCart)
+      .map((size: any) => {
+        return {
+          product_size_id: size.id,
+          quantity: size.quantity,
+        };
+      });
+
+    if (sizes.length === 0) {
+      setError("Добавьте количество товара");
+      return;
+    }
+
     try {
       const res = await API.post("/orders/cart", {
         product_color_group_id: currentProduct.id,
@@ -592,7 +585,9 @@ const CatalogDetailsOasis = () => {
                                                     : {
                                                         ...el,
                                                         quantityToCart:
-                                                          e.target.value,
+                                                          el.quantity === 0
+                                                            ? 0
+                                                            : e.target.value,
                                                       };
                                                 }
                                               );
@@ -629,16 +624,11 @@ const CatalogDetailsOasis = () => {
 
                             {/* {token ? ( */}
                             <div className="flex gap-3">
+                              {error && (
+                                <span className="text-red-500">{error}</span>
+                              )}
                               <button
-                                onClick={() =>
-                                  selectedProduct.total_stock ? (
-                                    selectedProduct.total_stock > 0 ? (
-                                      handleSendProductToCart()
-                                    ) : null
-                                  ) : (
-                                    <p>нет на складе</p>
-                                  )
-                                }
+                                onClick={() => handleSendProductToCart()}
                                 className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
                               >
                                 <img src={shopbag} alt="" />В корзину
