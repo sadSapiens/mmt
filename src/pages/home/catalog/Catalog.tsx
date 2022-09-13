@@ -22,11 +22,11 @@ const Catalog = () => {
       {home?.catalogs && (
         <>
           <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
-            <span className="  py-4 font-semibold text-black text-bold text-center ">
+            <span className="  py-4 font-semibold text-black text-bold text-center text-4xl">
               Каталог
             </span>
 
-            <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-8 justify-start md:justify-center px-10 w-full md:w-auto">
+            <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center px-10 w-full md:w-auto">
               {home.catalogs.map((item, index) => (
                 <button
                   key={index}
@@ -37,14 +37,14 @@ const Catalog = () => {
                     index === openTab
                       ? "bg-black text-white "
                       : "bg-white text-black"
-                  } flex   align-middle justify-center items-center  rounded-full ... py-1 px-3 w-auto  text-center text-xs md:text-base text-black border-[1px] border-black  `}
+                  } flex   align-middle justify-center items-center  rounded-full ... py-2 px-4 w-auto  text-center text-3xl md:text-base text-black border-[1px] border-black`}
                 >
                   <img
                     className=" flex px-2 h-3 w-3"
                     src={item.icon ? item.icon : calendar}
                     alt=""
                   />
-                  <span className="flex justify-center items-center flex-nowrap w-full">
+                  <span className="flex justify-center items-center text-[20px] flex-nowrap w-full">
                     {item.name}
                   </span>
                 </button>
@@ -83,7 +83,7 @@ const Catalog = () => {
                     ))
                   : item.categories.map((el, i) => (
                       <Link
-                        className="border-[1px]  border-black"
+                        className="border-[1px]  border-black h-72"
                         key={i}
                         to={
                           item.is_holidays
@@ -91,7 +91,7 @@ const Catalog = () => {
                             : `catalog?categoryId=${el.id}`
                         }
                       >
-                        <div className="  md:h-56 md:w-52 h-36 w-32  ">
+                        <div className="  md:h-64 md:w-72 h-72 w-64  ">
                           <div>
                             <img
                               src={el.picture ? el.picture : one}
@@ -118,7 +118,7 @@ const Catalog = () => {
       <div className="flex justify-center py-14 ">
         <button
           onClick={() => setMore(!more)}
-          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-10  text-white"
+          className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-3 px-12  text-white text-[20px]"
         >
           {more ? "Скрыть" : "Больше товаров"}
           <img

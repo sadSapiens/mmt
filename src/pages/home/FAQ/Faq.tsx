@@ -27,7 +27,7 @@ const Faq = () => {
                   />
                   <label
                     htmlFor={`panel-${i}`}
-                    className=" label-faq relative block text-black font-medium py-4 px-1 shadow border-b border-black pl-96"
+                    className=" label-faq relative block text-black font-medium py-4 px-1  border-b border-black pl-96"
                   >
                     {item.question}
                   </label>

@@ -14,7 +14,7 @@ const Feedback = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="flex md:flex-auto md:justify-start justify-center">
-        <span className="text-3xl text-[#383838] font-bold	flex py-4">
+        <span className="text-4xl text-[#383838] font-bold	flex py-4">
           Отзывы
         </span>
       </div>
@@ -26,14 +26,14 @@ const Feedback = () => {
               <div key={i}>
                 <div className="flex flex-col justify-center items-center overflow-y-clip px-4 w-full">
                   <img
-                    className="rounded-full  w-20 h-20 flex justify-center items-center place-items-center"
+                    className="rounded-full  w-28 h-28 pb-1.5 flex justify-center items-center place-items-center"
                     src={item ? item.picture : { valentina }}
                     alt=""
                   />
-                  <span className=" flex  text-center">
+                  <span className=" flex  text-center text-[20px]">
                     {item.name} <br /> {item.position}
                   </span>
-                  <p className="font-light	">{item.review}</p>
+                  <p className="font-light	text-[18px]">{item.review}</p>
                 </div>
               </div>
             ))}
