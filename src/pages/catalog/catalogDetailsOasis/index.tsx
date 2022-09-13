@@ -221,34 +221,34 @@ const CatalogDetailsOasis = () => {
                 </div>
                 {/*  */}
                 <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
-                  <div className="">
-                    <h2 className="font-semibold py-4">Характеристики</h2>
+                  <div className="font-jost">
+                    <h2 className="font-semibold py-4 text-2xl">Характеристики</h2>
                     {selectedProduct.attributes.map((item, i) => (
-                      <div key={i} className="row font-jost text-sm">
-                        <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
-                          <p>{item.name}</p>
+                      <div key={i} className="row font-jost">
+                        <div className="col-6 catalog-items__characteristics flex flex-col ">
+                          <p className="font-medium text-xl leading-loose py-1.5">{item.name}</p>
                         </div>
-                        <div className="col-6 flex flex-col gap-4">
-                          <p>{item.value}</p>
+                        <div className="col-6 flex flex-col ">
+                          <p className="font-normal text-xl leading-loose py-2">{item.value}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                   <div className="font-jost">
-                    <h2 className="font-semibold py-4">Упаковка</h2>
+                    <h2 className="font-semibold py-4 text-2xl">Упаковка</h2>
                     {selectedProduct && selectedProduct.package && (
-                      <div className="row font-jost text-sm">
-                        <div className="col-6 catalog-items__characteristics flex flex-col gap-4">
-                          <p>Вид упаковки</p>
-                          <p>Вес с упаковкой</p>
-                          <p>Количество в упаковке</p>
-                          <p>Объем единицы</p>
+                      <div className="row font-jost ">
+                        <div className="col-6 catalog-items__characteristics flex flex-col ">
+                          <p className="font-medium text-xl leading-loose py-0.5">Вид упаковки</p>
+                          <p className="font-medium text-xl leading-loose py-0.5">Вес с упаковкой</p>
+                          <p className="font-medium text-xl leading-loose py-0.5">Количество в упаковке</p>
+                          <p className="font-medium text-xl leading-loose py-0.5">Объем единицы</p>
                         </div>
-                        <div className="col-6 flex flex-col gap-4">
-                          <p>{selectedProduct.package.package_type}</p>
-                          <p>{selectedProduct.package.weight}.</p>
-                          <p>{selectedProduct.package.package_quantity}.</p>
-                          <p>{selectedProduct.package.volume}.</p>
+                        <div className="col-6 flex flex-col ">
+                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.package_type}</p>
+                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.weight}.</p>
+                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.package_quantity}.</p>
+                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.volume}.</p>
                         </div>
                       </div>
                     )}

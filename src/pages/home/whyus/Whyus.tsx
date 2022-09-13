@@ -7,11 +7,11 @@ import apps from "./assets/apps.svg";
 const Whyus = () => {
   return (
     <div className="py-5">
-      <div className="bg-[#383838] px-2 flex md:flex-row flex-col justify-between text-white font-jost ">
+      <div className="bg-[#383838] px-2 flex md:flex-row flex-col justify-around text-white font-jost ">
         <div className="md:w-4/12 w-auto pt-4 md:flex md:justify-start flex justify-center md:pt-5 md:pl-6 ">
           <h1 className="font-bold">Почему мы?</h1>
         </div>
-        <div className=" flex justify-center items-center flex-col md:flex md:flex-wrap md:justify-around md:flex-row md:w-8/12  w-12/12 px-2 pt-5 pb-4">
+        <div className=" flex justify-center items-start flex-col md:flex md:flex-wrap md:justify-between md:flex-row md:w-8/12  w-12/12 px-2 pt-5 pb-4">
           <div className="flex md:gap-4 md:w-96 justify-center items-start">
             <div className="flex justify-start items-start w-2/12">
               <img
@@ -39,7 +39,7 @@ const Whyus = () => {
               </ul>
             </div>
           </div>
-          <div className="flex md:gap-4 md:w-96 justify-center items-start py-5">
+          <div className="flex md:gap-4 md:w-96 justify-center items-start  ">
             <div className="w-2/12">
               <img
                 src={diamond}

@@ -16,37 +16,37 @@ const Portfolio = () => {
   const home = useHome();
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 ">
       <div>
-        <span className="text-3xl text-black font-bold	">Портфолио</span>
+        <span className="text-4xl text-black font-bold	">Портфолио</span>
       </div>
       <div className="flex py-5 justify-center align-middle items-center text-center  md:!flex-nowrap flex-wrap md:row-auto">
         <div className="flex w-[100%] md:w-[100%]  justify-between">
           <div className="flex text-center row-auto gap-5 flex-col md:flex-row  justify-center items-center">
-            <div className="bg-black h-10 w-10 rounded-full ...  flex justify-center items-center">
-              <img className="object-center h-7 w-7" src={star} alt="" />
+            <div className="bg-black h-14 w-14 rounded-full ...  flex justify-center items-center">
+              <img className="object-center h-8 w-8" src={star} alt="" />
             </div>
-            <span className="flex items-center">Более 9 лет на рынке</span>
+            <span className="flex items-center text-xl">Более 9 лет на рынке</span>
           </div>
           <div className="flex gap-5 flex-col md:flex-row justify-center items-center">
-            <div className="bg-black h-10 w-10 rounded-full ... flex justify-center items-center">
-              <img className="object-center h-7 w-7" src={threeUser} alt="" />
+            <div className="bg-black h-14 w-14 rounded-full ... flex justify-center items-center">
+              <img className="object-center h-8 w-8" src={threeUser} alt="" />
             </div>
-            <div className=" flex items-center">1000+ довольных клиентов</div>
+            <div className=" flex items-center text-xl">1000+ довольных клиентов</div>
           </div>
         </div>
         <div className="w-[100%] flex gap-5 flex-col md:flex-row justify-center items-center lg:py-0 py-3">
-          <div className="bg-black h-10 w-10 rounded-full ... flex justify-center items-center">
-            <img className="object-center h-7 w-7" src={category} alt="" />
+          <div className="bg-black h-14 w-14 rounded-full ... flex justify-center items-center">
+            <img className="object-center h-8 w-8" src={category} alt="" />
           </div>
-          <div className=" flex items-center">
+          <div className=" flex items-center text-xl">
             2800+ продукций для брендирования
           </div>
         </div>
       </div>
 
       {home?.portfolio ? (
-        <div className=" md:gap-8 gap-2 justify-evenly my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
+        <div className=" md:gap-8 gap-2 justify-between my-3 flex flex-row overflow-x-auto ... overflow-y-clip  align-middle items-center">
           {home.portfolio.map((item: any, i) => (
             <div className="flex" key={i}>
               {item.photo ? (
