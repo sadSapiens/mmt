@@ -37,7 +37,7 @@ const Blog = () => {
                   value={search}
                   onChange={(e: any) => setSerch(e.target.value)}
                   className=" placeholder:text-slate-800 font-jost font-light block w-full
-                   border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none   sm:text-sm"
+                   border-none rounded-full h-14 pl-9 w-80 shadow-xl focus:outline-none   sm:text-sm"
                   placeholder="Поиск..."
                   type="text"
                   name="search"
@@ -51,9 +51,9 @@ const Blog = () => {
                 <div className="md:w-4/12  ">
                   <img src={newspoto} alt="" />
                 </div>
-                <div className="md:w-9/12  md:px-9    ">
+                <div className="md:w-9/12  md:px-9">
                   <div className="">
-                    <h1 className="font-semibold text-black ">
+                    <h1 className="font-semibold text-black text-4x">
                       {blogNews && blogNews.data
                         ? blogNews.data.map((item: any, i: number) => (
                             <div>{item.title}</div>
@@ -61,12 +61,12 @@ const Blog = () => {
                         : null}
                     </h1>
 
-                    <p className="py-4 flex text-ellipsis overflow-hidden ... text-black">
+                    <p className="py-4 flex text-ellipsis overflow-hidden ... text-black ">
                       {blogNews.data[0].brief_about}
                     </p>
-                    <div className="flex justify-center items-center md:flex md:justify-start">
+                    <div className="flex justify-center items-center md:flex md:justify-start ">
                       <Link to={`/blog/${blogNews.data[0].id}`}>
-                        <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-16 py-2">
+                        <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  w-80 py-2.5">
                           Читать статью
                         </button>
                       </Link>

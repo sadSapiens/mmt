@@ -31,8 +31,8 @@ const Faq = () => {
                   >
                     {item.question}
                   </label>
-                  <div className="accordion__content overflow-hidden bg-grey-lighter pl-5">
-                    <p className="flex accordion__body  justify-center items-center px-1 py-3 ">
+                  <div className="accordion__content overflow-hidden bg-grey-lighter ">
+                    <p className="flex accordion__body  justify-start items-start  py-3 ">
                       {item.answer}
                     </p>
                   </div>
