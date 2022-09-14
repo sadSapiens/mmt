@@ -53,7 +53,9 @@ const MyNavbar = ({}) => {
 
   return (
     <>
-      <nav className="bg-[#343434]  ">
+      <nav className="bg-[#343434]"
+      style={{borderBottom:"2px solid white"}}
+      >
         <div className="md:max-w-full md:mx-auto md:px-6 py-1 container ">
           <div className="flex justify-between">
             <div className=" md:flex items-center flex space-x-5 font-jost">
