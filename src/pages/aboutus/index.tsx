@@ -241,7 +241,7 @@ const About = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+                                    className="md:hidden flex flex-col justify-center items-c   enter bg-[#343434] text-white px-0 py-4 my-4">
                   <span className="font-normal text-sm flex justify-center items-center text-center px-4">
                     «От идеи до воплощения корпоративных подарков – волшебный
                     творческий процесс, требующий четкой организации. Время –
