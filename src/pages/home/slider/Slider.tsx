@@ -45,14 +45,14 @@ const Slider = () => {
                   alt=""
                 />
               </div>
-              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
+              <div className=" leading-10 font-black flex  text-xl  md:flex md:justify-center flex-col text-white text-center ">
                 <p
                   className="
-                   w-6/12   md:text-8xl "
+                   w-6/12   md:text-8xl  text-3xl "
                 >
                   ЭКОЛОГИЧНЫЕ
                 </p>
-                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 1</p>
+                <p className="  w-6/12  text-3xl   md:text-8xl ">ПОДАРКИ 1</p>
               </div>
             </div>
           </div>
@@ -71,14 +71,14 @@ const Slider = () => {
                   alt=""
                 />
               </div>
-              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
+              <div className="flex leading-10 font-black    text-xl  md:flex md:justify-center flex-col text-white text-center ">
                 <p
                   className="
-                   w-6/12   md:text-8xl "
+                   w-6/12   md:text-8xl   text-3xl "
                 >
                   ЭКОЛОГИЧНЫЕ
                 </p>
-                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 2</p>
+                <p className="  w-6/12     text-3xl md:text-8xl ">ПОДАРКИ 2</p>
               </div>
             </div>
           </div>
@@ -97,14 +97,14 @@ const Slider = () => {
                   alt=""
                 />
               </div>
-              <div className="flex font-extrabold text-xl  md:flex md:justify-center flex-col text-white text-center ">
+              <div className="flex  leading-10 font-black  text-xl  md:flex md:justify-center flex-col text-white text-center ">
                 <p
                   className="
-                   w-6/12   md:text-8xl "
+                   w-6/12   md:text-8xl   text-3xl"
                 >
                   ЭКОЛОГИЧНЫЕ
                 </p>
-                <p className="  w-6/12   md:text-8xl ">ПОДАРКИ 3</p>
+                <p className="  w-6/12   text-3xl  md:text-8xl ">ПОДАРКИ 3</p>
               </div>
             </div>
           </div>
