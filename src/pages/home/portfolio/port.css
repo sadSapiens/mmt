@@ -22,11 +22,7 @@
   transition: opacity 0.6s ease-out;
 }
 
-.carousel-item img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-}
+
 
 .carousel-control {
   background: rgba(0, 0, 0, 0.28);

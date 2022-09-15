@@ -78,9 +78,7 @@ body {
 *:after {
   box-sizing: inherit;
 }
-/* img {
-  max-width: 100%;
-}*/
+
 .timeline {
   text-align: left;
 }

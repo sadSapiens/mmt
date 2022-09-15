@@ -37,7 +37,7 @@ const Catalog = () => {
                     index === openTab
                       ? "bg-black text-white "
                       : "bg-white text-black"
-                  } flex   align-middle justify-center items-center  rounded-full ... py-2 px-4 w-auto  text-center text-3xl md:text-base text-black border-[1px] border-black`}
+                  } flex whitespace-nowrap  align-middle justify-center items-center  rounded-full ... py-2 px-4 w-auto  text-center text-3xl md:text-base text-black border-[1px] border-black`}
                 >
                   <img
                     className=" flex px-2 h-3 w-3"

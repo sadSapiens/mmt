@@ -51,17 +51,22 @@ const Portfolio = () => {
             <div className="flex" key={i}>
               {item.photo ? (
                 <img
-                  className="md:h-56 md:w-64 w-96 h-40"
-                  src={item.photo}
+                  className="md:h-56 md:w-64 w-44 h-32 max-w-none"
+                  src={one}
+                  // src={item.photo}
+
                   alt=""
                 />
               ) : (
-                <img className="md:h-56 md:w-64 w-96 h-40" src={one} alt="" />
+                <img className="md:h-56 md:w-64 w-44 h-32" src={one} alt="" />
               )}
             </div>
           ))}
         </div>
       ) : null}
+
+
+
 
       <div className="flex justify-center py-4">
         <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">
