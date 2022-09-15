@@ -19,7 +19,7 @@ const Profile = () => {
     return (
         <>
             <div className=" px-2  md:w-auto    py-5   ">
-                <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
+                <div className="flex justify-around px-8 md:flex-row ">
                     <div className="w-full">
                         <h1 className="font-bold  text-2xl pl-14">Личный кабинет</h1>
                     </div>

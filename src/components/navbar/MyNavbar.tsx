@@ -70,7 +70,7 @@ const MyNavbar = ({}) => {
               </div>
 
               <div className="hidden md:flex md:items-center items-end gap-5 font-light  text-[#ffffff] transition.4s hover:text-gray-400">
-                <Link to="/" className="py-3 px-3 text-[#ffffff]  ">
+                <Link to="/about" className="py-3 px-3 text-[#ffffff]  ">
                   Компания
                 </Link>
                 <Link to="/portfolio" className="py-3 px-3 text-[#ffffff]  ">
