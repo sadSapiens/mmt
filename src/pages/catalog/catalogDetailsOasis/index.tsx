@@ -142,7 +142,7 @@ const CatalogDetailsOasis = () => {
                 <li className="text-gray-500">Ручки</li> */}
               </ol>
             </div>
-            <div className="flex justify-between py-5 md:flex-row flex-col">
+            <div className="flex justify-between py-5 md:flex-row flex-col gap-2">
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">
                 {selectedProduct &&
@@ -255,12 +255,12 @@ const CatalogDetailsOasis = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex md:w-6/12 w-full flex flex-col gap-4">
-                <div className="hidden md:flex flex-col gap-4">
+              <div className="flex md:w-6/12 w-full flex flex-col gap-4 items-start">
+                <div className="hidden md:flex flex-col ">
                   <span className=" text-2xl font-medium font-jost text-black">
                     {selectedProduct.full_name}
                   </span>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between py-2">
                     <h4>Код товара: {selectedProduct.article}</h4>
                     <h4>На складе: {selectedProduct.total_stock}</h4>
                   </div>
@@ -292,10 +292,10 @@ const CatalogDetailsOasis = () => {
                     {selectedProduct.locations.length > 0 && (
                       <form className="w-full p-2">
                         <fieldset>
-                          <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                          <div className="relative border-b-2 border-black text-gray-800 bg-white ml-[-10px] ">
                             <>
                               <select
-                                className="appearance-none w-full py-1 px-2 bg-white"
+                                className="appearance-none w-full py-1 px-2 bg-white ml-[-10px]"
                                 name="whatever"
                                 id="frm-whatever"
                                 onChange={(e) => {
@@ -334,7 +334,7 @@ const CatalogDetailsOasis = () => {
 
                   <div className="flex md:justify-between md:flex-row flex-col w-full">
                     <div className="md:w-6/12 w-full">
-                      <form className="w-full p-2">
+                      <form className="w-full p-2 ml-[-10px]">
                         <label htmlFor="input2">Тип нанесения</label>
                         <fieldset>
                           <div className="relative border-b-2 border-black  text-gray-800 bg-white ">
@@ -350,7 +350,7 @@ const CatalogDetailsOasis = () => {
                                   costom_type_id: e.target.value,
                                 });
                               }}
-                              className="appearance-none w-full py-1 px-2 bg-white"
+                              className="appearance-none w-full py-1 px-2 bg-white ml-[-10px]"
                               name="whatever"
                               id="frm-whatever"
                             >
@@ -390,7 +390,7 @@ const CatalogDetailsOasis = () => {
                               My field
                             </label>
                             <select
-                              className="appearance-none w-full py-1 px-2 bg-white"
+                              className="appearance-none w-full py-1 px-2 bg-white ml-[-10px] "
                               name="whatever"
                               id="frm-whatever"
                               onChange={(e) =>
@@ -437,7 +437,7 @@ const CatalogDetailsOasis = () => {
                   </div>
 
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
-                    <div className="flex  w-5/12 justify-between">
+                    <div className="flex  w-5/2 justify-between ">
                       <div>
                         {currentDrawing &&
                         currentDrawing.selectedCostomTypeId ? (
@@ -484,8 +484,10 @@ const CatalogDetailsOasis = () => {
                               return type.id ==
                                 currentDrawing.costom_type_id ? (
                                 <>
-                                  <label htmlFor="input2">
-                                    Высота({type.height}мм)
+                                  <label htmlFor="input2 ">
+                                    <span className='pl-[14px]'>
+                                      Высота({type.height}мм)
+                                    </span>
                                   </label>
 
                                   <input
@@ -536,26 +538,26 @@ const CatalogDetailsOasis = () => {
                 </div>
                 <div className="flex flex-col ">
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
-                    <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div className="ml-[-25px] inline-block min-w-full sm:px-6 lg:px-8">
                       <div className="overflow-hidden">
                         <table className=" flex justify-between flex-wrap">
                           <thead className="">
                             <tr className="flex gap-24">
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
                               >
                                 Размер
                               </th>
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
                               >
                                 На складе
                               </th>
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
                               >
                                 Количество
                               </th>

@@ -317,7 +317,7 @@ const CatalogPage = () => {
                 </span>
               </div>
             </div>
-            <div className="flex bg-black  h-0.5"></div>
+            <div className="flex bg-black  h-0.5"/>
           </div>
           <div className="flex justify-around items-end w-4/12">
             <button
@@ -902,7 +902,7 @@ const CatalogPage = () => {
                 <div className="flex justify-center items-center py-4">
                   <p>loading...</p>
                 </div>
-              )}
+              )}r
             </div>
           )}
         </div>

@@ -61,7 +61,7 @@ const Cards = ({ product }: Props) => {
               </h1>
             </>
           )}
-          <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center ">
+          <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center p-2 ">
             <div className=" flex">
               <img
                 className="md:w-[100%] max-h-48"
@@ -75,7 +75,7 @@ const Cards = ({ product }: Props) => {
             </div>
             <div>
               <div className="flex justify-between ">
-                <h5 className="md:flex md:px-3 flex justify-start md:justify-center text-sm font-light">
+                <h5 className="md:flex md:px-1 flex justify-start md:justify-center text-sm font-light">
                   Код товара: {product.article}
                 </h5>
                 <h5 className="md:flex hidden md:px-3 justify-start md:justify-center text-sm font-light">
@@ -101,8 +101,8 @@ const Cards = ({ product }: Props) => {
               </div>
               <div className="flex justify-between md:px-5 px-2 text-black font-jost ">
                 <div className="flex flex-col justify-start">
-                  <span className="font-light mr-9">Цена:</span>
-                  <b>{product.price} C</b>
+                  <span className="font-light text-left ml-[-5px]">Цена:</span>
+                  <b  className='ml-[-6px]'>{product.price} C</b>
                 </div>
                 <div className="md:w-10 md:h-10 w-8 h-8 bg-[#343434] rounded-full ... flex justify-center items-center">
                   <img src={shopbag} className="h-5 w-5" alt="" />
