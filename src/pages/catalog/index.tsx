@@ -476,7 +476,7 @@ const CatalogPage = () => {
           className={
             showFilter && width.width < 1000
               ? " z-50 outline-none focus:outline-none bg-red w-full accordion block"
-              : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky"
+              : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky h-[100%] pt-14"
           }
         >
           <div className="w-1/8">
@@ -514,7 +514,7 @@ const CatalogPage = () => {
 
                         <label
                           htmlFor={item.name}
-                          className="flex justify-center cursor-pointer items-center  px-4 py-1 rounded-full ... w-28 !mb-0"
+                          className="flex justify-center cursor-pointer items-center  px-4 py-1 rounded-full ... w-28 !mb-0 py-10 px-22 border border-black ml-6"
                         >
                           {item.name}
                         </label>
@@ -890,7 +890,7 @@ const CatalogPage = () => {
               )}
             </div>
           ) : (
-            <div className=" w-[100%] flex justify-center flex-col items-center flex-wrap">
+            <div className=" w-[100%] flex justify-start flex-col items-start pl-11 flex-wrap">
               {catalogProducts ? (
                 <>
                   {catalogProducts.map((item, i: number) => (

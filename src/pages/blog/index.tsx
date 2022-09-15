@@ -36,7 +36,7 @@ const Blog = () => {
                 <input
                   value={search}
                   onChange={(e: any) => setSerch(e.target.value)}
-                  className=" placeholder:text-slate-800 font-jost font-light block w-full
+                  className=" placeholder:text-slate-800 font-jost font-light block w-[300px]
                    border-none rounded-full py-2 pl-9 pr-3 shadow-xl  focus:outline-none   sm:text-sm"
                   placeholder="Поиск..."
                   type="text"
@@ -53,10 +53,10 @@ const Blog = () => {
                 </div>
                 <div className="md:w-9/12  md:px-9    ">
                   <div className="">
-                    <h1 className="font-semibold text-black ">
+                    <h1 className=" font-semibold text-black ">
                       {blogNews && blogNews.data
                         ? blogNews.data.map((item: any, i: number) => (
-                            <div>{item.title}</div>
+                            <div >{item.title}</div>
                           ))
                         : null}
                     </h1>

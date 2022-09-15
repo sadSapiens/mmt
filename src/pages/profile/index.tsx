@@ -21,7 +21,7 @@ const Profile = () => {
             <div className=" px-2  md:w-auto    py-5   ">
                 <div className="flex justify-between  items-center px-1 md:flex-row flex-col">
                     <div className="w-full">
-                        <h1 className="font-bold  text-2xl">Личный кабинет</h1>
+                        <h1 className="font-bold  text-2xl pl-14">Личный кабинет</h1>
                     </div>
                     <div className="flex gap-5 md:justify-end justify-between w-full h-11">
                         <button

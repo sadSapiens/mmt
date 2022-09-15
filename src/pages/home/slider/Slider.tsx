@@ -32,7 +32,7 @@ const Slider = () => {
 
         <div className="carousel-inner relative overflow-hidden ">
           <div className="carousel-item active relative float-left w-full ">
-            <div className="flex justify-evenly bg-[#8ABFBB] py-2">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
               <div className=" flex  w-auto">
                 <img
                   className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
@@ -58,7 +58,7 @@ const Slider = () => {
           </div>
 
           <div className="carousel-item  relative float-left w-full">
-            <div className="flex justify-between bg-[#8ABFBB] py-2">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
               <div className=" flex  w-auto">
                 <img
                   className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
@@ -84,7 +84,7 @@ const Slider = () => {
           </div>
 
           <div className="carousel-item  relative float-left w-full">
-            <div className="flex justify-between bg-[#8ABFBB] py-2">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
               <div className=" flex  w-auto">
                 <img
                   className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"

@@ -127,7 +127,7 @@ const CatalogDetailsOasis = () => {
                 <li className="text-black font-jost">
                   <Link
                     to="/catalog"
-                    className="!text-gray-900 hover:text-black"
+                    className="!text-gray-900 hover:text-black text-3xl"
                   >
                     Каталог
                   </Link>
