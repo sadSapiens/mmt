@@ -22,7 +22,7 @@ const Portfolio = () => {
                     <div>
                         <h1>Портфолио</h1>
                     </div>
-                    <div className="flex flex-row overflow-x-auto ...  align-middle items-center py-5 gap-4">
+                    <div className="flex flex-wrap overflow-x-auto ...  align-middle items-center py-5 gap-4">
                         <div className="flex gap-3">
                             <button
                                 onClick={() => {
@@ -55,7 +55,7 @@ const Portfolio = () => {
                         </div>
                     </div>
 
-                    <div className=" flex flex-wrap justify-center items-center gap-4">
+                    <div className=" flex flex-wrap justify-between items-center gap-4">
                         {portfolio?.data.map((item: any, index: number) => {
                             return openTab
                                 ? index + 1 === openTab && (
@@ -63,7 +63,7 @@ const Portfolio = () => {
                                     key={index}
                                     className="flex flex-wrap md:columns-4 md:gap-4 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row"
                                 >
-                                    <div className="md:h-56 md:w-56 h-36 w-36 border border-[#1F1F1F] pb-10 ">
+                                    <div className="md:h72 md:w-72 h-36 w-36 border border-[#1F1F1F] mb-32 ">
                                         <img src={one} alt=""/>
                                         <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
@@ -74,9 +74,9 @@ const Portfolio = () => {
                                 : portfolio.data.map((item: any, index: number) => (
                                     <div
                                         key={index}
-                                        className="flex flex-wrap md:columns-4 md:gap-8 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row"
+                                        className="flex flex-wrap md:columns-4 md:gap-8 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row mb-4"
                                     >
-                                        <div className="md:h-56 md:w-56 h-36 w-36 border border-[#1F1F1F] ">
+                                        <div className="md:h-72 md:w-72 h-36 w-36 border border-[#1F1F1F] ">
                                             <img src={one} alt=""/>
                                             <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
