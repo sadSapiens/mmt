@@ -118,7 +118,7 @@ const CatalogDetailsHiidea = () => {
           >
             <div />
 
-            <div className="rounded-md w-full font-jost">
+            {/* <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
                 <li className="text-black font-jost">
                   <Link
@@ -128,16 +128,16 @@ const CatalogDetailsHiidea = () => {
                     Каталог
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <img src={arrow} alt="" />
                 </li>
                 <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li className="text-gray-500">Ручки</li> */}
+                <li className="text-gray-500">Ручки</li>
               </ol>
-            </div>
+            </div> */}
             <div className="flex justify-between py-5 md:flex-row flex-col">
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">

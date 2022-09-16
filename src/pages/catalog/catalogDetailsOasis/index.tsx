@@ -122,7 +122,7 @@ const CatalogDetailsOasis = () => {
         <>
           <div className="mx-auto md:px-10 px-3 w-auto py-5">
             <div />
-            <div className="rounded-md w-full font-jost">
+            {/* <div className="rounded-md w-full font-jost">
               <ol className="flex !text-black ">
                 <li className="text-black font-jost">
                   <Link
@@ -132,16 +132,16 @@ const CatalogDetailsOasis = () => {
                     Каталог
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <img src={arrow} alt="" />
                 </li>
                 <li className="!text-black">Категории</li>
                 <li>
                   <img src={arrow} alt="" />
                 </li>
-                <li className="text-gray-500">Ручки</li> */}
+                <li className="text-gray-500">Ручки</li>
               </ol>
-            </div>
+            </div> */}
             <div className="flex justify-between py-5 md:flex-row flex-col gap-2">
               {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
               <div className="md:flex hidden flex-col w-1/12 gap-5">
@@ -222,14 +222,20 @@ const CatalogDetailsOasis = () => {
                 {/*  */}
                 <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
                   <div className="font-jost">
-                    <h2 className="font-semibold py-4 text-2xl">Характеристики</h2>
+                    <h2 className="font-semibold py-4 text-2xl">
+                      Характеристики
+                    </h2>
                     {selectedProduct.attributes.map((item, i) => (
                       <div key={i} className="row font-jost">
                         <div className="col-6 catalog-items__characteristics flex flex-col ">
-                          <p className="font-medium text-xl leading-loose py-1.5">{item.name}</p>
+                          <p className="font-medium text-xl leading-loose py-1.5">
+                            {item.name}
+                          </p>
                         </div>
                         <div className="col-6 flex flex-col ">
-                          <p className="font-normal text-xl leading-loose py-2">{item.value}</p>
+                          <p className="font-normal text-xl leading-loose py-2">
+                            {item.value}
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -239,16 +245,32 @@ const CatalogDetailsOasis = () => {
                     {selectedProduct && selectedProduct.package && (
                       <div className="row font-jost ">
                         <div className="col-6 catalog-items__characteristics flex flex-col ">
-                          <p className="font-medium text-xl leading-loose py-0.5">Вид упаковки</p>
-                          <p className="font-medium text-xl leading-loose py-0.5">Вес с упаковкой</p>
-                          <p className="font-medium text-xl leading-loose py-0.5">Количество в упаковке</p>
-                          <p className="font-medium text-xl leading-loose py-0.5">Объем единицы</p>
+                          <p className="font-medium text-xl leading-loose py-0.5">
+                            Вид упаковки
+                          </p>
+                          <p className="font-medium text-xl leading-loose py-0.5">
+                            Вес с упаковкой
+                          </p>
+                          <p className="font-medium text-xl leading-loose py-0.5">
+                            Количество в упаковке
+                          </p>
+                          <p className="font-medium text-xl leading-loose py-0.5">
+                            Объем единицы
+                          </p>
                         </div>
                         <div className="col-6 flex flex-col ">
-                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.package_type}</p>
-                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.weight}.</p>
-                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.package_quantity}.</p>
-                          <p className="font-normal text-xl leading-loose py-1">{selectedProduct.package.volume}.</p>
+                          <p className="font-normal text-xl leading-loose py-1">
+                            {selectedProduct.package.package_type}
+                          </p>
+                          <p className="font-normal text-xl leading-loose py-1">
+                            {selectedProduct.package.weight}.
+                          </p>
+                          <p className="font-normal text-xl leading-loose py-1">
+                            {selectedProduct.package.package_quantity}.
+                          </p>
+                          <p className="font-normal text-xl leading-loose py-1">
+                            {selectedProduct.package.volume}.
+                          </p>
                         </div>
                       </div>
                     )}
@@ -485,7 +507,7 @@ const CatalogDetailsOasis = () => {
                                 currentDrawing.costom_type_id ? (
                                 <>
                                   <label htmlFor="input2 ">
-                                    <span className='pl-[14px]'>
+                                    <span className="pl-[14px]">
                                       Высота({type.height}мм)
                                     </span>
                                   </label>

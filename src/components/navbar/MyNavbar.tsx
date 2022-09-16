@@ -53,9 +53,7 @@ const MyNavbar = ({}) => {
 
   return (
     <>
-      <nav className="bg-[#343434]"
-      style={{borderBottom:"2px solid white"}}
-      >
+      <nav className="bg-[#343434]" style={{ borderBottom: "2px solid white" }}>
         <div className="md:max-w-full md:mx-auto md:px-6 py-1 container ">
           <div className="flex justify-between">
             <div className=" md:flex items-center flex space-x-5 font-jost">
@@ -82,9 +80,9 @@ const MyNavbar = ({}) => {
                 {/* <Link to="/contacts" className="py-3 px-3 text-[#ffffff]  ">
                   Контакты
                 </Link> */}
-                <Link to="/" className="py-3 px-3 text-[#ffffff]  ">
+                <a href="#faq" className="py-3 px-3 text-[#ffffff]  ">
                   FAQ
-                </Link>
+                </a>
               </div>
             </div>
 

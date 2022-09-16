@@ -120,7 +120,7 @@ const Blog = () => {
               <p>Ничего не найдено</p>
             )}
           </div>
-          {blogNews && blogNews.data && !!blogNews.data.length && (
+          {/* {blogNews && blogNews.data && !!blogNews.data.length && (
             <div className="flex justify-center items-center pb-5">
               <Link to={`/blog/${blogNews.data[0].id}`}>
                 <button className="  rounded-full bg-[#1F1F1F]  my-5 text-white  px-16 py-2">
@@ -128,7 +128,7 @@ const Blog = () => {
                 </button>
               </Link>
             </div>
-          )}
+          )} */}
         </>
       ) : null}
     </>
