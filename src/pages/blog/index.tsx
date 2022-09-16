@@ -53,10 +53,10 @@ const Blog = () => {
                 </div>
                 <div className="md:w-9/12  md:px-9">
                   <div className="">
-                    <h1 className="font-semibold text-black text-4x">
+                    <h1 className="leading-10 font-semibold text-black text-4x">
                       {blogNews && blogNews.data
                         ? blogNews.data.map((item: any, i: number) => (
-                            <div >{item.title}</div>
+                            <h1 >{item.title}</h1>
                           ))
                         : null}
                     </h1>

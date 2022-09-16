@@ -19,7 +19,7 @@ const BlogDetail = () => {
   console.log(selectedBlog);
 
   return (
-    <div>
+    <div className='px-12 py-6'>
       <div className="w-full flex justify-center">
         {selectedBlog && (
           <>
