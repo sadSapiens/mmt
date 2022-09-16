@@ -104,7 +104,7 @@ const OrderHistory = () => {
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
                               <div className="flex justify-center items-center align-middle flex-col">
                                 <h3 className="font-semibold">{formatDate(item.created_at).date}</h3>
-                                <span>{formatDate(item.created_at).time}</span>
+                                 <span>{formatDate(item.created_at).time}</span>
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
@@ -112,7 +112,7 @@ const OrderHistory = () => {
                                 <label
                                   htmlFor="exampleFormControlInput5"
                                   className="form-label inline-block mb-2 text-gray-700 "
-                                ></label>
+                                />
                                 <input
                                   type="text"
                                   className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
