@@ -771,7 +771,7 @@ const CatalogDetailsHiidea = () => {
           {similar.map((item: any, i) => (
             <div
               key={i}
-              className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
+              className="py-7 ml-[-100px]  flex justify-center grid grid-cols-2  w-64   mx-3 overflow-x-auto "
             >
               <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
                 <div className=" flex">

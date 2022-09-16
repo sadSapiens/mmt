@@ -264,7 +264,7 @@ const CatalogPage = () => {
               <div className="flex justify-center flex-col">
                 <div className="dropdown relative">
                   <button
-                    className=" cursor-pointer dropdown-toggle text-black hover:bg-gray-100 focus:outline-none flex items-center  whitespace-nowrap "
+                    className=" cursor-pointer dropdown-toggle text-black hover:bg-gray-100 focus:outline-none flex items-left  whitespace-nowrap "
                     type="button"
                     id="dropdownMenuButton1"
                     data-bs-toggle="dropdown"
@@ -476,7 +476,7 @@ const CatalogPage = () => {
           className={
             showFilter && width.width < 1000
               ? " z-50 outline-none focus:outline-none bg-red w-full accordion block"
-              : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky h-[100%] pt-14"
+                : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky h-[100%] pt-14"
           }
         >
           <div className="w-1/8">
@@ -875,7 +875,7 @@ const CatalogPage = () => {
 
           {/*  */}
           {row === "row" ? (
-            <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-4  justify-center ">
+            <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-20 justify-center ">
               {catalogProducts ? (
                 <>
                   {catalogProducts.map((item, i: number) => (

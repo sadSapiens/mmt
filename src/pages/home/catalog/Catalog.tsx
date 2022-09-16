@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import calendar from "./catalog-images/calendar.svg";
 import one from "./catalog-images/one.png";
 import arrow from "./catalog-images/arrow.svg";
-import {useAppDispatch} from "../../../store";
-import {useHome} from "../../../store/varia/hooks";
-import {fetchHome} from "../../../store/varia";
-import {Link} from "react-router-dom";
+import { useAppDispatch } from "../../../store";
+import { useHome } from "../../../store/varia/hooks";
+import { fetchHome } from "../../../store/varia";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
     const [openTab, setOpenTab] = useState(0);
@@ -21,14 +21,12 @@ const Catalog = () => {
         <div className="container mx-auto px-4 ">
             {home?.catalogs && (
                 <>
-                    <div
-                        className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
+                    <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
             <span className="  py-4 font-semibold text-black text-bold text-center text-4xl">
               Каталог
             </span>
 
-                        <div
-                            className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center px-10 w-full md:w-auto">
+                        <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center px-10 w-full md:w-auto">
                             {home.catalogs.map((item, index) => (
                                 <button
                                     key={index}
@@ -39,7 +37,7 @@ const Catalog = () => {
                                         index === openTab
                                             ? "bg-black text-white "
                                             : "bg-white text-black"
-                                    } flex   align-middle justify-center items-center  rounded-full ... py-2 px-4 w-auto  text-center text-2xl md:text-base text-black border-[1px] border-black md:text-[16px] sm:text-[14px]`}
+                                    } flex whitespace-nowrap  align-middle justify-center items-center  rounded-full ... py-2 px-4 w-auto  text-center text-3xl md:text-base text-black border-[1px] border-black`}
                                 >
                                     <img
                                         className=" flex px-2 h-3 w-3"
@@ -58,7 +56,7 @@ const Catalog = () => {
                         return index === openTab ? (
                             <div
                                 key={index}
-                                className="flex  flex-wrap md:flex-row justify-start items-center md:gap-20 gap-10 py-3"
+                                className="flex  md:flex-row justify-start items-center md:gap-20 gap-10 py-3 overflow-x-auto"
                             >
                                 {item.categories.length && item.categories.length > 6 && !more
                                     ? item.categories.slice(0, 6).map((el, i) => (
@@ -77,8 +75,7 @@ const Catalog = () => {
                                                     alt=""
                                                     className="object-contain"
                                                 />
-                                                <span
-                                                    className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
+                                                <span className="flex align-bottom justify-center text-black text-sm  md:text-base text-center">
                             {el.name}
                           </span>
                                             </div>
@@ -104,7 +101,7 @@ const Catalog = () => {
                                                 </div>
                                                 <span
                                                     className="flex align-bottom justify-center items-end text-black text-sm  md:text-base text-end
-                          
+
                           "
                                                 >
                             {el.name}
