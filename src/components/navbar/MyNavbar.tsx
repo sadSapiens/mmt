@@ -80,7 +80,11 @@ const MyNavbar = ({}) => {
                 {/* <Link to="/contacts" className="py-3 px-3 text-[#ffffff]  ">
                   Контакты
                 </Link> */}
-                <a href="#faq" className="py-3 px-3 text-[#ffffff]  ">
+                <a
+                  onClick={() => navigate("/")}
+                  href="#faq"
+                  className="py-3 px-3 text-[#ffffff]  "
+                >
                   FAQ
                 </a>
               </div>

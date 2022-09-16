@@ -14,7 +14,6 @@ const Blog = () => {
   useEffect(() => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
-  console.log(blogNews);
 
   return (
     <>

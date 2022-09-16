@@ -43,7 +43,7 @@ const CardsRow = ({ product }: Props) => {
         }
       >
         <div className="py-7 flex justify-center   md:w-[50rem] w-full">
-          <div className=" py-2 border border-black w-[100%] flex flex-row">
+          <div className=" py-2 border border-black w-[100%] flex flex-row relative">
             <div className=" flex md:w-3/12 w-4/12">
               <img
                 className="w-[100%] object-contain"
@@ -106,7 +106,7 @@ const CardsRow = ({ product }: Props) => {
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                  <rect width="110" height="60" fill="url(#pattern0)" />
+                  <rect width="110" height="60" fill="url(#pattern0)"/>
                   <defs>
                     <pattern
                       id="pattern0"
