@@ -10,7 +10,8 @@ import { fetchHome } from "../../../store/varia";
 const Feedback = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
-
+  console.log("home ==>", home);
+  
   return (
     <div className="container mx-auto px-4">
       <div className="flex md:flex-auto md:justify-start justify-center">
@@ -27,7 +28,7 @@ const Feedback = () => {
                 <div className="flex flex-col justify-center items-center overflow-y-clip px-4 w-full">
                   <img
                     className="rounded-full  w-28 h-28 pb-1.5 flex justify-center items-center place-items-center"
-                    src={item ? item.picture : { valentina }}
+                    src={item ? `http://212.42.106.82/${item?.picture}` : ""}
                     alt=""
                   />
                   <span className=" flex  text-center text-[20px]">

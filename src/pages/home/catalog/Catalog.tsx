@@ -16,7 +16,7 @@ const Catalog = () => {
     useEffect(() => {
         dispatch(fetchHome() as any);
     }, []);
-
+    
     return (
         <div className="container mx-auto px-4 ">
             {home?.catalogs && (

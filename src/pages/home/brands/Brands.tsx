@@ -24,7 +24,7 @@ const Brands = () => {
           {home.brands.map((item: any, i) => (
             <div key={i} className="flex flex-col items-center py-2">
               <div>
-                {!item.logotype ? (
+                {item.logotype ? (
                   <img src={item.logotype} alt="" />
                 ) : (
                   <img src={oasis} alt="" />
@@ -39,12 +39,7 @@ const Brands = () => {
       ) : (
         <p>Ничего нету ( </p>
       )}
-      <div className="flex justify-center">
-        <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">
-          Больше товаров
-          <img className=" flex px-2" src={arrow} alt="" />
-        </button>
-      </div>
+     
     </div>
   );
 };

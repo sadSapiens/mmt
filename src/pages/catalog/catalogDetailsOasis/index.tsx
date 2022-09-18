@@ -120,38 +120,24 @@ const CatalogDetailsOasis = () => {
     <div>
       {selectedProduct ? (
         <>
-          <div className="mx-auto md:px-10 px-3 w-auto py-5">
-            <div />
-            {/* <div className="rounded-md w-full font-jost">
-              <ol className="flex !text-black ">
-                <li className="text-black font-jost">
-                  <Link
-                    to="/catalog"
-                    className="!text-gray-900 hover:text-black text-3xl"
-                  >
-                    Каталог
-                  </Link>
-                </li>
-                <li>
-                  <img src={arrow} alt="" />
-                </li>
-                <li className="!text-black">Категории</li>
-                <li>
-                  <img src={arrow} alt="" />
-                </li>
-                <li className="text-gray-500">Ручки</li>
-              </ol>
-            </div> */}
+          <div className="mx-auto md:px-10 px-3 w-auto md:py-5 py-0">
             <div className="flex justify-between py-5 md:flex-row flex-col gap-2">
-              {/* {selectedProduct.color_groups[0].images[0].map((item: any) => { */}
-              <div className="md:flex hidden flex-col w-1/12 gap-5">
+              <div className="md:flex hidden flex-col gap-5 ">
                 {selectedProduct &&
                 selectedProduct.color_groups.length &&
                 selectedProduct.color_groups.length >= 6
                   ? selectedProduct.color_groups
                       .slice(0, 5)
                       .map((product, i) => (
-                        <div key={i}>
+                        <div
+                          key={i}
+                          className={
+                            product?.images[0]?.small ===
+                            currentProduct?.images[0]?.small
+                              ? "cursor-pointer bg-[#898989] p-[2px]"
+                              : "cursor-pointer  p-[2px]"
+                          }
+                        >
                           <img
                             onClick={() => setCurrentProduct(product)}
                             src={product.images[0].small}
@@ -161,7 +147,15 @@ const CatalogDetailsOasis = () => {
                         </div>
                       ))
                   : selectedProduct.color_groups.map((product, i) => (
-                      <div key={i}>
+                      <div
+                        key={i}
+                        className={
+                          product?.images[0]?.small ===
+                          currentProduct?.images[0]?.small
+                            ? "cursor-pointer bg-[#898989] p-[2px]"
+                            : "cursor-pointer  p-[2px]"
+                        }
+                      >
                         <img
                           onClick={() => setCurrentProduct(product)}
                           src={product.images[0].small}
@@ -185,104 +179,122 @@ const CatalogDetailsOasis = () => {
                 ) : (
                   "Loading..."
                 )}
-                <div className="flex justify-center items-center md:w-8/12 w-full py-5 gap-2">
-                  <div className="md:flex hidden flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
+                <div className="flex justify-start items-center w-full">
+                  <div className="flex flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
                     {selectedProduct &&
                     selectedProduct.color_groups.length &&
-                    selectedProduct.color_groups.length < 6
+                    selectedProduct.color_groups.length >= 6
                       ? selectedProduct.color_groups
-                          .slice(6)
+                          .slice(0, 5)
                           .map((product, i) => (
-                            <div key={i}>
+                            <div key={i} className="cursor-pointer ">
                               <img
                                 onClick={() => setCurrentProduct(product)}
                                 src={product.images[0].small}
-                                alt="image"
+                                alt=""
+                                className="w-16 h-16 object-fill"
+                                style={{
+                                  opacity:
+                                    product?.images[0]?.small ===
+                                    currentProduct?.images[0]?.small
+                                      ? "1"
+                                      : "0.4",
+                                }}
                               />
                             </div>
                           ))
                       : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i}>
+                          <div key={i} className="cursor-pointer">
                             <img
                               onClick={() => setCurrentProduct(product)}
                               src={product.images[0].small}
-                              alt="image"
+                              alt=""
+                              className={"w-16 h-16 object-fill"}
+                              style={{
+                                opacity:
+                                  product?.images[0]?.small ===
+                                  currentProduct?.images[0]?.small
+                                    ? "1"
+                                    : "0.5",
+                              }}
                             />
                           </div>
                         ))}
                   </div>
                 </div>
-                <div className="flex md:hidden justify-between">
-                  <h4>Код товара: {selectedProduct.article}</h4>
-                  <h4>На складе: {selectedProduct.total_stock}</h4>
-                </div>
-                <div className="flex md:hidden">
-                  <p>{selectedProduct.description}</p>
-                </div>
-                {/*  */}
-                <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
-                  <div className="font-jost">
-                    <h2 className="font-semibold py-4 text-2xl">
-                      Характеристики
-                    </h2>
-                    {selectedProduct.attributes.map((item, i) => (
-                      <div key={i} className="row font-jost">
-                        <div className="col-6 catalog-items__characteristics flex flex-col ">
-                          <p className="font-medium text-xl leading-loose py-1.5">
-                            {item.name}
-                          </p>
-                        </div>
-                        <div className="col-6 flex flex-col ">
-                          <p className="font-normal text-xl leading-loose py-2">
-                            {item.value}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                <div>
+                  <div className="flex md:hidden justify-between">
+                    <h4>Код товара: {selectedProduct.article}</h4>
+                    <h4>На складе: {selectedProduct.total_stock}</h4>
                   </div>
-                  <div className="font-jost">
-                    <h2 className="font-semibold py-4 text-2xl">Упаковка</h2>
-                    {selectedProduct && selectedProduct.package && (
-                      <div className="row font-jost ">
-                        <div className="col-6 catalog-items__characteristics flex flex-col ">
-                          <p className="font-medium text-xl leading-loose py-0.5">
-                            Вид упаковки
-                          </p>
-                          <p className="font-medium text-xl leading-loose py-0.5">
-                            Вес с упаковкой
-                          </p>
-                          <p className="font-medium text-xl leading-loose py-0.5">
-                            Количество в упаковке
-                          </p>
-                          <p className="font-medium text-xl leading-loose py-0.5">
-                            Объем единицы
-                          </p>
+                  <div className="flex md:hidden">
+                    <p>{selectedProduct.description}</p>
+                  </div>
+                  {/*  */}
+                  <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
+                    <div className="font-jost">
+                      <h2 className="font-semibold py-4 text-2xl">
+                        Характеристики
+                      </h2>
+                      {selectedProduct.attributes.map((item, i) => (
+                        <div key={i} className="row font-jost">
+                          <div className="col-6 catalog-items__characteristics flex flex-col ">
+                            <p className="font-medium text-xl leading-loose py-1.5">
+                              {item.name}
+                            </p>
+                          </div>
+                          <div className="col-6 flex flex-col ">
+                            <p className="font-normal text-xl leading-loose py-2">
+                              {item.value}
+                            </p>
+                          </div>
                         </div>
-                        <div className="col-6 flex flex-col ">
-                          <p className="font-normal text-xl leading-loose py-1">
-                            {selectedProduct.package.package_type}
-                          </p>
-                          <p className="font-normal text-xl leading-loose py-1">
-                            {selectedProduct.package.weight}.
-                          </p>
-                          <p className="font-normal text-xl leading-loose py-1">
-                            {selectedProduct.package.package_quantity}.
-                          </p>
-                          <p className="font-normal text-xl leading-loose py-1">
-                            {selectedProduct.package.volume}.
-                          </p>
+                      ))}
+                    </div>
+                    <div className="font-jost">
+                      <h2 className="font-semibold py-4 text-2xl">Упаковка</h2>
+                      {selectedProduct && selectedProduct.package && (
+                        <div className="row font-jost ">
+                          <div className="col-6 catalog-items__characteristics flex flex-col ">
+                            <p className="font-medium text-xl leading-loose py-0.5">
+                              Вид упаковки
+                            </p>
+                            <p className="font-medium text-xl leading-loose py-0.5">
+                              Вес с упаковкой
+                            </p>
+                            <p className="font-medium text-xl leading-loose py-0.5">
+                              Количество в упаковке
+                            </p>
+                            <p className="font-medium text-xl leading-loose py-0.5">
+                              Объем единицы
+                            </p>
+                          </div>
+                          <div className="col-6 flex flex-col ">
+                            <p className="font-normal text-xl leading-loose py-1">
+                              {selectedProduct.package.package_type}
+                            </p>
+                            <p className="font-normal text-xl leading-loose py-1">
+                              {selectedProduct.package.weight}.
+                            </p>
+                            <p className="font-normal text-xl leading-loose py-1">
+                              {selectedProduct.package.package_quantity}.
+                            </p>
+                            <p className="font-normal text-xl leading-loose py-1">
+                              {selectedProduct.package.volume}.
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="flex md:w-6/12 w-full flex flex-col gap-4 items-start">
-                <div className="hidden md:flex flex-col ">
+                <div className="hidden md:flex flex-col">
                   <span className=" text-2xl font-medium font-jost text-black">
                     {selectedProduct.full_name}
                   </span>
-                  <div className="flex justify-between py-2">
+                  <div className="flex gap-14 py-2">
                     <h4>Код товара: {selectedProduct.article}</h4>
                     <h4>На складе: {selectedProduct.total_stock}</h4>
                   </div>
@@ -303,21 +315,23 @@ const CatalogDetailsOasis = () => {
                   </div>
                   <div>
                     {" "}
-                    <img src={detailtrash} alt="" />
+                    <img src={detailtrash} alt="" className="cursor-pointer" />
                   </div>
                 </div>
                 <div className="flex justify-between flex-wrap gap-2">
                   <div className="w-[100%]">
-                    <label htmlFor="input2">Место</label>
+                    <label htmlFor="input2">
+                      <span className="ml-[7px]">Место</span>
+                    </label>
                     {/*  */}
 
                     {selectedProduct.locations.length > 0 && (
                       <form className="w-full p-2">
                         <fieldset>
-                          <div className="relative border-b-2 border-black text-gray-800 bg-white ml-[-10px] ">
+                          <div className="relative border-b-2 border-black text-gray-800 bg-white ">
                             <>
                               <select
-                                className="appearance-none w-full py-1 px-2 bg-white ml-[-10px]"
+                                className="appearance-none w-full py-1 px-2 bg-white "
                                 name="whatever"
                                 id="frm-whatever"
                                 onChange={(e) => {
@@ -356,7 +370,7 @@ const CatalogDetailsOasis = () => {
 
                   <div className="flex md:justify-between md:flex-row flex-col w-full">
                     <div className="md:w-6/12 w-full">
-                      <form className="w-full p-2 ml-[-10px]">
+                      <form className="w-full p-2 ">
                         <label htmlFor="input2">Тип нанесения</label>
                         <fieldset>
                           <div className="relative border-b-2 border-black  text-gray-800 bg-white ">
@@ -372,7 +386,7 @@ const CatalogDetailsOasis = () => {
                                   costom_type_id: e.target.value,
                                 });
                               }}
-                              className="appearance-none w-full py-1 px-2 bg-white ml-[-10px]"
+                              className="appearance-none w-full py-1 px-2 bg-white "
                               name="whatever"
                               id="frm-whatever"
                             >
@@ -412,7 +426,7 @@ const CatalogDetailsOasis = () => {
                               My field
                             </label>
                             <select
-                              className="appearance-none w-full py-1 px-2 bg-white ml-[-10px] "
+                              className="appearance-none w-full py-1 px-2 bg-white  "
                               name="whatever"
                               id="frm-whatever"
                               onChange={(e) =>
@@ -460,7 +474,7 @@ const CatalogDetailsOasis = () => {
 
                   <div className="flex md:justify-between flex-col md:flex-row w-full">
                     <div className="flex  w-5/2 justify-between ">
-                      <div>
+                      <div className="pl-[15px]">
                         {currentDrawing &&
                         currentDrawing.selectedCostomTypeId ? (
                           currentDrawing.costom_types.map(
@@ -505,11 +519,9 @@ const CatalogDetailsOasis = () => {
                             (type: any, i: number) => {
                               return type.id ==
                                 currentDrawing.costom_type_id ? (
-                                <>
+                                <div className="ml-[15px]">
                                   <label htmlFor="input2 ">
-                                    <span className="pl-[14px]">
-                                      Высота({type.height}мм)
-                                    </span>
+                                    <span>Высота({type.height}мм)</span>
                                   </label>
 
                                   <input
@@ -524,7 +536,7 @@ const CatalogDetailsOasis = () => {
                                     }
                                     className=" border-b-2 border-black w-20"
                                   />
-                                </>
+                                </div>
                               ) : null;
                             }
                           )
@@ -558,45 +570,46 @@ const CatalogDetailsOasis = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col ">
+                <div className="flex flex-col">
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
-                    <div className="ml-[-25px] inline-block min-w-full sm:px-6 lg:px-8">
-                      <div className="overflow-hidden">
+                    <div className=" inline-block sm:px-6 lg:px-8">
+                      <div className="">
                         <table className=" flex justify-between flex-wrap">
-                          <thead className="">
-                            <tr className="flex gap-24">
+                          <thead className="w-full">
+                            <tr className="flex">
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
                               >
                                 Размер
                               </th>
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                className="text-sm font-medium w-[33.3%] text-gray-900 py-4 text-left ml-[30px]"
                               >
                                 На складе
                               </th>
                               <th
                                 scope="col"
-                                className="text-sm font-medium text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
                               >
                                 Количество
                               </th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody className="w-full">
                             {currentProduct && currentProduct.sizes.length
                               ? currentProduct.sizes.map(
                                   (size: any, i: number) => (
                                     <tr key={i} className=" flex ">
-                                      <td className="mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                      <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
+                                        {" "}
                                         {size.size}
                                       </td>
-                                      <td className=" mx-2 w-44   px-2 py-2 border-b-2  border-b-black  ...">
+                                      <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
                                         {size.quantity}
                                       </td>
-                                      <td className="flex mx-2 w-44   px-2 py-2 border border-5">
+                                      <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
                                         <input
                                           type="number"
                                           placeholder="1"
@@ -622,7 +635,7 @@ const CatalogDetailsOasis = () => {
                                               sizes: updatedSizes,
                                             });
                                           }}
-                                          className="border-b-2 w-40 border-5  border-b-black  ..."
+                                          className="border-b-2 w-full border-5  border-b-black  ..."
                                         />
                                       </td>
                                     </tr>
@@ -663,7 +676,9 @@ const CatalogDetailsOasis = () => {
                             )} */}
 
                             <div className="flex flex-col">
-                              <span>{selectedProduct.total_stock}</span>
+                              <span className="text-[#30B956] font-bold">
+                                {selectedProduct.total_stock} c
+                              </span>
                               <hr className="border-b-2 border-b-black ..." />
                               <span>Итого</span>
                             </div>
@@ -671,7 +686,69 @@ const CatalogDetailsOasis = () => {
                         </div>
 
                         {/*  */}
-                        <div className="font-jost md:hidden flex">
+                        <div>
+                          {/*  */}
+                          <div className="font-jost md:hidden block">
+                            <div className="font-jost">
+                              <h2 className="font-semibold py-4 text-xl">
+                                Характеристики
+                              </h2>
+                              {selectedProduct.attributes.map((item, i) => (
+                                <div key={i} className="row font-jost">
+                                  <div className="col-6 catalog-items__characteristics flex flex-col ">
+                                    <p className="font-medium text-md leading-loose py-1.5">
+                                      {item.name}
+                                    </p>
+                                  </div>
+                                  <div className="col-6 flex flex-col ">
+                                    <p className="font-normal text-md leading-loose py-2">
+                                      {item.value}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="font-jost">
+                              <h2 className="font-semibold py-4 text-xl">
+                                Упаковка
+                              </h2>
+                              {selectedProduct && selectedProduct.package && (
+                                <div className="row font-jost ">
+                                  <div className="col-6 catalog-items__characteristics flex flex-col ">
+                                    <p className="font-medium text-md leading-loose py-0.5">
+                                      Вид упаковки
+                                    </p>
+                                    <p className="font-medium text-md leading-loose py-0.5">
+                                      Вес с упаковкой
+                                    </p>
+                                    <p className="font-medium text-md leading-loose py-0.5">
+                                      Количество в упаковке
+                                    </p>
+                                    <p className="font-medium text-md leading-loose py-0.5">
+                                      Объем единицы
+                                    </p>
+                                  </div>
+                                  <div className="col-6 flex flex-col ">
+                                    <p className="font-normal text-md leading-loose py-1">
+                                      {selectedProduct.package.package_type}
+                                    </p>
+                                    <p className="font-normal text-md leading-loose py-1">
+                                      {selectedProduct.package.weight}.
+                                    </p>
+                                    <p className="font-normal text-md leading-loose py-1">
+                                      {selectedProduct.package.package_quantity}
+                                      .
+                                    </p>
+                                    <p className="font-normal text-md leading-loose py-1">
+                                      {selectedProduct.package.volume}.
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        {/* <div className="font-jost md:hidden flex">
                           <h2 className="font-semibold py-4">Характеристики</h2>
                           {selectedProduct.attributes.map((item, i) => (
                             <div key={i} className="row font-jost text-sm">
@@ -705,10 +782,10 @@ const CatalogDetailsOasis = () => {
                               </div>
                             )}
                           </div>
-                        </div>
+                        </div> */}
                         {/*  */}
 
-                        <div className="flex py-10">
+                        <div className=" py-10 md:flex hidden">
                           <p>
                             Компания MMT оставляет за собой право вносить
                             изменения в характеристики товара и его упаковку без
@@ -723,42 +800,38 @@ const CatalogDetailsOasis = () => {
                 {/* <CatalogChangeDetail /> */}
               </div>
             </div>
-            <div className="flex gap-3 ">
-              <div className="columns-5" />
-              <div className="columns-5" />
-              <div className="columns-2" />
-            </div>
-            <div className="flex" />
           </div>
         </>
       ) : null}
 
       {similar.length ? (
-        <div className="py-7 flex justify-center mx-3 flex-wrap">
-          {similar.map((item: any, i) => (
-            <div
-              key={i}
-              className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
-            >
-              <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center">
-                <div className=" flex">
-                  <img
-                    className="md:w-[100%]  "
-                    src={item.colors[0].images[0].small}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div className="flex justify-between">
-                    <h5 className="md:flex md:px-3 flex justify-start md:justify-center text-sm font-light">
-                      Код товара: {item.article}
-                    </h5>
-                    <h5 className="md:flex hidden md:px-3 justify-start md:justify-center text-sm font-light">
-                      Остаток: {item.total_stock}
-                    </h5>
+        <>
+          <div className=" border-b-2 border-[#898989]">
+            <h2 className="text-2xl font-blog pl-[20px] py-2">
+              Похожие товары
+            </h2>
+          </div>
+          <div className="py-7 flex justify-center mx-3 flex-wrap">
+            {similar.map((item: any, i) => (
+              <div
+                key={i}
+                className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
+              >
+                <div className=" border border-black  w-full h-80 flex justify-between pb-2 flex-col items-center object-center content-center place-items-center">
+                  <div className="flex justify-center">
+                    <img
+                      className="md:w-[100%]  "
+                      src={item.colors[0].images[0].small}
+                      alt=""
+                    />
                   </div>
-                  <div className="flex justify-between items-center md:px-5 px-2 text-black font-jost ">
-                    <h4 className="md:w-6/12 font-jost md:font-medium font-normal text-base text-black flex  break-words justify-start w-auto text-start">
+                  <div className="px-2 w-full">
+                    <div className="flex">
+                      <h5 className="text-sm font-light">
+                        Код товара: {item.article}
+                      </h5>
+                    </div>
+                    <div className="flex justify-between items-center text-black font-jost ">
                       <Link
                         className="!text-black"
                         to={
@@ -770,27 +843,27 @@ const CatalogDetailsOasis = () => {
                         {" "}
                         {item.name}
                       </Link>
-                    </h4>
-                    <div className="md:w-6/12 flex md:justify-center gap-2 justify-start w-12/12">
-                      <div className="h-3 w-3 bg-[#14153C] rounded-full ..." />
-                      <div className="h-3 w-3 bg-[#65A8E0] rounded-full ..." />
-                      <div className="h-3 w-3 bg-[#A91E1E] rounded-full ..." />
+                      <div className="flex gap-1 pl-[60px] items-center">
+                        <div className="h-3 w-3 bg-[#14153C] rounded-full" />
+                        <div className="h-3 w-3 bg-[#65A8E0] rounded-full" />
+                        <div className="h-3 w-3 bg-[#A91E1E] rounded-full" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between md:px-5 px-2 text-black font-jost ">
-                    <div className="flex flex-col">
-                      <span className="font-light">Цена:</span>
-                      <b>{item.price} C</b>
-                    </div>
-                    <div className="md:w-10 md:h-10 w-8 h-8 bg-[#343434] rounded-full ... flex justify-center items-center">
-                      <img src={shopbag} className="h-5 w-5" alt="" />
+                    <div className="flex justify-between items-center">
+                      <div className="flex flex-col">
+                        <span className="font-light">Цена:</span>
+                        <span className="font-black">{item.price} C</span>
+                      </div>
+                      <div className="w-10 h-10 bg-[#343434] rounded-full ... flex justify-center items-center">
+                        <img src={shopbag} className="h-5 w-5" alt="" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       ) : null}
     </div>
   );
