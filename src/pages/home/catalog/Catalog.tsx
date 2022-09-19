@@ -41,7 +41,7 @@ const Catalog = () => {
                                 >
                                     <img
                                         className=" flex px-2 h-3 w-3"
-                                        src={item.icon ? item.icon : calendar}
+                                        src={item.icon ? `http://212.42.106.82/${item.icon}` : calendar}
                                         alt=""
                                     />
                                     <span className="flex justify-center items-center text-[20px] flex-nowrap w-full">

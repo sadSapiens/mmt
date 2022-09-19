@@ -39,7 +39,7 @@ const BlogDetail = () => {
               <img
                 src={`http://212.42.106.82/${selectedBlog.data.picture}`}
                 alt=""
-                className="max-w-[732px] mx-auto"
+                className="max-w-[732px] w-full mx-auto"
               />
             </>
           )}
@@ -101,8 +101,8 @@ const BlogDetail = () => {
             {selectedBlog &&
               selectedBlog.similar_news.length > 0 &&
               selectedBlog.similar_news.map((item: any) => (
-                <Link to={`/blog/${item.id}`} className="w-96">
-                  <div className="flex py-3 w-96 mx-2">
+                <Link to={`/blog/${item.id}`} className="max-w-[300px] w-full">
+                  <div className="flex py-3 mx-2">
                     <div>
                       <img
                         src={`http://212.42.106.82/${item.picture}`}
@@ -111,7 +111,7 @@ const BlogDetail = () => {
                       />
                     </div>
 
-                    <div className="md:px-4 px-1 flex flex-col flex-wrap w-46">
+                    <div className="md:px-4 px-1 flex flex-col flex-wrap max-w-46 w-full">
                       <p className="hidden md:block">
                         <time>{item.created_at.slice(0, 10)}</time>
                       </p>

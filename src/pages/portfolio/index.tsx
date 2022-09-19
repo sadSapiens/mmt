@@ -77,7 +77,7 @@ const Portfolio = () => {
                                         className="flex flex-wrap md:columns-4 md:gap-8 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row mb-4"
                                     >
                                         <div className="md:h-72 md:w-72 h-36 w-36 border border-[#1F1F1F] ">
-                                            <img src={one} alt=""/>
+                                            <img src={`http://212.42.106.82/${item.photo}`} alt="" className="w-full h-[80%] object-cover" style={{backgroundPosition: "top"}}/>
                                             <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
                         </span>
