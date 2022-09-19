@@ -25,7 +25,7 @@ const Feedback = () => {
           <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle ">
             {home.reviews.map((item, i) => (
               <div key={i}>
-                <div className="flex flex-col justify-center items-center overflow-y-clip px-4 w-full">
+                <div className={i > 0 ? "flex flex-col justify-center items-center overflow-y-clip px-4 w-full ": 'flex flex-col justify-center items-center overflow-y-clip pr-4 w-full ml-0'}>
                   <img
                     className="rounded-full  w-28 h-28 pb-1.5 flex justify-center items-center place-items-center"
                     src={item ? `http://212.42.106.82/${item?.picture}` : ""}
