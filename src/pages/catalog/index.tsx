@@ -239,16 +239,16 @@ const CatalogPage = () => {
             </div>
           </Link>
           <div className="hidden md:flex">
-            <label className="relative flex justify-end flex-row items-center !mb-0 cursor-pointer">
+            <label className="relative flex justify-end flex-row items-center !mb-0">
               <img
-                className="h-2 w-auto sm:h-5 absolute pr-44 object-contain focus:outline-none"
+                className="h-2 w-auto sm:h-5 absolute left-2 object-contain focus:outline-none"
                 src={searchL}
                 alt=""
               />
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-black cursor-pointer block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
+                className=" placeholder:text-black block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
                 placeholder="Искать товар"
                 type="text"
                 name="search"
