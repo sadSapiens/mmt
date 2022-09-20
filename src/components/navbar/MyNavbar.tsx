@@ -196,7 +196,7 @@ const MyNavbar = ({}) => {
                       name="search"
                     />
                     <img
-                      className="absolute pr-64 focus:outline-none h-2 w-auto sm:h-5"
+                      className="absolute left-2 focus:outline-none h-2 w-auto sm:h-5"
                       src={searchl}
                       alt=""
                     />

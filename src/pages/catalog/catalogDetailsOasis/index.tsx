@@ -708,6 +708,11 @@ const CatalogDetailsOasis = () => {
                                   : null}
                               </tbody>
                             </table>
+                            <div className="w-full flex justify-center mt-4">
+                              {error && (
+                                <span className="text-red-500">{error}</span>
+                              )}
+                            </div>
                             <div className="flex py-4 items-center justify-around px-3">
                               <>
                                 <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
@@ -725,11 +730,6 @@ const CatalogDetailsOasis = () => {
 
                                 {/* {token ? ( */}
                                 <div className="flex gap-3">
-                                  {error && (
-                                    <span className="text-red-500">
-                                      {error}
-                                    </span>
-                                  )}
                                   <button
                                     onClick={() => handleSendProductToCart()}
                                     className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
