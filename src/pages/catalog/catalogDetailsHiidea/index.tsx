@@ -21,6 +21,7 @@ const CatalogDetailsHiidea = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
+  const [cardWord, setCardWord] = useState("В корзину");
   const [widthHeight, setWidthHeight] = useState({
     width: "",
     height: "",
@@ -82,6 +83,7 @@ const CatalogDetailsHiidea = () => {
           },
         ],
       });
+      setCardWord("Добавлено");
       dispatch(fetchOrder() as any);
     } catch (e) {
       console.log(e);
@@ -227,7 +229,7 @@ const CatalogDetailsHiidea = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex md:w-8/12 w-full flex flex-col gap-4 items-start">
+              <div className="flex md:w-8/12 w-full flex-col gap-4 items-start">
                 <div className="hidden md:flex flex-col gap-4">
                   <span className=" text-2xl font-medium font-jost text-black">
                     {selectedProduct.full_name}
@@ -538,133 +540,145 @@ const CatalogDetailsHiidea = () => {
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
                     <div className=" inline-block sm:px-6 lg:px-8 w-full">
                       <div className="">
-                        <table className=" flex justify-between flex-wrap">
-                          <thead className="w-full">
-                            <tr className="flex">
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
-                              >
-                                Размер
-                              </th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 py-4 text-left ml-[30px]"
-                              >
-                                На складе
-                              </th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
-                              >
-                                Количество
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className="w-full">
-                            {currentProduct && currentProduct.sizes.length
-                              ? currentProduct.sizes.map(
-                                  (size: any, i: number) => (
-                                    <tr key={i} className=" flex ">
-                                      <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
-                                        {" "}
-                                        {size.size}
-                                      </td>
-                                      <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
-                                        {size.quantity}
-                                      </td>
-                                      <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
-                                        <input
-                                          type="number"
-                                          placeholder="1"
-                                          onChange={(e) => {
-                                            const updatedSizes =
-                                              currentProduct.sizes.map(
-                                                (el: any) => {
-                                                  return el.id !== size.id
-                                                    ? el
-                                                    : {
-                                                        ...el,
-                                                        quantityToCart:
-                                                          el.quantity === 0
-                                                            ? 0
-                                                            : e.target.value,
-                                                      };
-                                                }
-                                              );
-
-                                            setCurrentProduct({
-                                              ...currentProduct,
-                                              images: currentProduct.images,
-                                              sizes: updatedSizes,
-                                            });
-                                          }}
-                                          className="border-b-2 w-full border-5  border-b-black  ..."
-                                        />
-                                      </td>
-                                    </tr>
-                                  )
-                                )
-                              : null}
-                          </tbody>
-                        </table>
-                        <div className="flex py-4 items-center justify-around px-3">
+                        {selectedProduct.total_stock && (
                           <>
-                            <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
-                              <span>Цена:</span>
-                              <p className="flex justify-center items-center">
-                                {" "}
-                                {selectedProduct.color_groups[0].price}
-                                <img
-                                  src={som}
-                                  alt=""
-                                  className="object-contain h-3 w-3"
-                                />
-                              </p>
-                            </div>
+                            <table className=" flex justify-between flex-wrap">
+                              <thead className="w-full">
+                                <tr className="flex">
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                  >
+                                    Размер
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 py-4 text-left ml-[30px]"
+                                  >
+                                    На складе
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                  >
+                                    Количество
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="w-full">
+                                {currentProduct && currentProduct.sizes.length
+                                  ? currentProduct.sizes.map(
+                                      (size: any, i: number) => (
+                                        <tr
+                                          key={i}
+                                          className={
+                                            size.quantity ? "flex" : "hidden"
+                                          }
+                                        >
+                                          <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
+                                            {" "}
+                                            {size.size}
+                                          </td>
+                                          <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
+                                            {size.quantity}
+                                          </td>
+                                          <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
+                                            <input
+                                              type="number"
+                                              placeholder="1"
+                                              onChange={(e) => {
+                                                const updatedSizes =
+                                                  currentProduct.sizes.map(
+                                                    (el: any) => {
+                                                      return el.id !== size.id
+                                                        ? el
+                                                        : {
+                                                            ...el,
+                                                            quantityToCart:
+                                                              el.quantity === 0
+                                                                ? 0
+                                                                : e.target
+                                                                    .value,
+                                                          };
+                                                    }
+                                                  );
 
-                            {/* {token ? ( */}
-                            <div className="flex gap-3">
-                              <div>
-                                <button
-                                  onClick={() => handleSendProductToCart()}
-                                  className="flex rounded-full ... bg-[#767676] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
-                                >
-                                  Создать макет
-                                </button>
-                                <button
-                                  onClick={() => handleSendProductToCart()}
-                                  className="md:hidden flex rounded-full mt-2 ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
-                                >
-                                  <img src={shopbag} alt="" />В корзину
-                                </button>
-                              </div>
+                                                setCurrentProduct({
+                                                  ...currentProduct,
+                                                  images: currentProduct.images,
+                                                  sizes: updatedSizes,
+                                                });
+                                              }}
+                                              className="border-b-2 w-full border-5  border-b-black  ..."
+                                            />
+                                          </td>
+                                        </tr>
+                                      )
+                                    )
+                                  : null}
+                              </tbody>
+                            </table>
+                            <div className="flex py-4 items-center justify-around px-3">
+                              <>
+                                <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
+                                  <span>Цена:</span>
+                                  <p className="flex justify-center items-center">
+                                    {" "}
+                                    {selectedProduct.color_groups[0].price}
+                                    <img
+                                      src={som}
+                                      alt=""
+                                      className="object-contain h-3 w-3"
+                                    />
+                                  </p>
+                                </div>
 
-                              {error && (
-                                <span className="text-red-500">{error}</span>
-                              )}
-                              <button
-                                onClick={() => handleSendProductToCart()}
-                                className="md:flex hidden rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
-                              >
-                                <img src={shopbag} alt="" />В корзину
-                              </button>
-                            </div>
-                            {/* ) : (
+                                <div className="flex gap-3">
+                                  <div>
+                                    <button
+                                      onClick={() => handleSendProductToCart()}
+                                      className="flex rounded-full ... bg-[#767676] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                                    >
+                                      Создать макет
+                                    </button>
+                                    <button
+                                      onClick={() => handleSendProductToCart()}
+                                      className="md:hidden flex rounded-full mt-2 ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                                    >
+                                      <img src={shopbag} alt="" />
+                                      {cardWord}
+                                    </button>
+                                  </div>
+
+                                  {error && (
+                                    <span className="text-red-500">
+                                      {error}
+                                    </span>
+                                  )}
+                                  <button
+                                    onClick={() => handleSendProductToCart()}
+                                    className="md:flex hidden rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                                  >
+                                    <img src={shopbag} alt="" />
+                                    {cardWord}
+                                  </button>
+                                </div>
+                                {/* ) : (
                               navigate("/signup")
                             )} */}
-                            <div className="bg-red-600">{/*  */}</div>
+                                <div className="bg-red-600">{/*  */}</div>
 
-                            <div className="flex flex-col">
-                              <span className="text-[#30B956] font-bold">
-                                {selectedProduct.total_stock} c
-                              </span>
-                              <hr className="border-b-2 border-b-black ..." />
-                              <span>Итого</span>
+                                <div className="flex flex-col">
+                                  <span className="text-[#30B956] font-bold">
+                                    {selectedProduct.total_stock} c
+                                  </span>
+                                  <hr className="border-b-2 border-b-black ..." />
+                                  <span>Итого</span>
+                                </div>
+                              </>
                             </div>
                           </>
-                        </div>
-
+                        )}
                         <div className="font-jost md:hidden block pl-2">
                           <div className="font-jost">
                             <h2 className="font-semibold py-4 text-md">

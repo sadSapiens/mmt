@@ -21,6 +21,7 @@ const CatalogDetailsOasis = () => {
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
+  const [cardWord, setCardWord] = useState("В корзину");
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
     width: "",
@@ -59,7 +60,6 @@ const CatalogDetailsOasis = () => {
   const handleSendProductToCart = async () => {
     if (!currentProduct) return;
     setError("");
-    console.log(currentProduct);
 
     const sizes = currentProduct.sizes
       .filter((item: any) => item.quantityToCart)
@@ -88,8 +88,8 @@ const CatalogDetailsOasis = () => {
           },
         ],
       });
+      setCardWord("Добавлено");
       dispatch(fetchOrder() as any);
-      console.log(res);
     } catch (e) {
       navigate("/signup");
       console.log(e);
@@ -113,8 +113,6 @@ const CatalogDetailsOasis = () => {
       console.log(e);
     }
   };
-  console.log(widthHeight);
-  console.log(selectedProduct);
 
   return (
     <div>
@@ -574,117 +572,129 @@ const CatalogDetailsOasis = () => {
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
                     <div className=" inline-block sm:px-6 lg:px-8">
                       <div className="">
-                        <table className=" flex justify-between flex-wrap">
-                          <thead className="w-full">
-                            <tr className="flex">
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
-                              >
-                                Размер
-                              </th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 py-4 text-left ml-[30px]"
-                              >
-                                На складе
-                              </th>
-                              <th
-                                scope="col"
-                                className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
-                              >
-                                Количество
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody className="w-full">
-                            {currentProduct && currentProduct.sizes.length
-                              ? currentProduct.sizes.map(
-                                  (size: any, i: number) => (
-                                    <tr key={i} className=" flex ">
-                                      <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
-                                        {" "}
-                                        {size.size}
-                                      </td>
-                                      <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
-                                        {size.quantity}
-                                      </td>
-                                      <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
-                                        <input
-                                          type="number"
-                                          placeholder="1"
-                                          onChange={(e) => {
-                                            const updatedSizes =
-                                              currentProduct.sizes.map(
-                                                (el: any) => {
-                                                  return el.id !== size.id
-                                                    ? el
-                                                    : {
-                                                        ...el,
-                                                        quantityToCart:
-                                                          el.quantity === 0
-                                                            ? 0
-                                                            : e.target.value,
-                                                      };
-                                                }
-                                              );
-
-                                            setCurrentProduct({
-                                              ...currentProduct,
-                                              images: currentProduct.images,
-                                              sizes: updatedSizes,
-                                            });
-                                          }}
-                                          className="border-b-2 w-full border-5  border-b-black  ..."
-                                        />
-                                      </td>
-                                    </tr>
-                                  )
-                                )
-                              : null}
-                          </tbody>
-                        </table>
-                        <div className="flex py-4 items-center justify-around px-3">
+                        {!!selectedProduct.total_stock && (
                           <>
-                            <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
-                              <span>Цена:</span>
-                              <p className="flex justify-center items-center">
-                                {" "}
-                                {selectedProduct.color_groups[0].price}
-                                <img
-                                  src={som}
-                                  alt=""
-                                  className="object-contain h-3 w-3"
-                                />
-                              </p>
-                            </div>
+                            <table className=" flex justify-between flex-wrap">
+                              <thead className="w-full">
+                                <tr className="flex">
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                  >
+                                    Размер
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 py-4 text-left ml-[30px]"
+                                  >
+                                    На складе
+                                  </th>
+                                  <th
+                                    scope="col"
+                                    className="text-sm font-medium w-[33.3%] text-gray-900 px-6 py-4 text-left ml-[-15px]"
+                                  >
+                                    Количество
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="w-full">
+                                {currentProduct && currentProduct.sizes.length
+                                  ? currentProduct.sizes.map(
+                                      (size: any, i: number) => (
+                                        <tr
+                                          key={i}
+                                          className={
+                                            size.quantity ? "flex" : "hidden"
+                                          }
+                                        >
+                                          <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
+                                            {" "}
+                                            {size.size}
+                                          </td>
+                                          <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
+                                            {size.quantity}
+                                          </td>
+                                          <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
+                                            <input
+                                              type="number"
+                                              placeholder="1"
+                                              onChange={(e) => {
+                                                const updatedSizes =
+                                                  currentProduct.sizes.map(
+                                                    (el: any) => {
+                                                      return el.id !== size.id
+                                                        ? el
+                                                        : {
+                                                            ...el,
+                                                            quantityToCart:
+                                                              el.quantity === 0
+                                                                ? 0
+                                                                : e.target
+                                                                    .value,
+                                                          };
+                                                    }
+                                                  );
 
-                            {/* {token ? ( */}
-                            <div className="flex gap-3">
-                              {error && (
-                                <span className="text-red-500">{error}</span>
-                              )}
-                              <button
-                                onClick={() => handleSendProductToCart()}
-                                className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
-                              >
-                                <img src={shopbag} alt="" />В корзину
-                              </button>
-                            </div>
-                            {/* ) : (
+                                                setCurrentProduct({
+                                                  ...currentProduct,
+                                                  images: currentProduct.images,
+                                                  sizes: updatedSizes,
+                                                });
+                                              }}
+                                              className="border-b-2 w-full border-5  border-b-black  ..."
+                                            />
+                                          </td>
+                                        </tr>
+                                      )
+                                    )
+                                  : null}
+                              </tbody>
+                            </table>
+                            <div className="flex py-4 items-center justify-around px-3">
+                              <>
+                                <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
+                                  <span>Цена:</span>
+                                  <p className="flex justify-center items-center">
+                                    {" "}
+                                    {selectedProduct.color_groups[0].price}
+                                    <img
+                                      src={som}
+                                      alt=""
+                                      className="object-contain h-3 w-3"
+                                    />
+                                  </p>
+                                </div>
+
+                                {/* {token ? ( */}
+                                <div className="flex gap-3">
+                                  {error && (
+                                    <span className="text-red-500">
+                                      {error}
+                                    </span>
+                                  )}
+                                  <button
+                                    onClick={() => handleSendProductToCart()}
+                                    className="flex rounded-full ... bg-[#1F1F1F] px-2 w-32 py-2 justify-center items-center gap-2 text-white"
+                                  >
+                                    <img src={shopbag} alt="" />
+                                    {cardWord}
+                                  </button>
+                                </div>
+                                {/* ) : (
                               navigate("/signup")
                             )} */}
 
-                            <div className="flex flex-col">
-                              <span className="text-[#30B956] font-bold">
-                                {selectedProduct.total_stock} c
-                              </span>
-                              <hr className="border-b-2 border-b-black ..." />
-                              <span>Итого</span>
+                                <div className="flex flex-col">
+                                  <span className="text-[#30B956] font-bold">
+                                    {selectedProduct.total_stock} c
+                                  </span>
+                                  <hr className="border-b-2 border-b-black ..." />
+                                  <span>Итого</span>
+                                </div>
+                              </>
                             </div>
                           </>
-                        </div>
-
+                        )}
                         {/*  */}
                         <div>
                           {/*  */}
