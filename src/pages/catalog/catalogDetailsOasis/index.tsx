@@ -20,8 +20,10 @@ const CatalogDetailsOasis = () => {
   const params = useParams();
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
+  const [currentImage, setCurrentImage] = useState<string>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const [cardWord, setCardWord] = useState("В корзину");
+  const [drawing, setDrawing] = useState(false);
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
     width: "",
@@ -38,6 +40,7 @@ const CatalogDetailsOasis = () => {
   useEffect(() => {
     if (!selectedProduct || !selectedProduct.color_groups[0]) return;
     setCurrentProduct(selectedProduct.color_groups[0]);
+    setCurrentImage(selectedProduct.color_groups[0]?.images[0].superbig);
     if (selectedProduct.locations) {
       console.log(selectedProduct.locations[0]);
       try {
@@ -137,7 +140,10 @@ const CatalogDetailsOasis = () => {
                           }
                         >
                           <img
-                            onClick={() => setCurrentProduct(product)}
+                            onClick={() => {
+                              setCurrentProduct(product);
+                              setCurrentImage(product.images[0].superbig);
+                            }}
                             src={product.images[0].small}
                             alt=""
                             className="w-16 h-16 object-fill"
@@ -155,7 +161,10 @@ const CatalogDetailsOasis = () => {
                         }
                       >
                         <img
-                          onClick={() => setCurrentProduct(product)}
+                          onClick={() => {
+                            setCurrentProduct(product);
+                            setCurrentImage(product.images[0].superbig);
+                          }}
                           src={product.images[0].small}
                           alt=""
                           className="w-16 h-16 object-fill"
@@ -171,7 +180,7 @@ const CatalogDetailsOasis = () => {
                 {currentProduct && currentProduct.images.length ? (
                   <img
                     className="w-auto md:h-96  h-72 object-fill"
-                    src={currentProduct.images[0].superbig}
+                    src={currentImage}
                     alt=""
                   />
                 ) : (
@@ -185,38 +194,74 @@ const CatalogDetailsOasis = () => {
                       ? selectedProduct.color_groups
                           .slice(0, 5)
                           .map((product, i) => (
-                            <div key={i} className="cursor-pointer ">
-                              <img
-                                onClick={() => setCurrentProduct(product)}
-                                src={product.images[0].small}
-                                alt=""
-                                className="w-16 h-16 object-fill"
-                                style={{
-                                  opacity:
-                                    product?.images[0]?.small ===
-                                    currentProduct?.images[0]?.small
-                                      ? "1"
-                                      : "0.4",
-                                }}
-                              />
-                            </div>
+                            <>
+                              {product.images
+                                .slice(0, product.images.length / 4)
+                                .map((el) => (
+                                  <div
+                                    key={i}
+                                    className="cursor-pointer"
+                                    style={{
+                                      display:
+                                        product?.images[0]?.small ===
+                                        currentProduct?.images[0]?.small
+                                          ? "flex"
+                                          : "none",
+                                    }}
+                                  >
+                                    <img
+                                      onClick={() => {
+                                        setCurrentProduct(product);
+                                        setCurrentImage(el.superbig);
+                                      }}
+                                      src={el.small}
+                                      alt=""
+                                      className={"w-16 h-16 object-fill"}
+                                      style={{
+                                        opacity:
+                                          el.superbig === currentImage
+                                            ? "1"
+                                            : "0.5",
+                                      }}
+                                    />
+                                  </div>
+                                ))}
+                            </>
                           ))
                       : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i} className="cursor-pointer">
-                            <img
-                              onClick={() => setCurrentProduct(product)}
-                              src={product.images[0].small}
-                              alt=""
-                              className={"w-16 h-16 object-fill"}
-                              style={{
-                                opacity:
-                                  product?.images[0]?.small ===
-                                  currentProduct?.images[0]?.small
-                                    ? "1"
-                                    : "0.5",
-                              }}
-                            />
-                          </div>
+                          <>
+                            {product.images
+                              .slice(0, product.images.length / 4)
+                              .map((el) => (
+                                <div
+                                  key={i}
+                                  className="cursor-pointer"
+                                  style={{
+                                    display:
+                                      product?.images[0]?.small ===
+                                      currentProduct?.images[0]?.small
+                                        ? "flex"
+                                        : "none",
+                                  }}
+                                >
+                                  <img
+                                    onClick={() => {
+                                      setCurrentProduct(product);
+                                      setCurrentImage(el.superbig);
+                                    }}
+                                    src={el.small}
+                                    alt=""
+                                    className={"w-16 h-16 object-fill"}
+                                    style={{
+                                      opacity:
+                                        el.superbig === currentImage
+                                          ? "1"
+                                          : "0.5",
+                                    }}
+                                  />
+                                </div>
+                              ))}
+                          </>
                         ))}
                   </div>
                 </div>
@@ -235,18 +280,22 @@ const CatalogDetailsOasis = () => {
                         Характеристики
                       </h2>
                       {selectedProduct.attributes.map((item, i) => (
-                        <div key={i} className="row font-jost">
-                          <div className="col-6 catalog-items__characteristics flex flex-col ">
-                            <p className="font-medium text-xl leading-loose py-1.5">
-                              {item.name}
-                            </p>
-                          </div>
-                          <div className="col-6 flex flex-col ">
-                            <p className="font-normal text-xl leading-loose py-2">
-                              {item.value}
-                            </p>
-                          </div>
-                        </div>
+                        <>
+                          {item.value && (
+                            <div key={i} className="row font-jost">
+                              <div className="col-6 catalog-items__characteristics flex flex-col ">
+                                <p className="font-medium text-xl leading-loose py-1.5">
+                                  {item.name}
+                                </p>
+                              </div>
+                              <div className="col-6 flex flex-col ">
+                                <p className="font-normal text-xl leading-loose py-2">
+                                  {item.value}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </>
                       ))}
                     </div>
                     <div className="font-jost">
@@ -303,11 +352,11 @@ const CatalogDetailsOasis = () => {
                 <div className="flex justify-start gap-4 items-center">
                   <div>
                     <button
-                      onClick={handleSendCostomCost}
+                      onClick={() => setDrawing(!drawing)}
                       className="rounded-full ... border  border-black px-5 py-2 font-jost font-medium"
                     >
-                      {priceDrawing
-                        ? "Нанесение Добавлено"
+                      {drawing
+                        ? "- Не добавлять нанесение"
                         : "+Добавить нанесение"}
                     </button>
                   </div>
@@ -316,36 +365,145 @@ const CatalogDetailsOasis = () => {
                     <img src={detailtrash} alt="" className="cursor-pointer" />
                   </div>
                 </div>
-                <div className="flex justify-between flex-wrap gap-2">
-                  <div className="w-[100%]">
-                    <label htmlFor="input2">
-                      <span className="ml-[7px]">Место</span>
-                    </label>
-                    {/*  */}
+                {drawing && (
+                  <div className="flex justify-between flex-wrap gap-2">
+                    <div className="w-[100%]">
+                      <label htmlFor="input2">
+                        <span className="ml-[7px]">Место</span>
+                      </label>
+                      {/*  */}
 
-                    {selectedProduct.locations.length > 0 && (
-                      <form className="w-full p-2">
-                        <fieldset>
-                          <div className="relative border-b-2 border-black text-gray-800 bg-white ">
-                            <>
+                      {selectedProduct.locations.length > 0 && (
+                        <form className="w-full p-2">
+                          <fieldset>
+                            <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                              <>
+                                <select
+                                  className="appearance-none w-full py-1 px-2 bg-white "
+                                  name="whatever"
+                                  id="frm-whatever"
+                                  onChange={(e) => {
+                                    console.log(e.target.value);
+                                    setCurrentDrawing({
+                                      ...currentDrawing,
+                                      selectedCostomTypeId: e.target.value,
+                                    });
+                                  }}
+                                >
+                                  {selectedProduct.locations.map(
+                                    (item: any, i) => (
+                                      <option value={item.id} key={i}>
+                                        {item.name}
+                                      </option>
+                                    )
+                                  )}
+                                </select>
+                                <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                  <svg
+                                    className="h-4 w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                  </svg>
+                                </div>
+                              </>
+                            </div>
+                          </fieldset>
+                        </form>
+                      )}
+
+                      {/*  */}
+                    </div>
+
+                    <div className="flex md:justify-between md:flex-row flex-col w-full">
+                      <div className="md:w-6/12 w-full">
+                        <form className="w-full p-2 ">
+                          <label htmlFor="input2">Тип нанесения</label>
+                          <fieldset>
+                            <div className="relative border-b-2 border-black  text-gray-800 bg-white ">
+                              <label htmlFor="frm-whatever" className="sr-only">
+                                My field
+                              </label>
                               <select
+                                onChange={(e) => {
+                                  console.log(e.target.value);
+
+                                  setCurrentDrawing({
+                                    ...currentDrawing,
+                                    costom_type_id: e.target.value,
+                                  });
+                                }}
                                 className="appearance-none w-full py-1 px-2 bg-white "
                                 name="whatever"
                                 id="frm-whatever"
-                                onChange={(e) => {
-                                  console.log(e.target.value);
+                              >
+                                {currentDrawing &&
+                                  currentDrawing.costom_types &&
+                                  currentDrawing.costom_types.map(
+                                    (type: any, i: number) => (
+                                      <option key={i} value={type.id}>
+                                        {type.costom}
+                                      </option>
+                                    )
+                                  )}
+                              </select>
+                              <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
+                                <svg
+                                  className="h-4 w-4"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
+
+                      {/*  */}
+
+                      <div className="md:w-6/12 w-full">
+                        {/* {selectedProduct.color_groups[0].color.map((item) => ( */}
+                        <form className="w-full p-2">
+                          <label htmlFor="input2">Цветность</label>
+                          <fieldset>
+                            <div className="relative border-b-2 border-black text-gray-800 bg-white ">
+                              <label htmlFor="frm-whatever" className="sr-only">
+                                My field
+                              </label>
+                              <select
+                                className="appearance-none w-full py-1 px-2 bg-white  "
+                                name="whatever"
+                                id="frm-whatever"
+                                onChange={(e) =>
                                   setCurrentDrawing({
                                     ...currentDrawing,
-                                    selectedCostomTypeId: e.target.value,
-                                  });
-                                }}
+                                    color_id: e.target.value,
+                                  })
+                                }
                               >
-                                {selectedProduct.locations.map(
-                                  (item: any, i) => (
-                                    <option value={item.id} key={i}>
-                                      {item.name}
-                                    </option>
+                                {currentDrawing &&
+                                currentDrawing.selectedCostomTypeId ? (
+                                  currentDrawing.costom_types.map(
+                                    (type: any, i: number) => {
+                                      return type.id ==
+                                        currentDrawing.costom_type_id
+                                        ? type.colors.map(
+                                            (color: any, i: number) => (
+                                              <option key={i} value={color.id}>
+                                                {color.name}
+                                              </option>
+                                            )
+                                          )
+                                        : null;
+                                    }
                                   )
+                                ) : (
+                                  <option value="">
+                                    Выберите тип нанесения
+                                  </option>
                                 )}
                               </select>
                               <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
@@ -357,217 +515,117 @@ const CatalogDetailsOasis = () => {
                                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                                 </svg>
                               </div>
-                            </>
-                          </div>
-                        </fieldset>
-                      </form>
-                    )}
+                            </div>
+                          </fieldset>
+                        </form>
+                        {/* ))} */}
+                      </div>
+                    </div>
 
-                    {/*  */}
-                  </div>
+                    <div className="flex md:justify-between flex-col md:flex-row w-full">
+                      <div className="flex  w-5/2 justify-between ">
+                        <div className="pl-[15px]">
+                          {currentDrawing &&
+                          currentDrawing.selectedCostomTypeId ? (
+                            currentDrawing.costom_types.map(
+                              (type: any, i: number) => {
+                                return (
+                                  type.id == currentDrawing.costom_type_id && (
+                                    <>
+                                      <label htmlFor="input2">
+                                        Максимальная Ширина({type.width}мм)
+                                      </label>
 
-                  <div className="flex md:justify-between md:flex-row flex-col w-full">
-                    <div className="md:w-6/12 w-full">
-                      <form className="w-full p-2 ">
-                        <label htmlFor="input2">Тип нанесения</label>
-                        <fieldset>
-                          <div className="relative border-b-2 border-black  text-gray-800 bg-white ">
-                            <label htmlFor="frm-whatever" className="sr-only">
-                              My field
-                            </label>
-                            <select
-                              onChange={(e) => {
-                                console.log(e.target.value);
-
-                                setCurrentDrawing({
-                                  ...currentDrawing,
-                                  costom_type_id: e.target.value,
-                                });
-                              }}
-                              className="appearance-none w-full py-1 px-2 bg-white "
-                              name="whatever"
-                              id="frm-whatever"
-                            >
-                              {currentDrawing &&
-                                currentDrawing.costom_types &&
-                                currentDrawing.costom_types.map(
-                                  (type: any, i: number) => (
-                                    <option key={i} value={type.id}>
-                                      {type.costom}
-                                    </option>
+                                      <input
+                                        type="number"
+                                        defaultValue={0}
+                                        // value={widthHeight.width}
+                                        onChange={(e) =>
+                                          setWidthHeight({
+                                            ...widthHeight,
+                                            width: e.target.value,
+                                          })
+                                        }
+                                        className=" border-b-2 border-black w-20"
+                                      />
+                                    </>
                                   )
-                                )}
-                            </select>
-                            <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
-                              <svg
-                                className="h-4 w-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                              </svg>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </form>
-                    </div>
-
-                    {/*  */}
-
-                    <div className="md:w-6/12 w-full">
-                      {/* {selectedProduct.color_groups[0].color.map((item) => ( */}
-                      <form className="w-full p-2">
-                        <label htmlFor="input2">Цветность</label>
-                        <fieldset>
-                          <div className="relative border-b-2 border-black text-gray-800 bg-white ">
-                            <label htmlFor="frm-whatever" className="sr-only">
-                              My field
-                            </label>
-                            <select
-                              className="appearance-none w-full py-1 px-2 bg-white  "
-                              name="whatever"
-                              id="frm-whatever"
-                              onChange={(e) =>
-                                setCurrentDrawing({
-                                  ...currentDrawing,
-                                  color_id: e.target.value,
-                                })
+                                );
                               }
-                            >
-                              {currentDrawing &&
-                              currentDrawing.selectedCostomTypeId ? (
-                                currentDrawing.costom_types.map(
-                                  (type: any, i: number) => {
-                                    return type.id ==
-                                      currentDrawing.costom_type_id
-                                      ? type.colors.map(
-                                          (color: any, i: number) => (
-                                            <option key={i} value={color.id}>
-                                              {color.name}
-                                            </option>
-                                          )
-                                        )
-                                      : null;
-                                  }
-                                )
-                              ) : (
-                                <option value="">Выберите тип нанесения</option>
-                              )}
-                            </select>
-                            <div className="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2 text-gray-700 border-l">
-                              <svg
-                                className="h-4 w-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                              </svg>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </form>
-                      {/* ))} */}
-                    </div>
-                  </div>
+                            )
+                          ) : (
+                            <input
+                              type="text"
+                              value={"Выберите тип нанесения"}
+                              className=" border-b-2 border-black w-20"
+                            />
+                          )}
+                        </div>
 
-                  <div className="flex md:justify-between flex-col md:flex-row w-full">
-                    <div className="flex  w-5/2 justify-between ">
-                      <div className="pl-[15px]">
-                        {currentDrawing &&
-                        currentDrawing.selectedCostomTypeId ? (
-                          currentDrawing.costom_types.map(
-                            (type: any, i: number) => {
-                              return (
-                                type.id == currentDrawing.costom_type_id && (
-                                  <>
-                                    <label htmlFor="input2">
-                                      Ширина({type.width}мм)
+                        <div>
+                          {currentDrawing &&
+                          currentDrawing.selectedCostomTypeId ? (
+                            currentDrawing.costom_types.map(
+                              (type: any, i: number) => {
+                                return type.id ==
+                                  currentDrawing.costom_type_id ? (
+                                  <div className="ml-[15px]">
+                                    <label htmlFor="input2 ">
+                                      <span>
+                                        Максимальная Высота({type.height}мм)
+                                      </span>
                                     </label>
 
                                     <input
                                       type="number"
-                                      defaultValue={type.width}
-                                      // value={widthHeight.width}
+                                      defaultValue={0}
+                                      // value={widthHeight.height}
                                       onChange={(e) =>
                                         setWidthHeight({
                                           ...widthHeight,
-                                          width: e.target.value,
+                                          height: e.target.value,
                                         })
                                       }
                                       className=" border-b-2 border-black w-20"
                                     />
-                                  </>
-                                )
-                              );
-                            }
-                          )
-                        ) : (
-                          <input
-                            type="text"
-                            value={"Выберите тип нанесения"}
-                            className=" border-b-2 border-black w-20"
-                          />
-                        )}
-                      </div>
-
-                      <div>
-                        {currentDrawing &&
-                        currentDrawing.selectedCostomTypeId ? (
-                          currentDrawing.costom_types.map(
-                            (type: any, i: number) => {
-                              return type.id ==
-                                currentDrawing.costom_type_id ? (
-                                <div className="ml-[15px]">
-                                  <label htmlFor="input2 ">
-                                    <span>Высота({type.height}мм)</span>
-                                  </label>
-
-                                  <input
-                                    type="number"
-                                    defaultValue={type.height}
-                                    // value={widthHeight.height}
-                                    onChange={(e) =>
-                                      setWidthHeight({
-                                        ...widthHeight,
-                                        height: e.target.value,
-                                      })
-                                    }
-                                    className=" border-b-2 border-black w-20"
-                                  />
-                                </div>
-                              ) : null;
-                            }
-                          )
-                        ) : (
-                          <input
-                            type="text"
-                            value={"Выберите тип нанесения"}
-                            className=" border-b-2 border-black w-20"
-                          />
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex justify-center items-center py-4 w-7/12">
-                      {/* <button className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2">
-                        Применить
-                      </button> */}
-                      {!!priceDrawing && (
-                        <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
-                          <span>Цена:</span>
-                          <p className="flex justify-center items-center">
-                            {" "}
-                            {priceDrawing}
-                            <img
-                              src={som}
-                              alt=""
-                              className="object-contain h-3 w-3"
+                                  </div>
+                                ) : null;
+                              }
+                            )
+                          ) : (
+                            <input
+                              type="text"
+                              value={"Выберите тип нанесения"}
+                              className=" border-b-2 border-black w-20"
                             />
-                          </p>
+                          )}
                         </div>
-                      )}
+                      </div>
+                      <div className="flex justify-center items-center py-4 w-7/12">
+                        <button
+                          onClick={handleSendCostomCost}
+                          className="font-jost text-[#06AF5E]  border !border-black rounded-full ... px-5 py-2"
+                        >
+                          {priceDrawing ? "Нанесение Добавлено" : "Применить"}
+                        </button>
+                        {!!priceDrawing && (
+                          <div className="flex flex-col flex-wrap grid lg:grid-cols-2">
+                            <span>Цена:</span>
+                            <p className="flex justify-center items-center">
+                              {" "}
+                              {priceDrawing}
+                              <img
+                                src={som}
+                                alt=""
+                                className="object-contain h-3 w-3"
+                              />
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
                 <div className="flex flex-col">
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
                     <div className=" inline-block sm:px-6 lg:px-8">
@@ -704,18 +762,22 @@ const CatalogDetailsOasis = () => {
                                 Характеристики
                               </h2>
                               {selectedProduct.attributes.map((item, i) => (
-                                <div key={i} className="row font-jost">
-                                  <div className="col-6 catalog-items__characteristics flex flex-col ">
-                                    <p className="font-medium text-md leading-loose py-1.5">
-                                      {item.name}
-                                    </p>
-                                  </div>
-                                  <div className="col-6 flex flex-col ">
-                                    <p className="font-normal text-md leading-loose py-2">
-                                      {item.value}
-                                    </p>
-                                  </div>
-                                </div>
+                                <>
+                                  {item.value && (
+                                    <div key={i} className="row font-jost">
+                                      <div className="col-6 catalog-items__characteristics flex flex-col ">
+                                        <p className="font-medium text-md leading-loose py-1.5">
+                                          {item.name}
+                                        </p>
+                                      </div>
+                                      <div className="col-6 flex flex-col ">
+                                        <p className="font-normal text-md leading-loose py-2">
+                                          {item.value}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </>
                               ))}
                             </div>
                             <div className="font-jost">

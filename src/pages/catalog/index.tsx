@@ -248,7 +248,7 @@ const CatalogPage = () => {
               <input
                 value={searchValue}
                 onChange={(e: any) => dispatch(setSearchValue(e.target.value))}
-                className=" placeholder:text-black cursor-pointer block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm"
+                className=" placeholder:text-black cursor-pointer block   w-full border-[1px] font-normal border-black rounded-full py-1 pl-9 focus:outline-none sm:text-sm "
                 placeholder="Искать товар"
                 type="text"
                 name="search"
@@ -317,7 +317,7 @@ const CatalogPage = () => {
                 </span>
               </div>
             </div>
-            <div className="flex bg-black  h-0.5"/>
+            <div className="flex bg-black  h-0.5" />
           </div>
           <div className="flex justify-around items-end w-4/12">
             <button
@@ -476,7 +476,7 @@ const CatalogPage = () => {
           className={
             showFilter && width.width < 1000
               ? " z-50 outline-none focus:outline-none bg-red w-full accordion block"
-                : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky h-[100%] pt-14"
+              : "hidden md:accordion flex-col md:w-3/12  md:justify-center md:block sticky h-[100%] pt-14"
           }
         >
           <div className="w-1/8">
@@ -902,7 +902,8 @@ const CatalogPage = () => {
                 <div className="flex justify-center items-center py-4">
                   <p>loading...</p>
                 </div>
-              )}r
+              )}
+              r
             </div>
           )}
         </div>

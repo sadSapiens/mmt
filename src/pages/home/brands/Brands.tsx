@@ -24,7 +24,7 @@ const Brands = () => {
           {home.brands.map((item: any, i) => (
             <div key={i} className="flex flex-col items-center py-2">
               <div>
-                {item.logotype ? (
+                {!item.logotype ? (
                   <img src={item.logotype} alt="" />
                 ) : (
                   <img src={oasis} alt="" />

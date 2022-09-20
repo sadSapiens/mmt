@@ -26,7 +26,7 @@ const Catalog = () => {
               Каталог
             </span>
 
-                        <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center px-10 w-full md:w-auto">
+                        <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center pl-14 w-full md:w-auto">
                             {home.catalogs.map((item, index) => (
                                 <button
                                     key={index}
@@ -41,7 +41,7 @@ const Catalog = () => {
                                 >
                                     <img
                                         className=" flex px-2 h-3 w-3"
-                                        src={item.icon ? item.icon : calendar}
+                                        src={item.icon ? `http://212.42.106.82/${item.icon}` : calendar}
                                         alt=""
                                     />
                                     <span className="flex justify-center items-center text-[20px] flex-nowrap w-full">

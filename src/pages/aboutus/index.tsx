@@ -52,10 +52,10 @@ const About = () => {
               современными технологиями персонализации и всегда порекомендуем
               вам оптимальный вариант.
             </p> */}
-                                <p>{about ? about.main_info.description : null}</p>
+                                <p className="ml-[-15px] md:pr-5 ">{about ? about.main_info.description : null}</p>
                             </div>
-                            <div className="flex items-center align-middle gap-4 pb-56 md:pb-2">
-                                <button className="border border-white rounded-full ... w-auto px-12 ">
+                            <div className="flex items-center align-middle gap-4 pb-56 md:pb-2 ">
+                                <button className="border border-white rounded-full ... w-auto px-12 py-1 ">
                                     Связаться
                                 </button>
                                 <button>
@@ -65,12 +65,8 @@ const About = () => {
                         </div>
                         <div className=" md:w-4/12 md:top-56 md:right-8 w-auto top-[60rem] absolute">
                             <img
-                                src={
-                                    about && about.main_info.picture
-                                        ? about.main_info.picture
-                                        : aboutImage
-                                }
-                                className="md:h-[33rem] md:w-[25rem] h-auto w-72"
+                                src={aboutImage}
+                                className="md:h-[33rem] md:w-[25rem] h-auto w-72 mt-2"
                                 alt=""
                             />
                         </div>
@@ -79,7 +75,7 @@ const About = () => {
                     {/*  */}
 
                     {about.director && (
-                        <div className="flex text-black  mx-auto md:px-9 px-4  w-auto pt-28 flex-col md:flex-row">
+                        <div className="flex text-black  mx-auto md:px-9 px-4  w-auto pt-28 flex-col md:flex-row mt-5">
                             <div className="md:hidden flex flex-col">
                 <span className="font-semibold ">
                   «Мы - команда креативных людей, влюбленных в свое дело, более
@@ -97,7 +93,7 @@ const About = () => {
                                     className="md:text-center md:w-56 md:flex md:justify-start flex justify-center flex-col items-center pb-4">
                                     <img
                                         className="bg-[#343434] w-44 md:w-56 md:flex md:justify-start "
-                                        src={about.director.picture}
+                                        src={perizatT}
                                         alt=""
                                     />
                                     <h2 className="font-bold py-2">{about.director.name}</h2>
@@ -150,16 +146,13 @@ const About = () => {
                         ))}
                     </div>
                     {/*  */}
-                    <div className="md:hidden flex flex-col">
-                        <div>
-                            <div className="md:hidden flex flex-col">
-                                <div className="md:hidden flex justify-center items-center flex-col px-9">
+                    <div className="flex flex-col">
+                        <div className="flex flex-col md:flex-row items-end">
+                            <div className="flex flex-col pt-4">
+                                <div className="flex justify-center items-center flex-col px-9">
                                     <img
                                         className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                                        src={
-                                            about.employers[0].picture
-                                                ? about.employers[0].picture
-                                                : aidai
+                                        src={aidai
                                         }
                                         alt=""
                                     />
@@ -175,7 +168,7 @@ const About = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+                                    className="flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
                   <span className="font-normal text-sm flex justify-center items-center text-center px-4">
                     «От идеи до воплощения корпоративных подарков – волшебный
                     творческий процесс, требующий четкой организации. Время –
@@ -186,13 +179,10 @@ const About = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className="md:hidden flex justify-center items-center flex-col px-9">
+                                <div className="flex justify-center items-center flex-col px-9">
                                     <img
                                         className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                                        src={
-                                            about.employers[1].picture
-                                                ? about.employers[1].picture
-                                                : bermet
+                                        src={bermet
                                         }
                                         alt=""
                                     />
@@ -208,7 +198,7 @@ const About = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="md:hidden flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
+                                    className="flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
                   <span className="font-normal text-sm flex justify-center items-center text-center px-4">
                     «От идеи до воплощения корпоративных подарков – волшебный
                     творческий процесс, требующий четкой организации. Время –
@@ -219,13 +209,10 @@ const About = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className="md:hidden flex justify-center items-center flex-col px-9">
+                                <div className=" flex justify-center items-center flex-col px-9">
                                     <img
                                         className="bg-[#202020]  md:w-80  w-56 h-auto md:h-[28rem]"
-                                        src={
-                                            about?.employers[2].picture
-                                                ? about?.employers[2].picture
-                                                : zhyldyz
+                                        src={zhyldyz
                                         }
                                         alt=""
                                     />
@@ -241,7 +228,7 @@ const About = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="md:hidden flex flex-col justify-center items-c   enter bg-[#343434] text-white px-0 py-4 my-4">
+                                    className="flex flex-col justify-center items-c   enter bg-[#343434] text-white px-0 py-4 my-4">
                   <span className="font-normal text-sm flex justify-center items-center text-center px-4">
                     «От идеи до воплощения корпоративных подарков – волшебный
                     творческий процесс, требующий четкой организации. Время –
@@ -281,7 +268,6 @@ const About = () => {
               </span>
                         </div>
                     </div>
-                    <div className="bg-white w-auto h-7"></div>
 
                     {/*  */}
                 </div>

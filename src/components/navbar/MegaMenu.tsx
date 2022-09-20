@@ -45,7 +45,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
           >
             {!isOpenCatalog && (
               <div
-                className="flex flex-row md:justify-center md:items-center justify-end items-center h-10"
+                className="flex flex-row md:justify-center md:items-center justify-end items-center h-10 px-3"
                 onMouseMove={() => setIsOpenCatalog(!isOpenCatalog)}
               >
                 <img src={catalog} className="object-contain flex" alt="" />
@@ -53,14 +53,14 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
               </div>
             )}
             <div
-              className="megablock bg-[#343434] py-2  "
+              className="megablock bg-[#343434] py-2"
               style={{
                 display: isOpenCatalog ? "block " : "none",
               }}
               // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
             >
               {props.isBurger && (
-                <div className="ml-3 mb-3 text-left ">
+                <div className="ml-3 mb-3 text-left">
                   {`< `}
                   {/* <img src={arrow} alt="" /> */}
                   {subcategories.length > 0 ? (
