@@ -62,8 +62,7 @@ const ProfileComponent = () => {
     const avatar = new FormData();
     images.length > 0 && avatar.append("avatar", images[0].file);
     if (!inputs.avatar) {
-      //@ts-ignore
-      avatar.append("avatar", null);
+      avatar.append("avatar", "");
     } else {
       avatar.append("avatar", inputs.avatar);
     }
