@@ -20,6 +20,7 @@ const CatalogDetailsOasis = () => {
   const params = useParams();
   const similar = useSimilartProducts();
   const [currentProduct, setCurrentProduct] = useState<any>();
+  const [currentImage, setCurrentImage] = useState<string>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
@@ -37,6 +38,7 @@ const CatalogDetailsOasis = () => {
   useEffect(() => {
     if (!selectedProduct || !selectedProduct.color_groups[0]) return;
     setCurrentProduct(selectedProduct.color_groups[0]);
+    setCurrentImage(selectedProduct.color_groups[0]?.images[0].superbig)
     if (selectedProduct.locations) {
       console.log(selectedProduct.locations[0]);
       try {
@@ -139,7 +141,10 @@ const CatalogDetailsOasis = () => {
                           }
                         >
                           <img
-                            onClick={() => setCurrentProduct(product)}
+                            onClick={() => {
+                              setCurrentProduct(product)
+                              setCurrentImage(product.images[0].superbig)
+                            }}
                             src={product.images[0].small}
                             alt=""
                             className="w-16 h-16 object-fill"
@@ -157,7 +162,10 @@ const CatalogDetailsOasis = () => {
                         }
                       >
                         <img
-                          onClick={() => setCurrentProduct(product)}
+                          onClick={() => {
+                            setCurrentProduct(product)
+                            setCurrentImage(product.images[0].superbig)
+                          }}
                           src={product.images[0].small}
                           alt=""
                           className="w-16 h-16 object-fill"
@@ -173,7 +181,7 @@ const CatalogDetailsOasis = () => {
                 {currentProduct && currentProduct.images.length ? (
                   <img
                     className="w-auto md:h-96  h-72 object-fill"
-                    src={currentProduct.images[0].superbig}
+                    src={currentImage}
                     alt=""
                   />
                 ) : (
@@ -187,38 +195,71 @@ const CatalogDetailsOasis = () => {
                       ? selectedProduct.color_groups
                           .slice(0, 5)
                           .map((product, i) => (
-                            <div key={i} className="cursor-pointer ">
-                              <img
-                                onClick={() => setCurrentProduct(product)}
-                                src={product.images[0].small}
-                                alt=""
-                                className="w-16 h-16 object-fill"
-                                style={{
-                                  opacity:
-                                    product?.images[0]?.small ===
-                                    currentProduct?.images[0]?.small
-                                      ? "1"
-                                      : "0.4",
-                                }}
-                              />
-                            </div>
-                          ))
-                      : selectedProduct.color_groups.map((product, i) => (
-                          <div key={i} className="cursor-pointer">
+                            <>
+                        {
+                          product.images.slice(0, product.images.length / 4).map(el => (
+                            <div key={i} className="cursor-pointer" style={{
+                              display:
+                                product?.images[0]?.small ===
+                                currentProduct?.images[0]?.small
+                                  ? "flex"
+                                  : "none",
+                            }}>
                             <img
-                              onClick={() => setCurrentProduct(product)}
-                              src={product.images[0].small}
+                              onClick={() => {
+                                setCurrentProduct(product)
+                                setCurrentImage(el.superbig)
+                              }}
+                              src={el.small}
                               alt=""
                               className={"w-16 h-16 object-fill"}
                               style={{
                                 opacity:
-                                  product?.images[0]?.small ===
-                                  currentProduct?.images[0]?.small
+                                  el.superbig ===
+                                  currentImage
                                     ? "1"
                                     : "0.5",
                               }}
                             />
                           </div>
+                          ))
+                        }
+                        
+                        </>
+                          ))
+                      : selectedProduct.color_groups.map((product, i) => (
+                        <>
+                        {
+                          product.images.slice(0, product.images.length / 4).map(el => (
+                            <div key={i} className="cursor-pointer" style={{
+                              display:
+                                product?.images[0]?.small ===
+                                currentProduct?.images[0]?.small
+                                  ? "flex"
+                                  : "none",
+                            }}>
+                            <img
+                              onClick={() => {
+                                setCurrentProduct(product)
+                                setCurrentImage(el.superbig)
+                              }}
+                              src={el.small}
+                              alt=""
+                              className={"w-16 h-16 object-fill"}
+                              style={{
+                                opacity:
+                                  el.superbig ===
+                                  currentImage
+                                    ? "1"
+                                    : "0.5",
+                              }}
+                            />
+                          </div>
+                          ))
+                        }
+                        
+                        </>
+                          
                         ))}
                   </div>
                 </div>
@@ -237,7 +278,9 @@ const CatalogDetailsOasis = () => {
                         Характеристики
                       </h2>
                       {selectedProduct.attributes.map((item, i) => (
-                        <div key={i} className="row font-jost">
+                        <>
+                        {
+                          item.value && <div key={i} className="row font-jost">
                           <div className="col-6 catalog-items__characteristics flex flex-col ">
                             <p className="font-medium text-xl leading-loose py-1.5">
                               {item.name}
@@ -249,6 +292,11 @@ const CatalogDetailsOasis = () => {
                             </p>
                           </div>
                         </div>
+                        }
+                        
+                        </>
+
+                        
                       ))}
                     </div>
                     <div className="font-jost">
@@ -598,10 +646,11 @@ const CatalogDetailsOasis = () => {
                             </tr>
                           </thead>
                           <tbody className="w-full">
-                            {currentProduct && currentProduct.sizes.length
+                            {currentProduct && currentProduct.sizes
                               ? currentProduct.sizes.map(
                                   (size: any, i: number) => (
-                                    <tr key={i} className=" flex ">
+                                    <>
+                                    {size.size && <tr key={i} className=" flex ">
                                       <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
                                         {" "}
                                         {size.size}
@@ -638,7 +687,10 @@ const CatalogDetailsOasis = () => {
                                           className="border-b-2 w-full border-5  border-b-black  ..."
                                         />
                                       </td>
-                                    </tr>
+                                    </tr>}
+                                    
+                                    </>
+                                    
                                   )
                                 )
                               : null}
@@ -694,7 +746,9 @@ const CatalogDetailsOasis = () => {
                                 Характеристики
                               </h2>
                               {selectedProduct.attributes.map((item, i) => (
-                                <div key={i} className="row font-jost">
+                                <>
+                                {
+                                  item.value && (<div key={i} className="row font-jost">
                                   <div className="col-6 catalog-items__characteristics flex flex-col ">
                                     <p className="font-medium text-md leading-loose py-1.5">
                                       {item.name}
@@ -705,7 +759,9 @@ const CatalogDetailsOasis = () => {
                                       {item.value}
                                     </p>
                                   </div>
-                                </div>
+                                </div>)
+                                }
+                                </>
                               ))}
                             </div>
                             <div className="font-jost">
