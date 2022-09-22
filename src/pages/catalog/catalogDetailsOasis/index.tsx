@@ -557,7 +557,7 @@ const CatalogDetailsOasis = () => {
                             <input
                               type="text"
                               value={"Выберите тип нанесения"}
-                              className=" border-b-2 border-black w-20"
+                              className=" border-b-2 border-black max-w-[100px] ml-[-6px] px-2"
                             />
                           )}
                         </div>
@@ -594,10 +594,10 @@ const CatalogDetailsOasis = () => {
                             )
                           ) : (
                             <input
-                              type="text"
-                              value={"Выберите тип нанесения"}
-                              className=" border-b-2 border-black w-20"
-                            />
+                            type="text"
+                            value={"Выберите тип нанесения"}
+                            className=" border-b-2 border-black max-w-[100px] ml-[8px] px-2"
+                          />
                           )}
                         </div>
                       </div>
