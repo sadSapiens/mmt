@@ -283,21 +283,22 @@ const MyNavbar = ({}) => {
             justify-between
            py-2"
           >
-            <div className="items-center flex  md:hidden">
+            <div className="items-center flex w-full  md:hidden">
               <label className="relative block !mb-0 cursor-pointer">
+                <span className="">
+                  <img className="" src={search} alt="" />
+                </span>
                 <input
                   value={searchValue}
                   onChange={(e: any) =>
                     dispatch(setSearchValue(e.target.value))
                   }
-                  className=" placeholder:text-slate-400 block bg-black w-full border-none rounded-full py-2  pl-9 pr-3 shadow-sm focus:outline-none  focus:ring-1 sm:text-sm"
+                  className="placeholder:text-slate-400 text-white bg-black max-w-[430px] w-full border-none rounded-full py-2  pl-9 pr-3 shadow-sm focus:outline-none  focus:ring-1 sm:text-sm"
                   placeholder="Поиск"
                   type="text"
                   name="search"
                 />
-                <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                  <img className="h-4 w-auto sm:h-5" src={search} alt="" />
-                </span>
+                
               </label>
             </div>
             <div>
@@ -346,21 +347,21 @@ const MyNavbar = ({}) => {
         >
           <Link
             to="/"
-            className="px-3 text-[#ffffff] "
+            className="px-3 text-[#ffffff] text-xl"
             onClick={() => setIsBurger(false)}
           >
             Компания
           </Link>
           <Link
             to="/portfolio"
-            className="px-3 text-[#ffffff]  "
+            className="px-3 text-[#ffffff] text-xl "
             onClick={() => setIsBurger(false)}
           >
             Портфолио
           </Link>
           <Link
             to="/blog"
-            className="px-3 text-[#ffffff]  "
+            className="px-3 text-[#ffffff] text-xl "
             onClick={() => setIsBurger(false)}
           >
             Блог
@@ -370,12 +371,12 @@ const MyNavbar = ({}) => {
           </Link> */}
           <Link
             to="/"
-            className="px-3 text-[#ffffff]  "
+            className="px-3 text-[#ffffff] text-xl "
             onClick={() => setIsBurger(false)}
           >
             FAQ
           </Link>
-          <button onClick={handleLogout} className="pb-3 px-3 text-[#ffffff]  ">
+          <button onClick={handleLogout} className="pb-3 px-3 text-[#ffffff] text-xl ">
             Выйти
           </button>
         </div>

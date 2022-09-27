@@ -13,8 +13,8 @@ const Brands = () => {
 
   return (
     <div className="container mx-auto px-4 my-5">
-      <div>
-        <span className="font-semibold text-black mr-8 text-4xl">
+      <div className="text-center">
+        <span className="font-semibold  text-black md:mr-8 md:text-4xl text-2xl">
           Бренды
         </span>
       </div>

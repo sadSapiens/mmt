@@ -136,7 +136,7 @@ const FooterHome = () => {
               onSubmit={handleSendNumber}
               className=" md:hidden  flex justify-start items-center relative md:justify-center md:items-center flex-col"
             >
-              <p className="block  font-bold	py-3 text-white text-4xl md:text-3xl text-center">
+              <p className="block  font-bold	py-3 text-white text-xl md:text-3xl text-center">
                 Становитесь нашим <br /> партнером
               </p>
               <label className="flex justify-center items-center">
@@ -156,7 +156,7 @@ const FooterHome = () => {
                 Отправить
               </button>
 
-              <div className=" flex justify-between flex-col flex-wrap w-[100%] pt-2 px-3">
+              <div className=" flex justify-between flex-col flex-wrap w-[100%] pt-2">
                 <div className="flex justify-between py-2 gap-4 ">
                   <img src={sfb} className="w-auto h-8" alt="" />
                   <img src={zk} alt="" className="w-auto h-8 w-8" />

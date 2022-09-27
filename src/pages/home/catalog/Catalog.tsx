@@ -21,12 +21,12 @@ const Catalog = () => {
         <div className="container mx-auto px-4 ">
             {home?.catalogs && (
                 <>
-                    <div className="flex flex-col md:flex-row  justify-start text-center  items-center align-middle  py-2 ">
+                    <div className="flex flex-col md:flex-row  justify-start text-center  items-start md:items-center align-middle  py-2 ">
             <span className="  py-4 font-semibold text-black text-bold text-center text-4xl">
               Каталог
             </span>
 
-                        <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center pl-14 w-full md:w-auto">
+                        <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center xl:pl-14 w-full md:w-auto">
                             {home.catalogs.map((item, index) => (
                                 <button
                                     key={index}
@@ -56,7 +56,7 @@ const Catalog = () => {
                         return index === openTab ? (
                             <div
                                 key={index}
-                                className="flex  md:flex-row justify-start items-center md:gap-20 gap-10 py-3 overflow-x-auto"
+                                className="flex  md:flex-row justify-start flex-wrap items-center md:gap-20 gap-10 py-3"
                             >
                                 {item.categories.length && item.categories.length > 6 && !more
                                     ? item.categories.slice(0, 6).map((el, i) => (
@@ -69,7 +69,7 @@ const Catalog = () => {
                                                     : `catalog?categoryId=${el.id}`
                                             }
                                         >
-                                            <div className="  md:h-56 md:w-52 h-32 w-32 border  border-black ">
+                                            <div className="  md:h-56 md:w-44 h-32 w-32 border  border-black">
                                                 <img
                                                     src={el.picture ? el.picture : one}
                                                     alt=""
@@ -83,7 +83,7 @@ const Catalog = () => {
                                     ))
                                     : item.categories.map((el, i) => (
                                         <Link
-                                            className="border-[1px]  border-black h-72"
+                                            className="border-[1px]  border-black"
                                             key={i}
                                             to={
                                                 item.is_holidays
@@ -91,12 +91,12 @@ const Catalog = () => {
                                                     : `catalog?categoryId=${el.id}`
                                             }
                                         >
-                                            <div className="  md:h-64 md:w-72 h-72 w-64  ">
+                                            <div className="md:h-72 md:w-72 h-40 w-36">
                                                 <div>
                                                     <img
                                                         src={el.picture ? el.picture : one}
                                                         alt=""
-                                                        className="  object-contain"
+                                                        className="object-contain"
                                                     />
                                                 </div>
                                                 <span
@@ -118,7 +118,7 @@ const Catalog = () => {
             <div className="flex justify-center py-14 ">
                 <button
                     onClick={() => setMore(!more)}
-                    className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-3 px-12  text-white text-[20px]"
+                    className=" flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-16  text-white text-[20px]"
                 >
                     {more ? "Скрыть" : "Больше товаров"}
                     <img

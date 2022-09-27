@@ -90,11 +90,11 @@ const Footer = () => {
           </div>
           {/* mobile responsive */}
           <div
-            className="md:hidden flex sm:hidden items-center
+            className="md:hidden flex sm:hidden items-start
             justify-between px-2
            "
           >
-            <div className=" text-white items-center flex  md:hidden pb-0">
+            <div className=" text-white items-start flex  md:hidden pb-0">
               <span className="font-normal ">Контакты:</span>
             </div>
             <div>
@@ -113,7 +113,7 @@ const Footer = () => {
                       0 555 88 35 00{" "}
                     </a>
                   </li>
-                  <li className=" px-2">
+                  <li className="text-end px-2">
                     <a href="tel:+1234567890 " className="text-white">
                       {" "}
                       0 555 88 35 00{" "}

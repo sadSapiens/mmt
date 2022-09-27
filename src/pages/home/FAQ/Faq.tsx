@@ -13,7 +13,7 @@ const Faq = () => {
       className="flex md:justify-between justify-center container mx-auto px-4"
     >
       <div className="flex flex-col lg:w-10/12 w-full">
-        <span className="flex justify-center items-center md:justify-start py-2 text-3xl text-[#383838] font-bold">
+        <span className="flex justify-center items-center md:justify-start py-2 md:text-3xl text-2xl text-[#383838] font-bold">
           FAQ
         </span>
 
@@ -30,7 +30,7 @@ const Faq = () => {
                   />
                   <label
                     htmlFor={`panel-${i}`}
-                    className=" label-faq relative block text-black font-medium py-4 px-1 border-b border-black"
+                    className="label-faq relative block text-black font-medium py-4 px-1 border-b border-black"
                   >
                     {item.question}
                   </label>

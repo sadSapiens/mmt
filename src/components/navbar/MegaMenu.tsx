@@ -49,7 +49,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 onMouseMove={() => setIsOpenCatalog(!isOpenCatalog)}
               >
                 <img src={catalog} className="object-contain flex" alt="" />
-                <span>Каталог</span>
+                <span className="text-xl">Каталог</span>
               </div>
             )}
             <div
@@ -101,7 +101,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                     categories.map((category: any, i: number) => (
                       <div key={i}>
                         <li
-                          className=" hover:bg-gray-600 category h-8 flex justify-start pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
+                          className=" hover:bg-gray-600 category h-8 flex justify-between pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
                           key={i}
                           onMouseMove={() =>
                             setSubcategories(category.subcategories)
@@ -114,6 +114,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                           // onClick={() => setIsOpenSub(!isOpenSub)}
                         >
                           {category.name}
+                          {" ->"}
                         </li>
                       </div>
                     ))
@@ -171,7 +172,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                             key={i}
                             onClick={() => props.setIsBurger(false)}
                             to={`/catalog?categoryId=${item.id}`}
-                            className="h-8 py-2  w-full   md:flex"
+                            className="h-8 py-2  w-full  md:flex"
                           >
                             {item.name}
                           </Link>

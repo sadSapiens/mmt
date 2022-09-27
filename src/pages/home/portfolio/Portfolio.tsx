@@ -18,29 +18,29 @@ const Portfolio = () => {
   return (
     <div className="container mx-auto px-4 ">
       <div>
-        <span className="text-4xl text-black font-bold	">Портфолио</span>
+        <span className="text-2xl md:text-4xl text-black font-black uppercase">Портфолио</span>
       </div>
       <div className="flex py-5 justify-center align-middle items-center text-center  md:!flex-nowrap flex-wrap md:row-auto">
-        <div className="flex w-[100%] md:w-[100%]  justify-between">
-          <div className="flex text-center row-auto gap-5 flex-col md:flex-row  justify-center items-center">
+        <div className="flex w-[100%] md:w-[100%] justify-between">
+          <div className="flex text-center row-auto gap-5 flex-col md:flex-row justify-center items-center">
             <div className="bg-black h-14 w-14 rounded-full ...  flex justify-center items-center">
-              <img className="object-center h-8 w-8" src={star} alt="" />
+              <img className="object-center h-8 w-8" src={ threeUser } alt="" />
             </div>
-            <span className="flex items-center text-xl">Более 9 лет на рынке</span>
+            <span className="flex items-center text-md"> 1000+ довольных клиентов </span>
           </div>
           <div className="flex gap-5 flex-col md:flex-row justify-center items-center">
             <div className="bg-black h-14 w-14 rounded-full ... flex justify-center items-center">
-              <img className="object-center h-8 w-8" src={threeUser} alt="" />
+              <img className="object-center h-8 w-8" src={category} alt="" />
             </div>
-            <div className=" flex items-center text-xl">1000+ довольных клиентов</div>
+            <div className=" flex items-center text-m">2800+ продукций для брендирования</div>
           </div>
         </div>
         <div className="w-[100%] flex gap-5 flex-col md:flex-row justify-center items-center lg:py-0 py-3">
           <div className="bg-black h-14 w-14 rounded-full ... flex justify-center items-center">
-            <img className="object-center h-8 w-8" src={category} alt="" />
+            <img className="object-center h-8 w-8" src={ star} alt="" />
           </div>
-          <div className=" flex items-center text-xl">
-            2800+ продукций для брендирования
+          <div className=" flex items-center text-md">
+          Более 9 лет на рынке
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@ const Portfolio = () => {
 
 
       <div className="flex justify-center py-4">
-        <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-2 px-7 text-white">
+        <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-[10px] px-[70px] text-white">
           Больше товаров
           <img className=" flex px-2" src={arrow} alt="" />
         </button>

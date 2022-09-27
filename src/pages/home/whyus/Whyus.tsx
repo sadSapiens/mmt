@@ -20,7 +20,7 @@ const Whyus = () => {
                 alt=""
               />
             </div>
-            <div className="w-10/12">
+            <div className="w-10/12 mb-10">
               <span>Мы предлагаем комплексное решение ваших бизнес-задач:</span>
               <ul className="font-light text-sm pl-4">
                 <li className="list-disc">производство сувенирной продукции</li>
@@ -48,6 +48,7 @@ const Whyus = () => {
               />
             </div>
             <div className="w-10/12">
+            <span>Европейское качество</span>
               <p className="font-light text-sm">
                 Прямой выход на производителей сувенирной продукции и
                 собственное производство, позволяют нам делать самые вкусные
@@ -65,6 +66,7 @@ const Whyus = () => {
               />
             </div>
             <div className="w-10/12">
+            <span>Богатый ассортимент</span>
               <p className="font-light text-sm">
                 У нас огромный ассортимент продукции, вы всегда можете найти
                 сувенирную продукцию согласно ваших предпочтений. Вам остается
@@ -72,11 +74,12 @@ const Whyus = () => {
               </p>
             </div>
           </div>
-          <div className="md:w-96 flex md:gap-4 md:py-16 justify-center items-start py-5">
+          <div className="md:w-96 flex md:gap-4 md:py-16 justify-center items-start pb-5">
             <div className="w-2/12">
               <img src={deal} className="md:h-8 md:w-24" alt="" />
             </div>
             <div className="w-10/12">
+            <span>Забота о клиентах</span>
               <p className="font-light text-sm">
                 Мы постоянно держим руку на пульсе рекламного мира, о всех
                 новинках. Мы сразу информируем своих клиентов, чтобы дать им
