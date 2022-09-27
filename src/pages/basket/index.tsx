@@ -75,6 +75,9 @@ const Basket = ({}) => {
   };
   console.log(order);
 
+  console.log(cartProducts);
+  
+
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
       <span className="text-[#000000]">Моя корзина</span>
@@ -267,7 +270,8 @@ const Basket = ({}) => {
                                                   </button>
                                                 </div>
                                                 <div className="relative p-6 flex-auto ">
-                                                  <div className="flex justify-between">
+                                                  <div className="flex justify-between items-center">
+                                                    <div className="flex items-center ">
                                                     <img
                                                       src={
                                                         item.product.images
@@ -280,18 +284,23 @@ const Basket = ({}) => {
                                                       alt=""
                                                     />
                                                     <div className="">
-                                                      <span className="font-semibold flex flex-wrap">
+                                                      <span className="font-semibold text-lg flex flex-wrap pb-2">
                                                         {item.product.name}
                                                       </span>
                                                       {/* <span className="font-light">
                                                       Цвет: Черный
                                                     </span> */}
                                                       <span className="font-light">
-                                                        Тип нанесения:
-                                                        термопечать
+                                                      Цвет: {item.product.color}
+                                                      </span> <br />
+                                                      <span className="font-light">
+                                                        Тип нанесения: 
+                                                        {item.costoms?.map((el:any) => el.name)}
                                                       </span>
                                                     </div>
-                                                    <div className="flex justify-center items-center">
+                                                    </div>
+                                                    
+                                                    <div className=" mt-5">
                                                       <input
                                                         type="text"
                                                         className="rounded-full ... border border-black px-2 w-[39%] text-base "

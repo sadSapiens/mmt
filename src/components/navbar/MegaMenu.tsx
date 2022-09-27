@@ -101,7 +101,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                     categories.map((category: any, i: number) => (
                       <div key={i}>
                         <li
-                          className=" hover:bg-gray-600 category h-8 flex justify-between pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
+                          className=" hover:bg-gray-600 category h-8 flex gap-2 pl-14 text-left leading-normal items-center w-full md:border-0 border-b-white border-b-[1px] "
                           key={i}
                           onMouseMove={() =>
                             setSubcategories(category.subcategories)
@@ -114,7 +114,8 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                           // onClick={() => setIsOpenSub(!isOpenSub)}
                         >
                           {category.name}
-                          {" ->"}
+                          <span className="block md:hidden">{" ->"}</span>
+                          
                         </li>
                       </div>
                     ))
