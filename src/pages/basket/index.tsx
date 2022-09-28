@@ -14,13 +14,14 @@ import { fetchOrder } from "../../store/order";
 import { IOrderProductsCart } from "../../store/order/interfaces/data.interface";
 import { useNavigate } from "react-router-dom";
 
-const Basket = ({}) => {
+const Basket = () => {
   const [showModal, setShowModal] = useState(false);
   const [payModalShow, setPayModalShow] = useState(false);
   const order = useOrder();
   const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [payInputs, setPayInputs] = useState({
     city: "",
     address: "",
@@ -55,6 +56,10 @@ const Basket = ({}) => {
   };
 
   const handlePay = async () => {
+    if (!payInputs.paymantType) {
+      setError("Заполните все поля!");
+      return;
+    }
     const referalCode = payInputs.referalCode && payInputs.referalCode;
     try {
       const res = await API.post("/orders/payment", {
@@ -68,6 +73,7 @@ const Basket = ({}) => {
         window.location.href = res.data.payment_url;
         return;
       }
+      setError("");
       navigate("/profile/order-history");
     } catch (e) {
       console.log(e);
@@ -76,7 +82,6 @@ const Basket = ({}) => {
   console.log(order);
 
   console.log(cartProducts);
-  
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
@@ -113,7 +118,6 @@ const Basket = ({}) => {
                       </tr>
                     </thead>
                     <tbody className="">
-                      
                       {cartProducts ? (
                         <>
                           {cartProducts.items.map((item: any, i: number) => (
@@ -272,34 +276,38 @@ const Basket = ({}) => {
                                                 <div className="relative p-6 flex-auto ">
                                                   <div className="flex justify-between items-center">
                                                     <div className="flex items-center ">
-                                                    <img
-                                                      src={
-                                                        item.product.images
-                                                          .small
-                                                          ? item.product.images
-                                                              .small
-                                                          : item.product.images
-                                                              .big
-                                                      }
-                                                      alt=""
-                                                    />
-                                                    <div className="">
-                                                      <span className="font-semibold text-lg flex flex-wrap pb-2">
-                                                        {item.product.name}
-                                                      </span>
-                                                      {/* <span className="font-light">
+                                                      <img
+                                                        src={
+                                                          item.product.images
+                                                            .small
+                                                            ? item.product
+                                                                .images.small
+                                                            : item.product
+                                                                .images.big
+                                                        }
+                                                        alt=""
+                                                      />
+                                                      <div className="">
+                                                        <span className="font-semibold text-lg flex flex-wrap pb-2">
+                                                          {item.product.name}
+                                                        </span>
+                                                        {/* <span className="font-light">
                                                       Цвет: Черный
                                                     </span> */}
-                                                      <span className="font-light">
-                                                      Цвет: {item.product.color}
-                                                      </span> <br />
-                                                      <span className="font-light">
-                                                        Тип нанесения: 
-                                                        {item.costoms?.map((el:any) => el.name)}
-                                                      </span>
+                                                        <span className="font-light">
+                                                          Цвет:{" "}
+                                                          {item.product.color}
+                                                        </span>{" "}
+                                                        <br />
+                                                        <span className="font-light">
+                                                          Тип нанесения:
+                                                          {item.costoms?.map(
+                                                            (el: any) => el.name
+                                                          )}
+                                                        </span>
+                                                      </div>
                                                     </div>
-                                                    </div>
-                                                    
+
                                                     <div className=" mt-5">
                                                       <input
                                                         type="text"
@@ -652,7 +660,8 @@ const Basket = ({}) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center py-2">
+                <div className="flex flex-col items-center  py-2">
+                  {error && <span className="text-red-600">{error}</span>}
                   <button
                     onClick={handlePay}
                     className="bg-[#1F1F1F] rounded-full ... px-4 py-2 flex justify-center items-center text-white"
