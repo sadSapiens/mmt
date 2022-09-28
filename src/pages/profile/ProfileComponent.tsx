@@ -63,8 +63,6 @@ const ProfileComponent = () => {
     images.length > 0 && avatar.append("avatar", images[0].file);
     if (!inputs.avatar) {
       avatar.append("avatar", "");
-    } else {
-      avatar.append("avatar", inputs.avatar);
     }
 
     avatar.append("first_name", inputs.name);

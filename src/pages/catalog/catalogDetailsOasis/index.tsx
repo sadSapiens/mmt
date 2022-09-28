@@ -184,7 +184,7 @@ const CatalogDetailsOasis = () => {
                     alt=""
                   />
                 ) : (
-                  "Loading..."
+                  "Загрузка..."
                 )}
                 <div className="flex justify-start items-center w-full">
                   <div className="flex flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
@@ -594,10 +594,10 @@ const CatalogDetailsOasis = () => {
                             )
                           ) : (
                             <input
-                            type="text"
-                            value={"Выберите тип нанесения"}
-                            className=" border-b-2 border-black max-w-[100px] ml-[8px] px-2"
-                          />
+                              type="text"
+                              value={"Выберите тип нанесения"}
+                              className=" border-b-2 border-black max-w-[100px] ml-[8px] px-2"
+                            />
                           )}
                         </div>
                       </div>
@@ -662,7 +662,9 @@ const CatalogDetailsOasis = () => {
                                         <tr
                                           key={i}
                                           className={
-                                            size.quantity ? "flex" : "hidden"
+                                            !size.quantity || size.size
+                                              ? "flex"
+                                              : "hidden"
                                           }
                                         >
                                           <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">

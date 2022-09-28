@@ -885,7 +885,7 @@ const CatalogPage = () => {
               ) : null}
               {fetching && (
                 <div className="flex justify-center items-center py-4 p-96">
-                  <p>loading...</p>
+                  <p>Загрузка...</p>
                 </div>
               )}
             </div>
@@ -900,7 +900,7 @@ const CatalogPage = () => {
               ) : null}
               {fetching && (
                 <div className="flex justify-center items-center py-4">
-                  <p>loading...</p>
+                  <p>Загрузка...</p>
                 </div>
               )}
               r

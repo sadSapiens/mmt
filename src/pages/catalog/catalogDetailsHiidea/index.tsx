@@ -156,7 +156,7 @@ const CatalogDetailsHiidea = () => {
                     />
                   </div>
                 ) : (
-                  "Loading..."
+                  "Загрузка..."
                 )}
                 <div className="flex justify-start items-center w-full">
                   <div className="flex flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
