@@ -16,7 +16,7 @@ const Catalog = () => {
     useEffect(() => {
         dispatch(fetchHome() as any);
     }, []);
-    
+
     return (
         <div className="container mx-auto px-4 ">
             {home?.catalogs && (
@@ -44,7 +44,7 @@ const Catalog = () => {
                                         src={item.icon ? `http://212.42.106.82/${item.icon}` : calendar}
                                         alt=""
                                     />
-                                    <span className="flex justify-center items-center text-[20px] flex-nowrap w-full">
+                                    <span className="flex justify-center items-center text-[16px] flex-nowrap w-full">
                     {item.name}
                   </span>
                                 </button>
@@ -69,7 +69,7 @@ const Catalog = () => {
                                                     : `catalog?categoryId=${el.id}`
                                             }
                                         >
-                                            <div className="  md:h-56 md:w-44 h-32 w-32 border  border-black">
+                                            <div className="  md:h-72 md:w-72 h-32 w-32 border  border-black">
                                                 <img
                                                     src={el.picture ? el.picture : one}
                                                     alt=""
@@ -100,12 +100,9 @@ const Catalog = () => {
                                                     />
                                                 </div>
                                                 <span
-                                                    className="flex align-bottom justify-center items-end text-black text-sm  md:text-base text-end
-
-                          "
-                                                >
-                            {el.name}
-                          </span>
+                                                    className="flex align-bottom justify-center items-end text-black text-sm  md:text-base !text-center !leading-10"
+                                                >{el.name}
+                                                </span>
                                             </div>
                                         </Link>
                                     ))}

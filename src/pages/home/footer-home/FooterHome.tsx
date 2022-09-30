@@ -22,6 +22,8 @@ import logo from "./assets/logo.png";
 import ellipse from "./assets/ellipse.png";
 import { PUBLIC_API } from "../../../constants/api";
 
+
+
 const FooterHome = () => {
   const [inputNumber, setInputNumber] = useState("");
 
@@ -41,7 +43,7 @@ const FooterHome = () => {
 
   return (
     <section style={{ background: "#484848" }}>
-      <div className="container">
+      {/* <div className="container"> */}
         <div className="hidden md:flex justify-between bg-[#484848] mx-auto  py-5 w-full">
           <div className="flex justify-between  flex-col md:py-40  w-4/10 ">
             <div className="flex justify-between  gap-3 h-9">
@@ -106,15 +108,15 @@ const FooterHome = () => {
               <img src={zk} alt="" className="sm:w-4/12" />
               <img src={sfb} alt="" className="sm:w-4/12 object-center " />
             </div>
-            <div className="flex pl-5 h-14 gap-2 items-center justify-between py-2 sm:w-8/12">
+            <div className="flex pl-2 h-14 gap-2 items-center justify-between py-2 ">
               <img src={gazprom} className="object-contain h-14 " alt="" />
-              <img src={bakai} className=" object-cover h-10 w-10/12" alt="" />
+              <img src={bakai} className=" object-cover   w-10/12 " alt="" />
             </div>
-            <div className="flex pl-5 h-14 gap-3 items-center py-2 sm:w-8/12 justify-between">
+            <div className="flex pl-2 h-14 gap-3 items-center py-2  justify-between">
               <img src={huawei} alt="" />
               <img src={kompanion} alt="" />
             </div>
-            <div className="flex justify-between items-center py-2 sm:w-8/12 ">
+            <div className="flex justify-between items-center py-2  ">
               <img src={fly} alt="" />
               <img src={dcb} alt="" />
             </div>
@@ -163,8 +165,8 @@ const FooterHome = () => {
                   <img src={beeline} className="w-auto h-8" alt="" />
                 </div>
 
-                <div className=" flex justify-between items-center py-2 gap-2">
-                  <img src={bakaibank} className=" w-28 h-5" alt="" />
+                <div className=" flex justify-between items-center py-2 gap-2 ">
+                  <img src={bakaibank} className=" w-[40%] h-3" alt="" />
                   <img src={gazprom} className="w-auto h-8" alt="" />
                   <img src={cocaCola} className="w-20 h-8" alt="" />
                 </div>
@@ -191,7 +193,7 @@ const FooterHome = () => {
               </div>
             </form>
             <div className="md:hidden flex font-jost flex-col justify-between bg-[#484848] text-white  mx-auto px-3 w-auto py-5">
-              <span className="flex font-bold	 text-xl">
+              <span className="flex font-bold	 text-xl ">
                 1000+ довольных клиентов
               </span>
               <span className=" flex justify-end font-bold text-2xl">
@@ -203,19 +205,19 @@ const FooterHome = () => {
         {/*  */}
         <div className="hidden md:flex font-jost justify-between bg-[#484848] text-white  mx-auto px-9   w-auto py-5">
           <span className="font-bold text-3xl w-96 flex flex-wrap">
-            <span className="underline-9 underline decoration-blue-800">
+            <span className="underline-9 underline decoration-blue-800 decoration-8">
               1000+
             </span>{" "}
             довольных клиентов
           </span>
           <span className="font-bold text-3xl w-36 flex flex-wrap">
-            <span className="underline-9 underline decoration-blue-800">
+            <span className="underline-9 underline decoration-blue-800 decoration-8">
               9+
             </span>{" "}
             <p> лет опыта</p>
           </span>
         </div>
-      </div>
+      {/* </div> */}
     </section>
   );
 };

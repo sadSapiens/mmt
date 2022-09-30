@@ -10,21 +10,25 @@ const Slider = () => {
         className="carousel slide carousel-fade carousel-dark relative"
         data-bs-ride="carousel"
       >
-        <div className=" items-center carousel-indicators indicat absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4 ">
+        <div className=" items-center  carousel-indicators indicat absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4 ">
           <button
             data-bs-target="#carouselDarkVariant"
             data-bs-slide-to="0"
-            className="active  w-[6px] h-[6px]"
+            className="active  !w-[6px] !h-[6px] !rounded-lg border-0"
             aria-current="true"
             aria-label="Slide 1"
           ></button>
           <button
             data-bs-target="#carouselDarkVariant"
+            className="!w-[6px] !h-[6px] !rounded-lg border-0"
+
             data-bs-slide-to="1"
             aria-label="Slide 1"
           ></button>
           <button
             data-bs-target="#carouselDarkVariant"
+            className="!w-[6px] !h-[6px] !rounded-lg border-0"
+
             data-bs-slide-to="2"
             aria-label="Slide 1"
           ></button>
@@ -117,7 +121,7 @@ const Slider = () => {
           data-bs-slide="prev"
         >
           <span
-            className="carousel-control-prev-icon inline-block bg-no-repeat"
+            className=" inline-block bg-no-repeat"
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Previous</span>
@@ -129,7 +133,7 @@ const Slider = () => {
           data-bs-slide="next"
         >
           <span
-            className="carousel-control-next-icon inline-block bg-no-repeat"
+            className=" inline-block bg-no-repeat"
             aria-hidden="true"
           />
           <span className="visually-hidden">Next</span>

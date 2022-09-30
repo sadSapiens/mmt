@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         jost: ["Jost", "sans-serif"],
       },
+      spacing: {
+        112: "27rem",
+      },
     },
   },
   plugins: [require("tw-elements/dist/plugin")],

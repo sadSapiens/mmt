@@ -45,17 +45,18 @@ const Faq = () => {
           )}
         </div>
       </div>
-      <div className="hidden md:flex flex-row relative lg:flex lg:w-3/12">
-        <div className="flex  flex-col ">
+      <div className="hidden md:flex flex-row relative lg:flex lg:w-[30%] 2xl:h-[600px] xl:h-[33rem] justify-end">
+        <div className="bg-[#424242] h-[99%] w-[95%]">
+          <div className="flex  flex-col ">
           <label
             htmlFor=""
-            className="text-white absolute z-50 flex justify-center items-center text-center text-sm py-2 px-2 w-72"
+            className="text-white absolute right-[0] w-[95%] z-50 flex justify-center items-center text-center text-lg py-2 px-2 w-72"
           >
             Если у Вас остались вопросы, свяжитесь бесплатно с нашим менеджером
           </label>
 
           <img
-            className="h-[25rem]  relative  block object-contain bg-[#424242]"
+            className="2xl:h-[33rem] xl:h-[28rem] absolute right-0 bottom-0  block object-contain "
             src={faqImage}
             alt="image"
           />
@@ -63,7 +64,7 @@ const Faq = () => {
         <div className="flex justify-center items-center ">
           <label
             htmlFor=""
-            className="absolute   flex top-[22rem] lg:right-36 right-[5rem] text-white font-jost font-semibold"
+            className="absolute flex 2xl:top-[32rem] xl:top-[28rem] lg:right-[8rem] right-[5rem] text-white text-lg	 font-semibold"
           >
             СВЯЗАТЬСЯ
           </label>
@@ -71,10 +72,11 @@ const Faq = () => {
           <a href="tel:+1234567890">
             <img
               src={calling}
-              className="absolute flex  justify-end items-end top-80 lg:right-16 right-7 h-16 w-16"
+              className="absolute flex 2xl:top-[30rem] xl:top-[26rem] justify-end items-end top-80 right-7 h-24 w-24"
               alt="image"
             />
           </a>
+        </div>
         </div>
       </div>
     </div>

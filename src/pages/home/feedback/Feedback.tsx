@@ -22,19 +22,19 @@ const Feedback = () => {
 
       <div className="flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto items-start w-full">
         {home && home.reviews.length && (
-          <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle ">
+          <div className=" flex flex-row md:overflow-auto overflow-x-auto overflow-y-clip h-auto  w-full  items-start   justify-start align-middle flex justify-between ">
             {home.reviews.map((item, i) => (
-              <div key={i} className="mx-[15px] md:mx-[40px]">
-                <div className={i > 0 ? "flex flex-col justify-center w-[210px] items-center overflow-y-clip" : 'flex w-[210px] flex-col justify-center items-center overflow-y-clip pr-4 w-full ml-0'}>
+              <div key={i}>
+                <div className={i > 0 ? "flex flex-col justify-center w-[310px] items-center overflow-y-clip" : 'flex w-[310px] flex-col justify-center items-center overflow-y-clip  w-full ml-0'}>
                   <img
-                    className="rounded-full  w-20 h-20 pb-1.5 flex justify-center items-center place-items-center"
+                    className="rounded-full  w-32 h-32 pb-1.5 flex justify-center items-center place-items-center mb-2.5"
                     src={item ? `http://212.42.106.82/${item?.picture}` : ""}
                     alt=""
                   />
-                  <span className=" flex  text-center font-bold text-[14px] md:text-[17px]">
+                  <span className=" flex  text-center font-bold text-[14px] md:text-[18px]">
                     {item.name} <br /> {item.position} 
                   </span>
-                  <p className="font-light text-center	text-[14px] md:text-[14px] mt-2">{item.review}</p>
+                  <p className="font-light text-center	text-[14px] md:text-[18px] mt-2 leading-[120%]">{item.review}</p>
                 </div>
               </div>
             ))}
