@@ -40,24 +40,21 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
         <div className="  w-full">
           <div
             className="drop-downn flex md:flex-row flex-col"
-            onMouseLeave={() => setIsOpenCatalog(!isOpenCatalog)}
-            // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
-          >
-            {!isOpenCatalog && (
+           >
               <div
                 className="flex flex-row md:justify-center md:items-center justify-end items-center h-10 px-3"
-                onMouseMove={() => setIsOpenCatalog(!isOpenCatalog)}
+                onMouseEnter={() => setIsOpenCatalog(!isOpenCatalog)}
+            onClick={() => setIsOpenCatalog(!isOpenCatalog)}
               >
                 <img src={catalog} className="object-contain flex" alt="" />
                 <span className="text-xl">Каталог</span>
               </div>
-            )}
             <div
               className="megablock bg-[#343434] py-2"
               style={{
                 display: isOpenCatalog ? "block " : "none",
               }}
-              // onClick={() => setIsOpenCatalog(!isOpenCatalog)}
+            onMouseLeave={() => setIsOpenCatalog(!isOpenCatalog)}
             >
               {props.isBurger && (
                 <div className="ml-3 mb-3 text-left">

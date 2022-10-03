@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import calendar from "./catalog-images/calendar.svg";
 import one from "./catalog-images/one.png";
 import arrow from "./catalog-images/arrow.svg";
@@ -10,12 +11,17 @@ import { Link } from "react-router-dom";
 const Catalog = () => {
     const [openTab, setOpenTab] = useState(0);
     const [more, setMore] = useState(false);
+    const home = useHome();
+    const [btn, setBtn] = useState<number | undefined>(home?.catalogs?.[0]?.categories?.length)
 
     const dispatch = useAppDispatch();
-    const home = useHome();
     useEffect(() => {
         dispatch(fetchHome() as any);
     }, []);
+
+useEffect(() => {
+    console.log(btn)
+}, [btn])
 
     return (
         <div className="container mx-auto px-4 ">
@@ -28,10 +34,12 @@ const Catalog = () => {
 
                         <div className="flex flex-row gap-4 scroll-photo  overflow-x-auto overflow-y-clip h-10 justify-start md:justify-center xl:pl-14 w-full md:w-auto">
                             {home.catalogs.map((item, index) => (
-                                <button
+                               
+                               <button
                                     key={index}
                                     onClick={() => {
                                         setOpenTab(index);
+                                        setBtn(item?.categories?.length)
                                     }}
                                     className={`${
                                         index === openTab
@@ -58,8 +66,8 @@ const Catalog = () => {
                                 key={index}
                                 className="flex  md:flex-row justify-start flex-wrap items-center md:gap-20 gap-10 py-3"
                             >
-                                {item.categories.length && item.categories.length > 6 && !more
-                                    ? item.categories.slice(0, 6).map((el, i) => (
+                                {item.categories.length && item.categories.length > 4 && !more
+                                    ? item.categories.slice(0, 4).map((el, i) => (
                                         <Link
                                             className=""
                                             key={i}
@@ -112,6 +120,8 @@ const Catalog = () => {
                 </>
             )}
 
+
+            {btn ? btn > 4 &&
             <div className="flex justify-center py-14 ">
                 <button
                     onClick={() => setMore(!more)}
@@ -124,7 +134,8 @@ const Catalog = () => {
                         alt=""
                     />
                 </button>
-            </div>
+            </div> : <></>
+}
         </div>
     );
 };

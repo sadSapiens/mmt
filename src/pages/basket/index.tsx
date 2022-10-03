@@ -33,6 +33,7 @@ const Basket = () => {
 
   useEffect(() => {
     setCartProducts(order);
+    console.log(cartProducts)
   }, [order]);
 
   const handleChangePayInputs = (e: any) => {
@@ -81,7 +82,7 @@ const Basket = () => {
   };
   console.log(order);
 
-  console.log(cartProducts);
+  console.log(cartProducts, "cartProducts");
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
@@ -219,6 +220,7 @@ const Basket = () => {
                                         onClick={() => {
                                           cartProducts.items.map((el: any) => {
                                             if (el.id === item.id) {
+                                              {console.log(el)}
                                               API.put("/orders/cart", {
                                                 item_id: el.id,
                                                 quantity:
@@ -238,9 +240,9 @@ const Basket = () => {
                                   <td className="text-sm text-black font-light px-6 py-4 whitespace-nowrap">
                                     <div className="flex gap-2">
                                       <span className="flex text-base text-black">
-                                        {item.price}
+                                        {item.amount}
                                       </span>
-                                      <img src={som} alt="" />
+                                      <img className="h-[15px] self-center" src={som} alt="" />
                                     </div>
                                   </td>
 
@@ -368,6 +370,8 @@ const Basket = () => {
             <>
               <div className=" md:hidden my-2">
                 {cartProducts.items.map((item, i) => (
+                  <>
+                    {console.log(item, "item basket")}
                   <tr
                     key={i}
                     className="md:bg-white bg-[#F1F1F1] border-b flex flex-col my-4"
@@ -533,6 +537,8 @@ const Basket = () => {
                       </div>
                     </div>
                   </tr>
+                  </>
+
                 ))}
               </div>
 
@@ -542,7 +548,7 @@ const Basket = () => {
                 <div className="row font-jost text-sm m-0">
                   <div className="w-8/12 catalog-items__characteristics  flex flex-col gap-4 p-0">
                     <p className="">Итого</p>
-                    <span className="font-light">Товары, 3 шт.</span>
+                    <span className="font-light">Товары, {cartProducts?.items?.length} шт.</span>
                     <p>
                       Адрес доставки {payInputs.city},{" "}
                       {payInputs.address.length > 5

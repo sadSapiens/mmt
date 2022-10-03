@@ -511,13 +511,28 @@ const CatalogPage = () => {
                           checked={selectedFilters.types.includes(item.id)}
                           onClick={() => handleSelectFilters(item.id, "types")}
                         />
-
-                        <label
+                      {i === 0 ? <label
+                          htmlFor={item.name}
+                          className="flex justify-center cursor-pointer bg-[#65A8E0] text-white items-center  px-4 py-1 rounded-full ... w-28 !mb-0 py-10 px-22 border border-black ml-6"
+                        >
+                          {item.name}
+                        </label> : i === 1 ? <label
+                          htmlFor={item.name}
+                          className="flex justify-center cursor-pointer bg-[#79B15E] text-white items-center  px-4 py-1 rounded-full ... w-28 !mb-0 py-10 px-22 border border-black ml-6"
+                        >
+                          {item.name}
+                        </label> : i === 2 ? <label
+                          htmlFor={item.name}
+                          className="flex justify-center cursor-pointer bg-[#F1A400] text-white items-center  px-4 py-1 rounded-full ... w-28 !mb-0 py-10 px-22 border border-black ml-6"
+                        >
+                          {item.name}
+                        </label> : <label
                           htmlFor={item.name}
                           className="flex justify-center cursor-pointer items-center  px-4 py-1 rounded-full ... w-28 !mb-0 py-10 px-22 border border-black ml-6"
                         >
                           {item.name}
-                        </label>
+                        </label> 
+                            }
                       </div>
                     ))}
                   </div>

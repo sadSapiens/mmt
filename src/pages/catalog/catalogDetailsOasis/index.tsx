@@ -32,6 +32,8 @@ const CatalogDetailsOasis = () => {
   const [priceDrawing, setPriceDrawing] = useState(0);
   const [error, setError] = useState("");
 
+  // console.log(selectedProduct, 'selectedProduct')
+
   useEffect(() => {
     if (!params.id) return;
     dispatch(fetchSlectedCatalogProduct(params.id) as any);
@@ -42,7 +44,7 @@ const CatalogDetailsOasis = () => {
     setCurrentProduct(selectedProduct.color_groups[0]);
     setCurrentImage(selectedProduct.color_groups[0]?.images[0].superbig);
     if (selectedProduct.locations) {
-      console.log(selectedProduct.locations[0]);
+      // console.log(selectedProduct.locations[0]);
       try {
         setCurrentDrawing({
           ...selectedProduct.locations[0],
@@ -67,9 +69,10 @@ const CatalogDetailsOasis = () => {
     const sizes = currentProduct.sizes
       .filter((item: any) => item.quantityToCart)
       .map((size: any) => {
+        console.log(size, "some size")
         return {
           product_size_id: size.id,
-          quantity: size.quantity,
+          quantity: size.quantityToCart,
         };
       });
 
@@ -94,7 +97,7 @@ const CatalogDetailsOasis = () => {
       setCardWord("Добавлено");
       dispatch(fetchOrder() as any);
     } catch (e) {
-      navigate("/signup");
+      // navigate("/signup");
       console.log(e);
     }
   };
@@ -116,6 +119,9 @@ const CatalogDetailsOasis = () => {
       console.log(e);
     }
   };
+  useEffect(() => {
+    console.log(currentProduct, "checking currentProduct")
+  }, [currentProduct])
 
   return (
     <div>
@@ -630,8 +636,9 @@ const CatalogDetailsOasis = () => {
                   <div className="overflow-x-auto scroll-photo sm:-mx-4 lg:-mx-4 lg:grid-cols-1">
                     <div className=" inline-block sm:px-6 lg:px-8">
                       <div className="">
-                        {!!selectedProduct.total_stock && (
+                        {selectedProduct.total_stock && (
                           <>
+                          {/* {console.log(selectedProduct, currentProduct)} */}
                             <table className=" flex justify-between flex-wrap">
                               <thead className="w-full">
                                 <tr className="flex">
@@ -658,30 +665,33 @@ const CatalogDetailsOasis = () => {
                               <tbody className="w-full">
                                 {currentProduct && currentProduct.sizes.length
                                   ? currentProduct.sizes.map(
-                                      (size: any, i: number) => (
+                                    (size: any, i: number) => (
+                                      <>
+                                        {console.log(currentProduct)}
                                         <tr
                                           key={i}
                                           className={
                                             !size.quantity || size.size
                                               ? "flex"
-                                              : "hidden"
+                                              : "flex"
                                           }
                                         >
                                           <td className="mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
                                             {" "}
-                                            {size.size}
+                                            {size?.size}
                                           </td>
                                           <td className=" mx-2 w-[33.3%]   px-2 py-2 border-b-2  border-b-black  ...">
-                                            {size.quantity}
+                                            {size?.quantity}
                                           </td>
                                           <td className="flex mx-2 w-[33.3%] px-2 py-2 border border-5">
                                             <input
                                               type="number"
-                                              placeholder="1"
+                                              placeholder="0"
                                               onChange={(e) => {
                                                 const updatedSizes =
                                                   currentProduct.sizes.map(
                                                     (el: any) => {
+                                                    
                                                       return el.id !== size.id
                                                         ? el
                                                         : {
@@ -705,6 +715,7 @@ const CatalogDetailsOasis = () => {
                                             />
                                           </td>
                                         </tr>
+                                        </>
                                       )
                                     )
                                   : null}
@@ -744,13 +755,13 @@ const CatalogDetailsOasis = () => {
                               navigate("/signup")
                             )} */}
 
-                                <div className="flex flex-col">
+                                {/* <div className="flex flex-col">
                                   <span className="text-[#30B956] font-bold">
                                     {selectedProduct.total_stock} c
                                   </span>
                                   <hr className="border-b-2 border-b-black ..." />
                                   <span>Итого</span>
-                                </div>
+                                </div> */}
                               </>
                             </div>
                           </>
@@ -847,7 +858,7 @@ const CatalogDetailsOasis = () => {
                                 </div>
                                 <div className="col-6 flex flex-col gap-5 ">
                                   <p>{selectedProduct.package.package_type}</p>
-                                  <p>{selectedProduct.package.weight}.</p>
+                                  <p>{selectedProduct.pac kage.weight}.</p>
                                   <p>
                                     {selectedProduct.package.package_quantity}.
                                   </p>

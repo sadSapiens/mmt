@@ -11,6 +11,8 @@ import "./port.css";
 import { useAppDispatch } from "../../../store";
 import { useHome } from "../../../store/varia/hooks";
 
+import { Link } from "react-router-dom";
+
 const Portfolio = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
@@ -73,13 +75,14 @@ const Portfolio = () => {
 
 
 
-
+      <Link to={'/portfolio'}>
       <div className="flex justify-center py-4">
         <button className="flex align-middle justify-center items-center rounded-full ... bg-[#1F1F1F] py-[10px] px-[70px] text-white">
           Больше товаров
           <img className=" flex px-2" src={arrow} alt="" />
         </button>
       </div>
+      </Link>
     </div>
   );
 };
