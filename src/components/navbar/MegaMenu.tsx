@@ -37,9 +37,9 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
   return (
     <>
       <div className="w-full">
-        <div className="  w-full">
+        <div className="  w-full  ">
           <div
-            className="drop-downn flex md:flex-row flex-col"
+            className="drop-downn flex md:flex-row flex-col "
            >
               <div
                 className="flex flex-row md:justify-center md:items-center justify-end items-center h-10 px-3"
@@ -50,11 +50,12 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 <span className="text-xl">Каталог</span>
               </div>
             <div
-              className="megablock bg-[#343434] py-2"
+              className="megablock bg-[#343434] py-2  h-[100vh]"
               style={{
                 display: isOpenCatalog ? "block " : "none",
               }}
-            onMouseLeave={() => setIsOpenCatalog(!isOpenCatalog)}
+            onMouseLeave={() => setIsOpenCatalog(false)}
+            onClick={() =>  setIsOpenCatalog(false)}
             >
               {props.isBurger && (
                 <div className="ml-3 mb-3 text-left">
@@ -82,18 +83,36 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 <div className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
                   {home.types.map((item, i) => (
                     <Link key={i} to={`/catalog?type=${item.id}`}>
-                      <button
+                      {i === 0 ? 
+                       <button
                         onClick={() => props.setIsBurger(false)}
-                        className="bg-[#65A8E0] px-4 rounded-full ..."
+                        className="bg-[#65A8E0] px-4 rounded-full h-[35px] w-[97px] ..."
                       >
                         {item.name}
-                      </button>
+                      </button> : i === 1 ?  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className=" !bg-[#79B15E] px-4 rounded-full h-[35px] w-[97px] ..."
+                      >
+                        {item.name}
+                      </button> : i === 2 ?  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className="!bg-[#F1A400] px-4 rounded-full h-[35px] w-[97px] ..."
+                      >
+                        {item.name}
+                      </button> :  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className="bg-[#65A8E0] px-4 rounded-full h-[35px] w-[97px] ..."
+                      >
+                        {item.name}
+                      </button>}
+                     
                     </Link>
+                  
                   ))}
                 </div>
               )}
               <ul className="flex justify-around items-start text-start ">
-                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px]">
+                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px] h-[100vh]">
                   {!isCategoryes && categories.length > 0 ? (
                     categories.map((category: any, i: number) => (
                       <div key={i}>
@@ -111,7 +130,6 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                           // onClick={() => setIsOpenSub(!isOpenSub)}
                         >
                           {category.name}
-                          <span className="block md:hidden">{" ->"}</span>
                           
                         </li>
                       </div>
@@ -146,12 +164,34 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                       <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
                         {home.types.map((item, i) => (
                           <Link key={i} to={`/catalog?type=${item.id}`}>
-                            <button
+                            {/* <button
                               onClick={() => props.setIsBurger(false)}
                               className="bg-[#65A8E0]  px-4 rounded-full ..."
                             >
                               {item.name}
-                            </button>
+                            </button> */}
+                            {i === 0 ? 
+                       <button
+                        onClick={() => props.setIsBurger(false)}
+                        className="bg-[#65A8E0] px-4 rounded-full h-[35px] w-[118px] ..."
+                      >
+                        {item.name}
+                      </button> : i === 1 ?  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className=" !bg-[#79B15E] px-4 rounded-full h-[35px] w-[118px] ..."
+                      >
+                        {item.name}
+                      </button> : i === 2 ?  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className="!bg-[#F1A400] px-4 rounded-full h-[35px] w-[118px] ..."
+                      >
+                        {item.name}
+                      </button> :  <button
+                        onClick={() => props.setIsBurger(false)}
+                        className="bg-[#65A8E0] px-4 rounded-full h-[35px] w-[118px] ..."
+                      >
+                        {item.name}
+                      </button>}
                           </Link>
                         ))}
                       </div>

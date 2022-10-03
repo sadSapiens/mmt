@@ -16,23 +16,23 @@ const Whyus = () => {
             <div className="flex justify-end items-start ">
               <img
                 src={loading}
-                className="h-10 w-10 flex justify-start items-start"
+                className="xl:h-10 h-[30px]  w-10 flex justify-start items-start"
                 alt=""
               />
             </div>
             <div className="w-10/12 mb-10 ">
-              <span className="text-xl font-bold ">Мы предлагаем комплексное решение ваших бизнес-задач:</span>
+              <span className="xl:text-xl text-[16px] font-bold ">Мы предлагаем комплексное решение ваших бизнес-задач:</span>
               <ul className="font-light text-sm pl-4 pt-2.5">
-                <li className="list-disc text-base">производство сувенирной продукции</li>
-                <li className="list-disc text-base">
+                <li className="list-disc xl:text-base text-[14px]">производство сувенирной продукции</li>
+                <li className="list-disc xl:text-base text-[14px]">
                   нанесение логотипа на любую поверхность
                 </li>
-                <li className="list-disc text-base">производство POSM</li>
-                <li className="list-disc text-base">
+                <li className="list-disc xl:text-base text-[14px]">производство POSM</li>
+                <li className="list-disc xl:text-base text-[14px]">
                   изготовление полиграфической продукции
                 </li>
-                <li className="list-disc text-base"> производство упаковок</li>
-                <li className="list-disc text-base">
+                <li className="list-disc xl:text-base text-[14px]"> производство упаковок</li>
+                <li className="list-disc xl:text-base text-[14px]">
                   {" "}
                   производство текстильной продукции
                 </li>
@@ -43,13 +43,13 @@ const Whyus = () => {
             <div  >
               <img
                 src={diamond}
-                className="md:h-8    object-center md:flex"
+                className="xl:h-8 h-[30px]   object-center md:flex"
                 alt=""
               />
             </div>
             <div className="w-10/12">
-            <span className="text-xl font-bold">Европейское качество</span>
-              <p className="font-light text-base pt-2.5">
+            <span className="xl:text-xl text-[16px] font-bold">Европейское качество</span>
+              <p className="font-light xl:text-base text-[14px] pt-2.5">
                 Прямой выход на производителей сувенирной продукции и
                 собственное производство, позволяют нам делать самые вкусные
                 цены. Наши возможности по поиску и поставке сувенирной продукции
@@ -61,13 +61,13 @@ const Whyus = () => {
             <div  >
               <img
                 src={apps}
-                className="md:h-8    object-contain"
+                className="xl:h-8 h-[30px]    object-contain"
                 alt=""
               />
             </div>
             <div className="w-10/12">
-            <span className="text-xl font-bold">Богатый ассортимент</span>
-              <p className="font-light text-base pt-2.5">
+            <span className="xl:text-xl text-[16px] font-bold">Богатый ассортимент</span>
+              <p className="font-light xl:text-base text-[14px] pt-2.5">
                 У нас огромный ассортимент продукции, вы всегда можете найти
                 сувенирную продукцию согласно ваших предпочтений. Вам остается
                 только выбрать понравившиеся идеи!
@@ -76,11 +76,11 @@ const Whyus = () => {
           </div>
           <div className="md:w-112 flex md:gap-4 md:py-16 justify-center items-start">
             <div  >
-              <img src={deal} className="md:h-8   " alt="" />
+              <img src={deal} className="xl:h-8 h-[30px]   " alt="" />
             </div>
             <div className="w-10/12">
-            <span className="text-xl font-bold">Забота о клиентах</span>
-              <p className="font-light text-base pt-2.5">
+            <span className="xl:text-xl font-bold">Забота о клиентах</span>
+              <p className="font-light  xl:text-base text-[14px] pt-2.5">
                 Мы постоянно держим руку на пульсе рекламного мира, о всех
                 новинках. Мы сразу информируем своих клиентов, чтобы дать им
                 конкурентное преимущество перед другими

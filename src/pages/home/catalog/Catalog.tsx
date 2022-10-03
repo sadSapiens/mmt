@@ -99,7 +99,7 @@ useEffect(() => {
                                                     : `catalog?categoryId=${el.id}`
                                             }
                                         >
-                                            <div className="md:h-72 md:w-72 h-40 w-36">
+                                            <div className="md:h-72 md:w-72 h-32 w-32">
                                                 <div>
                                                     <img
                                                         src={el.picture ? el.picture : one}
@@ -108,7 +108,7 @@ useEffect(() => {
                                                     />
                                                 </div>
                                                 <span
-                                                    className="flex align-bottom justify-center items-end text-black text-sm  md:text-base !text-center !leading-10"
+                                                    className="flex align-bottom justify-center items-end text-black text-sm  md:text-base !text-center"
                                                 >{el.name}
                                                 </span>
                                             </div>

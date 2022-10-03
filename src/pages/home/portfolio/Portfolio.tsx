@@ -20,10 +20,10 @@ const Portfolio = () => {
   return (
     <div className="container mx-auto px-4 ">
       <div>
-        <span className="text-2xl md:text-4xl text-black font-black uppercase">Портфолио</span>
+        <span className="text-2xl md:text-4xl text-black font-black ">Портфолио</span>
       </div>
       <div className="flex py-5 justify-center align-middle items-center text-center  md:!flex-nowrap flex-wrap md:row-auto">
-        <div className="flex w-[100%] md:w-[100%] justify-between">
+        <div className="flex xl:w-[60%] md:w-[100%] justify-around">
 
 
         <div className="flex text-center row-auto gap-5 flex-col md:flex-row justify-center items-center">
@@ -42,14 +42,14 @@ const Portfolio = () => {
             <span className="flex items-center text-xl"> 1000+ довольных клиентов </span>
           </div>
 
-          <div className="flex gap-5 flex-col md:flex-row justify-center items-center">
+
+        </div>
+          <div className=" 2xl:width-[40%] flex gap-5 flex-col md:flex-row justify-center items-center">
             <div className="bg-black h-14 w-14 rounded-full ... flex justify-center items-center">
               <img className="object-center h-8 w-8" src={category} alt="" />
             </div>
             <div className=" flex items-center text-xl ">2800+ продукций для брендирования</div>
           </div>
-
-        </div>
 
       </div>
 

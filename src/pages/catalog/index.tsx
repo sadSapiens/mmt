@@ -36,7 +36,7 @@ const CatalogPage = () => {
   const [fetching, setFetching] = useState(true);
   const [isAllProducts, setIsAllProducts] = useState(false);
   const [productsCount, setProductsCount] = useState(12);
-  const [totalCount, setTotalCount] = useState<any>();
+  const [totalCount, setTotalCount] = useState<any>(); 
   const [showFilter, setShowFilter] = useState(false);
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const selectedProduct = useSelectedCatalogProduct();
@@ -244,6 +244,7 @@ const CatalogPage = () => {
                 className="h-2 w-auto sm:h-5 absolute left-2 object-contain focus:outline-none"
                 src={searchL}
                 alt=""
+                onClick={() => dispatch} 
               />
               <input
                 value={searchValue}

@@ -13,7 +13,7 @@ const Feedback = () => {
   console.log("home ==>", home);
   
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 mb-[50px]">
       <div className="flex md:flex-auto md:justify-start justify-center">
         <span className="md:text-4xl text-2xl text-[#383838] font-bold	flex py-4">
           Отзывы
@@ -31,10 +31,10 @@ const Feedback = () => {
                     src={item ? `http://212.42.106.82/${item?.picture}` : ""}
                     alt=""
                   />
-                  <span className=" flex  text-center font-bold text-[14px] md:text-[18px]">
+                  <span className=" flex  text-center font-[400] text-[14px] md:text-[18px]">
                     {item.name} <br /> {item.position} 
                   </span>
-                  <p className="font-light text-center	text-[14px] md:text-[18px] mt-2 leading-[120%]">{item.review}</p>
+                  <p className="font-light !text-left	text-[14px] md:text-[18px] mt-2 leading-[120%]">{item.review}</p>
                 </div>
               </div>
             ))}
