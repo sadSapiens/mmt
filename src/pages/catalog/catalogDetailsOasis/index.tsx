@@ -926,13 +926,13 @@ const CatalogDetailsOasis = () => {
                         }
                       >
                         {" "}
-                        {item.name}
+                        {item.name.length <= 29 ? item.name : item.name.slice(0, 29) + "..."}
                       </Link>
-                      <div className="flex gap-1 pl-[60px] items-center">
-                        <div className="h-3 w-3 bg-[#14153C] rounded-full" />
-                        <div className="h-3 w-3 bg-[#65A8E0] rounded-full" />
-                        <div className="h-3 w-3 bg-[#A91E1E] rounded-full" />
-                      </div>
+                      {/* <div className="flex gap-1 pl-[30px] items-center">
+                        <div className="h-3 w-3 rounded-full" />
+                        <div className="h-3 w-3  rounded-full" />
+                        <div className="h-3 w-3 rounded-full" />
+                      </div> */}
                     </div>
                     <div className="flex justify-between items-center">
                       <div className="flex flex-col">

@@ -55,34 +55,41 @@ const Portfolio = () => {
                         </div>
                     </div>
 
-                    <div className=" flex flex-wrap justify-between items-center gap-4">
+                    <div className=" flex flex-wrap justify-between items-center gap-[0rem] md:gap-4">
                         {portfolio?.data.map((item: any, index: number) => {
                             return openTab
                                 ? index + 1 === openTab && (
+                                
                                 <div
                                     key={index}
                                     className="flex flex-wrap md:columns-4 md:gap-4 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row"
                                 >
-                                    <div className="md:h72 md:w-72 h-36 w-36 border border-[#1F1F1F] mb-32 ">
+                                    
+                                    <div className="md:h72 md:w-72 h-56 w-44 border border-[#1F1F1F] mb-32 ">
                                         <img src={one} alt=""/>
                                         <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
                         </span>
                                     </div>
                                 </div>
+                                
                             )
                                 : portfolio.data.map((item: any, index: number) => (
+                                        <>
+                        {console.log(item.description.length)}
+                                    
                                     <div
                                         key={index}
-                                        className="flex flex-wrap md:columns-4 md:gap-8 md:justify-evenly justify-center items-center gap-4 columns-2 flex-row mb-4"
+                                        className="flex flex-wrap md:columns-4 md:gap-8 md:justify-evenly justify-center items-center gap-[0rem] columns-2 flex-row mb-4"
                                     >
-                                        <div className="md:h-72 md:w-72 h-36 w-36 border border-[#1F1F1F] ">
+                                        <div className="md:h-72 md:w-72 h-56 w-44 border border-[#1F1F1F] ">
                                             <img src={`http://212.42.106.82/${item.photo}`} alt="" className="w-full h-[80%] object-cover" style={{backgroundPosition: "top"}}/>
                                             <span className="flex align-bottom justify-center text-black text-center">
                           {item.description}
                         </span>
                                         </div>
                                     </div>
+                                </>
                                 ));
                         })}
                     </div>
