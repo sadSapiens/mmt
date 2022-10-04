@@ -263,6 +263,7 @@ const CatalogDetailsHiidea = () => {
                     <div className="flex gap-2">
                       {selectedProduct.color_groups?.map((product, index) => (
                         <>
+                        {index <= 7 &&
                           <div
                             className={`w-[27px] h-[27px] rounded-[50%] cursor-pointer`}
                             onClick={() => setCurrentProduct(product)}
@@ -270,7 +271,7 @@ const CatalogDetailsHiidea = () => {
                               background: product.color.hex_code,
                               border: ".5px solid #000",
                             }}
-                          ></div>
+                          ></div>}
                         </>
                       ))}
                     </div>
