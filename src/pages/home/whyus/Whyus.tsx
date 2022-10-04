@@ -43,11 +43,11 @@ const Whyus = () => {
             <div  >
               <img
                 src={diamond}
-                className="xl:h-8 h-[30px]   object-center md:flex"
+                className="xl:h-8 h-[30px]   object-center md:flex lg:mr-[0] mr-[10px]"
                 alt=""
               />
             </div>
-            <div className="w-10/12">
+            <div className="w-10/12 lg:mb-[0] mb-[20px]">
             <span className="xl:text-xl text-[16px] font-bold">Европейское качество</span>
               <p className="font-light xl:text-base text-[14px] pt-2.5">
                 Прямой выход на производителей сувенирной продукции и
@@ -61,11 +61,11 @@ const Whyus = () => {
             <div  >
               <img
                 src={apps}
-                className="xl:h-8 h-[30px]    object-contain"
+                className="xl:h-8 h-[30px]    object-contain lg:mr-[0] mr-[10px]"
                 alt=""
               />
             </div>
-            <div className="w-10/12">
+            <div className="w-10/12 lg:mb-[0] mb-[20px]">
             <span className="xl:text-xl text-[16px] font-bold">Богатый ассортимент</span>
               <p className="font-light xl:text-base text-[14px] pt-2.5">
                 У нас огромный ассортимент продукции, вы всегда можете найти
@@ -76,9 +76,9 @@ const Whyus = () => {
           </div>
           <div className="md:w-112 flex md:gap-4 md:py-16 justify-center items-start">
             <div  >
-              <img src={deal} className="xl:h-8 h-[30px]   " alt="" />
+              <img src={deal} className="xl:h-8 h-[30px]  lg:mr-[0] mr-[10px] " alt="" />
             </div>
-            <div className="w-10/12">
+            <div className="w-10/12 lg:mb-[0] mb-[20px]">
             <span className="xl:text-xl font-bold">Забота о клиентах</span>
               <p className="font-light  xl:text-base text-[14px] pt-2.5">
                 Мы постоянно держим руку на пульсе рекламного мира, о всех
