@@ -112,7 +112,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 </div>
               )}
               <ul className="flex justify-around items-start text-start ">
-                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  h-96 justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px] h-[100vh]">
+                <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px] !h-[100vh]">
                   {!isCategoryes && categories.length > 0 ? (
                     categories.map((category: any, i: number) => (
                       <div key={i}>

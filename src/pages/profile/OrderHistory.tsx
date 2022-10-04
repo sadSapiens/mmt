@@ -78,7 +78,7 @@ const OrderHistory = () => {
                   </thead>
                   <tbody>
 
-                    {historyOrder &&
+                    {/* {historyOrder &&
                       historyOrder.map((item, i) => (
                         <>
                           <tr className="border-b flex-col">
@@ -141,7 +141,145 @@ const OrderHistory = () => {
                           </tr>
 
                         </>
-                      ))}
+                      ))} */}
+
+                      {historyOrder && Object.values(historyOrder?.reduce((acc: any, cur: any) => {
+                                  if(!acc[cur.order_item?.product?.id]){
+                                    acc[cur.order_item?.product?.id] = []
+                                  }
+                                  acc[cur.order_item?.product?.id].push(cur)
+                                  return acc
+                                }, {})).map((item: any)=> (
+                                item.map((item: any, i: number) => (
+                                i === 0 ?
+                               <>
+                          <tr className="border-b flex-col">
+
+                            <td className="md:flex-col py-4 whitespace-nowrap text-sm font-medium text-gray-900 flex flex-col md:flex">
+                              <div
+                                className="flex "
+                              >
+                                <img width="100" src={item.order_item?.product.images.small} alt="" />
+                                <div className="flex flex-col flex-wrap">
+                                  <h2 className="font-semibold flex flex-wrap">
+                                    {item.order_item?.product.name}
+                                  </h2>
+                                  <span className="font-normal">
+                                    {item.order_item?.product.article}
+                                  </span>
+                                  <span className="font-normal">
+                                    Цвет:  {item.order_item?.product.color}
+                                  </span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+                              <div className="flex justify-center items-center align-middle flex-col">
+                                <h3 className="font-semibold">{formatDate(item.created_at).date}</h3>
+                                 <span>{formatDate(item.created_at).time}</span>
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+                              <div className="flex justify-center items-center align-middle">
+                                <label
+                                  htmlFor="exampleFormControlInput5"
+                                  className="form-label inline-block mb-2 text-gray-700 "
+                                />
+                                <input
+                                  type="text"
+                                  className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
+                                  value={item.order_item.quantity}
+                                />
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <div className="flex gap-2">
+                                <span>{item.order_item.amount}</span>
+                                <img src={som} className="object-contain" alt="" />
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <button className={`rounded-full border-[1px] ${checkStatus(item.delivery_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                                {item.delivery_status}
+                              </button>
+
+
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                                {item.payment_status}
+                              </button>
+                            </td>
+                          </tr>
+                        </>:  <>
+                          <tr className="border-b flex-col">
+
+                            <td className="md:flex-col py-4 whitespace-nowrap text-sm font-medium text-gray-900 flex flex-col md:flex">
+                              <div
+                                className="flex "
+                              >
+                                {/* <img width="100" src={item.order_item?.product.images.small} alt="" /> */}
+                                
+                                    <div className="flex justify-center items-center xl:ml-[10%]">
+                                      <div className="w-[40px] h-[1px] bg-[#808080]"></div>
+                                      <div className="w-[30px] h-[30px] bg-[#808080] rounded-[7px] flex justify-center items-center ">
+                                        <p className="text-[18px] font-[500] text-[#fff]">{item.order_item?.product.name.slice(-2)}</p>
+                                      </div>
+                                      </div>
+
+                                <div className="flex flex-col flex-wrap ml-[20px]">
+                                  <h2 className="font-semibold flex flex-wrap">
+                                    {item.order_item?.product.name.slice(-10)}
+                                  </h2>
+                                  <span className="font-normal">
+                                    {item.order_item?.product.article}
+                                  </span>
+                                  <span className="font-normal">
+                                    Цвет:  {item.order_item?.product.color}
+                                  </span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+                              <div className="flex justify-center items-center align-middle flex-col">
+                                <h3 className="font-semibold">{formatDate(item.created_at).date}</h3>
+                                 <span>{formatDate(item.created_at).time}</span>
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+                              <div className="flex justify-center items-center align-middle">
+                                <label
+                                  htmlFor="exampleFormControlInput5"
+                                  className="form-label inline-block mb-2 text-gray-700 "
+                                />
+                                <input
+                                  type="text"
+                                  className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
+                                  value={item.order_item.quantity}
+                                />
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <div className="flex gap-2">
+                                <span>{item.order_item.amount}</span>
+                                <img src={som} className="object-contain" alt="" />
+                              </div>
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <button className={`rounded-full border-[1px] ${checkStatus(item.delivery_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                                {item.delivery_status}
+                              </button>
+
+
+                            </td>
+                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                              <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                                {item.payment_status}
+                              </button>
+                            </td>
+                          </tr>
+
+                        </> ))))}
                   </tbody>
                 </table>
               </div>

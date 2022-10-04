@@ -18,7 +18,7 @@ const Basket = () => {
   const [showModal, setShowModal] = useState(false);
   const [payModalShow, setPayModalShow] = useState(false);
   const order = useOrder();
-  const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null>();
+  const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null >();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -29,12 +29,28 @@ const Basket = () => {
     referalCode: "",
     paymantType: "",
   });
-  console.log(payInputs.paymantType);
+  // console.log(payInputs.paymantType);
+  
+
+  // const [extraContent, setExtraContent] = useState<any>()
 
   useEffect(() => {
     setCartProducts(order);
-    console.log(cartProducts)
+    // console.log(cartProducts)
   }, [order]);
+  
+  
+    // const handleProductChek = (someProduct: { product: { id: any; }; }) => {
+    //   if(cartProducts) {
+    //   for(let i = 0; i <= cartProducts?.items?.length; i++ ) {
+    //   someProduct?.product?.id === cartProducts?.items?.[i]?.product?.id ? 
+    //   <>123123123123123</> : <></> }}
+      
+    // }
+    
+    
+  
+  
 
   const handleChangePayInputs = (e: any) => {
     setPayInputs({ ...payInputs, [e.target.name]: e.target.value });
@@ -80,9 +96,9 @@ const Basket = () => {
       console.log(e);
     }
   };
-  console.log(order);
+  // console.log(order);
 
-  console.log(cartProducts, "cartProducts");
+  // console.log(cartProducts, "cartProducts");
 
   return (
     <div className="mx-auto md:px-9 px-4   w-auto py-5  font-jost">
@@ -104,7 +120,8 @@ const Basket = () => {
                           Товар
                         </th>
 
-                        <th
+                        <div className="flex w-[50%] justify-evenly">
+                          <th
                           scope="col"
                           className="text-sm font-medium text-black px-6 py-4 text-center"
                         >
@@ -116,13 +133,22 @@ const Basket = () => {
                         >
                           Цена
                         </th>
+                        </div>
                       </tr>
                     </thead>
                     <tbody className="">
                       {cartProducts ? (
                         <>
-                          {cartProducts.items.map((item: any, i: number) => (
-                            <>
+                           {Object.values(cartProducts?.items?.reduce((acc: any, cur: any) => {
+                                  if(!acc[cur?.product?.id]){
+                                    acc[cur?.product?.id] = []
+                                  }
+                                  acc[cur?.product?.id].push(cur)
+                                  return acc
+                                }, {})).map((item: any, i: number)=> (
+                                item.map((item: any, i: number) => (
+                                i === 0 ?
+                              <>
                               <tr className="md:bg-white bg-[#F1F1F1] border-t flex flex-col  border-b-[1px]">
                                 <div
                                   key={i}
@@ -146,7 +172,7 @@ const Basket = () => {
                                         {item.product.name}
                                       </h2>
                                       <span className="font-light">
-                                        Тип нанесения: термопечать
+                                        {/* Тип нанесения: термопечать */}
                                       </span>
                                     </div>
                                   </td>
@@ -220,7 +246,7 @@ const Basket = () => {
                                         onClick={() => {
                                           cartProducts.items.map((el: any) => {
                                             if (el.id === item.id) {
-                                              {console.log(el)}
+                                              {console.log(el, "el")}
                                               API.put("/orders/cart", {
                                                 item_id: el.id,
                                                 quantity:
@@ -353,8 +379,239 @@ const Basket = () => {
                                   </div>
                                 </div>
                               </tr>
-                            </>
-                          ))}
+                              </> : 
+                              <>{console.log(item, "thing that i need")}
+                             <tr className="md:bg-white bg-[#F1F1F1] border-t flex flex-col  border-b-[1px]">
+                                <div
+                                  key={i}
+                                  className="flex flex-row justify-center items-center "
+                                >
+                                  {/*  */}
+                                  <td className="flex whitespace-nowrap text-sm font-medium text-black w-full">
+                                    {/* <div className="w-[1px] h-[50px] bg-[#808080]"></div> */}
+                                    <div className="flex justify-center items-center xl:ml-[10%]">
+                                      <div className="w-[80px] h-[1px] bg-[#808080]"></div>
+                                      <div className="w-[30px] h-[30px] bg-[#808080] rounded-[7px] flex justify-center items-center">
+                                        <p className="text-[18px] font-[500] text-[#fff]">{item.product.name.slice(-2)}</p>
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-col justify-center items-start pl-4 w-72 flex-wrap">
+                                      <h2 className="font-[300] text-[16px]">
+                                        {item.product.name.slice(-10)}
+                                      </h2>
+                                      <span className="font-light">
+                                        {/* Тип нанесения: термопечать */}
+                                      </span>
+                                    </div>
+                                  </td>
+
+                                  <td className="text-sm text-black font-light  whitespace-nowrap">
+                                    <div className="flex justify-start items-start align-middle gap-2 py-2">
+                                      <button
+                                        onClick={() => {
+                                          cartProducts.items.map((el: any) => {
+                                            if (el.id === item.id) {
+                                              API.put("/orders/cart", {
+                                                item_id: el.id,
+                                                quantity:
+                                                  Number(el.quantity) - 1,
+                                              }).then((res) => {
+                                                dispatch(fetchOrder() as any);
+                                              });
+                                            }
+                                          });
+                                        }}
+                                        className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5"
+                                      >
+                                        <img src={minus} alt="" />
+                                      </button>
+                                      <input
+                                        type="text"
+                                        className="rounded-full ... border border-solid border-black   text-sm w-20"
+                                        value={item.quantity}
+                                        onChange={(e) => {
+                                          let changetItemId = 0;
+                                          const updatedItems =
+                                            cartProducts.items.map(
+                                              (el: any) => {
+                                                if (el.id !== item.id) {
+                                                  return JSON.parse(
+                                                    JSON.stringify(el)
+                                                  );
+                                                } else {
+                                                  changetItemId = el.id;
+                                                  return {
+                                                    ...el,
+                                                    costoms: JSON.parse(
+                                                      JSON.stringify(el.costoms)
+                                                    ),
+                                                    product: JSON.parse(
+                                                      JSON.stringify(el.product)
+                                                    ),
+                                                    quantity: e.target.value,
+                                                  };
+                                                }
+                                              }
+                                            );
+
+                                          setCartProducts({
+                                            ...cartProducts,
+                                            //@ts-ignore
+                                            items: updatedItems,
+                                          });
+                                          API.put("/orders/cart", {
+                                            item_id: changetItemId,
+                                            quantity: e.target.value
+                                              ? e.target.value
+                                              : 0,
+                                          }).then((res) => {
+                                            dispatch(fetchOrder() as any);
+                                          });
+                                        }}
+                                      />
+
+                                      <button
+                                        onClick={() => {
+                                          cartProducts.items.map((el: any) => {
+                                            if (el.id === item.id) {
+                                              {console.log(el, "el")}
+                                              API.put("/orders/cart", {
+                                                item_id: el.id,
+                                                quantity:
+                                                  Number(el.quantity) + 1,
+                                              }).then((res) => {
+                                                dispatch(fetchOrder() as any);
+                                              });
+                                            }
+                                          });
+                                        }}
+                                        className="text-white font-medium text-2xl flex justify-center items-center   bg-[#343434] rounded-full ... h-5 w-5 "
+                                      >
+                                        <img src={plus} alt="" />
+                                      </button>
+                                    </div>
+                                  </td>
+                                  <td className="text-sm text-black font-light px-6 py-4 whitespace-nowrap">
+                                    <div className="flex gap-2">
+                                      <span className="flex text-base text-black">
+                                        {item.amount}
+                                      </span>
+                                      <img className="h-[15px] self-center" src={som} alt="" />
+                                    </div>
+                                  </td>
+
+                                  <div className="text-sm text-black font-light px-6 py-4 whitespace-nowrap">
+                                    <div className="flex justify-center">
+                                      <button
+                                        className="  font-bold uppercase text-sm px-6 py-3 "
+                                        type="button"
+                                        onClick={() => setShowModal(true)}
+                                      >
+                                        X
+                                      </button>
+                                      {showModal ? (
+                                        <>
+                                          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                                  <h3 className="text-3xl font-semibold">
+                                                    Удалить товар из корзины?
+                                                  </h3>
+                                                  <button
+                                                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                                    onClick={() =>
+                                                      setShowModal(false)
+                                                    }
+                                                  >
+                                                    <span className="bg-transparent text-black h-4 w-6 text-3xl font-light block outline-none focus:outline-none">
+                                                      X
+                                                    </span>
+                                                  </button>
+                                                </div>
+                                                <div className="relative p-6 flex-auto ">
+                                                  <div className="flex justify-between items-center">
+                                                    <div className="flex items-center ">
+                                                      <img
+                                                        src={
+                                                          item.product.images
+                                                            .small
+                                                            ? item.product
+                                                                .images.small
+                                                            : item.product
+                                                                .images.big
+                                                        }
+                                                        alt=""
+                                                      />
+                                                      <div className="">
+                                                        <span className="font-semibold text-lg flex flex-wrap pb-2">
+                                                          {item.product.name}
+                                                        </span>
+                                                        {/* <span className="font-light">
+                                                      Цвет: Черный
+                                                    </span> */}
+                                                        <span className="font-light">
+                                                          Цвет:{" "}
+                                                          {item.product.color}
+                                                        </span>{" "}
+                                                        <br />
+                                                        <span className="font-light">
+                                                          Тип нанесения:
+                                                          {item.costoms?.map(
+                                                            (el: any) => el.name
+                                                          )}
+                                                        </span>
+                                                      </div>
+                                                    </div>
+
+                                                    <div className=" mt-5">
+                                                      <input
+                                                        type="text"
+                                                        className="rounded-full ... border border-black px-2 w-[39%] text-base "
+                                                        value={item.quantity}
+                                                        readOnly
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div className="flex items-center justify-center gap-5 p-6 border-t border-solid border-slate-200 rounded-b ">
+                                                  <button
+                                                    className="rounded-full ... bg-[#CECECE] w-[30vh] h-7"
+                                                    type="button"
+                                                    onClick={() =>
+                                                      setShowModal(false)
+                                                    }
+                                                  >
+                                                    Отмена
+                                                  </button>
+                                                  <button
+                                                    className=" rounded-full ... bg-[#1F1F1F] shadow hover:shadow-lg outline-none text-white w-[30vh] h-7"
+                                                    type="button"
+                                                    onClick={() =>
+                                                      handleDeleteProductFromCart(
+                                                        item.id
+                                                      )
+                                                    }
+                                                  >
+                                                    Удалить
+                                                  </button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                        </>
+                                      ) : null}
+                                    </div>
+                                  </div>
+                                </div>
+                              </tr>
+                              </> 
+                              ))
+                                  
+                                )) }
+                                    
                         </>
                       ) : (
                         <CartEmpty />
@@ -371,7 +628,7 @@ const Basket = () => {
               <div className=" md:hidden my-2">
                 {cartProducts.items.map((item, i) => (
                   <>
-                    {console.log(item, "item basket")}
+                    {/* {console.log(item, "item basket")} */}
                   <tr
                     key={i}
                     className="md:bg-white bg-[#F1F1F1] border-b flex flex-col my-4"
