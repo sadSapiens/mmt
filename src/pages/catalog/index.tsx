@@ -65,7 +65,7 @@ const CatalogPage = () => {
     ascending: 0,
     descending: 0,
   });
-
+  
   const fetchCatalogProducts =
     (categoryId: string | null, searchValue: string | null) =>
     async (dispatch: Dispatch) => {
@@ -424,7 +424,8 @@ const CatalogPage = () => {
                 <li className="flex" key={i}>
                   <img src={rightarrow} className="object-contain" alt="" />
                   <span className="!text-black lg:text-base  text-sm">
-                    {item.name}
+                    <Link to={`/catalog?categoryId=${item.id}`} key={i}>{item.name}</Link>
+                    
                   </span>
                 </li>
               ))}

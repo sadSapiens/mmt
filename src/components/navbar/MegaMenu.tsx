@@ -50,7 +50,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 <span className="text-xl">Каталог</span>
               </div>
             <div
-              className="megablock bg-[#343434] py-2  h-[100vh] z-[100]"
+              className="megablock bg-[#343434] py-2  h-[100vh] !z-[999999]"
               style={{
                 display: isOpenCatalog ? "block " : "none",
               }}

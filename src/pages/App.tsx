@@ -21,12 +21,27 @@ import Recovery from "./signin/Recovery";
 import Confirmation from "./signup/confirmation/Confirmation";
 import EditProfile from "./profile/editProfile/EditProfile";
 import NewPassword from "./signup/newPassword/NewPassword";
+import { useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+
 
 function App() {
+
+  
+  const Wrapper = ({ children}: any) => {
+    const location = useLocation();
+    useLayoutEffect(() => {
+      document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
+    return children;
+  };
+
   return (
     <>
       <Provider store={store}>
         <BrowserRouter>
+        <Wrapper>
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -58,6 +73,7 @@ function App() {
             {/* <Route path="*" element={<Redirect />} /> */}
           </Routes>
           <Footer />
+          </Wrapper>
         </BrowserRouter>
       </Provider>
     </>

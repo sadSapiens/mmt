@@ -85,7 +85,7 @@ const Profile = () => {
                 <img
                   src={avatar}
                   alt=""
-                  className="w-32 h-32 flex justify-center "
+                  className="w-32 h-32 flex justify-center rounded-full object-cover"
                 />
               </div>
               <div className="flex flex-row justify-center gap-2 w-auto text-sm  md:flex-col">

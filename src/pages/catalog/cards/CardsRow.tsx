@@ -35,14 +35,15 @@ const CardsRow = ({ product }: Props) => {
   return (
     <>
       <Link
-        className="!text-black cursor-pointer"
+        className="!text-black cursor-pointer w-[100%]"
         to={
           product.shop === "1"
-            ? `/catalog-detailoasis/${product.id}`
-            : `/catalog-detailhiidea/${product.id}`
+          ? `/catalog-detailoasis/${product.id}`
+          : `/catalog-detailhiidea/${product.id}`
         }
+        // onClick={() => window.location.reload()}
       >
-        <div className="py-7 flex justify-center   md:w-[50rem] w-full">
+        <div className="py-7 flex justify-center   md:w-[100%] w-full">
           <div className=" py-2 border border-black w-[100%] flex flex-row relative">
             <div className=" flex md:w-3/12 w-4/12">
               <img
@@ -51,14 +52,14 @@ const CardsRow = ({ product }: Props) => {
                 alt="image"
               />
             </div>
-            <div className="md:w-6/12 pl-3 w-full flex flex-col justify-center">
+            <div className="md:w-6/12 xl:w-[70%] pl-3 w-full flex flex-col justify-center">
               <h4 className="flex font-jost md:font-medium font-normal text-black text-start">
                 {product.name}
               </h4>
 
               <div className="flex justify-between flex-col text-sm">
                 <div className="flex flex-col justify-start flex-start items-start">
-                  <span>WASS. Гелиевая ручка</span>
+                  {/* <span>WASS. Гелиевая ручка</span> */}
                   <span> Остаток: {product.total_stock}</span>
                   <h5 className=""> Код товара: {product.article}</h5>
                 </div>
@@ -71,27 +72,27 @@ const CardsRow = ({ product }: Props) => {
                     </b>
                   </div>
                   <div>
-                    <button className="md:w-10 md:h-10 h-7 w-7 bg-[#343434] rounded-full ... focus:outline-none flex justify-center items-center">
+                    <button className="md:w-10 md:h-10 h-7 w-7 bg-[#343434] rounded-full ... focus:outline-none flex justify-center items-center mr-[20px]">
                       <img src={shopbag} alt="" className="h-5 w-5" />
                     </button>
                   </div>
-                  <div className="flex  md:hidden justify-center items-center gap-3 w-3/12">
+                  {/* <div className="flex  md:hidden justify-center items-center gap-3 w-3/12">
                     <div className="bg-[#14153C] h-3 w-3 rounded-full ... "/>
                     <div className="bg-[#65A8E0] h-3 w-3 rounded-full ... "/>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
               <div className="flex justify-center flex-col px-5 text-black font-jost "/>
             </div>
-            <div className="md:flex hidden justify-center items-center gap-3 w-3/12">
+            {/* <div className="md:flex hidden justify-center items-center gap-3 w-3/12">
               <div className="bg-[#14153C] h-2 w-2 rounded-full ... "/>
               <div className="bg-[#65A8E0] h-2 w-2 rounded-full ... "/>
               <div className="bg-[#A91E1E] h-2 w-2 rounded-full ... "/>
               <div className="bg-[#00F20A] h-2 w-2 rounded-full ... "/>
               <div className="bg-[#FFCC33] h-2 w-2 rounded-full ... "/>
               <div className="bg-[#F1A400] h-2 w-2 rounded-full ... "/>
-            </div>
+            </div> */}
           </div>
 
           {product.rating &&

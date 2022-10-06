@@ -896,8 +896,17 @@ const CatalogDetailsOasis = () => {
               Похожие товары
             </h2>
           </div>
-          <div className="py-7 flex justify-center mx-3 flex-wrap">
+          <div className="py-7 flex justify-between flex-wrap">
             {similar.map((item: any, i) => (
+              <Link
+              onClick={() => window.location.reload()}
+                        className="!text-black"
+                        to={
+                          item.shop === "1"
+                            ? `/catalog-detailoasis/${item.id}`
+                            : `/catalog-detailhiidea/${item.id}`
+                        }
+                      >
               <div
                 key={i}
                 className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
@@ -917,17 +926,10 @@ const CatalogDetailsOasis = () => {
                       </h5>
                     </div>
                     <div className="flex justify-between items-center text-black font-jost ">
-                      <Link
-                        className="!text-black"
-                        to={
-                          item.shop === "1"
-                            ? `/catalog-detailoasis/${item.id}`
-                            : `/catalog-detailhiidea/${item.id}`
-                        }
-                      >
+                      
                         {" "}
                         {item.name.length <= 29 ? item.name : item.name.slice(0, 29) + "..."}
-                      </Link>
+                      {/* </Link> */}
                       {/* <div className="flex gap-1 pl-[30px] items-center">
                         <div className="h-3 w-3 rounded-full" />
                         <div className="h-3 w-3  rounded-full" />
@@ -946,6 +948,7 @@ const CatalogDetailsOasis = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             ))}
           </div>
         </>

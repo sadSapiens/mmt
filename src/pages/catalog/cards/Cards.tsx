@@ -40,13 +40,14 @@ const Cards = ({ product }: Props) => {
 
   return (
     <>
-      <Link
+      <Link     
         className="!text-black"
         to={
           product.shop === "1"
-            ? `/catalog-detailoasis/${product.id}`
-            : `/catalog-detailhiidea/${product.id}`
+          ? `/catalog-detailoasis/${product.id}`
+          : `/catalog-detailhiidea/${product.id}`
         }
+        // onClick={() => window.location.reload()}
       >
         <div className="py-7  flex justify-center md:w-72 w-64  relative ">
           {product.rating && (

@@ -18,7 +18,7 @@ const Basket = () => {
   const [showModal, setShowModal] = useState(false);
   const [payModalShow, setPayModalShow] = useState(false);
   const order = useOrder();
-  const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null >();
+  const [cartProducts, setCartProducts] = useState<IOrderProductsCart | null>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -281,7 +281,7 @@ const Basket = () => {
                                       >
                                         X
                                       </button>
-                                      {showModal ? (
+                                      {showModal  ? (
                                         <>
                                           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                                             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -335,6 +335,7 @@ const Basket = () => {
                                                         </span>
                                                       </div>
                                                     </div>
+                                                    
 
                                                     <div className=" mt-5">
                                                       <input
@@ -374,6 +375,7 @@ const Basket = () => {
                                           </div>
                                           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                                         </>
+                                        
                                       ) : null}
                                     </div>
                                   </div>
@@ -509,100 +511,6 @@ const Basket = () => {
                                       >
                                         X
                                       </button>
-                                      {showModal ? (
-                                        <>
-                                          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                                  <h3 className="text-3xl font-semibold">
-                                                    Удалить товар из корзины?
-                                                  </h3>
-                                                  <button
-                                                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                                    onClick={() =>
-                                                      setShowModal(false)
-                                                    }
-                                                  >
-                                                    <span className="bg-transparent text-black h-4 w-6 text-3xl font-light block outline-none focus:outline-none">
-                                                      X
-                                                    </span>
-                                                  </button>
-                                                </div>
-                                                <div className="relative p-6 flex-auto ">
-                                                  <div className="flex justify-between items-center">
-                                                    <div className="flex items-center ">
-                                                      <img
-                                                        src={
-                                                          item.product.images
-                                                            .small
-                                                            ? item.product
-                                                                .images.small
-                                                            : item.product
-                                                                .images.big
-                                                        }
-                                                        alt=""
-                                                      />
-                                                      <div className="">
-                                                        <span className="font-semibold text-lg flex flex-wrap pb-2">
-                                                          {item.product.name}
-                                                        </span>
-                                                        {/* <span className="font-light">
-                                                      Цвет: Черный
-                                                    </span> */}
-                                                        <span className="font-light">
-                                                          Цвет:{" "}
-                                                          {item.product.color}
-                                                        </span>{" "}
-                                                        <br />
-                                                        <span className="font-light">
-                                                          Тип нанесения:
-                                                          {item.costoms?.map(
-                                                            (el: any) => el.name
-                                                          )}
-                                                        </span>
-                                                      </div>
-                                                    </div>
-
-                                                    <div className=" mt-5">
-                                                      <input
-                                                        type="text"
-                                                        className="rounded-full ... border border-black px-2 w-[39%] text-base "
-                                                        value={item.quantity}
-                                                        readOnly
-                                                      />
-                                                    </div>
-                                                  </div>
-                                                </div>
-
-                                                <div className="flex items-center justify-center gap-5 p-6 border-t border-solid border-slate-200 rounded-b ">
-                                                  <button
-                                                    className="rounded-full ... bg-[#CECECE] w-[30vh] h-7"
-                                                    type="button"
-                                                    onClick={() =>
-                                                      setShowModal(false)
-                                                    }
-                                                  >
-                                                    Отмена
-                                                  </button>
-                                                  <button
-                                                    className=" rounded-full ... bg-[#1F1F1F] shadow hover:shadow-lg outline-none text-white w-[30vh] h-7"
-                                                    type="button"
-                                                    onClick={() =>
-                                                      handleDeleteProductFromCart(
-                                                        item.id
-                                                      )
-                                                    }
-                                                  >
-                                                    Удалить
-                                                  </button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                                        </>
-                                      ) : null}
                                     </div>
                                   </div>
                                 </div>
@@ -610,8 +518,7 @@ const Basket = () => {
                               </> 
                               ))
                                   
-                                )) }
-                                    
+                                )) }          
                         </>
                       ) : (
                         <CartEmpty />
