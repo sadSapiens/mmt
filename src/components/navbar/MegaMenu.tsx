@@ -61,7 +61,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 <div className="ml-3 mb-3 text-left">
                   {`< `}
                   {/* <img src={arrow} alt="" /> */}
-                  {subcategories.length > 0 ? (
+                  {subcategories?.length > 0 ? (
                     <span
                       className="font-light text-xl top-36"
                       onClick={handleClear}
@@ -79,7 +79,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                 </div>
               )}
 
-              {home && home.types.length && (
+              {home && home.types?.length && (
                 <div className="sm:hidden m-auto pb-4 flex flex-row gap-4  overflow-x-auto  overflow-y-clip scroll-smooth justify-start md:justify-center px-4 w-full md:w-auto">
                   {home.types.map((item, i) => (
                     <Link key={i} to={`/catalog?type=${item.id}`}>
@@ -113,7 +113,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
               )}
               <ul className="flex justify-around items-start text-start ">
                 <div className="flex-col overflow-y-scroll scroll-photo overflow-x-clip  justify-start items-center text-start md:w-4/12 w-full  md:border-r-slate-100 md:border-r-[1px] !h-[100vh]">
-                  {!isCategoryes && categories.length > 0 ? (
+                  {!isCategoryes && categories?.length > 0 ? (
                     categories.map((category: any, i: number) => (
                       <div key={i}>
                         <li
@@ -140,7 +140,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                         {activeCategory}
                       </span>
 
-                      {subcategories.length > 0 &&
+                      {subcategories?.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <div key={item.id}>
                             <Link
@@ -160,7 +160,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
 
                 <ul className="hidden md:flex flex-col w-full px-6">
                   <div className="hidden  md:flex w-full overflow-x-auto ">
-                    {home && home.types.length && (
+                    {home && home?.types?.length && (
                       <div className="flex flex-row gap-4   justify-start md:justify-center px-4 w-full md:w-auto">
                         {home.types.map((item, i) => (
                           <Link key={i} to={`/catalog?type=${item.id}`}>
@@ -204,7 +204,7 @@ const MegaMenu: React.FC<IMyProps> = (props: IMyProps) => {
                   // onClick={() => setIsOpenSub(true)}
                   >
                     <div className="w-4/12 h-56 overflow-x-auto overflow-y-clip">
-                      {subcategories.length > 0 &&
+                      {subcategories?.length > 0 &&
                         subcategories.map((item: any, i: number) => (
                           <Link
                             key={i}

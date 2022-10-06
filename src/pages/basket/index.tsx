@@ -169,7 +169,7 @@ const Basket = () => {
                                     </div>
                                     <div className="flex flex-col justify-start items-start pl-4 w-72 flex-wrap">
                                       <h2 className="font-semibold">
-                                        {item.product.name}
+                                        {item.product.name}, {item?.sizes?.[0]?.size}
                                       </h2>
                                       <span className="font-light">
                                         {/* Тип нанесения: термопечать */}
@@ -380,7 +380,7 @@ const Basket = () => {
                                 </div>
                               </tr>
                               </> : 
-                              <>{console.log(item, "thing that i need")}
+                              <>
                              <tr className="md:bg-white bg-[#F1F1F1] border-t flex flex-col  border-b-[1px]">
                                 <div
                                   key={i}
@@ -392,12 +392,12 @@ const Basket = () => {
                                     <div className="flex justify-center items-center xl:ml-[10%]">
                                       <div className="w-[80px] h-[1px] bg-[#808080]"></div>
                                       <div className="w-[30px] h-[30px] bg-[#808080] rounded-[7px] flex justify-center items-center">
-                                        <p className="text-[18px] font-[500] text-[#fff]">{item.product.name.slice(-2)}</p>
+                                        <p className="text-[18px] font-[500] text-[#fff]">{item?.sizes?.[0]?.size}</p>
                                       </div>
                                     </div>
                                     <div className="flex flex-col justify-center items-start pl-4 w-72 flex-wrap">
                                       <h2 className="font-[300] text-[16px]">
-                                        {item.product.name.slice(-10)}
+                                        Размер {item?.sizes?.[0]?.size}
                                       </h2>
                                       <span className="font-light">
                                         {/* Тип нанесения: термопечать */}

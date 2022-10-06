@@ -199,14 +199,14 @@ const OrderHistory = () => {
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                              <button className={`rounded-full border-[1px] ${checkStatus(item.delivery_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                              <button className={`rounded-full border-[1px] ${item.delivery_status !== "В процессе" ? 'bg-success text-[white]' : "bg-[orange] text-[white]"} px-2 py-1`}>
                                 {item.delivery_status}
                               </button>
 
 
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                              <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
+                              <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ?  'bg-success text-[white]' : "bg-[orange] text-[white]"} px-2 py-1`}>
                                 {item.payment_status}
                               </button>
                             </td>
@@ -266,6 +266,7 @@ const OrderHistory = () => {
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+
                               <button className={`rounded-full border-[1px] ${checkStatus(item.delivery_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
                                 {item.delivery_status}
                               </button>
