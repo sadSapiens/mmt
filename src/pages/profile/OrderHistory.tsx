@@ -265,7 +265,7 @@ const OrderHistory = () => {
                                 <img src={som} className="object-contain" alt="" />
                               </div>
                             </td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {/* <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
 
                               <button className={`rounded-full border-[1px] ${checkStatus(item.delivery_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
                                 {item.delivery_status}
@@ -277,7 +277,7 @@ const OrderHistory = () => {
                               <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
                                 {item.payment_status}
                               </button>
-                            </td>
+                            </td> */}
                           </tr>
 
                         </> ))))}
