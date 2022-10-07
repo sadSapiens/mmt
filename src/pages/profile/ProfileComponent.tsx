@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 import trashBlack from "./assets/trashBlack.png";
 import defaultAvatar from "./assets/2222.png";
@@ -9,6 +10,7 @@ import nice from "./assets/nice.png";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ImageObj {
   blobUrl: string;
@@ -32,7 +34,18 @@ const ProfileComponent = () => {
     email: "",
   });
   console.log(inputs, "profile");
-
+  const notify = () => {
+  toast.success('Coxранено', {
+  // position: "top-right",
+  position: toast.POSITION.TOP_RIGHT,
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  });
+  }
   const [successfully, setSuccessfully] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -117,6 +130,16 @@ const ProfileComponent = () => {
 
   return (
     <>
+     <ToastContainer 
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover/>
       <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
         <form onSubmit={handleSubmit} className="w-96">
           <div className="flex justify-between py-5 flex-col md:flex-row md:items-center ">
@@ -131,7 +154,7 @@ const ProfileComponent = () => {
                 <img
                   src={inputs.avatar ? inputs.avatar : defaultAvatar}
                   alt=""
-                  className="h-32 w-32 object-cover"
+                  className="h-32 w-32 object-cover rounded-full"
                 />
               )}
             </div>
@@ -274,11 +297,14 @@ const ProfileComponent = () => {
           <button
             type="submit"
             className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
+            onClick={(e) => {e.preventDefault();  notify()}}
           >
             {isEdit ? "Изменить" : "Сохранить"}
           </button>
+          
         </form>
       </div>
+
     </>
   );
 };

@@ -892,7 +892,7 @@ const CatalogPage = () => {
 
           {/*  */}
           {row === "row" ? (
-            <div className="md:flex md:flex-wrap flex flex-wrap items-center gap-20 justify-center ">
+            <div className="md:flex md:flex-wrap flex flex-wrap items-center xl:gap-20 xl:justify-center justify-between xl:">
               {catalogProducts ? (
                 <>
                   {catalogProducts.map((item, i: number) => (

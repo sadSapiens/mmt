@@ -33,6 +33,7 @@ export interface IHomeData {
   portfolio: [];
   reviews: any[];
   types: any[];
+  banners: any;
 }
 
 export interface IBrands {

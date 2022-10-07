@@ -1,10 +1,14 @@
+import { ReactNode } from "react";
+
 export interface IOrderState {
   orderCart: IOrderProductsCart | null;
   historyOrder: IHistoryOrder[] | null;
 }
 export interface IOrderProductsCart {
+  [index: number]: any;
   items: [
     {
+      costoms: any;
       id: number;
       price: number;
       quantity: number;
@@ -15,6 +19,7 @@ export interface IOrderProductsCart {
   total_amount: number;
 }
 export interface IHistoryOrder {
+  item: any;
   order_item: {
     id: number;
     product: IHistoryOrderItemProduct;
@@ -40,6 +45,7 @@ export interface IHistoryOrderItemProduct {
 }
 
 export interface IOrderProduct {
+  color: ReactNode;
   article: number;
   id: number;
   name: string;

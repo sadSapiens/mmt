@@ -1,8 +1,11 @@
 import React from "react";
 import eco from "../../../assets/img/eco-bottle.png";
 import ecomobile from "../../../assets/img/ecomobile.png";
+import { useHome } from "../../../store/varia/hooks";
 
 const Slider = () => {
+
+  const home = useHome()
   return (
     <>
       <div
@@ -35,6 +38,26 @@ const Slider = () => {
         </div>
 
         <div className="carousel-inner relative overflow-hidden ">
+          {home?.banners.lentgh === 0 ?
+          home?.banners?.map((item: any, i: number) => (
+            <div className="carousel-item active relative float-left w-full ">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={item}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={item}
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          )) : 
+          <>
           <div className="carousel-item active relative float-left w-full ">
             <div className="flex justify-evenly bg-[#8ABFBB] py-10">
               <div className=" flex  w-auto">
@@ -111,7 +134,87 @@ const Slider = () => {
                 <p className="  w-6/12   text-3xl  md:text-8xl ">ПОДАРКИ 3</p>
               </div>
             </div>
+          </div> 
+          </>
+          }
+          
+          {/* <div className="carousel-item active relative float-left w-full ">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className=" leading-10 font-black flex  text-xl  md:flex md:justify-center flex-col text-white text-center ">
+                <p
+                  className="
+                   w-6/12   md:text-8xl  text-3xl "
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p className="  w-6/12  text-3xl   md:text-8xl ">ПОДАРКИ 1</p>
+              </div>
+            </div>
           </div>
+
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className="flex leading-10 font-black    text-xl  md:flex md:justify-center flex-col text-white text-center ">
+                <p
+                  className="
+                   w-6/12   md:text-8xl   text-3xl "
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p className="  w-6/12     text-3xl md:text-8xl ">ПОДАРКИ 2</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
+              <div className=" flex  w-auto">
+                <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
+                  src={eco}
+                  alt=""
+                />
+                <img
+                  className="md:hidden  flex justify-center items-center w-36 h-36 "
+                  src={ecomobile}
+                  alt=""
+                />
+              </div>
+              <div className="flex  leading-10 font-black  text-xl  md:flex md:justify-center flex-col text-white text-center ">
+                <p
+                  className="
+                   w-6/12   md:text-8xl   text-3xl"
+                >
+                  ЭКОЛОГИЧНЫЕ
+                </p>
+                <p className="  w-6/12   text-3xl  md:text-8xl ">ПОДАРКИ 3</p>
+              </div>
+            </div>
+          </div> */}
         </div>
 
         <button

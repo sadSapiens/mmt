@@ -87,16 +87,16 @@ const OrderHistory = () => {
                               <div
                                 className="flex "
                               >
-                                <img width="100" src={item.order_item?.product.images.small} alt="" />
+                                <img width="100" src={item.item?.product.images.small} alt="" />
                                 <div className="flex flex-col flex-wrap">
                                   <h2 className="font-semibold flex flex-wrap">
-                                    {item.order_item?.product.name}
+                                    {item.item?.product.name}
                                   </h2>
                                   <span className="font-normal">
-                                    {item.order_item?.product.article}
+                                    {item.item?.product.article}
                                   </span>
                                   <span className="font-normal">
-                                    Цвет:  {item.order_item?.product.color}
+                                    Цвет:  {item.item?.product.color}
                                   </span>
                                 </div>
                               </div>
@@ -116,13 +116,13 @@ const OrderHistory = () => {
                                 <input
                                   type="text"
                                   className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
-                                  value={item.order_item.quantity}
+                                  value={item.item.quantity}
                                 />
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="flex gap-2">
-                                <span>{item.order_item.amount}</span>
+                                <span>{item.item.amount}</span>
                                 <img src={som} className="object-contain" alt="" />
                               </div>
                             </td>
@@ -144,10 +144,10 @@ const OrderHistory = () => {
                       ))} */}
 
                       {historyOrder && Object.values(historyOrder?.reduce((acc: any, cur: any) => {
-                                  if(!acc[cur.order_item?.product?.id]){
-                                    acc[cur.order_item?.product?.id] = []
+                                  if(!acc[cur.item?.product?.id]){
+                                    acc[cur.item?.product?.id] = []
                                   }
-                                  acc[cur.order_item?.product?.id].push(cur)
+                                  acc[cur.item?.product?.id].push(cur)
                                   return acc
                                 }, {})).map((item: any)=> (
                                 item.map((item: any, i: number) => (
@@ -159,16 +159,16 @@ const OrderHistory = () => {
                               <div
                                 className="flex "
                               >
-                                <img width="100" src={item.order_item?.product.images.small} alt="" />
+                                <img width="100" src={item?.item?.product.images.small} alt="" />
                                 <div className="flex flex-col flex-wrap">
                                   <h2 className="font-semibold flex flex-wrap">
-                                    {item.order_item?.product.name}
+                                    {item?.item?.product.name}
                                   </h2>
                                   <span className="font-normal">
-                                    {item.order_item?.product.article}
+                                    {item?.item?.product.article}
                                   </span>
                                   <span className="font-normal">
-                                    Цвет:  {item.order_item?.product.color}
+                                    Цвет:  {item?.item?.product.color}
                                   </span>
                                 </div>
                               </div>
@@ -188,13 +188,13 @@ const OrderHistory = () => {
                                 <input
                                   type="text"
                                   className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
-                                  value={item.order_item.quantity}
+                                  value={item?.item?.quantity}
                                 />
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="flex gap-2">
-                                <span>{item.order_item.amount}</span>
+                                <span>{item?.item?.amount}</span>
                                 <img src={som} className="object-contain" alt="" />
                               </div>
                             </td>
@@ -218,24 +218,24 @@ const OrderHistory = () => {
                               <div
                                 className="flex "
                               >
-                                {/* <img width="100" src={item.order_item?.product.images.small} alt="" /> */}
+                                {/* <img width="100" src={item.item?.product.images.small} alt="" /> */}
                                 
                                     <div className="flex justify-center items-center xl:ml-[10%]">
                                       <div className="w-[40px] h-[1px] bg-[#808080]"></div>
                                       <div className="w-[30px] h-[30px] bg-[#808080] rounded-[7px] flex justify-center items-center ">
-                                        <p className="text-[18px] font-[500] text-[#fff]">{item.order_item?.product.name.slice(-2)}</p>
+                                        <p className="text-[18px] font-[500] text-[#fff]">{item.item?.product.name.slice(-2)}</p>
                                       </div>
                                       </div>
 
                                 <div className="flex flex-col flex-wrap ml-[20px]">
                                   <h2 className="font-semibold flex flex-wrap">
-                                    {item.order_item?.product.name.slice(-10)}
+                                    {item?.item?.product.name.slice(-10)}
                                   </h2>
                                   <span className="font-normal">
-                                    {item.order_item?.product.article}
+                                    {item?.item?.product.article}
                                   </span>
                                   <span className="font-normal">
-                                    Цвет:  {item.order_item?.product.color}
+                                    Цвет:  {item?.item?.product.color}
                                   </span>
                                 </div>
                               </div>
@@ -255,13 +255,13 @@ const OrderHistory = () => {
                                 <input
                                   type="text"
                                   className="rounded-full ... border border-black px-2 w-[39%] text-base text-center"
-                                  value={item.order_item.quantity}
+                                  value={item?.item?.quantity}
                                 />
                               </div>
                             </td>
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                               <div className="flex gap-2">
-                                <span>{item.order_item.amount}</span>
+                                <span>{item?.item?.amount}</span>
                                 <img src={som} className="object-contain" alt="" />
                               </div>
                             </td>
@@ -295,18 +295,18 @@ const OrderHistory = () => {
                       scope="col"
                       className="text-sm font-light text-black px-6 py-4 text-left"
                     >
-                      <div key={i} id={item.order_item?.product.id} className="flex flex-col">
-                        <img src={item.order_item?.product.images.small} alt="" />
+                      <div key={i} id={item?.item?.product.id} className="flex flex-col">
+                        <img src={item?.item?.product.images.small} alt="" />
 
                       </div>
                     </th>
                     <div className="flex justify-center items-center align-middle flex-col">
                       <div className="flex flex-col px-8 flex-wrap">
                         <h2 className="font-semibold flex flex-wrap">
-                          {item.order_item?.product.name}
+                          {item?.item?.product.name}
                         </h2>
-                        <span className="font-normal">{item.order_item?.product.article}</span>
-                        <span className="font-normal">{item.order_item?.product.color}</span>
+                        <span className="font-normal">{item?.item?.product.article}</span>
+                        <span className="font-normal">{item?.item?.product.color}</span>
                       </div>
                     </div>
                   </div>
@@ -319,7 +319,7 @@ const OrderHistory = () => {
                     </th>
                     <div className="flex justify-center items-center align-middle flex-col">
                       <h3 className="font-semibold">{formatDate(item.created_at).date}</h3>
-                      <span>{formatDate(item.created_at).time}</span>
+                      <span>{formatDate(item?.created_at).time}</span>
                     </div>
                   </div>
                   <div className="flex justify-between">
@@ -333,7 +333,7 @@ const OrderHistory = () => {
                       <input
                         type="text"
                         className="rounded-full border border-black px-2 w-[39%] text-base text-center"
-                        value={item.order_item.quantity}
+                        value={item?.item?.quantity}
                       />
                     </div>
                   </div>
@@ -349,7 +349,7 @@ const OrderHistory = () => {
                     </th>
                     <div className="flex justify-center items-center align-middle flex-col">
                       <div className="flex gap-2">
-                        <span>{item.order_item.amount}</span>
+                        <span>{item?.item?.amount}</span>
                         <img src={som} className="object-contain" alt="" />
                       </div>
                     </div>
@@ -377,7 +377,7 @@ const OrderHistory = () => {
                     </th>
                     <div className="flex justify-center items-center align-middle flex-col">
                       <button className={`rounded-full border-[1px] ${checkStatus(item.payment_status) ? 'border-success text-success' : "border-error text-error"} px-2 py-1`}>
-                        {item.payment_status}
+                        {item?.payment_status}
                       </button>
                     </div>
                   </div>

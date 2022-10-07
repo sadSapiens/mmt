@@ -41,7 +41,7 @@ const Cards = ({ product }: Props) => {
   return (
     <>
       <Link     
-        className="!text-black"
+        className="!text-black w-[170px] h-[300px] mb-[20px]"
         to={
           product.shop === "1"
           ? `/catalog-detailoasis/${product.id}`
@@ -49,7 +49,7 @@ const Cards = ({ product }: Props) => {
         }
         // onClick={() => window.location.reload()}
       >
-        <div className="py-7  flex justify-center md:w-72 w-64  relative ">
+        <div className="py-7  flex justify-center  md:w-72 xl:w-64  relative ">
           {product.rating && (
             <>
               {product.rating === "3" ? (
@@ -129,7 +129,7 @@ const Cards = ({ product }: Props) => {
               </h1>
             </>
           )}
-          <div className=" border border-black  w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center p-2 ">
+          <div className=" border border-black  xl:w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center p-2 w-[170px] h-[300px]">
             <div className=" flex">
               <img
                 className="md:w-[100%] max-h-48"
@@ -159,7 +159,7 @@ const Cards = ({ product }: Props) => {
                   {product.name}
                   {/* <span className="hidden md:flex"> «Montreal»</span> */}
                 </h4>
-                <div className="md:w-[40%] flex md:justify-center gap-2 justify-start w-12/12">
+                <div className="md:w-[40%] flex md:justify-center 2xl:gap-2 justify-start w-12/12">
                   <div className="h-1 w-1 rounded-full ..." />
                   <div className="h-1 w-1 rounded-full ..." />
                   <div className="h-1 w-1 rounded-full ..." />
