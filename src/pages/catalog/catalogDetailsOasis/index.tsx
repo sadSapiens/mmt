@@ -288,7 +288,7 @@ const CatalogDetailsOasis = () => {
                     <h4>На складе: {selectedProduct.total_stock}</h4>
                   </div>
                   <div className="flex md:hidden">
-                    <p>{selectedProduct.description}</p>
+                    <p>{selectedProduct?.description}</p>
                   </div>
                   {/*  */}
                   <div className="font-jost md:flex hidden md:flex-col lg:column lg:content-center">
@@ -363,7 +363,7 @@ const CatalogDetailsOasis = () => {
                     <h4>На складе: {selectedProduct.total_stock}</h4>
                   </div>
                   <div>
-                    <p>{selectedProduct.description}</p>
+                    <p>{selectedProduct?.description}</p>
                   </div>
                 </div>
                 <div className="flex justify-start gap-4 items-center">

@@ -49,7 +49,7 @@ useEffect(() => {
                                 >
                                     <img
                                         className=" flex px-2 h-3 w-3"
-                                        src={item.icon ? `http://212.42.106.82/${item.icon}` : calendar}
+                                        src={item.icon ? `https://mmt.kg/${item.icon}` : calendar}
                                         alt=""
                                     />
                                     <span className="flex justify-center items-center text-[16px] flex-nowrap w-full">

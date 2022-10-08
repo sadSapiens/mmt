@@ -5,10 +5,11 @@ import { useHome } from "../../../store/varia/hooks";
 
 const Slider = () => {
 
-  const api = 'http://212.42.106.82/'
+  const api = 'https://mmt.kg/'
   const home = useHome()
   return (
     <>
+    
       <div
         id="carouselDarkVariant"
         className="carousel slide carousel-fade carousel-dark relative"
@@ -40,7 +41,7 @@ const Slider = () => {
 
           {/* {console.log(home?.banners)} */}
         <div className="carousel-inner relative overflow-hidden ">
-          {true  ?
+          {home?.banners?.length > 2 ?
           // home?.banners?.map((item: any, i: number) => (
             <>
             <div className="carousel-item active relative float-left w-full ">
@@ -48,8 +49,8 @@ const Slider = () => {
               <div className="flex justify-evenly ">
               <div className=" flex  w-auto">
                  <img
-                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
-                  src={`http://212.42.106.82/${home?.banners?.[0]?.banner}`}
+                  className=" left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`https://mmt.kg/${home?.banners?.[0]?.banner}`}
                   alt=""
                 />
               </div>
@@ -60,8 +61,8 @@ const Slider = () => {
             <div className="flex justify-evenly ">
                 <div className=" flex  w-auto">
                  <img
-                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
-                  src={`http://212.42.106.82/${home?.banners?.[1]?.banner}`}
+                  className="   left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`https://mmt.kg/${home?.banners?.[1]?.banner}`}
                   alt=""
                 />
               </div>
@@ -70,10 +71,10 @@ const Slider = () => {
 
           <div className="carousel-item  relative float-left w-full">
             <div className="flex justify-evenly">
-                          <div className=" flex  w-auto">
+                  <div className=" flex  w-auto">
                  <img
-                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
-                  src={`http://212.42.106.82/${home?.banners?.[2]?.banner}`}
+                  className=" left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`https://mmt.kg/${home?.banners?.[2]?.banner}`}
                   alt=""
                 />
               </div>

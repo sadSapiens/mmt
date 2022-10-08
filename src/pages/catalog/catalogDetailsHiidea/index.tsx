@@ -213,7 +213,7 @@ const CatalogDetailsHiidea = () => {
                   <h4>На складе: {selectedProduct.total_stock}</h4>
                 </div>
                 <div className="flex md:hidden pb-3">
-                  <p>{selectedProduct.description}</p>
+                  <p>{selectedProduct?.description}</p>
                 </div>
                 {/*  */}
                 <div className=" pl-5">
@@ -257,8 +257,8 @@ const CatalogDetailsHiidea = () => {
                   </div>
                   <div>
                     <p>
-                      {selectedProduct.description
-                        ? selectedProduct.description
+                      {selectedProduct?.description
+                        ? selectedProduct?.description
                         : null}
                     </p>
                   </div>

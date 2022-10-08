@@ -885,7 +885,7 @@ const CatalogPage = () => {
               </div>
 
               <div className="flex justify-start text-left ... items-center py-5">
-                <p>{holiday.description}</p>
+                <p>{holiday?.description}</p>
               </div>
             </div>
           ) : null}

@@ -37,7 +37,7 @@ const BlogDetail = () => {
             <>
               <h1 className="text-2xl py-3 font-bold">{selectedBlog.data.title}</h1>
               <img
-                src={`http://212.42.106.82/${selectedBlog.data.picture}`}
+                src={`https://mmt.kg/${selectedBlog.data.picture}`}
                 alt=""
                 className="max-w-[732px] w-full mx-auto"
               />
@@ -105,7 +105,7 @@ const BlogDetail = () => {
                   <div className="flex py-3 mx-2">
                     <div>
                       <img
-                        src={`http://212.42.106.82/${item.picture}`}
+                        src={`https://mmt.kg/${item.picture}`}
                         alt=""
                         className="object-cover md:h-18 h-24 w-62"
                       />

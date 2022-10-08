@@ -52,7 +52,7 @@ const About = () => {
               вам оптимальный вариант.
             </p> */}
                   <p className="ml-[-15px] md:pr-5 ">
-                    {about ? about.main_info.description : null}
+                    {about ? about?.main_info?.description : null}
                   </p>
                 </div>
                 <div className="flex items-center align-middle gap-4 pb-56 md:pb-2 ">
@@ -97,24 +97,24 @@ const About = () => {
                       src={perizatT}
                       alt=""
                     />
-                    <h2 className="font-bold py-2">{about.director.name}</h2>
+                    <h2 className="font-bold py-2">{about?.director?.name}</h2>
                     <span className="font-light">
-                      {about.director.position}
+                      {about?.director?.position}
                     </span>
 
                     <div className="flex text-center justify-center">
                       <img src={mail} alt="" />
-                      <h5 className="font-light">{about.director.email}</h5>
+                      <h5 className="font-light">{about?.director?.email}</h5>
                     </div>
                   </div>
                 </div>
                 <div className="md:w-9/12 md:px-5 w-auto md:mt-14">
                   <span className="font-bold hidden md:flex">
-                    {about.director.slogan}
+                    {about?.director?.slogan}
                   </span>
                   <div className="font-light flex flex-col w-auto">
                     <p className="font-light text-sm ">
-                      {about.director.personal_information}
+                      {about?.director.personal_information}
                     </p>
                   </div>
                 </div>
@@ -134,13 +134,13 @@ const About = () => {
                       alt=""
                     />
                     <div className="text-center flex flex-col flex-wrap">
-                      <h2 className="font-bold">{item.name}</h2>
-                      <span>{item.position}</span>
+                      <h2 className="font-bold">{item?.name}</h2>
+                      <span>{item?.position}</span>
 
                       <div className="flex text-center justify-center">
                         <img src={mail} alt="" />
 
-                        <h5>{item.email}</h5>
+                        <h5>{item?.email}</h5>
                       </div>
                     </div>
                   </div>
@@ -158,25 +158,17 @@ const About = () => {
                       alt=""
                     />
                     <div className="text-center text-black">
-                      <h2 className="font-bold">{about.employers[0].name}</h2>
-                      <span>{about?.employers[0].position}</span>
+                      <h2 className="font-bold">{about?.employers[0]?.name}</h2>
+                      <span>{about?.employers[0]?.position}</span>
 
                       <div className="flex text-center justify-center">
                         <img src={mail} alt="" />
 
-                        <h5>{about?.employers[0].email}</h5>
+                        <h5>{about?.employers[0]?.email}</h5>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
-                    <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-                      «От идеи до воплощения корпоративных подарков – волшебный
-                      творческий процесс, требующий четкой организации. Время –
-                      самое бесценное в нашей жизни. Мы стремимся к эффективному
-                      управлению, чтобы потребители вашего бренда стали еще
-                      ближе к вам»
-                    </span>
-                  </div>
+                  
                 </div>
                 <div>
                   <div className="flex justify-center items-center flex-col px-9">
@@ -186,25 +178,17 @@ const About = () => {
                       alt=""
                     />
                     <div className="text-center text-black">
-                      <h2 className="font-bold">{about?.employers[1].name}</h2>
-                      <span>{about?.employers[1].position}</span>
+                      <h2 className="font-bold">{about?.employers[1]?.name}</h2>
+                      <span>{about?.employers[1]?.position}</span>
 
                       <div className="flex text-center justify-center">
                         <img src={mail} alt="" />
 
-                        <h5>{about?.employers[1].email}</h5>
+                        <h5>{about?.employers?.[1]?.email}</h5>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col justify-center items-center bg-[#343434] text-white px-0 py-4 my-4">
-                    <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-                      «От идеи до воплощения корпоративных подарков – волшебный
-                      творческий процесс, требующий четкой организации. Время –
-                      самое бесценное в нашей жизни. Мы стремимся к эффективному
-                      управлению, чтобы потребители вашего бренда стали еще
-                      ближе к вам»
-                    </span>
-                  </div>
+                  
                 </div>
                 <div>
                   <div className=" flex justify-center items-center flex-col px-9">
@@ -214,25 +198,17 @@ const About = () => {
                       alt=""
                     />
                     <div className="text-center text-black">
-                      <h2 className="font-bold">{about?.employers[2].name}</h2>
-                      <span>{about?.employers[2].position}</span>
+                      <h2 className="font-bold">{about?.employers[2]?.name}</h2>
+                      <span>{about?.employers?.[2]?.position}</span>
 
                       <div className="flex text-center justify-center">
                         <img src={mail} alt="" />
 
-                        <h5>{about?.employers[2].email}</h5>
+                        <h5>{about?.employers?.[2]?.email}</h5>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col justify-center items-c   enter bg-[#343434] text-white px-0 py-4 my-4">
-                    <span className="font-normal text-sm flex justify-center items-center text-center px-4">
-                      «От идеи до воплощения корпоративных подарков – волшебный
-                      творческий процесс, требующий четкой организации. Время –
-                      самое бесценное в нашей жизни. Мы стремимся к эффективному
-                      управлению, чтобы потребители вашего бренда стали еще
-                      ближе к вам»
-                    </span>
-                  </div>
+                 
                 </div>
               </div>
             </div>

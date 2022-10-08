@@ -132,7 +132,7 @@ const Cards = ({ product }: Props) => {
           <div className=" border border-black  xl:w-full h-80 md:flex justify-center flex-col items-center object-center content-center place-items-center p-2 w-[170px] h-[300px]">
             <div className=" flex">
               <img
-                className="md:w-[100%] max-h-48"
+                className="md:w-[100%] max-h-[9rem]"
                 src={
                   product.shop === "1"
                     ? product.colors[0].images[0].small

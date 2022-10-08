@@ -28,7 +28,7 @@ const Feedback = () => {
                 <div className={i > 0 ? "flex flex-col justify-center w-[310px] items-center overflow-y-clip" : 'flex w-[310px] flex-col justify-center items-center overflow-y-clip  w-full ml-0'}>
                   <img
                     className="rounded-full  w-32 h-32 pb-1.5 flex justify-center items-center place-items-center mb-2.5"
-                    src={item ? `http://212.42.106.82/${item?.picture}` : ""}
+                    src={item ? `https://mmt.kg/${item?.picture}` : ""}
                     alt=""
                   />
                   <span className=" flex  text-center font-[400] text-[14px] md:text-[18px]">
