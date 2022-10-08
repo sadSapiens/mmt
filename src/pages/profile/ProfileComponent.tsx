@@ -36,7 +36,6 @@ const ProfileComponent = () => {
   console.log(inputs, "profile");
   const notify = () => {
   toast.success('Coxранено', {
-  // position: "top-right",
   position: toast.POSITION.TOP_RIGHT,
   autoClose: 5000,
   hideProgressBar: false,
@@ -297,7 +296,7 @@ const ProfileComponent = () => {
           <button
             type="submit"
             className="bg-[#1F1F1F] rounded-full ...  flex justify-center w-[100%] py-2 text-white gap-2"
-            onClick={(e) => {e.preventDefault();  notify()}}
+            onClick={notify}
           >
             {isEdit ? "Изменить" : "Сохранить"}
           </button>

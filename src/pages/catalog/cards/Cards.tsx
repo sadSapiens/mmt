@@ -41,7 +41,7 @@ const Cards = ({ product }: Props) => {
   return (
     <>
       <Link     
-        className="!text-black w-[170px] h-[300px] mb-[20px]"
+        className="!text-black w-[170px] xl:w-64 md:h-[300px] mb-[20px] xl:mb-[0]"
         to={
           product.shop === "1"
           ? `/catalog-detailoasis/${product.id}`

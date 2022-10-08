@@ -43,8 +43,8 @@ const CardsRow = ({ product }: Props) => {
         }
         // onClick={() => window.location.reload()}
       >
-        <div className="py-7 flex justify-center   md:w-[100%] w-full">
-          <div className=" py-2 border border-black w-[100%] flex flex-row relative">
+        <div className="py-7 flex justify-start  md:w-[100%] w-full">
+          <div className=" py-2 border border-black w-[96%] flex flex-row relative">
             <div className=" flex md:w-3/12 w-4/12">
               <img
                 className="w-[100%] object-contain"

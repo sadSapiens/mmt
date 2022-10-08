@@ -787,7 +787,7 @@ const CatalogDetailsHiidea = () => {
           <div className="py-7 flex justify-between flex-wrap">
             {similar.map((item: any, i) => (
               <Link
-              onClick={() => window.location.reload()}
+              // onClick={() => window.location.reload()}
                         className="!text-black"
                         to={
                           item.shop === "1"

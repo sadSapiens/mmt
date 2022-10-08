@@ -97,7 +97,7 @@ const CatalogDetailsOasis = () => {
       setCardWord("Добавлено");
       dispatch(fetchOrder() as any);
     } catch (e) {
-      // navigate("/signup");
+      navigate("/signup");
       console.log(e);
     }
   };
@@ -899,7 +899,7 @@ const CatalogDetailsOasis = () => {
           <div className="py-7 flex justify-between flex-wrap">
             {similar.map((item: any, i) => (
               <Link
-              onClick={() => window.location.reload()}
+              // onClick={() => window.location.reload()}
                         className="!text-black"
                         to={
                           item.shop === "1"

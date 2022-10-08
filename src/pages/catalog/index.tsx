@@ -892,7 +892,7 @@ const CatalogPage = () => {
 
           {/*  */}
           {row === "row" ? (
-            <div className="md:flex md:flex-wrap flex flex-wrap items-center xl:gap-20 xl:justify-center justify-between xl:">
+            <div className="md:flex md:flex-wrap flex flex-wrap items-center xl:gap-20 xl:justify-center justify-between">
               {catalogProducts ? (
                 <>
                   {catalogProducts.map((item, i: number) => (
@@ -907,7 +907,7 @@ const CatalogPage = () => {
               )}
             </div>
           ) : (
-            <div className=" w-[100%] flex justify-start flex-col items-start pl-11 flex-wrap">
+            <div className=" w-[100%] flex justify-start flex-col items-start pl-[1.75rem] flex-wrap">
               {catalogProducts ? (
                 <>
                   {catalogProducts.map((item, i: number) => (
