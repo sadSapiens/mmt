@@ -188,7 +188,7 @@ const Basket = () => {
                                           cartProducts.items.map((el: any) => {
                                             if (el.id === item.id) {
                                               API.put("/orders/cart", {
-                                                item_id: el.id,
+                                                item_id: el.sizes?.[0].id,
                                                 quantity:
                                                   Number(el.quantity) - 1,
                                               }).then((res) => {
@@ -252,7 +252,7 @@ const Basket = () => {
                                             if (el.id === item.id) {
                                               {console.log(el, "el")}
                                               API.put("/orders/cart", {
-                                                item_id: el.id,
+                                                item_id: el.sizes?.[0].id,
                                                 quantity:
                                                   Number(el.quantity) + 1,
                                               }).then((res) => {
@@ -270,7 +270,7 @@ const Basket = () => {
                                   <td className="text-sm text-black font-light px-6 py-4 whitespace-nowrap">
                                     <div className="flex gap-2">
                                       <span className="flex text-base text-black">
-                                        {item.amount}
+                                        {item.amount.toFixed(2)}
                                       </span>
                                       <img className="h-[15px] self-center" src={som} alt="" />
                                     </div>

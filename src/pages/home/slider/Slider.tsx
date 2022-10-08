@@ -5,6 +5,7 @@ import { useHome } from "../../../store/varia/hooks";
 
 const Slider = () => {
 
+  const api = 'http://212.42.106.82/'
   const home = useHome()
   return (
     <>
@@ -37,26 +38,49 @@ const Slider = () => {
           ></button>
         </div>
 
+          {/* {console.log(home?.banners)} */}
         <div className="carousel-inner relative overflow-hidden ">
-          {home?.banners.lentgh === 0 ?
-          home?.banners?.map((item: any, i: number) => (
+          {true  ?
+          // home?.banners?.map((item: any, i: number) => (
+            <>
             <div className="carousel-item active relative float-left w-full ">
-            <div className="flex justify-evenly bg-[#8ABFBB] py-10">
+              
+              <div className="flex justify-evenly ">
               <div className=" flex  w-auto">
-                <img
-                  className="hidden   left-4 md:flex md:w-auto  md:h-[25rem]"
-                  src={item}
-                  alt=""
-                />
-                <img
-                  className="md:hidden  flex justify-center items-center w-36 h-36 "
-                  src={item}
+                 <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`http://212.42.106.82/${home?.banners?.[0]?.banner}`}
                   alt=""
                 />
               </div>
             </div>
           </div>
-          )) : 
+          
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-evenly ">
+                <div className=" flex  w-auto">
+                 <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`http://212.42.106.82/${home?.banners?.[1]?.banner}`}
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="carousel-item  relative float-left w-full">
+            <div className="flex justify-evenly">
+                          <div className=" flex  w-auto">
+                 <img
+                  className="hidden   left-4 md:flex md:w-auto  md:h-[35rem]"
+                  src={`http://212.42.106.82/${home?.banners?.[2]?.banner}`}
+                  alt=""
+                />
+              </div>
+            </div>
+          </div> 
+           </>
+          : 
           <>
           <div className="carousel-item active relative float-left w-full ">
             <div className="flex justify-evenly bg-[#8ABFBB] py-10">
