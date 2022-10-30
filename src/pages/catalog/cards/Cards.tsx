@@ -120,7 +120,7 @@ const Cards = ({ product }: Props) => {
                 </svg>
               )}
 
-              <h1 className="absolute text-sm text-white right-3 mt-[22px] font-extrabold">
+              <h1 className="absolute text-sm text-white right-3 mt-[22px] font-extrabold absolute top-[8%] right-[2%]">
                 {product.rating === "1"
                   ? "Новинка"
                   : product.rating === "2"

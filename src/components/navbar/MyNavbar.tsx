@@ -28,7 +28,9 @@ const MyNavbar = ({}) => {
   const { search } = useLocation();
   const order = useOrder();
 
-  console.log("isBurger", isBurger);
+  const [searchContent, setSearchContent] = useState<any>('')
+
+  console.log("searchValue", searchValue);
 
   const [categoryId, setCategoryId] = useState(
     new URLSearchParams(search).get("categoryId")
@@ -186,9 +188,9 @@ const MyNavbar = ({}) => {
                 <div className="flex justify-center items-center py-1 ">
                   <label className="relative flex justify-end flex-row items-center !mb-0">
                     <input
-                      value={searchValue}
+                      // value={searchValue}
                       onChange={(e: any) =>
-                        dispatch(setSearchValue(e.target.value))
+                        setSearchContent(e.target.value)
                       }
                       className="  placeholder:text-white block bg-[#1F1F1F] md:w-72  border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
                       placeholder="Поиск..."
@@ -198,6 +200,9 @@ const MyNavbar = ({}) => {
                     <img
                       className="absolute left-2 focus:outline-none h-2 w-auto sm:h-5"
                       src={searchl}
+                      onClick={() =>
+                        dispatch(setSearchValue(searchContent))
+                      }
                       alt=""
                     />
                   </label>

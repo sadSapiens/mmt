@@ -576,12 +576,12 @@ const CatalogPage = () => {
                     <div className="flex flex-row justify-around gap-5 py-2">
                       <div>
                         <input
-                          readOnly
+                          // readOnly
                           className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
-                          placeholder="15"
+                          placeholder="0"
                           type="number"
                           name="search"
-                          value={price.minPrice}
+                          // value={price.minPrice}
                           onChange={(e) =>
                             setPrice({
                               ...price,
@@ -595,12 +595,12 @@ const CatalogPage = () => {
                       </div>
                       <div>
                         <input
-                          readOnly
+                          // readOnly
                           className=" flex text-center font-jost  border-black border-[1px] rounded-full ... w-20 h-8 px-2 py-1 text-black placeholder:text-stone-900"
-                          placeholder="400"
+                          // placeholder="400"
                           type="number"
                           name="search"
-                          value={price.maxPrice}
+                          // value={price.maxPrice}
                           onChange={(e) =>
                             setPrice({
                               ...price,

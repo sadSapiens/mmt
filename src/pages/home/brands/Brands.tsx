@@ -11,6 +11,8 @@ const Brands = () => {
   const dispatch = useAppDispatch();
   const home = useHome();
 
+  console.log(home?.brands)
+
   return (
     <div className="container mx-auto px-4 my-5">
       <div>
@@ -24,8 +26,9 @@ const Brands = () => {
           {home.brands.map((item: any, i) => (
             <div key={i} className="flex flex-col items-center  py-2">
               <div>
-                {!item.logotype ? (
-                  <img src={item.logotype} alt="" />
+                
+                {item?.logotype ? (
+                  <img src={item?.logotype} className="w-[388px] h-[125px]" alt="" />
                 ) : (
                   <img src={oasis} alt="" />
                 )}

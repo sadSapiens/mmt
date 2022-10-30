@@ -13,16 +13,18 @@ const Footer = () => {
       <hr className=" bg-white w-auto h-0.1 " />
 
       <footer className="footer-1 bg-[#484848] py-8 sm:py-12">
-        <div className="container mx-auto px-2">
-          <div className="sm:flex sm:flex-wrap sm:-mx-2 md:py-4 hidden">
-            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+        <div className="container mx-auto px-2 ">
+          <div className="sm:flex sm:flex-wrap sm:-mx-2 md:py-4 hidden h-[170px]">
+            <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6  flex flex-col justify-between">
               <div className="flex gap-2">
-                <img src={instagram} alt="" />{" "}
+                <img src={instagram} alt="" />
                 <span className="text-white">INSTAGRAM</span>
               </div>
-              <ul className="list-none footer-links">
+                <div><a className="text-white" target="blank" href="https://docs.google.com/document/d/1kaMLhaCB-Vyrp8R-vOYq5N-z770rl78jArPOOUWO0_8/edit">Публичная оферта</a></div>
+                <div><a className="text-white" target="blank" href="https://docs.google.com/document/d/1OtHP9OhQyElvrXxYQVlnmTXH4rgkfVRxBrWAi2zt5Nw/edit">Политика конфеденциальности</a></div>
+              {/* <ul className="list-none footer-links">
                 <li className="mb-2"></li>
-              </ul>
+              </ul> */}
             </div>
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
               <div className="flex gap-2">
@@ -135,8 +137,8 @@ const Footer = () => {
             </button>
           </div>
           <div className="md:hidden flex sm:hidden text-sm   justify-between px-4 text-white">
-            <div>Публичная оферта</div>
-            <div>Политика конфеденциальности</div>
+            <div><a target="blank" href="https://docs.google.com/document/d/1kaMLhaCB-Vyrp8R-vOYq5N-z770rl78jArPOOUWO0_8/edit">Публичная оферта</a></div>
+            <div><a target="blank" href="https://docs.google.com/document/d/1OtHP9OhQyElvrXxYQVlnmTXH4rgkfVRxBrWAi2zt5Nw/edit">Политика конфеденциальности</a></div>
           </div>
           <div
             className="md:hidden flex  items-center
