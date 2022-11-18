@@ -11,13 +11,14 @@ export interface IPortfolio {
 
 export interface IBlogs {
   count: number;
-  data: IBlog[];
+  data: IBlog[] | any;
   is_all: boolean;
   message: string;
   status: string;
 }
 
 export interface IBlog {
+  picture: string | undefined;
   id: number;
   author: number;
   content: string;

@@ -6,6 +6,8 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { PUBLIC_API } from "../../constants/api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 const SignInPage = () => {
@@ -14,6 +16,18 @@ const SignInPage = () => {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
+
+  const notify = () => {
+    toast.error('Неверный пароль', {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -31,16 +45,27 @@ const SignInPage = () => {
       const res = await PUBLIC_API.post("/user/login", {
         email: inputs.email,
         password: inputs.password,
-      });
+      })
       const token = res.data.data.token;
       localStorage.setItem("token", token);
       navigate("/profile");
     } catch (e) {
       console.log(e, "e>> siginin");
+      notify()
     }
   };
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
       <div className="">
         <div className="bg-white h-1"></div>
         <div className="bg-[#343434] mx-auto px-9 w-auto py-5">
@@ -74,7 +99,7 @@ const SignInPage = () => {
                 placeholder="Введите пароль"
                 name="password"
                 type={passwordShown ? "text" : "password"}
-                // ref={register({ required: "This is required." })}
+              // ref={register({ required: "This is required." })}
               />
               <i className="text-black " onClick={togglePasswordVisiblity}>
                 {eye}

@@ -33,7 +33,7 @@ const CatalogDetailsOasis = () => {
   const [priceDrawing, setPriceDrawing] = useState(0);
   const [error, setError] = useState("");
 
-  useEffect(( ) => {
+  useEffect(() => {
     console.log(sizesCost, "sizesCost")
   }, [sizesCost])
 
@@ -136,37 +136,16 @@ const CatalogDetailsOasis = () => {
             <div className="flex justify-between py-5 md:flex-row flex-col gap-2">
               <div className="md:flex hidden flex-col gap-5 ">
                 {selectedProduct &&
-                selectedProduct.color_groups.length &&
-                selectedProduct.color_groups.length >= 6
+                  selectedProduct.color_groups.length &&
+                  selectedProduct.color_groups.length >= 6
                   ? selectedProduct.color_groups
-                      .slice(0, 5)
-                      .map((product, i) => (
-                        <div
-                          key={i}
-                          className={
-                            product?.images[0]?.small ===
-                            currentProduct?.images[0]?.small
-                              ? "cursor-pointer bg-[#898989] p-[2px]"
-                              : "cursor-pointer  p-[2px]"
-                          }
-                        >
-                          <img
-                            onClick={() => {
-                              setCurrentProduct(product);
-                              setCurrentImage(product.images[0].superbig);
-                            }}
-                            src={product.images[0].small}
-                            alt=""
-                            className="w-16 h-16 object-fill"
-                          />
-                        </div>
-                      ))
-                  : selectedProduct.color_groups.map((product, i) => (
+                    .slice(0, 5)
+                    .map((product, i) => (
                       <div
                         key={i}
                         className={
                           product?.images[0]?.small ===
-                          currentProduct?.images[0]?.small
+                            currentProduct?.images[0]?.small
                             ? "cursor-pointer bg-[#898989] p-[2px]"
                             : "cursor-pointer  p-[2px]"
                         }
@@ -181,7 +160,28 @@ const CatalogDetailsOasis = () => {
                           className="w-16 h-16 object-fill"
                         />
                       </div>
-                    ))}
+                    ))
+                  : selectedProduct.color_groups.map((product, i) => (
+                    <div
+                      key={i}
+                      className={
+                        product?.images[0]?.small ===
+                          currentProduct?.images[0]?.small
+                          ? "cursor-pointer bg-[#898989] p-[2px]"
+                          : "cursor-pointer  p-[2px]"
+                      }
+                    >
+                      <img
+                        onClick={() => {
+                          setCurrentProduct(product);
+                          setCurrentImage(product.images[0].superbig);
+                        }}
+                        src={product.images[0].small}
+                        alt=""
+                        className="w-16 h-16 object-fill"
+                      />
+                    </div>
+                  ))}
               </div>
 
               <div className="md:w-5/12 w-full gap-4">
@@ -195,10 +195,10 @@ const CatalogDetailsOasis = () => {
                     alt=""
                   />
                 ) : (
-                            <div role="status">
+                  <div role="status">
                     <svg aria-hidden="true" className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
                     </svg>
                     <span className="sr-only">Loading...</span>
                   </div>
@@ -206,46 +206,11 @@ const CatalogDetailsOasis = () => {
                 <div className="flex justify-start items-center w-full">
                   <div className="flex flex-row  gap-2   overflow-y-clip  overflow-x-scroll general">
                     {selectedProduct &&
-                    selectedProduct.color_groups.length &&
-                    selectedProduct.color_groups.length >= 6
+                      selectedProduct.color_groups.length &&
+                      selectedProduct.color_groups.length >= 6
                       ? selectedProduct.color_groups
-                          .slice(0, 5)
-                          .map((product, i) => (
-                            <>
-                              {product.images
-                                .slice(0, product.images.length / 4)
-                                .map((el) => (
-                                  <div
-                                    key={i}
-                                    className="cursor-pointer"
-                                    style={{
-                                      display:
-                                        product?.images[0]?.small ===
-                                        currentProduct?.images[0]?.small
-                                          ? "flex"
-                                          : "none",
-                                    }}
-                                  >
-                                    <img
-                                      onClick={() => {
-                                        setCurrentProduct(product);
-                                        setCurrentImage(el.superbig);
-                                      }}
-                                      src={el.small}
-                                      alt=""
-                                      className={"w-16 h-16 object-fill"}
-                                      style={{
-                                        opacity:
-                                          el.superbig === currentImage
-                                            ? "1"
-                                            : "0.5",
-                                      }}
-                                    />
-                                  </div>
-                                ))}
-                            </>
-                          ))
-                      : selectedProduct.color_groups.map((product, i) => (
+                        .slice(0, 5)
+                        .map((product, i) => (
                           <>
                             {product.images
                               .slice(0, product.images.length / 4)
@@ -256,7 +221,7 @@ const CatalogDetailsOasis = () => {
                                   style={{
                                     display:
                                       product?.images[0]?.small ===
-                                      currentProduct?.images[0]?.small
+                                        currentProduct?.images[0]?.small
                                         ? "flex"
                                         : "none",
                                   }}
@@ -279,7 +244,42 @@ const CatalogDetailsOasis = () => {
                                 </div>
                               ))}
                           </>
-                        ))}
+                        ))
+                      : selectedProduct.color_groups.map((product, i) => (
+                        <>
+                          {product.images
+                            .slice(0, product.images.length / 4)
+                            .map((el) => (
+                              <div
+                                key={i}
+                                className="cursor-pointer"
+                                style={{
+                                  display:
+                                    product?.images[0]?.small ===
+                                      currentProduct?.images[0]?.small
+                                      ? "flex"
+                                      : "none",
+                                }}
+                              >
+                                <img
+                                  onClick={() => {
+                                    setCurrentProduct(product);
+                                    setCurrentImage(el.superbig);
+                                  }}
+                                  src={el.small}
+                                  alt=""
+                                  className={"w-16 h-16 object-fill"}
+                                  style={{
+                                    opacity:
+                                      el.superbig === currentImage
+                                        ? "1"
+                                        : "0.5",
+                                  }}
+                                />
+                              </div>
+                            ))}
+                        </>
+                      ))}
                   </div>
                 </div>
                 <div>
@@ -502,18 +502,18 @@ const CatalogDetailsOasis = () => {
                                 }
                               >
                                 {currentDrawing &&
-                                currentDrawing.selectedCostomTypeId ? (
+                                  currentDrawing.selectedCostomTypeId ? (
                                   currentDrawing.costom_types.map(
                                     (type: any, i: number) => {
                                       return type.id ==
                                         currentDrawing.costom_type_id
                                         ? type.colors.map(
-                                            (color: any, i: number) => (
-                                              <option key={i} value={color.id}>
-                                                {color.name}
-                                              </option>
-                                            )
+                                          (color: any, i: number) => (
+                                            <option key={i} value={color.id}>
+                                              {color.name}
+                                            </option>
                                           )
+                                        )
                                         : null;
                                     }
                                   )
@@ -543,7 +543,7 @@ const CatalogDetailsOasis = () => {
                       <div className="flex  w-5/2 justify-between ">
                         <div className="pl-[15px]">
                           {currentDrawing &&
-                          currentDrawing.selectedCostomTypeId ? (
+                            currentDrawing.selectedCostomTypeId ? (
                             currentDrawing.costom_types.map(
                               (type: any, i: number) => {
                                 return (
@@ -581,7 +581,7 @@ const CatalogDetailsOasis = () => {
 
                         <div>
                           {currentDrawing &&
-                          currentDrawing.selectedCostomTypeId ? (
+                            currentDrawing.selectedCostomTypeId ? (
                             currentDrawing.costom_types.map(
                               (type: any, i: number) => {
                                 return type.id ==
@@ -649,7 +649,7 @@ const CatalogDetailsOasis = () => {
                       <div className="">
                         {selectedProduct.total_stock && (
                           <>
-                          {/* {console.log(selectedProduct, currentProduct)} */}
+                            {/* {console.log(selectedProduct, currentProduct)} */}
                             <table className=" flex justify-between flex-wrap">
                               <thead className="w-full">
                                 <tr className="flex">
@@ -701,17 +701,17 @@ const CatalogDetailsOasis = () => {
                                                 const updatedSizes =
                                                   currentProduct.sizes.map(
                                                     (el: any) => {
-                                                    
+
                                                       return el.id !== size.id
                                                         ? el
                                                         : {
-                                                            ...el,
-                                                            quantityToCart:
-                                                              el.quantity === 0
-                                                                ? 0
-                                                                : e.target
-                                                                    .value,
-                                                          };
+                                                          ...el,
+                                                          quantityToCart:
+                                                            el.quantity === 0
+                                                              ? 0
+                                                              : e.target
+                                                                .value,
+                                                        };
                                                     }
                                                   );
                                                 setSizesCost(+e.target.value > 0 ? +e.target.value : 1)
@@ -726,9 +726,9 @@ const CatalogDetailsOasis = () => {
                                             />
                                           </td>
                                         </tr>
-                                        </>
-                                      )
+                                      </>
                                     )
+                                  )
                                   : null}
                               </tbody>
                             </table>
@@ -743,7 +743,12 @@ const CatalogDetailsOasis = () => {
                                   <span>Цена:</span>
                                   <p className="flex justify-center items-center">
                                     {" "}
-                                    {(selectedProduct.color_groups[0].price * sizesCost).toFixed(2)}
+                                    {
+                                      priceDrawing ?
+                                        (selectedProduct.color_groups[0].price * sizesCost + priceDrawing).toFixed(2)
+                                        :
+                                        (selectedProduct.color_groups[0].price * sizesCost).toFixed(2)
+                                    }
                                     <img
                                       src={som}
                                       alt=""
@@ -910,55 +915,55 @@ const CatalogDetailsOasis = () => {
           <div className="py-7 flex justify-between flex-wrap">
             {similar.map((item: any, i) => (
               <Link
-              // onClick={() => window.location.reload()}
-                        className="!text-black"
-                        to={
-                          item.shop === "1"
-                            ? `/catalog-detailoasis/${item.id}`
-                            : `/catalog-detailhiidea/${item.id}`
-                        }
-                      >
-              <div
-                key={i}
-                className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
+                // onClick={() => window.location.reload()}
+                className="!text-black"
+                to={
+                  item.shop === "1"
+                    ? `/catalog-detailoasis/${item.id}`
+                    : `/catalog-detailhiidea/${item.id}`
+                }
               >
-                <div className=" border border-black  w-full h-80 flex justify-between pb-2 flex-col items-center object-center content-center place-items-center">
-                  <div className="flex justify-center">
-                    <img
-                      className="md:w-[100%]  "
-                      src={item.colors[0].images[0].small}
-                      alt=""
-                    />
-                  </div>
-                  <div className="px-2 w-full">
-                    <div className="flex">
-                      <h5 className="text-sm font-light">
-                        Код товара: {item.article}
-                      </h5>
+                <div
+                  key={i}
+                  className="py-7  flex justify-center md:w-72 w-64  mx-3 overflow-x-auto "
+                >
+                  <div className=" border border-black  w-full h-80 flex justify-between pb-2 flex-col items-center object-center content-center place-items-center">
+                    <div className="flex justify-center">
+                      <img
+                        className="md:w-[100%]  "
+                        src={item.colors[0].images[0].small}
+                        alt=""
+                      />
                     </div>
-                    <div className="flex justify-between items-center text-black font-jost ">
-                      
+                    <div className="px-2 w-full">
+                      <div className="flex">
+                        <h5 className="text-sm font-light">
+                          Код товара: {item.article}
+                        </h5>
+                      </div>
+                      <div className="flex justify-between items-center text-black font-jost ">
+
                         {" "}
                         {item.name.length <= 29 ? item.name : item.name.slice(0, 29) + "..."}
-                      {/* </Link> */}
-                      {/* <div className="flex gap-1 pl-[30px] items-center">
+                        {/* </Link> */}
+                        {/* <div className="flex gap-1 pl-[30px] items-center">
                         <div className="h-3 w-3 rounded-full" />
                         <div className="h-3 w-3  rounded-full" />
                         <div className="h-3 w-3 rounded-full" />
                       </div> */}
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex flex-col">
-                        <span className="font-light">Цена:</span>
-                        <span className="font-black">{item.price} C</span>
                       </div>
-                      <div className="w-10 h-10 bg-[#343434] rounded-full ... flex justify-center items-center">
-                        <img src={shopbag} className="h-5 w-5" alt="" />
+                      <div className="flex justify-between items-center">
+                        <div className="flex flex-col">
+                          <span className="font-light">Цена:</span>
+                          <span className="font-black">{item.price} C</span>
+                        </div>
+                        <div className="w-10 h-10 bg-[#343434] rounded-full ... flex justify-center items-center">
+                          <img src={shopbag} className="h-5 w-5" alt="" />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
               </Link>
             ))}
           </div>

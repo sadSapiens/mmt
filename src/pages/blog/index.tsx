@@ -15,6 +15,8 @@ const Blog = () => {
     dispatch(fetchBlogInfo(search) as any);
   }, [search, dispatch]);
 
+  console.log(blogNews)
+
   return (
     <>
       {blogNews ? (
@@ -55,8 +57,8 @@ const Blog = () => {
                       <h1 className="font-semibold text-black text-4x">
                         {blogNews && blogNews.data
                           ? blogNews.data.map((item: any, i: number) => (
-                              <div>{item.title}</div>
-                            ))
+                            <div>{item.title}</div>
+                          ))
                           : null}
                       </h1>
 
@@ -82,14 +84,14 @@ const Blog = () => {
 
             {blogNews && blogNews.data && !!blogNews.data.length ? (
               <div className="flex flex-row gap-4 flex-wrap justify-center items-center">
-                {blogNews.data.map((item, i) => (
+                {blogNews.data.map((item: { id: any; picture: string | undefined; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; brief_about: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }, i: React.Key | null | undefined) => (
                   <div
                     key={i}
                     className="md:w-3/12 h-[35rem]  w-5/12 flex flex-col shadow-xl my-5 md:mx-5 "
                   >
                     <Link to={`/blog/${item.id}`}>
                       <img
-                        src={newsone}
+                        src={`https://mmt.kg${item?.picture}`}
                         alt=""
                         className="w-96 flex justify-center items-center place-self-center "
                       />

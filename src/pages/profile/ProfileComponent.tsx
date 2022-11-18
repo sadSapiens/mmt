@@ -33,17 +33,16 @@ const ProfileComponent = () => {
     company: "",
     email: "",
   });
-  console.log(inputs, "profile");
   const notify = () => {
-  toast.success('Coxранено', {
-  position: toast.POSITION.TOP_RIGHT,
-  autoClose: 5000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  });
+    toast.success('Coxранено', {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
   const [successfully, setSuccessfully] = useState(false);
 
@@ -87,11 +86,11 @@ const ProfileComponent = () => {
     try {
       const res = await (isEdit
         ? API.put("/user/profile", avatar, {
-            headers: { "Content-Type": "multipart/form-data" },
-          })
+          headers: { "Content-Type": "multipart/form-data" },
+        })
         : API.post("/user/profile", avatar, {
-            headers: { "Content-Type": "multipart/form-data" },
-          }));
+          headers: { "Content-Type": "multipart/form-data" },
+        }));
     } catch (e) {
       // @ts-ignore
       setErrorText([Object.entries(e.response.data)]);
@@ -129,16 +128,16 @@ const ProfileComponent = () => {
 
   return (
     <>
-     <ToastContainer 
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover/>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
       <div className="flex justify-center   w-auto md:w-32 lg:w-48 ">
         <form onSubmit={handleSubmit} className="w-96">
           <div className="flex justify-between py-5 flex-col md:flex-row md:items-center ">
@@ -300,7 +299,7 @@ const ProfileComponent = () => {
           >
             {isEdit ? "Изменить" : "Сохранить"}
           </button>
-          
+
         </form>
       </div>
 

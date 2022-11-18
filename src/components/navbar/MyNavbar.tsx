@@ -17,7 +17,7 @@ import { setSearchValue } from "../../store/catalog/actions";
 import { fetchOrder } from "../../store/order";
 import { useOrder } from "../../store/order/hooks";
 
-const MyNavbar = ({}) => {
+const MyNavbar = ({ }) => {
   // const [open, setOpen] = React.useState(false);
   // const [isExpanded, toggleExpansion] = React.useState(false);
   const [isBurger, setIsBurger] = useState(false);
@@ -51,6 +51,10 @@ const MyNavbar = ({}) => {
     } catch (e) {
       console.log(e);
     }
+  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    dispatch(setSearchValue(searchContent))
   };
 
   return (
@@ -184,29 +188,31 @@ const MyNavbar = ({}) => {
                     />
                   </Link>
                 </div>
+                <form onSubmit={handleSubmit}>
 
-                <div className="flex justify-center items-center py-1 ">
-                  <label className="relative flex justify-end flex-row items-center !mb-0">
-                    <input
-                      // value={searchValue}
-                      onChange={(e: any) =>
-                        setSearchContent(e.target.value)
-                      }
-                      className="  placeholder:text-white block bg-[#1F1F1F] md:w-72  border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
-                      placeholder="Поиск..."
-                      type="text"
-                      name="search"
-                    />
-                    <img
-                      className="absolute left-2 focus:outline-none h-2 w-auto sm:h-5"
-                      src={searchl}
-                      onClick={() =>
-                        dispatch(setSearchValue(searchContent))
-                      }
-                      alt=""
-                    />
-                  </label>
-                </div>
+                  <div className="flex justify-center items-center py-1 ">
+                    <label className="relative flex justify-end flex-row items-center !mb-0">
+                      <input
+                        // value={searchValue}
+                        onChange={(e: any) =>
+                          setSearchContent(e.target.value)
+                        }
+                        className="  placeholder:text-white block bg-[#1F1F1F] md:w-72  border-none rounded-full py-2 pl-9 !pr-0 shadow-sm focus:outline-none  sm:text-sm text-white"
+                        placeholder="Поиск..."
+                        type="text"
+                        name="search"
+                      />
+                      <img
+                        className="absolute left-2 focus:outline-none h-2 w-auto sm:h-5"
+                        src={searchl}
+                        onClick={() =>
+                          dispatch(setSearchValue(searchContent))
+                        }
+                        alt=""
+                      />
+                    </label>
+                  </div>
+                </form>
               </div>
             </div>
 
@@ -303,7 +309,7 @@ const MyNavbar = ({}) => {
                   type="text"
                   name="search"
                 />
-                
+
               </label>
             </div>
             <div>
@@ -333,9 +339,8 @@ const MyNavbar = ({}) => {
       <div
         // className={`${isBurger ? `block` : `hidden`
         //   } md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto`}
-        className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${
-          isBurger ? "header__right_active" : "header__right"
-        }`}
+        className={`header__right  md:hidden  bg-[#343434] w-full block flex-grow lg:flex lg:items-center !items-end lg:w-auto ${isBurger ? "header__right_active" : "header__right"
+          }`}
       >
         <Link to="/" className=" text-[#ffffff] !items-start flex">
           <MegaMenu
