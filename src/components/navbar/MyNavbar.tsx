@@ -188,7 +188,7 @@ const MyNavbar = ({ }) => {
                     />
                   </Link>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form className="p-0" onSubmit={handleSubmit}>
 
                   <div className="flex justify-center items-center py-1 ">
                     <label className="relative flex justify-end flex-row items-center !mb-0">
