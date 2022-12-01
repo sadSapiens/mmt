@@ -23,7 +23,8 @@ const CatalogDetailsOasis = () => {
   const [currentImage, setCurrentImage] = useState<string>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const [cardWord, setCardWord] = useState("В корзину");
-  const [sizesCost, setSizesCost] = useState(1)
+  const [sizesCost, setSizesCost] = useState(0)
+  const [sizeTarget, setSizeTarget] = useState(1)
   const [drawing, setDrawing] = useState(false);
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
@@ -33,11 +34,6 @@ const CatalogDetailsOasis = () => {
   const [priceDrawing, setPriceDrawing] = useState(0);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    console.log(sizesCost, "sizesCost")
-  }, [sizesCost])
-
-  // console.log(selectedProduct, 'selectedProduct')
 
   useEffect(() => {
     if (!params.id) return;
@@ -124,9 +120,6 @@ const CatalogDetailsOasis = () => {
       console.log(e);
     }
   };
-  useEffect(() => {
-    console.log(currentProduct, "checking currentProduct")
-  }, [currentProduct])
 
   return (
     <div>
@@ -697,6 +690,7 @@ const CatalogDetailsOasis = () => {
                                             <input
                                               type="number"
                                               placeholder="0"
+                                              min="0"
                                               onChange={(e) => {
                                                 const updatedSizes =
                                                   currentProduct.sizes.map(
@@ -714,8 +708,9 @@ const CatalogDetailsOasis = () => {
                                                         };
                                                     }
                                                   );
-                                                setSizesCost(+e.target.value > 0 ? +e.target.value : 1)
-
+                                                
+                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : 0)
+                                                // setSizeTarget(+e.target.value)
                                                 setCurrentProduct({
                                                   ...currentProduct,
                                                   images: currentProduct.images,

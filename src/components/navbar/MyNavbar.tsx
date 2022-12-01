@@ -256,8 +256,7 @@ const MyNavbar = ({ }) => {
 
                       <Link to="/signin">
                         <button
-                          className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1
-                                                    bg-[#1F1F1F] transition .4s hover:scale-105"
+                          className=" flex justify-center rounded-full w-auto text-white px-10 items-center py-1 bg-[#1F1F1F] transition .4s hover:scale-105"
                         >
                           Войти
                         </button>
@@ -292,7 +291,7 @@ const MyNavbar = ({ }) => {
           <div
             className="md:hidden flex  items-center
             justify-between
-           py-2"
+            py-2"
           >
             <div className="items-center flex w-full  md:hidden">
               <label className="relative block !mb-0 cursor-pointer">
