@@ -12,6 +12,7 @@ import {
 import { fetchSlectedCatalogProduct } from "../../../store/catalog";
 import API from "../../../constants/api";
 import { fetchOrder } from "../../../store/order";
+import { act } from "@testing-library/react";
 
 const CatalogDetailsOasis = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const CatalogDetailsOasis = () => {
   const [sizesCost, setSizesCost] = useState(0)
   const [priceTarget, setPriceTarget] = useState<any>()
   const [drawing, setDrawing] = useState(false);
+  const [activeInput,setActiveInput] = useState<number>()
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
     width: "",
@@ -121,6 +123,9 @@ const CatalogDetailsOasis = () => {
     }
   };
 
+  // const checkInput = (idx:number) => {
+  //   setActiveInput(idx)
+  // }
   return (
     <div>
       {selectedProduct ? (
@@ -691,27 +696,29 @@ const CatalogDetailsOasis = () => {
                                               type="number"
                                               placeholder="0"
                                               min="0"
+                                              disabled={activeInput ? (activeInput !== i) : (false)}
+                                              onFocus={() => setActiveInput(i)}
                                               onChange={(e) => {
                                                 const updatedSizes =
                                                   currentProduct.sizes.map(
                                                     (el: any) => {
-
                                                       return el.id !== size.id
                                                         ? el
                                                         : {
                                                           ...el,
                                                           quantityToCart:
-                                                            el.quantity === 0
+                                                             el.quantity === 0
                                                               ? 0
                                                               : e.target
                                                                 .value,
                                                         };
                                                     }
                                                   );
-                                                setPriceTarget(+e.target.value)
-                                                  setPriceTarget((prev1target: number) => prev1target)
-                                                  console.log(priceTarget)
-                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : prevState => prevState - priceTarget)
+                                                // setPriceTarget(+e.target.value)
+                                                // setPriceTarget((prev1target: number) => prev1target)
+                                                // setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : prevState => prevState - priceTarget)
+                                                
+                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : 0)
                                                 setCurrentProduct({
                                                   ...currentProduct,
                                                   images: currentProduct.images,

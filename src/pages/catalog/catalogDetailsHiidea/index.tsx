@@ -22,8 +22,11 @@ const CatalogDetailsHiidea = () => {
   const [currentProduct, setCurrentProduct] = useState<any>();
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const [sizesCost, setSizesCost] = useState(1)
+  
+  const [priceTarget, setPriceTarget] = useState<any>()
   const [cardWord, setCardWord] = useState("В корзину");
   const [drawing, setDrawing] = useState(false);
+  const [activeInput,setActiveInput] = useState<number>()
 
   const [widthHeight, setWidthHeight] = useState({
     width: "",
@@ -606,6 +609,8 @@ const CatalogDetailsHiidea = () => {
                                             <input
                                               type="number"
                                               placeholder="0"
+                                              disabled={activeInput ? (activeInput !== i) : (false)}
+                                              onFocus={() => setActiveInput(i)}
                                               onChange={(e) => {
                                                 const updatedSizes =
                                                   currentProduct.sizes.map(
@@ -622,8 +627,11 @@ const CatalogDetailsHiidea = () => {
                                                           };
                                                     }
                                                   );
-                                                                                                  
-                                                  setSizesCost(+e.target.value > 0 ? +e.target.value : 1)
+                                                  
+                                                // setPriceTarget(+e.target.value)
+                                                // setPriceTarget((prev1target: number) => prev1target)
+                                                // setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : prevState => prevState - priceTarget)
+                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : 0)
 
                                                 setCurrentProduct({
                                                   ...currentProduct,
