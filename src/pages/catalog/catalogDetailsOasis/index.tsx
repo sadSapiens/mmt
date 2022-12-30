@@ -24,7 +24,7 @@ const CatalogDetailsOasis = () => {
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const [cardWord, setCardWord] = useState("В корзину");
   const [sizesCost, setSizesCost] = useState(0)
-  const [sizeTarget, setSizeTarget] = useState(1)
+  const [priceTarget, setPriceTarget] = useState<any>()
   const [drawing, setDrawing] = useState(false);
   const navigate = useNavigate();
   const [widthHeight, setWidthHeight] = useState({
@@ -708,9 +708,10 @@ const CatalogDetailsOasis = () => {
                                                         };
                                                     }
                                                   );
-                                                
-                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : 0)
-                                                // setSizeTarget(+e.target.value)
+                                                setPriceTarget(+e.target.value)
+                                                  setPriceTarget((prev1target: number) => prev1target)
+                                                  console.log(priceTarget)
+                                                setSizesCost(+e.target.value !== 0 ? prevState => prevState + +e.target.value : prevState => prevState - priceTarget)
                                                 setCurrentProduct({
                                                   ...currentProduct,
                                                   images: currentProduct.images,
