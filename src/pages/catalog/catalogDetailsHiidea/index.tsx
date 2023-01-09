@@ -23,7 +23,6 @@ const CatalogDetailsHiidea = () => {
   const [currentDrawing, setCurrentDrawing] = useState<any>();
   const [sizesCost, setSizesCost] = useState(1)
   
-  const [priceTarget, setPriceTarget] = useState<any>()
   const [cardWord, setCardWord] = useState("В корзину");
   const [drawing, setDrawing] = useState(false);
   const [activeInput,setActiveInput] = useState<number>()
@@ -609,7 +608,7 @@ const CatalogDetailsHiidea = () => {
                                             <input
                                               type="number"
                                               placeholder="0"
-                                              disabled={activeInput ? (activeInput !== i) : (false)}
+                                              disabled={activeInput === 0 && i ? true : activeInput ? (activeInput !== i) : (false)}
                                               onFocus={() => setActiveInput(i)}
                                               onChange={(e) => {
                                                 const updatedSizes =

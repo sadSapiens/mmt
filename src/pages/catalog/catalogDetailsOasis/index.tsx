@@ -696,7 +696,8 @@ const CatalogDetailsOasis = () => {
                                               type="number"
                                               placeholder="0"
                                               min="0"
-                                              disabled={activeInput ? (activeInput !== i) : (false)}
+                                              disabled={activeInput === 0 && i ? true : activeInput ? (activeInput !== i) : (false)}
+
                                               onFocus={() => setActiveInput(i)}
                                               onChange={(e) => {
                                                 const updatedSizes =
